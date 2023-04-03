@@ -159,7 +159,7 @@ docker run -it --volumnes-from 父类  镜像
 ```
 3. 需要改配置文件，解决中文乱码问题。
 
-在conf文件夹下创建
+在conf文件夹下创建my.cnf，并添加如下内容
 ```txt
 [client]
 defaule_character_set=utf8
@@ -168,6 +168,6 @@ collation_server = utf8_general_ci
 character_set_server = utf8
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTUzNjE5OTgyLDE2NjQ2OTc0ODIsNDQ5OD
+eyJoaXN0b3J5IjpbMjczMjI4OTE1LDE2NjQ2OTc0ODIsNDQ5OD
 k1NDA1LDIzMjAxMTQ1MywtMTc4MTYwNzMxNF19
 -->
