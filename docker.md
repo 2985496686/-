@@ -146,8 +146,12 @@ docker run -it --volumnes-from 父类  镜像
 # 常用软件的下载
  
 ## mysql
-
+1. 启动时需要设置密码。
+```shell
+-e MYSQL_ROOT_PASSWORD
+```
+3. 需要进行数据卷的映射。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2NTU5OTcxNiwyMzIwMTE0NTMsLTE3OD
+eyJoaXN0b3J5IjpbMTE4MjQwOTMyMywyMzIwMTE0NTMsLTE3OD
 E2MDczMTRdfQ==
 -->
