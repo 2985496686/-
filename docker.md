@@ -148,7 +148,7 @@ docker run -it --volumnes-from 父类  镜像
 ## mysql
 1. 启动时需要设置密码。
 ```shell
--e MYSQL_ROOT_PASSWORD '密码'
+-e MYSQL_ROOT_PASSWORD='密码'
 ```
 2. 需要进行数据卷的映射。
 这里需要映射三处，如下：
@@ -166,6 +166,6 @@ collation_server = utf8_general_ci
 character_set_server = utf8
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDQ5ODk1NDA1LDIzMjAxMTQ1MywtMTc4MT
-YwNzMxNF19
+eyJoaXN0b3J5IjpbMTY2NDY5NzQ4Miw0NDk4OTU0MDUsMjMyMD
+ExNDUzLC0xNzgxNjA3MzE0XX0=
 -->
