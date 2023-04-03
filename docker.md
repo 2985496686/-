@@ -143,9 +143,11 @@ docker run -it --volumnes-from 父类  镜像
 继承后，父类数据卷容器挂掉，不会影响继承数据卷的新容器。
 
 
-## 常用软件的下载
+# 常用软件的下载
  
+## mysql
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjMyMDExNDUzLC0xNzgxNjA3MzE0XX0=
+eyJoaXN0b3J5IjpbMjA2NTU5OTcxNiwyMzIwMTE0NTMsLTE3OD
+E2MDczMTRdfQ==
 -->
