@@ -177,9 +177,9 @@ docker run -d  -p 3306:3306  -e  MYSQL_ROOT_PASSWORD=111111
 
 ## redis
 
-- 添加redis配置文件 需要在容器的/etc/redis/目录下添加redis.conf文件，我们可以将该目录数据卷
+- 添加redis配置文件 需要在容器的/etc/redis/目录下添加redis.conf文件，我们可以通过数据卷映射该目录。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwNDMyODc5OCwyMDI2NzM2NTEyLC03Mj
-Q1MjI4NCwyNzMyMjg5MTUsMTY2NDY5NzQ4Miw0NDk4OTU0MDUs
-MjMyMDExNDUzLC0xNzgxNjA3MzE0XX0=
+eyJoaXN0b3J5IjpbLTE5MjQwNTAwNjksMTQwNDMyODc5OCwyMD
+I2NzM2NTEyLC03MjQ1MjI4NCwyNzMyMjg5MTUsMTY2NDY5NzQ4
+Miw0NDk4OTU0MDUsMjMyMDExNDUzLC0xNzgxNjA3MzE0XX0=
 -->
