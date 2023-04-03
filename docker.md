@@ -158,6 +158,7 @@ docker run -it --volumnes-from 父类  镜像
 -v 主机目录: /etc/mysql/conf.d
 ```
 3. 需要改配置文件，解决中文乱码问题。
+4.
 ```txt
 [client]
 defaule_character_set=utf8
@@ -166,6 +167,6 @@ collation_server = utf8_general_ci
 character_set_server = utf8
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY2NDY5NzQ4Miw0NDk4OTU0MDUsMjMyMD
-ExNDUzLC0xNzgxNjA3MzE0XX0=
+eyJoaXN0b3J5IjpbLTQ0OTUzMTExNCwxNjY0Njk3NDgyLDQ0OT
+g5NTQwNSwyMzIwMTE0NTMsLTE3ODE2MDczMTRdfQ==
 -->
