@@ -160,9 +160,12 @@ docker run -it --volumnes-from 父类  镜像
 3. 需要改配置文件，解决中文乱码问题。
 ```txt
 [client]
-defaule_chara
+defaule_character_set=utf8
+[mysqlId]
+collation_server = utf8_general_ci
+character_set_server = utf8
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzI1NjMwNjMyLDIzMjAxMTQ1MywtMTc4MT
+eyJoaXN0b3J5IjpbNDQ5ODk1NDA1LDIzMjAxMTQ1MywtMTc4MT
 YwNzMxNF19
 -->
