@@ -148,10 +148,15 @@ docker run -it --volumnes-from 父类  镜像
 ## mysql
 1. 启动时需要设置密码。
 ```shell
--e MYSQL_ROOT_PASSWORD
+-e MYSQL_ROOT_PASSWORD '密码'
 ```
-3. 需要进行数据卷的映射。
+2. 需要进行数据卷的映射。
+这里需要映射三处，如下：
+```shell
+-v 主机目录:/var/log/mysql
+-v 主机目录:/var/lib/mysql
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4MjQwOTMyMywyMzIwMTE0NTMsLTE3OD
+eyJoaXN0b3J5IjpbMTUxNDgyMjIwNCwyMzIwMTE0NTMsLTE3OD
 E2MDczMTRdfQ==
 -->
