@@ -111,7 +111,7 @@ Docker的镜像实际上由一层一层的文件系统组成，这种层级的�
   
 **`bootfs`和`rootfs`关系如下图：**  
   
-![输入图片说明](/imgs/2023-04-03/h5lV02R42YnDsf2L.png)
+![输入图片说明](https://raw.githubusercontent.com/2985496686/-/master/imgs/docker/2JnFSEnSqqP6V4YJ.png)
 
 
 # docker容器数据卷
@@ -147,5 +147,5 @@ docker run -it --volumnes-from 父类  镜像
  
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODE2MDczMTRdfQ==
+eyJoaXN0b3J5IjpbMjMyMDExNDUzLC0xNzgxNjA3MzE0XX0=
 -->
