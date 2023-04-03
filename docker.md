@@ -169,11 +169,16 @@ character_set_server = utf8
 ```
 使用如下：
 ```
-docker run -d  -p 3306:3306  -e  MYSQL_ROOT_PASSWORD=111111 -v /home/gtl/docker_data/mysql/data:/var/lib/mysql -v /home/gtl/docker_data/mysql/log:/var/log/mysql -v /home/gtl/docker_data/mysql/conf:/etc/mysql/conf.d  --name mysql mysql
-
+docker run -d  -p 3306:3306  -e  MYSQL_ROOT_PASSWORD=111111 
+-v /home/gtl/docker_data/mysql/data:/var/lib/mysql 
+-v /home/gtl/docker_data/mysql/log:/var/log/mysql 
+-v /home/gtl/docker_data/mysql/conf:/etc/mysql/conf.d  --name mysql mysql
 ```
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1NDE4MjkxOSwtNzI0NTIyODQsMjczMj
+eyJoaXN0b3J5IjpbLTQ2MDEwMTkwNywtNzI0NTIyODQsMjczMj
 I4OTE1LDE2NjQ2OTc0ODIsNDQ5ODk1NDA1LDIzMjAxMTQ1Mywt
 MTc4MTYwNzMxNF19
 -->
