@@ -155,8 +155,10 @@ docker run -it --volumnes-from 父类  镜像
 ```shell
 -v 主机目录:/var/log/mysql
 -v 主机目录:/var/lib/mysql
+-v 主机目录: /etc/mysql/conf.d
 ```
+3. 需要该
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxNDgyMjIwNCwyMzIwMTE0NTMsLTE3OD
-E2MDczMTRdfQ==
+eyJoaXN0b3J5IjpbODgyNDYxMjkxLDIzMjAxMTQ1MywtMTc4MT
+YwNzMxNF19
 -->
