@@ -175,10 +175,11 @@ docker run -d  -p 3306:3306  -e  MYSQL_ROOT_PASSWORD=111111
 -v /home/gtl/docker_data/mysql/conf:/etc/mysql/conf.d  --name mysql mysql
 ```
 
+## redis
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2MDEwMTkwNywtNzI0NTIyODQsMjczMj
+eyJoaXN0b3J5IjpbMjAyNjczNjUxMiwtNzI0NTIyODQsMjczMj
 I4OTE1LDE2NjQ2OTc0ODIsNDQ5ODk1NDA1LDIzMjAxMTQ1Mywt
 MTc4MTYwNzMxNF19
 -->
