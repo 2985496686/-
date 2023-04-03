@@ -158,7 +158,11 @@ docker run -it --volumnes-from 父类  镜像
 -v 主机目录: /etc/mysql/conf.d
 ```
 3. 需要改配置文件，解决中文乱码问题。
+```txt
+[client]
+defaule_chara
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcwMjE3MDIxOSwyMzIwMTE0NTMsLTE3OD
-E2MDczMTRdfQ==
+eyJoaXN0b3J5IjpbMzI1NjMwNjMyLDIzMjAxMTQ1MywtMTc4MT
+YwNzMxNF19
 -->
