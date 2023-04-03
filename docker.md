@@ -162,12 +162,13 @@ docker run -it --volumnes-from 父类  镜像
 在conf文件夹下创建my.cnf，并添加如下内容
 ```txt
 [client]
-defaule_character_set=utf8
+default_character_set=utf8
 [mysqlId]
 collation_server = utf8_general_ci
 character_set_server = utf8
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjczMjI4OTE1LDE2NjQ2OTc0ODIsNDQ5OD
-k1NDA1LDIzMjAxMTQ1MywtMTc4MTYwNzMxNF19
+eyJoaXN0b3J5IjpbLTcyNDUyMjg0LDI3MzIyODkxNSwxNjY0Nj
+k3NDgyLDQ0OTg5NTQwNSwyMzIwMTE0NTMsLTE3ODE2MDczMTRd
+fQ==
 -->
