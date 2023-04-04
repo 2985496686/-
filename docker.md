@@ -249,13 +249,16 @@ grant replication slave ,replication client on *.* TO 'slave'@'%';
 
 4. 为slave容器添加配置文件。
 在conf目录下添加my.conf配置文件
+```conf
+
+```
 
 
 
 
  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3MjgyNTcyMyw0MzYwNDkwNTMsNzI5MD
+eyJoaXN0b3J5IjpbLTU1NDk5NjI3Myw0MzYwNDkwNTMsNzI5MD
 U0MDUwLC0xOTc1OTQxOTI4LC0xOTI0MDUwMDY5LDE0MDQzMjg3
 OTgsMjAyNjczNjUxMiwtNzI0NTIyODQsMjczMjI4OTE1LDE2Nj
 Q2OTc0ODIsNDQ5ODk1NDA1LDIzMjAxMTQ1MywtMTc4MTYwNzMx
