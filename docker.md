@@ -89,7 +89,7 @@ docker import name.tar :TAG  //导入
 docker 在下载镜像时是很明显的分层下载的，因为docker使用的是分层文件系统。  
   
 **UnionFS（联合文件系统）**  
-- docker的镜像是一层一层叠加形成的，我们可以在基础镜像上添加自己的配置后，打包成新的镜像，此时这个新镜像就挂载了原先镜像的文件目录，但有在此基础上新增了一些内容。  
+- docker的镜像是一层一层叠加形成的，我们可以在基础镜像生成的实例化容器上添加自己的配置后，打包成新的镜像，此时这个新镜像就挂载了原先镜像的文件目录，但有在此基础上新增了一些内容。  
 - docker的镜像文件是不可写的，容器是可写的。  
   
 ## 镜像加载
@@ -184,8 +184,8 @@ docker run -d  -p 3306:3306  -e  MYSQL_ROOT_PASSWORD=111111
 docker run  -d -p 6379:6379 --name redis -v /home/gtl/docker_data/redis/redis.conf:/etc/redis/redis.conf  -v /home/gtl/docker_data/redis/data:/data   redis redis-server /etc/redis/redis.conf  
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NzU5NDE5MjgsLTE5MjQwNTAwNjksMT
-QwNDMyODc5OCwyMDI2NzM2NTEyLC03MjQ1MjI4NCwyNzMyMjg5
-MTUsMTY2NDY5NzQ4Miw0NDk4OTU0MDUsMjMyMDExNDUzLC0xNz
-gxNjA3MzE0XX0=
+eyJoaXN0b3J5IjpbLTkzNzMzMDU5LC0xOTc1OTQxOTI4LC0xOT
+I0MDUwMDY5LDE0MDQzMjg3OTgsMjAyNjczNjUxMiwtNzI0NTIy
+ODQsMjczMjI4OTE1LDE2NjQ2OTc0ODIsNDQ5ODk1NDA1LDIzMj
+AxMTQ1MywtMTc4MTYwNzMxNF19
 -->
