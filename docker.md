@@ -203,14 +203,50 @@ docker run -d  -p 3307:3306  -e  MYSQL_ROOT_PASSWORD=111111
 -v /home/gtl/docker_data/mysql/mysql_slave/conf:/etc/mysql/conf.d  --name mysql_slave mysql
 ```
 
-2 .为master容器添加配置文件
+2 .为master容器添加配置文件。
+在conf目录下添加 my.conf
+```conf
+[mysqld]
+
+## 设置server_id，同一局域网中需要唯一
+
+server_id=101
+
+## 指定不需要同步的数据库名称
+
+binlog-ignore-db=mysql
+
+## 开启二进制日志功能
+
+log-bin=mysql-bin
+
+## 设置二进制日志使用内存大小（事务）
+
+binlog_cache_size=1M
+
+## 设置使用的二进制日志格式（mixed,statement,row）
+
+binlog_format=mixed
+
+## 二进制日志过期清理时间。默认值为0，表示不自动清理。
+
+expire_logs_days=7
+
+## 跳过主从复制中遇到的所有错误或指定类型的错误，避免slave端复制中断。
+
+## 如：1062错误是指一些主键重复，1032错误是因为主从数据库数据不一致
+
+slave_skip_errors=1062
+```
+
+
 
 
 
  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODI1MTQzOTcsNzI5MDU0MDUwLC0xOT
-c1OTQxOTI4LC0xOTI0MDUwMDY5LDE0MDQzMjg3OTgsMjAyNjcz
-NjUxMiwtNzI0NTIyODQsMjczMjI4OTE1LDE2NjQ2OTc0ODIsND
-Q5ODk1NDA1LDIzMjAxMTQ1MywtMTc4MTYwNzMxNF19
+eyJoaXN0b3J5IjpbNDM2MDQ5MDUzLDcyOTA1NDA1MCwtMTk3NT
+k0MTkyOCwtMTkyNDA1MDA2OSwxNDA0MzI4Nzk4LDIwMjY3MzY1
+MTIsLTcyNDUyMjg0LDI3MzIyODkxNSwxNjY0Njk3NDgyLDQ0OT
+g5NTQwNSwyMzIwMTE0NTMsLTE3ODE2MDczMTRdfQ==
 -->
