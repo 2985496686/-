@@ -203,10 +203,12 @@ docker run -d  -p 3307:3306  -e  MYSQL_ROOT_PASSWORD=111111
 -v /home/gtl/docker_data/mysql/mysql_slave/conf:/etc/mysql/conf.d  --name mysql_slave mysql
 ```
 
+
+
  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3MDgyNzk5NSw3MjkwNTQwNTAsLTE5Nz
-U5NDE5MjgsLTE5MjQwNTAwNjksMTQwNDMyODc5OCwyMDI2NzM2
-NTEyLC03MjQ1MjI4NCwyNzMyMjg5MTUsMTY2NDY5NzQ4Miw0ND
-k4OTU0MDUsMjMyMDExNDUzLC0xNzgxNjA3MzE0XX0=
+eyJoaXN0b3J5IjpbMTI2MDA2NTI3LDcyOTA1NDA1MCwtMTk3NT
+k0MTkyOCwtMTkyNDA1MDA2OSwxNDA0MzI4Nzk4LDIwMjY3MzY1
+MTIsLTcyNDUyMjg0LDI3MzIyODkxNSwxNjY0Njk3NDgyLDQ0OT
+g5NTQwNSwyMzIwMTE0NTMsLTE3ODE2MDczMTRdfQ==
 -->
