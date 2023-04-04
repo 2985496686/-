@@ -308,7 +308,7 @@ master_log_pos=1239,
 master_connect_retry=30;
  ```
 
-6. 启动slave，``start slave`` 。查看运行slave状态，``show slave status``
+6. 启动slave，``start slave`` 。查看运行slave状态，``show slave status``，下面是开启成功。
 ```cnf
 Slave_IO_Running: Yes
 Slave_SQL_Running: Yes  
@@ -318,11 +318,11 @@ Slave_SQL_Running: Yes
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1OTM1OTEwMCw0MTg5NDgwNDQsOTQ5MD
-Q4NTU4LC05ODQ2ODc0MzMsMTA3NjQyMDMwNywxODk3NTMzNjc0
-LC02MzIzMDU4NjksMTk1MDg5ODM1MiwxODgzMDQyNTYzLC0xMz
-U1MTc5OTgyLDQxNzg0MiwtODQyMjQ5OTE4LDQxNzg0MiwtNjUw
-MDUzNTA3LC00NTE0MTMzNDcsNDM2MDQ5MDUzLDcyOTA1NDA1MC
-wtMTk3NTk0MTkyOCwtMTkyNDA1MDA2OSwxNDA0MzI4Nzk4XX0=
+eyJoaXN0b3J5IjpbLTY4OTA1NTAyNiwtNTU5MzU5MTAwLDQxOD
+k0ODA0NCw5NDkwNDg1NTgsLTk4NDY4NzQzMywxMDc2NDIwMzA3
+LDE4OTc1MzM2NzQsLTYzMjMwNTg2OSwxOTUwODk4MzUyLDE4OD
+MwNDI1NjMsLTEzNTUxNzk5ODIsNDE3ODQyLC04NDIyNDk5MTgs
+NDE3ODQyLC02NTAwNTM1MDcsLTQ1MTQxMzM0Nyw0MzYwNDkwNT
+MsNzI5MDU0MDUwLC0xOTc1OTQxOTI4LC0xOTI0MDUwMDY5XX0=
 
 -->
