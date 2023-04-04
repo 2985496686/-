@@ -240,17 +240,21 @@ slave_skip_errors=1062
 ```
 
 
-3. 重启master容器，并且在容器实例中创建数据同步用户。
+3. 重启master容器，并且在容器实例中创建数据同步用户并授予权限。
 ```sql
+create user 'slave'@'%' identified by '111111'; 
 
+grant replication slave ,replication client on *.* TO 'slave'@'%';
 ```
+
+4. 为slave容器添加配置文件
 
 
  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjg5Mzg0NzI3LDQzNjA0OTA1Myw3MjkwNT
-QwNTAsLTE5NzU5NDE5MjgsLTE5MjQwNTAwNjksMTQwNDMyODc5
-OCwyMDI2NzM2NTEyLC03MjQ1MjI4NCwyNzMyMjg5MTUsMTY2ND
-Y5NzQ4Miw0NDk4OTU0MDUsMjMyMDExNDUzLC0xNzgxNjA3MzE0
-XX0=
+eyJoaXN0b3J5IjpbMjEyMDA4MzYxMiw0MzYwNDkwNTMsNzI5MD
+U0MDUwLC0xOTc1OTQxOTI4LC0xOTI0MDUwMDY5LDE0MDQzMjg3
+OTgsMjAyNjczNjUxMiwtNzI0NTIyODQsMjczMjI4OTE1LDE2Nj
+Q2OTc0ODIsNDQ5ODk1NDA1LDIzMjAxMTQ1MywtMTc4MTYwNzMx
+NF19
 -->
