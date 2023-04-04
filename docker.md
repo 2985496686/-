@@ -341,6 +341,7 @@ Slave_SQL_Running: Yes
 
 # redis集群配置(六个redis节点)
 
+1. 启动六个redis容器
 ```shell
 docker run -d --name redis-node-1 --net host -v  /home/gtl/docker_data/redis/redis-node-1:/data  redis --cluster-enabled yes --appendonly yes --port 6380
 
@@ -354,12 +355,19 @@ docker run -d --name redis-node-5 --net host -v  /home/gtl/docker_data/redis/red
 
 docker run -d --name redis-node-6 --net host -v  /home/gtl/docker_data/redis/redis-node-6:/data  redis --cluster-enabled yes --appendonly yes --port 6384
 ```
+
+2. 进入一个redis容器，配置主从关系。
+```shell
+redis-cli --cluster create 192.168.111.147:6381 192.168.111.147:6382 192.168.111.147:6383 192.168.111.147:6384 192.168.111.147:6385 192.168.111.147:6386 --cluster-replicas 1
+```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4NzQzMzAyMywxOTExODg4OTQ4LDExMj
-gxMjE0NTgsMTMxMjkxODU2Niw0NzE2MzkzNjcsMTU3MjM4Nzc3
-MCwxNTQ1MTI4MzYsLTY4OTA1NTAyNiwtNTU5MzU5MTAwLDQxOD
-k0ODA0NCw5NDkwNDg1NTgsLTk4NDY4NzQzMywxMDc2NDIwMzA3
-LDE4OTc1MzM2NzQsLTYzMjMwNTg2OSwxOTUwODk4MzUyLDE4OD
-MwNDI1NjMsLTEzNTUxNzk5ODIsNDE3ODQyLC04NDIyNDk5MThd
+eyJoaXN0b3J5IjpbMjA5NzExMTQ3NiwxNzg3NDMzMDIzLDE5MT
+E4ODg5NDgsMTEyODEyMTQ1OCwxMzEyOTE4NTY2LDQ3MTYzOTM2
+NywxNTcyMzg3NzcwLDE1NDUxMjgzNiwtNjg5MDU1MDI2LC01NT
+kzNTkxMDAsNDE4OTQ4MDQ0LDk0OTA0ODU1OCwtOTg0Njg3NDMz
+LDEwNzY0MjAzMDcsMTg5NzUzMzY3NCwtNjMyMzA1ODY5LDE5NT
+A4OTgzNTIsMTg4MzA0MjU2MywtMTM1NTE3OTk4Miw0MTc4NDJd
 fQ==
 -->
