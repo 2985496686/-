@@ -317,12 +317,13 @@ Slave_SQL_Running: Yes
 
 ## 遇到的坑
 1. 配置文件名叫my.cnf，最开始写成了my.con`
-2. 从机报错2061。因为mysql8.0使用了``caching_sha2_password`` 加密算法，该加密算法是非对称加密。我们在master创建复制用户时，默认采用的就是这种加密算法，从机在请求连接时，发现对方采用的是该种加密算法，但是自己有不知道对方公钥，所以就会报错，这里的将
+2. 从机报错2061。因为mysql8.0使用了``caching_sha2_password`` 加密算法，该加密算法是非对称加密。我们在master创建复制用户时，默认采用的就是这种加密算法，从机在请求连接时，发现对方采用的是该种加密算法，但是自己有不知道对方公钥，所以就会报错，这里的解决办法是创建用户时放弃使用非对称加密算法，但这并不是最优解决办法。
+可以参考文章:[这里输入链接描述](https://blog.51cto.com/u_15077535/4376322)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0MzQyOTUwNSw0NzE2MzkzNjcsMTU3Mj
-M4Nzc3MCwxNTQ1MTI4MzYsLTY4OTA1NTAyNiwtNTU5MzU5MTAw
-LDQxODk0ODA0NCw5NDkwNDg1NTgsLTk4NDY4NzQzMywxMDc2ND
-IwMzA3LDE4OTc1MzM2NzQsLTYzMjMwNTg2OSwxOTUwODk4MzUy
-LDE4ODMwNDI1NjMsLTEzNTUxNzk5ODIsNDE3ODQyLC04NDIyND
-k5MTgsNDE3ODQyLC02NTAwNTM1MDcsLTQ1MTQxMzM0N119
+eyJoaXN0b3J5IjpbLTMyMzEyMzU2LDQ3MTYzOTM2NywxNTcyMz
+g3NzcwLDE1NDUxMjgzNiwtNjg5MDU1MDI2LC01NTkzNTkxMDAs
+NDE4OTQ4MDQ0LDk0OTA0ODU1OCwtOTg0Njg3NDMzLDEwNzY0Mj
+AzMDcsMTg5NzUzMzY3NCwtNjMyMzA1ODY5LDE5NTA4OTgzNTIs
+MTg4MzA0MjU2MywtMTM1NTE3OTk4Miw0MTc4NDIsLTg0MjI0OT
+kxOCw0MTc4NDIsLTY1MDA1MzUwNywtNDUxNDEzMzQ3XX0=
 -->
