@@ -299,10 +299,10 @@ read_only=1
 
 
  ```sql
- change master to master_host='',master_user='slave',master_password='111111',master_port=3306,master_log_file='binlog.000003',master_log_pos=722,master_connect_retry=30;
+ change master to master_host='222.24.34.220',master_user='slave',master_password='111111',master_port=3306,master_log_file='binlog.000003',master_log_pos=722,master_connect_retry=30;
  ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwMzU1OTUyMCwtNDUxNDEzMzQ3LDQzNj
+eyJoaXN0b3J5IjpbLTY1MDA1MzUwNywtNDUxNDEzMzQ3LDQzNj
 A0OTA1Myw3MjkwNTQwNTAsLTE5NzU5NDE5MjgsLTE5MjQwNTAw
 NjksMTQwNDMyODc5OCwyMDI2NzM2NTEyLC03MjQ1MjI4NCwyNz
 MyMjg5MTUsMTY2NDY5NzQ4Miw0NDk4OTU0MDUsMjMyMDExNDUz
