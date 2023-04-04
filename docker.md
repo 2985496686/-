@@ -203,12 +203,14 @@ docker run -d  -p 3307:3306  -e  MYSQL_ROOT_PASSWORD=111111
 -v /home/gtl/docker_data/mysql/mysql_slave/conf:/etc/mysql/conf.d  --name mysql_slave mysql
 ```
 
+2 .为master容器添加配置文件
+
 
 
  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI2MDA2NTI3LDcyOTA1NDA1MCwtMTk3NT
-k0MTkyOCwtMTkyNDA1MDA2OSwxNDA0MzI4Nzk4LDIwMjY3MzY1
-MTIsLTcyNDUyMjg0LDI3MzIyODkxNSwxNjY0Njk3NDgyLDQ0OT
-g5NTQwNSwyMzIwMTE0NTMsLTE3ODE2MDczMTRdfQ==
+eyJoaXN0b3J5IjpbLTE5ODI1MTQzOTcsNzI5MDU0MDUwLC0xOT
+c1OTQxOTI4LC0xOTI0MDUwMDY5LDE0MDQzMjg3OTgsMjAyNjcz
+NjUxMiwtNzI0NTIyODQsMjczMjI4OTE1LDE2NjQ2OTc0ODIsND
+Q5ODk1NDA1LDIzMjAxMTQ1MywtMTc4MTYwNzMxNF19
 -->
