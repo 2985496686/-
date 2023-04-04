@@ -342,13 +342,13 @@ Slave_SQL_Running: Yes
 # redis集群配置(六个redis节点)
 
 ```shell
-docker run -d --name redis-node-1 --net host --privileged=true -v  /home/gtl/docker_data/redis/redis-node-1:/data  redis --cluster-enable yes --appendpnly
+docker run -d --name redis-node-1 --net host --privileged=true -v  /home/gtl/docker_data/redis/redis-node-1:/data  redis --cluster-enable yes --appendonly yes--port6381
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzkyNjQ5MDc1LDEzMTI5MTg1NjYsNDcxNj
-M5MzY3LDE1NzIzODc3NzAsMTU0NTEyODM2LC02ODkwNTUwMjYs
-LTU1OTM1OTEwMCw0MTg5NDgwNDQsOTQ5MDQ4NTU4LC05ODQ2OD
-c0MzMsMTA3NjQyMDMwNywxODk3NTMzNjc0LC02MzIzMDU4Njks
-MTk1MDg5ODM1MiwxODgzMDQyNTYzLC0xMzU1MTc5OTgyLDQxNz
-g0MiwtODQyMjQ5OTE4LDQxNzg0MiwtNjUwMDUzNTA3XX0=
+eyJoaXN0b3J5IjpbMTEyODEyMTQ1OCwxMzEyOTE4NTY2LDQ3MT
+YzOTM2NywxNTcyMzg3NzcwLDE1NDUxMjgzNiwtNjg5MDU1MDI2
+LC01NTkzNTkxMDAsNDE4OTQ4MDQ0LDk0OTA0ODU1OCwtOTg0Nj
+g3NDMzLDEwNzY0MjAzMDcsMTg5NzUzMzY3NCwtNjMyMzA1ODY5
+LDE5NTA4OTgzNTIsMTg4MzA0MjU2MywtMTM1NTE3OTk4Miw0MT
+c4NDIsLTg0MjI0OTkxOCw0MTc4NDIsLTY1MDA1MzUwN119
 -->
