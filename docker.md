@@ -186,12 +186,12 @@ docker run  -d -p 6379:6379 --name redis -v /home/gtl/docker_data/redis/redis.co
 
 # mysql主从复制
 
-
+1. 启动两个docker 的mysql容器，分别代表主服务器和从服务器，两个容器要有
 
  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzI5MDU0MDUwLC0xOTc1OTQxOTI4LC0xOT
-I0MDUwMDY5LDE0MDQzMjg3OTgsMjAyNjczNjUxMiwtNzI0NTIy
-ODQsMjczMjI4OTE1LDE2NjQ2OTc0ODIsNDQ5ODk1NDA1LDIzMj
-AxMTQ1MywtMTc4MTYwNzMxNF19
+eyJoaXN0b3J5IjpbLTczMDc4NTU0Nyw3MjkwNTQwNTAsLTE5Nz
+U5NDE5MjgsLTE5MjQwNTAwNjksMTQwNDMyODc5OCwyMDI2NzM2
+NTEyLC03MjQ1MjI4NCwyNzMyMjg5MTUsMTY2NDY5NzQ4Miw0ND
+k4OTU0MDUsMjMyMDExNDUzLC0xNzgxNjA3MzE0XX0=
 -->
