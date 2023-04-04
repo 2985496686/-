@@ -181,16 +181,31 @@ docker run -d  -p 3306:3306  -e  MYSQL_ROOT_PASSWORD=111111
 
 使用如下：
 ```shell
-docker run  -d -p 6379:6379 --name redis -v /home/gtl/docker_data/redis/redis.conf:/etc/redis/redis.conf  -v /home/gtl/docker_data/redis/data:/data   redis redis-server /etc/redis/redis.conf  
+docker run  -d -p 6379:6379 --name redis 
+-v /home/gtl/docker_data/redis/redis.conf:/etc/redis/redis.conf  
+-v /home/gtl/docker_data/redis/data:/data   redis redis-server /etc/redis/redis.conf  
 ```
 
 # mysql主从复制
 
-1. 启动两个docker 的mysql容器，分别代表主服务器和从服务器，两个容器要有
+1. 启动两个docker 的mysql容器，分别代表主服务器和从服务器，两个容器要有各自的数据卷映射。
+```shell
+docker run -d  -p 3306:3306  -e  MYSQL_ROOT_PASSWORD=111111 
+-v /home/gtl/docker_data/mysql/mysql_master/data:/var/lib/mysql 
+-v /home/gtl/docker_data/mysql/mysql_master/log:/var/log/mysql 
+-v /home/gtl/docker_data/mysql/mysql_master/conf:/etc/mysql/conf.d  --name mysql_master mysql
+
+
+
+docker run -d  -p 3307:3306  -e  MYSQL_ROOT_PASSWORD=111111 
+-v /home/gtl/docker_data/mysql/mysql_slave/data:/var/lib/mysql 
+-v /home/gtl/docker_data/mysql/mysql_slave/log:/var/log/mysql 
+-v /home/gtl/docker_data/mysql/mysql_slave/conf:/etc/mysql/conf.d  --name mysql_slave mysql
+```
 
  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTczMDc4NTU0Nyw3MjkwNTQwNTAsLTE5Nz
+eyJoaXN0b3J5IjpbMTQ3MDgyNzk5NSw3MjkwNTQwNTAsLTE5Nz
 U5NDE5MjgsLTE5MjQwNTAwNjksMTQwNDMyODc5OCwyMDI2NzM2
 NTEyLC03MjQ1MjI4NCwyNzMyMjg5MTUsMTY2NDY5NzQ4Miw0ND
 k4OTU0MDUsMjMyMDExNDUzLC0xNzgxNjA3MzE0XX0=
