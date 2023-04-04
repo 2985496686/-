@@ -241,13 +241,13 @@ slave_skip_errors=1062
 
 3. 重启master容器，并且在容器实例中创建数据同步用户并授予权限。
 ```sql
-create user 'slave'@'%' identified by '111111'; 
+create user 'slave'@'%' identified  with  by '111111'; 
 
 grant replication slave ,replication client on *.* TO 'slave'@'%';
 ```
 
 4. 为slave容器添加配置文件。
-在conf目录下添加my.conf配置文件
+在conf目录下添加my.cnf配置文件
 ```conf
 [mysqld]
 
@@ -308,11 +308,11 @@ master_log_pos=1239,
 master_connect_retry=30;
  ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ5MDQ4NTU4LC05ODQ2ODc0MzMsMTA3Nj
-QyMDMwNywxODk3NTMzNjc0LC02MzIzMDU4NjksMTk1MDg5ODM1
-MiwxODgzMDQyNTYzLC0xMzU1MTc5OTgyLDQxNzg0MiwtODQyMj
-Q5OTE4LDQxNzg0MiwtNjUwMDUzNTA3LC00NTE0MTMzNDcsNDM2
-MDQ5MDUzLDcyOTA1NDA1MCwtMTk3NTk0MTkyOCwtMTkyNDA1MD
-A2OSwxNDA0MzI4Nzk4LDIwMjY3MzY1MTIsLTcyNDUyMjg0XX0=
+eyJoaXN0b3J5IjpbMTQ2NzQ3MTg3Nyw5NDkwNDg1NTgsLTk4ND
+Y4NzQzMywxMDc2NDIwMzA3LDE4OTc1MzM2NzQsLTYzMjMwNTg2
+OSwxOTUwODk4MzUyLDE4ODMwNDI1NjMsLTEzNTUxNzk5ODIsND
+E3ODQyLC04NDIyNDk5MTgsNDE3ODQyLC02NTAwNTM1MDcsLTQ1
+MTQxMzM0Nyw0MzYwNDkwNTMsNzI5MDU0MDUwLC0xOTc1OTQxOT
+I4LC0xOTI0MDUwMDY5LDE0MDQzMjg3OTgsMjAyNjczNjUxMl19
 
 -->
