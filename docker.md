@@ -204,10 +204,10 @@ docker run -d  -p 3308:3306  -e  MYSQL_ROOT_PASSWORD=111111
 ```
 
 2 .为master容器添加配置文件。
-在conf目录下添加 my.conf
-```conf
+在conf目录下添加 my.cnf
+```c:wq
+nf
 [mysqld]
-clea
 ## 设置server_id，同一局域网中需要唯一
 
 server_id=101
@@ -302,11 +302,10 @@ read_only=1
  change master to master_host='172.17.0.2',master_user='slave',master_password='111111',master_port=3307,master_log_file='binlog.000003',master_log_pos=157,master_connect_retry=15;
  ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1MDg5ODM1MiwxODgzMDQyNTYzLC0xMz
-U1MTc5OTgyLDQxNzg0MiwtODQyMjQ5OTE4LDQxNzg0MiwtNjUw
-MDUzNTA3LC00NTE0MTMzNDcsNDM2MDQ5MDUzLDcyOTA1NDA1MC
-wtMTk3NTk0MTkyOCwtMTkyNDA1MDA2OSwxNDA0MzI4Nzk4LDIw
-MjY3MzY1MTIsLTcyNDUyMjg0LDI3MzIyODkxNSwxNjY0Njk3ND
-gyLDQ0OTg5NTQwNSwyMzIwMTE0NTMsLTE3ODE2MDczMTRdfQ==
-
+eyJoaXN0b3J5IjpbLTgwNDQxMjc5LDE5NTA4OTgzNTIsMTg4Mz
+A0MjU2MywtMTM1NTE3OTk4Miw0MTc4NDIsLTg0MjI0OTkxOCw0
+MTc4NDIsLTY1MDA1MzUwNywtNDUxNDEzMzQ3LDQzNjA0OTA1My
+w3MjkwNTQwNTAsLTE5NzU5NDE5MjgsLTE5MjQwNTAwNjksMTQw
+NDMyODc5OCwyMDI2NzM2NTEyLC03MjQ1MjI4NCwyNzMyMjg5MT
+UsMTY2NDY5NzQ4Miw0NDk4OTU0MDUsMjMyMDExNDUzXX0=
 -->
