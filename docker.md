@@ -308,6 +308,22 @@ master_log_pos=1239,
 master_connect_retry=30;
  ```
 
+参数说明
+```
+master_host：主数据库的IP地址；
+
+master_port：主数据库的运行端口；
+
+master_user：在主数据库创建的用于同步数据的用户账号；
+
+master_password：在主数据库创建的用于同步数据的用户密码；
+
+master_log_file：指定从数据库要复制数据的日志文件，通过查看主数据的状态，获取File参数；
+
+master_log_pos：指定从数据库从哪个位置开始复制数据，通过查看主数据的状态，获取Position参数；
+
+master_connect_retry：连接失败重试的时间间隔，单位为秒。
+```
 6. 启动slave，``start slave`` 。查看运行slave状态，``show slave status``，下面是开启成功。
 ```cnf
 Slave_IO_Running: Yes
@@ -325,10 +341,10 @@ Slave_SQL_Running: Yes
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxMjkxODU2Niw0NzE2MzkzNjcsMTU3Mj
-M4Nzc3MCwxNTQ1MTI4MzYsLTY4OTA1NTAyNiwtNTU5MzU5MTAw
-LDQxODk0ODA0NCw5NDkwNDg1NTgsLTk4NDY4NzQzMywxMDc2ND
-IwMzA3LDE4OTc1MzM2NzQsLTYzMjMwNTg2OSwxOTUwODk4MzUy
-LDE4ODMwNDI1NjMsLTEzNTUxNzk5ODIsNDE3ODQyLC04NDIyND
-k5MTgsNDE3ODQyLC02NTAwNTM1MDcsLTQ1MTQxMzM0N119
+eyJoaXN0b3J5IjpbMTQ5MjA4NzMwLDEzMTI5MTg1NjYsNDcxNj
+M5MzY3LDE1NzIzODc3NzAsMTU0NTEyODM2LC02ODkwNTUwMjYs
+LTU1OTM1OTEwMCw0MTg5NDgwNDQsOTQ5MDQ4NTU4LC05ODQ2OD
+c0MzMsMTA3NjQyMDMwNywxODk3NTMzNjc0LC02MzIzMDU4Njks
+MTk1MDg5ODM1MiwxODgzMDQyNTYzLC0xMzU1MTc5OTgyLDQxNz
+g0MiwtODQyMjQ5OTE4LDQxNzg0MiwtNjUwMDUzNTA3XX0=
 -->
