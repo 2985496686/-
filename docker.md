@@ -308,9 +308,9 @@ master_log_pos=1239,
 master_connect_retry=30;
  ```
 
-6. 启动slave，``start slave``
+6. 启动slave，``start slave`` 。查看运行slave状态，``show slave status``，
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ5NzM1OTI4NSw5NDkwNDg1NTgsLTk4ND
+eyJoaXN0b3J5IjpbLTI0NjE5NDM1Myw5NDkwNDg1NTgsLTk4ND
 Y4NzQzMywxMDc2NDIwMzA3LDE4OTc1MzM2NzQsLTYzMjMwNTg2
 OSwxOTUwODk4MzUyLDE4ODMwNDI1NjMsLTEzNTUxNzk5ODIsND
 E3ODQyLC04NDIyNDk5MTgsNDE3ODQyLC02NTAwNTM1MDcsLTQ1
