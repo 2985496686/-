@@ -298,11 +298,13 @@ read_only=1
 
 
 
- 
+ ```sql
+ change master to master_host='',master_user='slave',master_password='111111',master_port=3306,master_log_file='binlog.000003',master_log_pos=722,master_connect_retry=30;
+ ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1MTQxMzM0Nyw0MzYwNDkwNTMsNzI5MD
-U0MDUwLC0xOTc1OTQxOTI4LC0xOTI0MDUwMDY5LDE0MDQzMjg3
-OTgsMjAyNjczNjUxMiwtNzI0NTIyODQsMjczMjI4OTE1LDE2Nj
-Q2OTc0ODIsNDQ5ODk1NDA1LDIzMjAxMTQ1MywtMTc4MTYwNzMx
-NF19
+eyJoaXN0b3J5IjpbMTcwMzU1OTUyMCwtNDUxNDEzMzQ3LDQzNj
+A0OTA1Myw3MjkwNTQwNTAsLTE5NzU5NDE5MjgsLTE5MjQwNTAw
+NjksMTQwNDMyODc5OCwyMDI2NzM2NTEyLC03MjQ1MjI4NCwyNz
+MyMjg5MTUsMTY2NDY5NzQ4Miw0NDk4OTU0MDUsMjMyMDExNDUz
+LC0xNzgxNjA3MzE0XX0=
 -->
