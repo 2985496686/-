@@ -344,21 +344,22 @@ Slave_SQL_Running: Yes
 ```shell
 docker run -d --name redis-node-1 --net host -v  /home/gtl/docker_data/redis/redis-node-1:/data  redis --cluster-enabled yes --appendonly yes --port 6380
 
-
 docker run -d --name redis-node-2 --net host -v  /home/gtl/docker_data/redis/redis-node-2:/data  redis --cluster-enabled yes --appendonly yes --port 6379
-
 
 docker run -d --name redis-node-3 --net host -v  /home/gtl/docker_data/redis/redis-node-3:/data  redis --cluster-enabled yes --appendonly yes --port 6381
 
+docker run -d --name redis-node-4 --net host -v  /home/gtl/docker_data/redis/redis-node-4:/data  redis --cluster-enabled yes --appendonly yes --port 6382
 
+docker run -d --name redis-node-5 --net host -v  /home/gtl/docker_data/redis/redis-node-5:/data  redis --cluster-enabled yes --appendonly yes --port 6383
 
+docker run -d --name redis-node-6 --net host -v  /home/gtl/docker_data/redis/redis-node-6:/data  redis --cluster-enabled yes --appendonly yes --port 6384
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDI4NjU5ODQsMTkxMTg4ODk0OCwxMT
-I4MTIxNDU4LDEzMTI5MTg1NjYsNDcxNjM5MzY3LDE1NzIzODc3
-NzAsMTU0NTEyODM2LC02ODkwNTUwMjYsLTU1OTM1OTEwMCw0MT
-g5NDgwNDQsOTQ5MDQ4NTU4LC05ODQ2ODc0MzMsMTA3NjQyMDMw
-NywxODk3NTMzNjc0LC02MzIzMDU4NjksMTk1MDg5ODM1MiwxOD
-gzMDQyNTYzLC0xMzU1MTc5OTgyLDQxNzg0MiwtODQyMjQ5OTE4
-XX0=
+eyJoaXN0b3J5IjpbMTc4NzQzMzAyMywxOTExODg4OTQ4LDExMj
+gxMjE0NTgsMTMxMjkxODU2Niw0NzE2MzkzNjcsMTU3MjM4Nzc3
+MCwxNTQ1MTI4MzYsLTY4OTA1NTAyNiwtNTU5MzU5MTAwLDQxOD
+k0ODA0NCw5NDkwNDg1NTgsLTk4NDY4NzQzMywxMDc2NDIwMzA3
+LDE4OTc1MzM2NzQsLTYzMjMwNTg2OSwxOTUwODk4MzUyLDE4OD
+MwNDI1NjMsLTEzNTUxNzk5ODIsNDE3ODQyLC04NDIyNDk5MThd
+fQ==
 -->
