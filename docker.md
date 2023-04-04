@@ -184,10 +184,14 @@ docker run -d  -p 3306:3306  -e  MYSQL_ROOT_PASSWORD=111111
 docker run  -d -p 6379:6379 --name redis -v /home/gtl/docker_data/redis/redis.conf:/etc/redis/redis.conf  -v /home/gtl/docker_data/redis/data:/data   redis redis-server /etc/redis/redis.conf  
 ```
 
+# mysql主从复制
 
+
+
+ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NzgxNjM4MTUsLTE5NzU5NDE5MjgsLT
-E5MjQwNTAwNjksMTQwNDMyODc5OCwyMDI2NzM2NTEyLC03MjQ1
-MjI4NCwyNzMyMjg5MTUsMTY2NDY5NzQ4Miw0NDk4OTU0MDUsMj
-MyMDExNDUzLC0xNzgxNjA3MzE0XX0=
+eyJoaXN0b3J5IjpbNzI5MDU0MDUwLC0xOTc1OTQxOTI4LC0xOT
+I0MDUwMDY5LDE0MDQzMjg3OTgsMjAyNjczNjUxMiwtNzI0NTIy
+ODQsMjczMjI4OTE1LDE2NjQ2OTc0ODIsNDQ5ODk1NDA1LDIzMj
+AxMTQ1MywtMTc4MTYwNzMxNF19
 -->
