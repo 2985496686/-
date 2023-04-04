@@ -296,7 +296,7 @@ read_only=1
 
 
 
-5.启动slave容器，根据master容器状态(``show master status``)来配置slave
+5.启动slave容器，根据master容器状态(``show master status``)来配置slave，如下：
  ```sql
  change master to 
 master_host='222.24.34.220', 
@@ -307,8 +307,10 @@ master_log_file='mysql-bin.000003',
 master_log_pos=1239,
 master_connect_retry=30;
  ```
+
+6. 启动slave，``start slave``
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyNTI5ODEzNSw5NDkwNDg1NTgsLTk4ND
+eyJoaXN0b3J5IjpbLTQ5NzM1OTI4NSw5NDkwNDg1NTgsLTk4ND
 Y4NzQzMywxMDc2NDIwMzA3LDE4OTc1MzM2NzQsLTYzMjMwNTg2
 OSwxOTUwODk4MzUyLDE4ODMwNDI1NjMsLTEzNTUxNzk5ODIsND
 E3ODQyLC04NDIyNDk5MTgsNDE3ODQyLC02NTAwNTM1MDcsLTQ1
