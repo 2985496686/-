@@ -298,13 +298,14 @@ read_only=1
 
 
  ```sql
- change master to master_host='172.17.0.2',master_user='slave',master_password='111111',master_port=3307,master_log_file='binlog.000003',master_log_pos=157,master_connect_retry=15;
+ change master to master_host='222.24.34.220',master_user='slave',master_password='111111',master_port=3307,master_log_file='mysql-bin.000001',master_log_pos=157,master_connect_retry=30;
  ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYzMjMwNTg2OSwxOTUwODk4MzUyLDE4OD
-MwNDI1NjMsLTEzNTUxNzk5ODIsNDE3ODQyLC04NDIyNDk5MTgs
-NDE3ODQyLC02NTAwNTM1MDcsLTQ1MTQxMzM0Nyw0MzYwNDkwNT
-MsNzI5MDU0MDUwLC0xOTc1OTQxOTI4LC0xOTI0MDUwMDY5LDE0
-MDQzMjg3OTgsMjAyNjczNjUxMiwtNzI0NTIyODQsMjczMjI4OT
-E1LDE2NjQ2OTc0ODIsNDQ5ODk1NDA1LDIzMjAxMTQ1M119
+eyJoaXN0b3J5IjpbMTg5NzUzMzY3NCwtNjMyMzA1ODY5LDE5NT
+A4OTgzNTIsMTg4MzA0MjU2MywtMTM1NTE3OTk4Miw0MTc4NDIs
+LTg0MjI0OTkxOCw0MTc4NDIsLTY1MDA1MzUwNywtNDUxNDEzMz
+Q3LDQzNjA0OTA1Myw3MjkwNTQwNTAsLTE5NzU5NDE5MjgsLTE5
+MjQwNTAwNjksMTQwNDMyODc5OCwyMDI2NzM2NTEyLC03MjQ1Mj
+I4NCwyNzMyMjg5MTUsMTY2NDY5NzQ4Miw0NDk4OTU0MDVdfQ==
+
 -->
