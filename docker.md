@@ -218,7 +218,7 @@ binlog-ignore-db=mysql
 
 ## 开启二进制日志功能
 
-log-bin=mysql-bin
+log-bin=mysql-test-bin
 
 ## 设置二进制日志使用内存大小（事务）
 
@@ -302,10 +302,10 @@ read_only=1
  change master to master_host='222.24.34.220',master_user='slave',master_password='111111',master_port=3306,master_log_file='binlog.000003',master_log_pos=1404,master_connect_retry=15;
  ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDE3ODQyLC04NDIyNDk5MTgsNDE3ODQyLC
-02NTAwNTM1MDcsLTQ1MTQxMzM0Nyw0MzYwNDkwNTMsNzI5MDU0
-MDUwLC0xOTc1OTQxOTI4LC0xOTI0MDUwMDY5LDE0MDQzMjg3OT
-gsMjAyNjczNjUxMiwtNzI0NTIyODQsMjczMjI4OTE1LDE2NjQ2
-OTc0ODIsNDQ5ODk1NDA1LDIzMjAxMTQ1MywtMTc4MTYwNzMxNF
-19
+eyJoaXN0b3J5IjpbLTEzNTk2NTcyMzMsNDE3ODQyLC04NDIyND
+k5MTgsNDE3ODQyLC02NTAwNTM1MDcsLTQ1MTQxMzM0Nyw0MzYw
+NDkwNTMsNzI5MDU0MDUwLC0xOTc1OTQxOTI4LC0xOTI0MDUwMD
+Y5LDE0MDQzMjg3OTgsMjAyNjczNjUxMiwtNzI0NTIyODQsMjcz
+MjI4OTE1LDE2NjQ2OTc0ODIsNDQ5ODk1NDA1LDIzMjAxMTQ1My
+wtMTc4MTYwNzMxNF19
 -->
