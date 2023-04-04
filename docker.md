@@ -241,7 +241,7 @@ slave_skip_errors=1062
 
 3. 重启master容器，并且在容器实例中创建数据同步用户并授予权限。
 ```sql
-create user 'slave'@'%' identified  with  by '111111'; 
+create user 'slave'@'%' identified  with mysql_native_password by '111111'; 
 
 grant replication slave ,replication client on *.* TO 'slave'@'%';
 ```
@@ -296,7 +296,7 @@ read_only=1
 
 
 
-
+5.启动slave容器
  ```sql
  change master to 
 master_host='222.24.34.220', 
@@ -308,7 +308,7 @@ master_log_pos=1239,
 master_connect_retry=30;
  ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2NzQ3MTg3Nyw5NDkwNDg1NTgsLTk4ND
+eyJoaXN0b3J5IjpbMTIzNzIwMzg1MSw5NDkwNDg1NTgsLTk4ND
 Y4NzQzMywxMDc2NDIwMzA3LDE4OTc1MzM2NzQsLTYzMjMwNTg2
 OSwxOTUwODk4MzUyLDE4ODMwNDI1NjMsLTEzNTUxNzk5ODIsND
 E3ODQyLC04NDIyNDk5MTgsNDE3ODQyLC02NTAwNTM1MDcsLTQ1
