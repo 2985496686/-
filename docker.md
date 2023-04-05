@@ -376,13 +376,20 @@ redis-cli --cluster  check 127.0.0.1:6379 # 查看的信息最具体
 
 5. 主从容错
 
-当我们将一个主节点容器stop后，它的从节点会自动晋升为主节点。如果主节点和从节点都被stop后，集群状态就转为fail
+当我们将一个主节点容器stop后，它的从节点会自动晋升为主节点。如果主节点和从节点都被stop后，集群状态就转为fail。
+
+当我们重启被stop的节点后，集群又能自动恢复。
+
+
+6.集群扩容
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk4ODMwNTc1LC02NTQ2NjQ0NzYsMTc2Mz
-Y0Mjg0NywtODA2NTUwMzk5LDE0NDc1MzA0ODUsMzA4MzU5NjM3
-LDIwOTcxMTE0NzYsMTc4NzQzMzAyMywxOTExODg4OTQ4LDExMj
-gxMjE0NTgsMTMxMjkxODU2Niw0NzE2MzkzNjcsMTU3MjM4Nzc3
-MCwxNTQ1MTI4MzYsLTY4OTA1NTAyNiwtNTU5MzU5MTAwLDQxOD
-k0ODA0NCw5NDkwNDg1NTgsLTk4NDY4NzQzMywxMDc2NDIwMzA3
-XX0=
+eyJoaXN0b3J5IjpbNjUzMTI0MDIxLDM5ODgzMDU3NSwtNjU0Nj
+Y0NDc2LDE3NjM2NDI4NDcsLTgwNjU1MDM5OSwxNDQ3NTMwNDg1
+LDMwODM1OTYzNywyMDk3MTExNDc2LDE3ODc0MzMwMjMsMTkxMT
+g4ODk0OCwxMTI4MTIxNDU4LDEzMTI5MTg1NjYsNDcxNjM5MzY3
+LDE1NzIzODc3NzAsMTU0NTEyODM2LC02ODkwNTUwMjYsLTU1OT
+M1OTEwMCw0MTg5NDgwNDQsOTQ5MDQ4NTU4LC05ODQ2ODc0MzNd
+fQ==
 -->
