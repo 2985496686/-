@@ -387,13 +387,17 @@ redis-cli --cluster  check 127.0.0.1:6379 # 查看的信息最具体
 
 ```redis-cli --cluster add-node 新节点ip  集群任意节点ip```
 
-此时新加入的节点是没有槽位的，执行下面命令重新分配
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbODA5ODY3MDkzLDY1MzEyNDAyMSwzOTg4Mz
-A1NzUsLTY1NDY2NDQ3NiwxNzYzNjQyODQ3LC04MDY1NTAzOTks
-MTQ0NzUzMDQ4NSwzMDgzNTk2MzcsMjA5NzExMTQ3NiwxNzg3ND
-MzMDIzLDE5MTE4ODg5NDgsMTEyODEyMTQ1OCwxMzEyOTE4NTY2
-LDQ3MTYzOTM2NywxNTcyMzg3NzcwLDE1NDUxMjgzNiwtNjg5MD
-U1MDI2LC01NTkzNTkxMDAsNDE4OTQ4MDQ0LDk0OTA0ODU1OF19
+此时新加入的节点是没有槽位的，执行下面命令重新分配槽位
+```redis-cli --cluster reshard 集群ip```
+执行该命令分别要进行三次输入：
 
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEwMjMwNzM1NDksNjUzMTI0MDIxLDM5OD
+gzMDU3NSwtNjU0NjY0NDc2LDE3NjM2NDI4NDcsLTgwNjU1MDM5
+OSwxNDQ3NTMwNDg1LDMwODM1OTYzNywyMDk3MTExNDc2LDE3OD
+c0MzMwMjMsMTkxMTg4ODk0OCwxMTI4MTIxNDU4LDEzMTI5MTg1
+NjYsNDcxNjM5MzY3LDE1NzIzODc3NzAsMTU0NTEyODM2LC02OD
+kwNTUwMjYsLTU1OTM1OTEwMCw0MTg5NDgwNDQsOTQ5MDQ4NTU4
+XX0=
 -->
