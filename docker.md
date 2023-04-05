@@ -363,12 +363,13 @@ redis-cli --cluster create 127.0.0.1:6379 127.0.0.1:6381
 ```
 此时就已经配置好了三主三从的redis集群。
 
-
+3. 查看集群状态
+集群环境下，我们可以在任何容器下进入任意一个redis，``redis-cli ``
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTk2NzY1MTUsMTQ0NzUzMDQ4NSwzMD
+eyJoaXN0b3J5IjpbLTEwMzgyODE1MDgsMTQ0NzUzMDQ4NSwzMD
 gzNTk2MzcsMjA5NzExMTQ3NiwxNzg3NDMzMDIzLDE5MTE4ODg5
 NDgsMTEyODEyMTQ1OCwxMzEyOTE4NTY2LDQ3MTYzOTM2NywxNT
 cyMzg3NzcwLDE1NDUxMjgzNiwtNjg5MDU1MDI2LC01NTkzNTkx
