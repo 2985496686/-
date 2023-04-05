@@ -366,18 +366,19 @@ redis-cli --cluster create 127.0.0.1:6379 127.0.0.1:6381
 3. 查看集群状态
 集群环境下，我们可以在任何容器下进入任意一个redis，``redis-cli -c -p 6381`` 这里我们从6381端口进入，-c表示以集群方式进入。
 查看集群状态
+```shell
+cluster info
+cluster nodes
 ```
-
-```
-
-
+4. set 和key的使用
+在集群环境下，当我们使用set命令时，
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzMzc2MTMzNywxNDQ3NTMwNDg1LDMwOD
-M1OTYzNywyMDk3MTExNDc2LDE3ODc0MzMwMjMsMTkxMTg4ODk0
-OCwxMTI4MTIxNDU4LDEzMTI5MTg1NjYsNDcxNjM5MzY3LDE1Nz
-IzODc3NzAsMTU0NTEyODM2LC02ODkwNTUwMjYsLTU1OTM1OTEw
-MCw0MTg5NDgwNDQsOTQ5MDQ4NTU4LC05ODQ2ODc0MzMsMTA3Nj
-QyMDMwNywxODk3NTMzNjc0LC02MzIzMDU4NjksMTk1MDg5ODM1
-Ml19
+eyJoaXN0b3J5IjpbMTgxMDcyMzMxLDE0NDc1MzA0ODUsMzA4Mz
+U5NjM3LDIwOTcxMTE0NzYsMTc4NzQzMzAyMywxOTExODg4OTQ4
+LDExMjgxMjE0NTgsMTMxMjkxODU2Niw0NzE2MzkzNjcsMTU3Mj
+M4Nzc3MCwxNTQ1MTI4MzYsLTY4OTA1NTAyNiwtNTU5MzU5MTAw
+LDQxODk0ODA0NCw5NDkwNDg1NTgsLTk4NDY4NzQzMywxMDc2ND
+IwMzA3LDE4OTc1MzM2NzQsLTYzMjMwNTg2OSwxOTUwODk4MzUy
+XX0=
 -->
