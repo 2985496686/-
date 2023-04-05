@@ -369,19 +369,20 @@ redis-cli --cluster create 127.0.0.1:6379 127.0.0.1:6381
 ```shell
 cluster info
 cluster nodes
-redis-cli --
+redis-cli --cluster  check 127.0.0.1:6379 # 查看的信息最具体
 ```
 4. set 和key的使用
 在集群环境下，当我们使用set命令时，会自动进行hash，匹配到相应哈希槽对应的redis节点，get也同样如此。
 
-5. 
+5. 主从容错
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDEzMTg0OTY1LC04MDY1NTAzOTksMTQ0Nz
-UzMDQ4NSwzMDgzNTk2MzcsMjA5NzExMTQ3NiwxNzg3NDMzMDIz
-LDE5MTE4ODg5NDgsMTEyODEyMTQ1OCwxMzEyOTE4NTY2LDQ3MT
-YzOTM2NywxNTcyMzg3NzcwLDE1NDUxMjgzNiwtNjg5MDU1MDI2
-LC01NTkzNTkxMDAsNDE4OTQ4MDQ0LDk0OTA0ODU1OCwtOTg0Nj
-g3NDMzLDEwNzY0MjAzMDcsMTg5NzUzMzY3NCwtNjMyMzA1ODY5
-XX0=
+eyJoaXN0b3J5IjpbMTc2MzY0Mjg0NywtODA2NTUwMzk5LDE0ND
+c1MzA0ODUsMzA4MzU5NjM3LDIwOTcxMTE0NzYsMTc4NzQzMzAy
+MywxOTExODg4OTQ4LDExMjgxMjE0NTgsMTMxMjkxODU2Niw0Nz
+E2MzkzNjcsMTU3MjM4Nzc3MCwxNTQ1MTI4MzYsLTY4OTA1NTAy
+NiwtNTU5MzU5MTAwLDQxODk0ODA0NCw5NDkwNDg1NTgsLTk4ND
+Y4NzQzMywxMDc2NDIwMzA3LDE4OTc1MzM2NzQsLTYzMjMwNTg2
+OV19
 -->
