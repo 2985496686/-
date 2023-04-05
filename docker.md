@@ -392,8 +392,13 @@ redis-cli --cluster  check 127.0.0.1:6379 # 查看的信息最具体
 执行该命令分别要进行三次输入：
 要分配的槽位数，槽位要分配给哪个节点，这些被分配的节点来自于哪些节点
 
+在重新分配节点时并不是全盘重洗，而是按需重洗。
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0MzY5NzUxMSw2NTMxMjQwMjEsMzk4OD
+eyJoaXN0b3J5IjpbLTM0MjYwODcyMiw2NTMxMjQwMjEsMzk4OD
 MwNTc1LC02NTQ2NjQ0NzYsMTc2MzY0Mjg0NywtODA2NTUwMzk5
 LDE0NDc1MzA0ODUsMzA4MzU5NjM3LDIwOTcxMTE0NzYsMTc4Nz
 QzMzAyMywxOTExODg4OTQ4LDExMjgxMjE0NTgsMTMxMjkxODU2
