@@ -401,12 +401,17 @@ redis-cli --cluster  check 127.0.0.1:6379 # 查看的信息最具体
 Dockerfile是用来构建Docker镜像文件的文本文件，是一条条构建镜像所需的指令和参数构成的脚本。
 
 
+root@1b4671904bfa:/#  mv /etc/apt/sources.list /etc/apt/sources.list.bak
+root@1b4671904bfa:/#  echo "deb http://mirrors.163.com/debian/ jessie main non-free contrib" >/etc/apt/sources.list
+root@1b4671904bfa:/#  echo "deb http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib" >>/etc/apt/sources.list
+root@1b4671904bfa:/#  echo "deb-src http://mirrors.163.com/debian/ jessie main non-free contrib" >>/etc/apt/sources.list
+root@1b4671904bfa:/#  echo "deb-src http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib" >>/etc/apt/sources.list
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzNzIyMjk2LDE0ODAxMDQ1NjAsMTA2MD
-M3ODk3OSwtMzQyNjA4NzIyLDY1MzEyNDAyMSwzOTg4MzA1NzUs
-LTY1NDY2NDQ3NiwxNzYzNjQyODQ3LC04MDY1NTAzOTksMTQ0Nz
-UzMDQ4NSwzMDgzNTk2MzcsMjA5NzExMTQ3NiwxNzg3NDMzMDIz
-LDE5MTE4ODg5NDgsMTEyODEyMTQ1OCwxMzEyOTE4NTY2LDQ3MT
-YzOTM2NywxNTcyMzg3NzcwLDE1NDUxMjgzNiwtNjg5MDU1MDI2
+eyJoaXN0b3J5IjpbMTQ0NTM0NzI4MCwxNjM3MjIyOTYsMTQ4MD
+EwNDU2MCwxMDYwMzc4OTc5LC0zNDI2MDg3MjIsNjUzMTI0MDIx
+LDM5ODgzMDU3NSwtNjU0NjY0NDc2LDE3NjM2NDI4NDcsLTgwNj
+U1MDM5OSwxNDQ3NTMwNDg1LDMwODM1OTYzNywyMDk3MTExNDc2
+LDE3ODc0MzMwMjMsMTkxMTg4ODk0OCwxMTI4MTIxNDU4LDEzMT
+I5MTg1NjYsNDcxNjM5MzY3LDE1NzIzODc3NzAsMTU0NTEyODM2
 XX0=
 -->
