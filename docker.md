@@ -459,13 +459,16 @@ Docker 将 veth pair 设备的一端放在新创建的容器中，并命名为`e
 
 创建网络：``docker network create -d bridge my-net`` -d 表示指定网络模式
 
-指定网络创建容器`` ``
+指定网络创建容器``docker run -it --network my-net  images``
+
+## Host模式
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwNDM3MjUxMSw5ODE2NTMwMjAsMTM5Mz
-c4ODYwOCw5MTI1NzY0ODQsMTM3NjgyMzM4Miw0OTMwMDY1MDgs
-LTU1NzA4MjExNCwxNDQ1MzQ3MjgwLDE2MzcyMjI5NiwxNDgwMT
-A0NTYwLDEwNjAzNzg5NzksLTM0MjYwODcyMiw2NTMxMjQwMjEs
-Mzk4ODMwNTc1LC02NTQ2NjQ0NzYsMTc2MzY0Mjg0NywtODA2NT
-UwMzk5LDE0NDc1MzA0ODUsMzA4MzU5NjM3LDIwOTcxMTE0NzZd
-fQ==
+eyJoaXN0b3J5IjpbLTE5MDgyMzA5MjQsMTEwNDM3MjUxMSw5OD
+E2NTMwMjAsMTM5Mzc4ODYwOCw5MTI1NzY0ODQsMTM3NjgyMzM4
+Miw0OTMwMDY1MDgsLTU1NzA4MjExNCwxNDQ1MzQ3MjgwLDE2Mz
+cyMjI5NiwxNDgwMTA0NTYwLDEwNjAzNzg5NzksLTM0MjYwODcy
+Miw2NTMxMjQwMjEsMzk4ODMwNTc1LC02NTQ2NjQ0NzYsMTc2Mz
+Y0Mjg0NywtODA2NTUwMzk5LDE0NDc1MzA0ODUsMzA4MzU5NjM3
+XX0=
 -->
