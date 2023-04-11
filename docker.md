@@ -450,8 +450,10 @@ docker有三种网络模式，如上图，除此之外还有可以使用其它�
 
 Docker 将 veth pair 设备的一端放在新创建的容器中，并命名为`eth0`（容器的网卡），另一端放在主机中，以`vethxxx`这样类似的名字命名，并将这个网络设备加入到 docker0 网桥中。可以通过`brctl show`命令查看。
 ![输入图片说明](https://raw.githubusercontent.com/2985496686/-/master/imgs/docker/BfCmAVBChLWpgDAJ.png)
+
+使用bridge模式的容器(也时默认使用的)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQwMzQ2MDcxLDEzNzY4MjMzODIsNDkzMD
+eyJoaXN0b3J5IjpbNzQ5MTg5NTQ5LDEzNzY4MjMzODIsNDkzMD
 A2NTA4LC01NTcwODIxMTQsMTQ0NTM0NzI4MCwxNjM3MjIyOTYs
 MTQ4MDEwNDU2MCwxMDYwMzc4OTc5LC0zNDI2MDg3MjIsNjUzMT
 I0MDIxLDM5ODgzMDU3NSwtNjU0NjY0NDc2LDE3NjM2NDI4NDcs
