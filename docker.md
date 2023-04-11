@@ -442,10 +442,10 @@ docker有三种网络模式，如上图，除此之外还有可以使用其它�
 
 ## bridge --- 网桥模式
 
-在
+在下载Docker之后会为主机分配一个默认的虚拟网桥Docker0，在该主机上启动
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzMTM2MjExNiwxMzc2ODIzMzgyLDQ5Mz
+eyJoaXN0b3J5IjpbMTU4MjI1OTMwMSwxMzc2ODIzMzgyLDQ5Mz
 AwNjUwOCwtNTU3MDgyMTE0LDE0NDUzNDcyODAsMTYzNzIyMjk2
 LDE0ODAxMDQ1NjAsMTA2MDM3ODk3OSwtMzQyNjA4NzIyLDY1Mz
 EyNDAyMSwzOTg4MzA1NzUsLTY1NDY2NDQ3NiwxNzYzNjQyODQ3
