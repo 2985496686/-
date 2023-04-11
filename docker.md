@@ -462,13 +462,19 @@ Docker 将 veth pair 设备的一端放在新创建的容器中，并命名为`e
 指定网络创建容器``docker run -it --network my-net  images``
 
 ## Host模式
+如果启动容器的时候使用`host`模式，那么这个容器将不会获得一个独立的`Network Namespace`，而是和宿主机共用一个 Network Namespace。容器将不会虚拟出自己的网卡，配置自己的 IP 等，而是使用宿主机的 IP 和端口。但是，容器的其他方面，如文件系统、进程列表等还是和宿主机隔离的。
 
+## None模式
+使用`none`模式，Docker 容器拥有自己的 Network Namespace，但是，并不为Docker 容器进行任何网络配置。也就是说，这个 Docker 容器没有网卡、IP、路由等信息。需要我们自己为 Docker 容器添加网卡、配置 IP 等。
+
+## Container模式
+这个模式指定新创建的容器和已经存在的一个容器共享一个 Network Namespace，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的 IP，而是和一个指定的容器共享 IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过 lo 网卡设备通信。 Container模式示意图：
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDgyMzA5MjQsMTEwNDM3MjUxMSw5OD
-E2NTMwMjAsMTM5Mzc4ODYwOCw5MTI1NzY0ODQsMTM3NjgyMzM4
-Miw0OTMwMDY1MDgsLTU1NzA4MjExNCwxNDQ1MzQ3MjgwLDE2Mz
-cyMjI5NiwxNDgwMTA0NTYwLDEwNjAzNzg5NzksLTM0MjYwODcy
-Miw2NTMxMjQwMjEsMzk4ODMwNTc1LC02NTQ2NjQ0NzYsMTc2Mz
-Y0Mjg0NywtODA2NTUwMzk5LDE0NDc1MzA0ODUsMzA4MzU5NjM3
-XX0=
+eyJoaXN0b3J5IjpbMTU4Mzc3MjYwNywxMTA0MzcyNTExLDk4MT
+Y1MzAyMCwxMzkzNzg4NjA4LDkxMjU3NjQ4NCwxMzc2ODIzMzgy
+LDQ5MzAwNjUwOCwtNTU3MDgyMTE0LDE0NDUzNDcyODAsMTYzNz
+IyMjk2LDE0ODAxMDQ1NjAsMTA2MDM3ODk3OSwtMzQyNjA4NzIy
+LDY1MzEyNDAyMSwzOTg4MzA1NzUsLTY1NDY2NDQ3NiwxNzYzNj
+QyODQ3LC04MDY1NTAzOTksMTQ0NzUzMDQ4NSwzMDgzNTk2Mzdd
+fQ==
 -->
