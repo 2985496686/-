@@ -432,13 +432,13 @@ CMD echo "success"
 构建命令
 `` docker build -t Name:tag . ``
 
-构建命令最后有一个点，表示需要打包的上下文路径，docker是cs架构，在构建镜像时会将需要的文件打包发送给docker
+构建命令最后有一个点，表示需要打包的上下文路径，docker是cs架构，在构建镜像时会将需要的文件打包发送给docker引擎。上面的Dockerfile文件中需要使用``go1.20.3.linux-amd64.tar.gz`` ，该文件要放到与Dockerfile同一文件夹下。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1MDczNDM3MiwtNTU3MDgyMTE0LDE0ND
-UzNDcyODAsMTYzNzIyMjk2LDE0ODAxMDQ1NjAsMTA2MDM3ODk3
-OSwtMzQyNjA4NzIyLDY1MzEyNDAyMSwzOTg4MzA1NzUsLTY1ND
-Y2NDQ3NiwxNzYzNjQyODQ3LC04MDY1NTAzOTksMTQ0NzUzMDQ4
-NSwzMDgzNTk2MzcsMjA5NzExMTQ3NiwxNzg3NDMzMDIzLDE5MT
-E4ODg5NDgsMTEyODEyMTQ1OCwxMzEyOTE4NTY2LDQ3MTYzOTM2
-N119
+eyJoaXN0b3J5IjpbNDkzMDA2NTA4LC01NTcwODIxMTQsMTQ0NT
+M0NzI4MCwxNjM3MjIyOTYsMTQ4MDEwNDU2MCwxMDYwMzc4OTc5
+LC0zNDI2MDg3MjIsNjUzMTI0MDIxLDM5ODgzMDU3NSwtNjU0Nj
+Y0NDc2LDE3NjM2NDI4NDcsLTgwNjU1MDM5OSwxNDQ3NTMwNDg1
+LDMwODM1OTYzNywyMDk3MTExNDc2LDE3ODc0MzMwMjMsMTkxMT
+g4ODk0OCwxMTI4MTIxNDU4LDEzMTI5MTg1NjYsNDcxNjM5MzY3
+XX0=
 -->
