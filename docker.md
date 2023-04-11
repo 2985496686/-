@@ -436,10 +436,15 @@ CMD echo "success"
 
 
 # Docker 网络
+![输入图片说明](https://raw.githubusercontent.com/2985496686/-/master/imgs/docker/GlBPahgqeBsC7vqp.png)
 
-[图片上传失败...(image-rKqvXIwFFTc4J8gf)]
+docker有三种网络模式，如上图，除此之外还有可以使用其它容器的网络模式，被称为container模式
+
+## bridge --- 网桥模式
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0MTY4Nzk4NCw0OTMwMDY1MDgsLTU1Nz
+eyJoaXN0b3J5IjpbMTM3NjgyMzM4Miw0OTMwMDY1MDgsLTU1Nz
 A4MjExNCwxNDQ1MzQ3MjgwLDE2MzcyMjI5NiwxNDgwMTA0NTYw
 LDEwNjAzNzg5NzksLTM0MjYwODcyMiw2NTMxMjQwMjEsMzk4OD
 MwNTc1LC02NTQ2NjQ0NzYsMTc2MzY0Mjg0NywtODA2NTUwMzk5
