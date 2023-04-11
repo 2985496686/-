@@ -468,9 +468,9 @@ Docker 将 veth pair 设备的一端放在新创建的容器中，并命名为`e
 使用`none`模式，Docker 容器拥有自己的 Network Namespace，但是，并不为Docker 容器进行任何网络配置。也就是说，这个 Docker 容器没有网卡、IP、路由等信息。需要我们自己为 Docker 容器添加网卡、配置 IP 等。
 
 ## Container模式
-这个模式指定新创建的容器和已经存在的一个容器共享一个 Network Namespace，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的 IP，而是和一个指定的容器共享 IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过 lo 网卡设备通信。 Container模式示意图：
+这个模式指定新创建的容器和已经存在的一个容器共享一个 Network Namespace，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的 IP，而是和一个指定的容器共享 IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过 lo 网卡设备通信。 如果被共享的容器被stop，他就会转为None模式。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4Mzc3MjYwNywxMTA0MzcyNTExLDk4MT
+eyJoaXN0b3J5IjpbMTY5NzQ2ODU0MywxMTA0MzcyNTExLDk4MT
 Y1MzAyMCwxMzkzNzg4NjA4LDkxMjU3NjQ4NCwxMzc2ODIzMzgy
 LDQ5MzAwNjUwOCwtNTU3MDgyMTE0LDE0NDUzNDcyODAsMTYzNz
 IyMjk2LDE0ODAxMDQ1NjAsMTA2MDM3ODk3OSwtMzQyNjA4NzIy
