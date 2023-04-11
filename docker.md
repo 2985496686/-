@@ -446,12 +446,15 @@ docker有三种网络模式，如上图，除此之外还有可以使用其它�
 
 启动一个容器后，该容器的ip如下：
 ![输入图片说明](https://raw.githubusercontent.com/2985496686/-/master/imgs/docker/uyc9SgcTStt3ppQ9.png)
+
+
+Docker 将 veth pair 设备的一端放在新创建的容器中，并命名为`eth0`（容器的网卡），另一端放在主机中，以`vethxxx`这样类似的名字命名，并将这个网络设备加入到 docker0 网桥中。可以通过`brctl show`命令查看。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ3NzU4MDkzLDEzNzY4MjMzODIsNDkzMD
-A2NTA4LC01NTcwODIxMTQsMTQ0NTM0NzI4MCwxNjM3MjIyOTYs
-MTQ4MDEwNDU2MCwxMDYwMzc4OTc5LC0zNDI2MDg3MjIsNjUzMT
-I0MDIxLDM5ODgzMDU3NSwtNjU0NjY0NDc2LDE3NjM2NDI4NDcs
-LTgwNjU1MDM5OSwxNDQ3NTMwNDg1LDMwODM1OTYzNywyMDk3MT
-ExNDc2LDE3ODc0MzMwMjMsMTkxMTg4ODk0OCwxMTI4MTIxNDU4
-XX0=
+eyJoaXN0b3J5IjpbNjYwNTU2MTEsMTM3NjgyMzM4Miw0OTMwMD
+Y1MDgsLTU1NzA4MjExNCwxNDQ1MzQ3MjgwLDE2MzcyMjI5Niwx
+NDgwMTA0NTYwLDEwNjAzNzg5NzksLTM0MjYwODcyMiw2NTMxMj
+QwMjEsMzk4ODMwNTc1LC02NTQ2NjQ0NzYsMTc2MzY0Mjg0Nywt
+ODA2NTUwMzk5LDE0NDc1MzA0ODUsMzA4MzU5NjM3LDIwOTcxMT
+E0NzYsMTc4NzQzMzAyMywxOTExODg4OTQ4LDExMjgxMjE0NThd
+fQ==
 -->
