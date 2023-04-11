@@ -406,12 +406,13 @@ root@1b4671904bfa:/#  echo "deb http://mirrors.163.com/debian/ jessie main non-f
 root@1b4671904bfa:/#  echo "deb http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib" >>/etc/apt/sources.list
 root@1b4671904bfa:/#  echo "deb-src http://mirrors.163.com/debian/ jessie main non-free contrib" >>/etc/apt/sources.list
 root@1b4671904bfa:/#  echo "deb-src http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib" >>/etc/apt/sources.list
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ0NTM0NzI4MCwxNjM3MjIyOTYsMTQ4MD
-EwNDU2MCwxMDYwMzc4OTc5LC0zNDI2MDg3MjIsNjUzMTI0MDIx
-LDM5ODgzMDU3NSwtNjU0NjY0NDc2LDE3NjM2NDI4NDcsLTgwNj
-U1MDM5OSwxNDQ3NTMwNDg1LDMwODM1OTYzNywyMDk3MTExNDc2
-LDE3ODc0MzMwMjMsMTkxMTg4ODk0OCwxMTI4MTIxNDU4LDEzMT
-I5MTg1NjYsNDcxNjM5MzY3LDE1NzIzODc3NzAsMTU0NTEyODM2
-XX0=
+eyJoaXN0b3J5IjpbLTU1NzA4MjExNCwxNDQ1MzQ3MjgwLDE2Mz
+cyMjI5NiwxNDgwMTA0NTYwLDEwNjAzNzg5NzksLTM0MjYwODcy
+Miw2NTMxMjQwMjEsMzk4ODMwNTc1LC02NTQ2NjQ0NzYsMTc2Mz
+Y0Mjg0NywtODA2NTUwMzk5LDE0NDc1MzA0ODUsMzA4MzU5NjM3
+LDIwOTcxMTE0NzYsMTc4NzQzMzAyMywxOTExODg4OTQ4LDExMj
+gxMjE0NTgsMTMxMjkxODU2Niw0NzE2MzkzNjcsMTU3MjM4Nzc3
+MF19
 -->
