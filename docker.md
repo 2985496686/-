@@ -442,10 +442,10 @@ docker有三种网络模式，如上图，除此之外还有可以使用其它�
 
 ## bridge --- 网桥模式
 
-在下载Docker之后会为主机分配一个默认的虚拟网桥Docker0，在该主机上使用该网络()启动docker容器时，Docker0就会为它专门分配一个子网IP，容器也会将Docker0当作默认网关。
+在下载Docker之后会为主机分配一个默认的虚拟网桥Docker0，在该主机上使用该网络(默认)启动docker容器时，Docker0就会为它专门分配一个子网IP，容器也会将Docker0当作默认网关。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0MzkxOTI3MywxMzc2ODIzMzgyLDQ5Mz
+eyJoaXN0b3J5IjpbMTYyODE3NjQxMywxMzc2ODIzMzgyLDQ5Mz
 AwNjUwOCwtNTU3MDgyMTE0LDE0NDUzNDcyODAsMTYzNzIyMjk2
 LDE0ODAxMDQ1NjAsMTA2MDM3ODk3OSwtMzQyNjA4NzIyLDY1Mz
 EyNDAyMSwzOTg4MzA1NzUsLTY1NDY2NDQ3NiwxNzYzNjQyODQ3
