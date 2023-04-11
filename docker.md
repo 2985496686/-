@@ -457,13 +457,15 @@ Docker 将 veth pair 设备的一端放在新创建的容器中，并命名为`e
 
 在使用默认的网桥模式时，不同容器之间需要通过IP才能互相连接，但是如果使用自定义的网桥模式，可以直接通过容器名连接。
 
-创建网络：``docker network create -d bridge my-net`` -d 表示制定
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMzE1ODY4MjM3LDk4MTY1MzAyMCwxMzkzNz
-g4NjA4LDkxMjU3NjQ4NCwxMzc2ODIzMzgyLDQ5MzAwNjUwOCwt
-NTU3MDgyMTE0LDE0NDUzNDcyODAsMTYzNzIyMjk2LDE0ODAxMD
-Q1NjAsMTA2MDM3ODk3OSwtMzQyNjA4NzIyLDY1MzEyNDAyMSwz
-OTg4MzA1NzUsLTY1NDY2NDQ3NiwxNzYzNjQyODQ3LC04MDY1NT
-AzOTksMTQ0NzUzMDQ4NSwzMDgzNTk2MzcsMjA5NzExMTQ3Nl19
+创建网络：``docker network create -d bridge my-net`` -d 表示指定网络模式
 
+指定网络创建容器`` ``
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTEwNDM3MjUxMSw5ODE2NTMwMjAsMTM5Mz
+c4ODYwOCw5MTI1NzY0ODQsMTM3NjgyMzM4Miw0OTMwMDY1MDgs
+LTU1NzA4MjExNCwxNDQ1MzQ3MjgwLDE2MzcyMjI5NiwxNDgwMT
+A0NTYwLDEwNjAzNzg5NzksLTM0MjYwODcyMiw2NTMxMjQwMjEs
+Mzk4ODMwNTc1LC02NTQ2NjQ0NzYsMTc2MzY0Mjg0NywtODA2NT
+UwMzk5LDE0NDc1MzA0ODUsMzA4MzU5NjM3LDIwOTcxMTE0NzZd
+fQ==
 -->
