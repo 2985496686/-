@@ -401,11 +401,35 @@ redis-cli --cluster  check 127.0.0.1:6379 # 查看的信息最具体
 Dockerfile是用来构建Docker镜像文件的文本文件，是一条条构建镜像所需的指令和参数构成的脚本。
 
 **Docker常用命令**
-![输入图片说明](https://raw.githubusercontent.com/2985496686/-/master/imgs/docker/vB6RSCWuCJLukA4V.png)
+常见命令参考[菜鸟Dockerfile](https://www.runoob.com/docker/docker-dockerfile.html)
 
+下面是使用dockerfile构建golang语言环境的Dockerfile文件
+```Dockerfile
+#基础镜像
+FROM ubuntu
+#作者
+MAINTAINER  gtl<2985496686@qq.com>
+ENV MYPATH /home/gtl
+#进入容器的默认所在目录
+WORKDIR $MYPATH
+#叠加镜像，安装所需软件
+RUN  apt-get update --fix-missing && apt-get install -y  vim --fix-missing && apt-get install -y  net-tools --fix-missing
 
+#将主机目录下的go压缩包解压到容器目录中
+ADD  go1.20.3.linux-amd64.tar.gz /usr/local/
+
+#配置go环境
+ENV PATH /usr/local/go/bin:$PATH
+ENV  GOROOT  /usr/local/go
+ENV GOPATH  $MYPATH/go
+ENV GOPROXY  goproxy.cn
+
+EXPOSE 80
+CMD echo $MYPATH
+CMD echo "success"
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTc1MjM5NjQsLTU1NzA4MjExNCwxND
+eyJoaXN0b3J5IjpbLTEzMTM0NTEwNjcsLTU1NzA4MjExNCwxND
 Q1MzQ3MjgwLDE2MzcyMjI5NiwxNDgwMTA0NTYwLDEwNjAzNzg5
 NzksLTM0MjYwODcyMiw2NTMxMjQwMjEsMzk4ODMwNTc1LC02NT
 Q2NjQ0NzYsMTc2MzY0Mjg0NywtODA2NTUwMzk5LDE0NDc1MzA0
