@@ -332,7 +332,7 @@ Slave_SQL_Running: Yes
 
 
 ## 遇到的坑
-1. 配置文件名叫my.cnf，最开始写成了my.con`
+1. 配置文件名叫my.cnf，最开始写成了my.conf`
 2. 从机报错2061。因为mysql8.0使用了``caching_sha2_password`` 加密算法，该加密算法是非对称加密。我们在master创建复制用户时，默认采用的就是这种加密算法，从机在请求连接时，发现对方采用的是该种加密算法，但是自己有不知道对方公钥，所以就会报错，这里的解决办法是创建用户时放弃使用非对称加密算法，但这并不是最优解决办法。
 可以参考文章:[主从复制报错2061](https://blog.51cto.com/u_15077535/4376322)
 
@@ -470,11 +470,11 @@ Docker 将 veth pair 设备的一端放在新创建的容器中，并命名为`e
 ## Container模式
 这个模式指定新创建的容器和已经存在的一个容器共享一个 Network Namespace，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的 IP，而是和一个指定的容器共享 IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过 lo 网卡设备通信。 如果被共享的容器被stop，他就会转为None模式。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5NzQ2ODU0MywxMTA0MzcyNTExLDk4MT
-Y1MzAyMCwxMzkzNzg4NjA4LDkxMjU3NjQ4NCwxMzc2ODIzMzgy
-LDQ5MzAwNjUwOCwtNTU3MDgyMTE0LDE0NDUzNDcyODAsMTYzNz
-IyMjk2LDE0ODAxMDQ1NjAsMTA2MDM3ODk3OSwtMzQyNjA4NzIy
-LDY1MzEyNDAyMSwzOTg4MzA1NzUsLTY1NDY2NDQ3NiwxNzYzNj
-QyODQ3LC04MDY1NTAzOTksMTQ0NzUzMDQ4NSwzMDgzNTk2Mzdd
-fQ==
+eyJoaXN0b3J5IjpbLTE5ODA0NjExNzUsMTY5NzQ2ODU0MywxMT
+A0MzcyNTExLDk4MTY1MzAyMCwxMzkzNzg4NjA4LDkxMjU3NjQ4
+NCwxMzc2ODIzMzgyLDQ5MzAwNjUwOCwtNTU3MDgyMTE0LDE0ND
+UzNDcyODAsMTYzNzIyMjk2LDE0ODAxMDQ1NjAsMTA2MDM3ODk3
+OSwtMzQyNjA4NzIyLDY1MzEyNDAyMSwzOTg4MzA1NzUsLTY1ND
+Y2NDQ3NiwxNzYzNjQyODQ3LC04MDY1NTAzOTksMTQ0NzUzMDQ4
+NV19
 -->
