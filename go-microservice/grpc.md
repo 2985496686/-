@@ -142,8 +142,8 @@ func main() {
 }
 ```
 - 客户端每次在进行远端请求的时候，都会通过etcd发现服务，然后获取有效的服务端地址。
-- 
+- 客户端会有一个map，存储addr(服务端地址)和c
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExNTY0MjkzMiwxNjIyODMxOTIwLDE4Nz
-A1NzcyNjldfQ==
+eyJoaXN0b3J5IjpbLTE2OTc5MTQ0MDUsMTYyMjgzMTkyMCwxOD
+cwNTc3MjY5XX0=
 -->
