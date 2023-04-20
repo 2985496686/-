@@ -143,8 +143,8 @@ func main() {
 ```
 - 客户端每次在进行远端请求的时候，都会通过etcd发现服务，然后获取有效的服务端地址列表(string数组)。
 - 客户端会有个map，存储addr(服务端地址)和connection(服务端连接)的映射关系。
-- 客户端完成服务发现后，会通过自己的负载均衡算法(grpc支持轮询算法)，选择一个服务端地址(服务发现后的地址列表)
+- 客户端完成服务发现后，会通过自己的负载均衡算法(grpc支持轮询算法)，选择一个服务端地址(服务发现后的地址列表，确保是有效的)查询map，若在map中不存在，与远程你
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk5NjIwMDc1LDE2MjI4MzE5MjAsMTg3MD
-U3NzI2OV19
+eyJoaXN0b3J5IjpbLTE4MjQyMDk3MSwxNjIyODMxOTIwLDE4Nz
+A1NzcyNjldfQ==
 -->
