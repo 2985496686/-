@@ -146,7 +146,14 @@ func main() {
 - 客户端完成服务发现后，会通过自己的负载均衡算法(grpc支持轮询算法)，选择一个服务端地址(服务发现后的地址列表，确保是有效的)查询map，若在map中不存在，建立连接。
 
 **注意：**
+- 这里的连接是懒连接，长连接。
+
+
+
+## 服务端
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk2NjM4OTEsMTYyMjgzMTkyMCwxODcwNT
-c3MjY5XX0=
+eyJoaXN0b3J5IjpbLTY1ODg2NzM1OSwxNjIyODMxOTIwLDE4Nz
+A1NzcyNjldfQ==
 -->
