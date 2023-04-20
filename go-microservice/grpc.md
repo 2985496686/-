@@ -229,8 +229,41 @@ func etcdLogOf(addr string) error {
 }
 ```
 
-****
+**main.go**
+```go
+package main  
+  
+import (  
+   pb "etcd-discovery/server/rpc"  
+   "google.golang.org/grpc"   "log"   "net"   "os"   "os/signal"   "syscall")  
+  
+func main() {  
+  
+   args := os.Args[1]  
+   ch := make(chan os.Signal, 1)  
+   signal.Notify(ch, syscall.SIGINT, syscall.SIGKILL, syscall.SIGTERM, syscall.SIGHUP, syscall.SIGQUIT)  
+   go func() {  
+      s := <-ch  
+      etcdLogOf(args)  
+      if i, ok := s.(syscall.Signal); ok {  
+         os.Exit(int(i))  
+      } else {  
+         os.Exit(1)  
+      }  
+   }()  
+   _ = etcdRegister(args)  
+   s := grpc.NewServer(grpc.UnaryInterceptor(Interceptor()))  
+   l, err := net.Listen("tcp", args)  
+   if err != nil {  
+      log.Fatal("server error:", err)  
+   }  
+   pb.RegisterUserServer(s, &User{})  
+   if err = s.Serve(l); err != nil {  
+      log.Fatal(err)  
+   }  
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0MzY2MjA2NSwxNjIyODMxOTIwLDE4Nz
-A1NzcyNjldfQ==
+eyJoaXN0b3J5IjpbOTMxODc3Nzk0LDE2MjI4MzE5MjAsMTg3MD
+U3NzI2OV19
 -->
