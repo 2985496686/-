@@ -141,7 +141,9 @@ func main() {
    }  
 }
 ```
-- 客户端每次在进行远端请求的时候，都会通过etcd发现服务，然后获取有效的
+- 客户端每次在进行远端请求的时候，都会通过etcd发现服务，然后获取有效的服务端地址。
+- 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyMjgzMTkyMCwxODcwNTc3MjY5XX0=
+eyJoaXN0b3J5IjpbMjExNTY0MjkzMiwxNjIyODMxOTIwLDE4Nz
+A1NzcyNjldfQ==
 -->
