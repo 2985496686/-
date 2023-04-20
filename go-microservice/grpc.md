@@ -152,8 +152,85 @@ func main() {
 
 ## 服务端
 
+**etcd.go**
 
+```go
+package main  
+  
+import (  
+   "context"  
+   "errors"   clientv3 "go.etcd.io/etcd/client/v3"  
+   "go.etcd.io/etcd/client/v3/naming/endpoints"   "log")  
+  
+const serviceName = "api"  
+const etcdUrl = "http://localhost:2379"  
+const ttl = 10  
+  
+var etcdClient *clientv3.Client  
+  
+func etcdRegister(addr string) error {  
+  
+   var err error  
+   etcdClient, err = clientv3.NewFromURL(etcdUrl)  
+   if err != nil {  
+      log.Fatal("failed to register:", err)  
+   }  
+   log.Println(addr, "register server")  
+  
+   //endpoints.Manager 是一个用于管理服务地址列表的组件，它提供了添加、删除、获取地址列表等功能  
+   m, err := endpoints.NewManager(etcdClient, serviceName)  
+   if err != nil {  
+      log.Fatal("failed to register:", err)  
+   }  
+  
+   //授权一个租约，并且10s过期  
+   lease, err := etcdClient.Grant(context.TODO(), ttl)  
+   if err != nil {  
+      log.Fatal(err)  
+   }  
+  
+   //将指定地址（addr）的服务添加到指定路径（/api/addr）的服务端点（endpoint）中。  
+   //注意这里的服务名和服务端点名不一样，一个服务名下会有多个服务端点  
+   err = m.AddEndpoint(context.TODO(), serviceName+"/"+addr, endpoints.Endpoint{Addr: addr}, clientv3.WithLease(lease.ID))  
+   if err != nil {  
+      log.Fatal("failed to register:", err)  
+   }  
+  
+   //在 etcd 中续租指定 ID 的租约，防止该租约过期，默认每三秒续租一次  
+   alive, err := etcdClient.KeepAlive(context.Background(), lease.ID)  
+  
+   go func() {  
+      for {  
+         select {  
+         case _, ok := <-alive:  
+            if !ok {  
+               log.Println("keep alive chan has closed")  
+               return  
+            } else {  
+               log.Println("etcd server keep alive")  
+            }  
+         }  
+      }  
+   }()  
+   return err  
+}  
+  
+func etcdLogOf(addr string) error {  
+   log.Println("addr etcd log off")  
+   m, err := endpoints.NewManager(etcdClient, etcdUrl)  
+   if err != nil {  
+      return errors.New("etcdLogOf error:" + err.Error())  
+   }  
+   err = m.DeleteEndpoint(context.TODO(), serviceName+"/"+addr)  
+   if err != nil {  
+      return errors.New("etcdLogOf error:" + err.Error())  
+   }  
+   return nil  
+}
+```
+
+****
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1ODg2NzM1OSwxNjIyODMxOTIwLDE4Nz
+eyJoaXN0b3J5IjpbMjA0MzY2MjA2NSwxNjIyODMxOTIwLDE4Nz
 A1NzcyNjldfQ==
 -->
