@@ -101,6 +101,12 @@ resolver包下有一个全局变量，如下：
 # 基于etcd进行服务发现
 
 ![输入图片说明](https://raw.githubusercontent.com/2985496686/-/master/imgs/grpc/ex4SkmmJ9aensrTF.png)
+
+## 客户端
+
+```go
+
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg3MDU3NzI2OV19
+eyJoaXN0b3J5IjpbLTkyNzAzMjI1NywxODcwNTc3MjY5XX0=
 -->
