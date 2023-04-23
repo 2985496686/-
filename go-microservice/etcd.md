@@ -168,7 +168,8 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 
 ## 领导人选举
 
+有这样一个场景：三个节点的raft集群
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDE4MzIyMzMsMjA3MDc1ODkzNiwtMT
-M5NTA2NjYxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbLTk0OTQ5NzgyOCwyMDcwNzU4OTM2LC0xMz
+k1MDY2NjEzLC0yNjE4NjA2M119
 -->
