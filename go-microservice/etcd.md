@@ -168,8 +168,8 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 
 ## 领导人选举
 
-有这样一个场景：三个节点的raft集群，其中一个follower节点与其他两个节点出现了网络分区，这个follower因为竞选超时，由follower转变为了candidate，任期加1，但是他的这个网络分区
+有这样一个场景：三个节点的raft集群，其中一个follower节点与其他两个节点出现了网络分区，这个follower因为竞选超时，由follower转变为了candidate，term加1，但是他的这个网络分区没有过半的节点，所以他会一直重复这个过程。当网络恢复后，由于他的term领先于其它节点
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0MjIyNTgxNSwyMDcwNzU4OTM2LC0xMz
+eyJoaXN0b3J5IjpbLTIzMTgwMzQ1OSwyMDcwNzU4OTM2LC0xMz
 k1MDY2NjEzLC0yNjE4NjA2M119
 -->
