@@ -142,7 +142,7 @@ MVCC：多版本并发控制 (Multiversion concurrency control) 模块支持保�
 ``boltdb:`` 是一个持久化存储的B+ Tree ，key是版本号，而value是用户信息的key-value。
 
 
-# 读请求什么时候会经过磁盘IO？
+## 读请求什么时候会经过磁盘IO？
 - 实际上，etcd 在启动的时候会通过 mmap 机制将 etcd db 文件映射到 etcd 进程地址空
 间，并设置了 mmap 的 MAP_POPULATE flag，它会告诉 Linux 内核预读文件，Linux
 内核会将文件内容拷贝到物理内存中，此时会产生磁盘 I/O。节点内存足够的请求下，后
@@ -154,6 +154,13 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 
 
 
+## 一条写请求的执行
+
+
+
+# etcd中的raft
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbLTk0MTkwMjc1LC0yNjE4NjA2M119
 -->
