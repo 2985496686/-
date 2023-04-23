@@ -173,8 +173,10 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 上面是raft论文中的实现，但是这种选举只是由少数节点引发的无效选举，并且影响了集群的稳定性，etcd在这里进行了优化，引入了一个 PreVote 参数（默认 false），可以用来启用PreCandidate 状态解决此问题。Follower 在转换成 Candidate 状态前，先进入 PreCandidate 状态，不自增任期号， 发起预投票。若获得集群多数节点认可，确定有概率成为 Leader 才能进入 Candidate 状态，发起选举流程。这样就算少数节点出问题了，但是但网络恢复后也不会开启一个新的选举。
 
 
+## 日志复制
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjc2OTQ2Mjc0LDIwNzA3NTg5MzYsLTEzOT
-UwNjY2MTMsLTI2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbNjI4ODg2NTksMjA3MDc1ODkzNiwtMTM5NT
+A2NjYxMywtMjYxODYwNjNdfQ==
 -->
