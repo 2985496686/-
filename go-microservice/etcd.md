@@ -161,10 +161,10 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 # etcd中的raft
 
 这里只介绍etcd中raft的不同之处。
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/c7IjLn6jOBkZm0t8.png)
 
-
-上面介绍了etcd的整体架构，其中有Raft层和逻辑层，etcd对Raft层进行了高度抽离
+这里之etcd对Raft层进行了高度抽离，这里的raft不负责
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDIwMzIzMzMsLTEzOTUwNjY2MTMsLT
-I2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbLTYzMjYxNDE3MSwtMTM5NTA2NjYxMywtMj
+YxODYwNjNdfQ==
 -->
