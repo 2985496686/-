@@ -98,7 +98,7 @@ bitnami/etcd:${ETCD_VERSION}
 
 ## 一条读请求的执行
 
-**Client层**
+**Client层**抽离
 执行一条命令：
 ```shell
 docker exec -it etcd-node-2 etcdctl get hello world --endpoints localhost:2379,localhost:2380,localhost:2381
@@ -163,8 +163,8 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 这里只介绍etcd中raft的不同之处。
 
 
-上面介绍了etcd的整体架构，其中有Raft层和逻辑层，etcd将Raft层
+上面介绍了etcd的整体架构，其中有Raft层和逻辑层，etcd对Raft层进行了高度抽离
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjM3OTAxOTM1LC0xMzk1MDY2NjEzLC0yNj
-E4NjA2M119
+eyJoaXN0b3J5IjpbLTIwMDIwMzIzMzMsLTEzOTUwNjY2MTMsLT
+I2MTg2MDYzXX0=
 -->
