@@ -163,7 +163,8 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 这里只介绍etcd中raft的不同之处。
 
 
-上面介绍了etcd的整体架构
+上面介绍了etcd的整体架构，其中有Raft层和逻辑层，etcd将Raft层
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbMjM3OTAxOTM1LC0xMzk1MDY2NjEzLC0yNj
+E4NjA2M119
 -->
