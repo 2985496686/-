@@ -163,7 +163,7 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 这里只介绍etcd中raft的不同之处。
 
 
-上面介绍了etcd的镇
+上面介绍了etcd的整体架构
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2OTY2MjU0OSwtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
 -->
