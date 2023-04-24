@@ -180,8 +180,8 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 
 leader会在收到leader节点同步过来的日志时将日志落盘到wal文件中，落盘成功后，告知leader日志已经在集群达到一致。
 
-理由
+理由：如果采用第一种方式，先将日志追加到
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1ODk0Mjk1Niw2Mjg4ODY1OSwyMDcwNz
+eyJoaXN0b3J5IjpbMTU0Njg1MTM5Myw2Mjg4ODY1OSwyMDcwNz
 U4OTM2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
 -->
