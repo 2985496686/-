@@ -175,8 +175,8 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 
 ## 日志复制
 
-
+follower会在通知某个日志已经
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjI4ODg2NTksMjA3MDc1ODkzNiwtMTM5NT
-A2NjYxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbMjAzNTc3MzI2Nyw2Mjg4ODY1OSwyMDcwNz
+U4OTM2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
 -->
