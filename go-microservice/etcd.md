@@ -64,7 +64,10 @@ bitnami/etcd:${ETCD_VERSION}
     
 # For node 2
 THIS_NAME=${NAME_2}
-sudo docker run  -d --network host --name ${THIS_NAME} \
+sudo docker run  -d --network host --nami/script…"   2 days ago   Up 30 seconds             etcd-node-2
+b116ec073c93   bitnami/etcd:latest   "/opt/bitnami/script…"   2 days ago   Up 30 seconds             etcd-node-1
+2f90aed4c9c7   bitnami/etcd:latest   "/opt/bitnami/script…"   2 days ago   Up 30 seconds             etcd-node-0
+name ${THIS_NAME} \
 --env ALLOW_NONE_AUTHENTICATION=yes \
 --env ETCD_NAME=${THIS_NAME} \
 --env ETCD_ADVERTISE_CLIENT_URLS=http://${THIS_IP}:2380 \
@@ -182,6 +185,7 @@ leader会在收到leader节点同步过来的日志时将日志落盘到wal文�
 
 理由：采用第一种方式，先将日志追加到未持久化数据缓冲区，然后告知leader日志已经一致，并在此时通知应用层将日志持久化落盘wal文件。在日志持久化成功之前follower宕机，但是，leader已经收到了他的一致性响应，并且此时恰好收到了过半节点的一致性响应(实际情况并没有过半的节点同步该日志)，leader将该日志提交了，此时leader宕机，原先的follower恢复，未同步刚才那条日志的节点可能会成为新leader，并且会覆盖掉其它节点的日志，这就会导致用户提交成功的数据，在集群中不存在。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNz
-U4OTM2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
+eyJoaXN0b3J5IjpbOTM2MzUwOTAyLDEyNDA3MDY5MjEsNjI4OD
+g2NTksMjA3MDc1ODkzNiwtMTM5NTA2NjYxMywtMjYxODYwNjNd
+fQ==
 -->
