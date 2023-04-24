@@ -175,8 +175,10 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 
 ## 日志复制
 
-follower会在通知某个日志已经
+follower会在通知某个日志已经一致的时候将日志持久化到wal文件中。
+
+理由如下：leader在直到日志已经在过半的节点上一致的时候才会
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAzNTc3MzI2Nyw2Mjg4ODY1OSwyMDcwNz
-U4OTM2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
+eyJoaXN0b3J5IjpbLTE1MDE1NzAwMDAsNjI4ODg2NTksMjA3MD
+c1ODkzNiwtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
 -->
