@@ -180,8 +180,8 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 
 leader会在收到leader节点同步过来的日志时将日志落盘到wal文件中，落盘成功后，告知leader日志已经在集群达到一致。
 
-理由：采用第一种方式，先将日志追加到未持久化数据缓冲区，然后告知leader日志已经一致，并在此时通知应用层将日志持久化落盘wal文件。在日志持久化成功之前follower宕机，但是，leader已经收到了他的一致性响应，并且此时恰好收到了过半节点的一致性响应(实际情况并没有过半的节点同步该日志)，leader将该日志提交了
+理由：采用第一种方式，先将日志追加到未持久化数据缓冲区，然后告知leader日志已经一致，并在此时通知应用层将日志持久化落盘wal文件。在日志持久化成功之前follower宕机，但是，leader已经收到了他的一致性响应，并且此时恰好收到了过半节点的一致性响应(实际情况并没有过半的节点同步该日志)，leader将该日志提交了，此时leader宕机，原先的follower恢复，未同步刚才那条日志的节点可能会成为新leader，并且会
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTY1MjAxNTIsNjI4ODg2NTksMjA3MD
-c1ODkzNiwtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbNzA3NjkzOTQ0LDYyODg4NjU5LDIwNzA3NT
+g5MzYsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
 -->
