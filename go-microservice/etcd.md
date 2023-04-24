@@ -175,10 +175,11 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 
 ## 日志复制
 
-follower会在通知某个日志已经一致的时候将日志持久化到wal文件中。
+**做为follower的节点，是什么时候将日志落盘到WAL文件中，是在收到leader节点同步过来的日志时，还是在leader节点通知某个日志已经在集群达成一致？为什么以及流程是怎样的？**
 
-理由如下：leader在直到日志已经在过半的节点上一致的时候才会
+
+leader会在收到leader节点他噢买
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDE1NzAwMDAsNjI4ODg2NTksMjA3MD
-c1ODkzNiwtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbODc5MzExODc2LDYyODg4NjU5LDIwNzA3NT
+g5MzYsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
 -->
