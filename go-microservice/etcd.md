@@ -321,6 +321,7 @@ func (le *lessor) Attach(id LeaseID, items []LeaseItem) error {
    }  
   
    l.mu.Lock()  
+   //item其实就是一个key切片
    for _, it := range items {  
       l.itemSet[it] = struct{}{}  
       le.itemMap[it] = id  
@@ -348,9 +349,9 @@ KeepAlive作为一个高频请求，在etcd v2中使用http1.0 ，这种设计�
 
 etcd3.5在创建lease时，会将租约按照过期时间创建一个最小堆，
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTIyNzE5NTQsLTE5NDQ1MTEwOTEsMT
-g4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5Mzkz
-NjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkzNjM1MDkwMi
-wxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5MzYsLTEzOTUw
-NjY2MTMsLTI2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbLTQ4MjQ3NzUwNCwtMTk0NDUxMTA5MSwxOD
+g4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2
+MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2MzUwOTAyLD
+EyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNiwtMTM5NTA2
+NjYxMywtMjYxODYwNjNdfQ==
 -->
