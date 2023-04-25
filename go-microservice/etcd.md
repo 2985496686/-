@@ -194,6 +194,8 @@ client 和 etcd server 之间存在一个约定，内容是 etcd server 保证�
 期内（TTL），不会删除你关联到此 Lease 上的 key-value。
 
 
+
+
 **Lease创建** 
 ```shell
 # 创建一个TTL为600秒的lease，etcd server返回LeaseID
@@ -205,9 +207,11 @@ etcdctl lease timetolive 326975935f48f814
 lease 326975935f48f814 granted with TTL(600s)， remaining(590s)
 ```
 
+Lease server 在收到client创建lease请求后，
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDU1MTMzMDgsLTE1OTI4NDQyMTEsOT
-M2MzUwOTAyLDEyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkz
-NiwtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkzNj
+M1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5MzYs
+LTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
 -->
