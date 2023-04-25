@@ -213,8 +213,10 @@ Lease server 在收到client创建lease请求后(当前节点如果不是leader�
 持久化 Lease，将 Lease 数据保存到 boltdb 的 Lease bucket 中，返回一个唯一的
 LeaseID 给 client。
 
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTQwNDkyODYsMTQ1MDI1NDAyLC0xNT
+eyJoaXN0b3J5IjpbLTE4MTQzNzg1MzgsMTQ1MDI1NDAyLC0xNT
 kyODQ0MjExLDkzNjM1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5
 LDIwNzA3NTg5MzYsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
 -->
