@@ -443,14 +443,14 @@ etcd server 收到删除lease任务(通过expiredC)，同样是先write log，�
 
 **checkpoint 机制**
 
-上述的过程检查 Lease 是否过期、维护最小堆、针对过期的 Lease 发起 revoke 操作都是由leader进行的，并且小根堆的维护是放在内存上的。那么当 Leader 因重启、crash、磁盘 IO 等异常不可用时，Follower 节点就会发起Leader 选举，新 Leader 要完成以上职责，必须按照持久化的lease ttl时间重建 Lease 过期最小堆等管理数据结构，这个过程就会
+上述的过程检查 Lease 是否过期、维护最小堆、针对过期的 Lease 发起 revoke 操作都是由leader进行的，并且小根堆的维护是放在内存上的。那么当 Leader 因重启、crash、磁盘 IO 等异常不可用时，Follower 节点就会发起Leader 选举，新 Leader 要完成以上职责，必须按照持久化的lease ttl时间重建 Lease 过期最小堆等管理数据结构，这个过程就会将所有lease的过期时间刷新了一遍
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDk1OTYwMjEsMTA4MzQwNzYzNywxND
-kwMTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0
-NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMz
-YxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5
-MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OT
-M2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
+eyJoaXN0b3J5IjpbMTUwMDgwMDIyNCwxMDgzNDA3NjM3LDE0OT
+AxMjY0NDUsLTExMDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1
+MTEwOTEsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNj
+E0LDE5MzkzNjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkz
+NjM1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5Mz
+YsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
 -->
