@@ -394,7 +394,6 @@ func (le *lessor) findExpiredLeases(limit int) []*Lease {
   
       if l.expired() {  
          leases = append(leases, l)  
-  
          // reach expired limit  
          if len(leases) == limit {  
             break  
@@ -405,9 +404,10 @@ func (le *lessor) findExpiredLeases(limit int) []*Lease {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDAwMjIxMTEsLTE2MzIwMzE1MTMsLT
-E5NDQ1MTEwOTEsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4
-ODAzNjE0LDE5MzkzNjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0Mj
-ExLDkzNjM1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3
-NTg5MzYsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbMTgxNDExNzI3LC0xMTAwMDIyMTExLC0xNj
+MyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5
+MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMi
+wtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4
+ODY1OSwyMDcwNzU4OTM2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M1
+19
 -->
