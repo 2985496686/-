@@ -412,14 +412,15 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
    item := le.leaseExpiredNotifier.Peek()  
    l = le.leaseMap[item.id]  
    if l == nil {  
-      // lease 已经被revoke
-      // no need to revoke (nothing is expiry)      le.leaseExpiredNotifier.Unregister() // O(log N)  
+      // lease 已经被loesserrevoke
+      le.leaseExpiredNotifier.Unregister()
       return nil, true  
    }  
    now := time.Now()  
    if now.Before(item.time) /* item.time: expiration time */ {  
       // Candidate expirations are caught up, reinsert this item  
-      // and no need to revoke (nothing is expiry)      return nil, false  
+      // and no need to revoke (nothing is expiry)      
+      return nil, false  
    }  
   
    // recheck if revoke is complete after retry interval  
@@ -429,7 +430,7 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwMjE1MDU3LC0xMTAwMDIyMTExLC0xNj
+eyJoaXN0b3J5IjpbMTM1NDU4MjE3LC0xMTAwMDIyMTExLC0xNj
 MyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5
 MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMi
 wtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4
