@@ -202,7 +202,7 @@ etcd的lessor负责管理租约，在启动etcd时会创建该模块，并启动
 ```go
 func (le *lessor) runLoop() {  
    defer close(le.doneC)  
-  
+	//每五百毫秒会执行一次定时人物
    delayTicker := time.NewTicker(500 * time.Millisecond)  
    defer delayTicker.Stop()  
   
@@ -463,10 +463,10 @@ Lease 剩余 TTL 一致性。
 
 chekpoint机制虽然解决了问题，但是很明显了带来了性能的下降(每一次同步都设计磁盘IO)，所以该功能在etcd3.6以下都是默认关闭的。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxMDkyNjA1MSwxMDgzNDA3NjM3LDE0OT
-AxMjY0NDUsLTExMDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1
-MTEwOTEsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNj
-E0LDE5MzkzNjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkz
-NjM1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5Mz
-YsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbNDcxNzk1NTgsMTA4MzQwNzYzNywxNDkwMT
+I2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NTEx
+MDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNC
+wxOTM5MzYxNTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5MzYz
+NTA5MDIsMTI0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OTM2LC
+0xMzk1MDY2NjEzLC0yNjE4NjA2M119
 -->
