@@ -379,9 +379,11 @@ func (le *lessor) revokeExpiredLeases() {
 
 
 ```go
+//
 func (le *lessor) findExpiredLeases(limit int) []*Lease {  
    leases := make([]*Lease, 0, 16)  
    for {  
+	   //通过expireExists方法获取一个堆定元素
       l, next := le.expireExists()  
       if l == nil && !next {  
          break  
@@ -403,9 +405,9 @@ func (le *lessor) findExpiredLeases(limit int) []*Lease {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzODM5NjQyMSwtMTYzMjAzMTUxMywtMT
-k0NDUxMTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4
-MDM2MTQsMTkzOTM2MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMT
-EsOTM2MzUwOTAyLDEyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1
-ODkzNiwtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbLTExMDAwMjIxMTEsLTE2MzIwMzE1MTMsLT
+E5NDQ1MTEwOTEsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4
+ODAzNjE0LDE5MzkzNjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0Mj
+ExLDkzNjM1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3
+NTg5MzYsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
 -->
