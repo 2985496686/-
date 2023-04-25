@@ -451,12 +451,22 @@ etcd server 收到删除lease任务(通过expiredC)，同样是先write log，�
 为了解决这个问题，etcd 引入了检查点机制，也就是下面架构图中黑色虚线框所示的
 CheckPointScheduledLeases 的任务。
 
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/kNyYoPKaU4PoIkqV.png)
 
+etcd 启动的时候，Leader 节点后台会运行此异步任务，定期批量地将 Lease 剩
+余的 TTL 基于 Raft Log 同步给 Follower 节点，Follower 节点收到 CheckPoint 请求
+后，更新内存数据结构 LeaseMap 的剩余 TTL 信息。
+
+另一方面，当 Leader 节点收到 KeepAlive 请求的时候，它也会通过 checkpoint 机制把
+此 Lease 的剩余 TTL 重置，并同步给 Follower 节点，尽量确保续期后集群各个节点的
+Lease 剩余 TTL 一致性。
+
+chekpoint机制虽然解决了问题，但是很明显了带来了性能的下降(每一次同步都设计磁盘IO)，所以该功能在etcd3.6以下都是默认
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDk1MTM1NzE1LDEwODM0MDc2MzcsMTQ5MD
-EyNjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUx
-MTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MT
-QsMTkzOTM2MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2
-MzUwOTAyLDEyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNi
-wtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbLTE1MjY2OTAxMTcsMTA4MzQwNzYzNywxND
+kwMTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0
+NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMz
+YxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5
+MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OT
+M2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
 -->
