@@ -232,9 +232,10 @@ $ etcdctl get node -w=json | python -m json.tool
     ]
 }
 ```
-将
+当你通过put 等命令新增一个指定了"--lease"的 key 时，MVCC 模块它会通过 Lessor 模块的
+Attach 方法，将 key 关联到 Lease 的 key 内存集合 ItemSet 中。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzNjY2MTE3NywtMTY4ODgwMzYxNCwxOT
+eyJoaXN0b3J5IjpbLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOT
 M5MzYxNTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5MzYzNTA5
 MDIsMTI0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OTM2LC0xMz
 k1MDY2NjEzLC0yNjE4NjA2M119
