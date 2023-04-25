@@ -246,11 +246,14 @@ LeaseID 等信息。因此当 etcd 重启时，可根据此信息，重建关联
 
 在正常情况下，你的节点存活时，需要定期发送 KeepAlive 请求给 etcd 续期健康状态的 Lease，否则你的 Lease 和关联的数据就会被删除。
 
-KeepAlive作为一个高频请求，在etcd v2中使用http1.0 ，这种设计，因不支持连接多路复用、相同 TTL 无法复用导致性能较差，无法支撑较大规模的 Lease 场景。在etcd3.0中，将http1.0改为了grpc，grpc可以使用多路复用将沙
+KeepAlive作为一个高频请求，在etcd v2中使用http1.0 ，这种设计，因不支持连接多路复用、相同 TTL 无法复用导致性能较差，无法支撑较大规模的 Lease 场景。在etcd3.0中，将http1.0改为了grpc，grpc可以使用多路复用减少连接数量，使用长连接减少连接创建和销毁的次数，更加适合于etcd的业务。
+
+
+**月**
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1ODc2NzM5LC0xOTQ0NTExMDkxLDE4OD
-gwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYx
-NTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMT
-I0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OTM2LC0xMzk1MDY2
-NjEzLC0yNjE4NjA2M119
+eyJoaXN0b3J5IjpbLTEyMDU5MjMxMjYsLTE5NDQ1MTEwOTEsMT
+g4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5Mzkz
+NjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkzNjM1MDkwMi
+wxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5MzYsLTEzOTUw
+NjY2MTMsLTI2MTg2MDYzXX0=
 -->
