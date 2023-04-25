@@ -438,7 +438,7 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
 删除，插入，更新复杂度：``O(logN)``
 
 
-etcd server 收到删除lease任务(通过expiredC)，同样是先write log，
+etcd server 收到删除lease任务(通过expiredC)，同样是先write log，然后同步到follower节点，收到一半的回复后，应用到自己的状态机上。
 
 
 **checkpoint 机制**
@@ -447,10 +447,10 @@ etcd server 收到删除lease任务(通过expiredC)，同样是先write log，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjY2NjE4ODMsMTA4MzQwNzYzNywxND
-kwMTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0
-NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMz
-YxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5
-MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OT
-M2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
+eyJoaXN0b3J5IjpbNTg3Nzg3MTI2LDEwODM0MDc2MzcsMTQ5MD
+EyNjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUx
+MTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MT
+QsMTkzOTM2MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2
+MzUwOTAyLDEyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNi
+wtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
 -->
