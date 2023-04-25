@@ -412,29 +412,28 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
    item := le.leaseExpiredNotifier.Peek()  
    l = le.leaseMap[item.id]  
    if l == nil {  
-      // lease 已经被lessor revoke，但是此时还存在于堆中
+      // lease 已经被lessor revoke，但是此时还存在于堆中(后面会解释为什么会出现这种情况)
       //调用这个方法会先pop，再调整堆log(N)
       le.leaseExpiredNotifier.Unregister()
       return nil, true  
    }  
    now := time.Now()  
    if now.Before(item.time) /* item.time: expiration time */ {  
-      // Candidate expirations are caught up, reinsert this item  
-      // and no need to revoke (nothing is expiry)      
+      //还未排序      
       return nil, false  
    }  
   
-   // recheck if revoke is complete after retry interval  
+   // 
    item.time = now.Add(le.expiredLeaseRetryInterval)  
    le.leaseExpiredNotifier.RegisterOrUpdate(item)  
    return l, false  
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyNTMzODgzNCwxNDkwMTI2NDQ1LC0xMT
-AwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgw
-MzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYxNT
-QwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMTI0
-MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OTM2LC0xMzk1MDY2Nj
-EzLC0yNjE4NjA2M119
+eyJoaXN0b3J5IjpbLTIwNDMzMTE0NzAsMTQ5MDEyNjQ0NSwtMT
+EwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUxMTA5MSwxODg4
+MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2MT
+U0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2MzUwOTAyLDEy
+NDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNiwtMTM5NTA2Nj
+YxMywtMjYxODYwNjNdfQ==
 -->
