@@ -310,6 +310,26 @@ $ etcdctl get node -w=json | python -m json.tool
 - 当你通过put 等命令新增一个指定了"--lease"的 key 时，MVCC 模块它会通过 Lessor 模块的
 Attach 方法，将 key 关联到 Lease 的 key 内存集合 ItemSet 中。
 
+```go
+func (le *lessor) Attach(id LeaseID, items []LeaseItem) error {  
+   le.mu.Lock()  
+   defer le.mu.Unlock()  
+   //通过id获取租约
+   l := le.leaseMap[id]  
+   if l == nil {  
+      return ErrLeaseNotFound  
+   }  
+  
+   l.mu.Lock()  
+   for _, it := range items {  
+      l.itemSet[it] = struct{}{}  
+      le.itemMap[it] = id  
+   }  
+   l.mu.Unlock()  
+   return nil  
+}
+```
+
 - etcd 的 MVCC 模块在持久化存储 key-value 的时候，保存到 boltdb 的 value 是
 个结构体（mvccpb.KeyValue）， 它不仅包含你的 key-value 数据，还包含了关联的
 LeaseID 等信息。因此当 etcd 重启时，可根据此信息，重建关联各个 Lease 的 key 集合
@@ -328,9 +348,9 @@ KeepAlive作为一个高频请求，在etcd v2中使用http1.0 ，这种设计�
 
 etcd3.5在创建lease时，会将租约按照过期时间创建一个最小堆，
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3ODQ0NTI5OSwtMTk0NDUxMTA5MSwxOD
-g4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2
-MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2MzUwOTAyLD
-EyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNiwtMTM5NTA2
-NjYxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbLTE5MTIyNzE5NTQsLTE5NDQ1MTEwOTEsMT
+g4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5Mzkz
+NjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkzNjM1MDkwMi
+wxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5MzYsLTEzOTUw
+NjY2MTMsLTI2MTg2MDYzXX0=
 -->
