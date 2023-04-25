@@ -243,9 +243,9 @@ LeaseID 等信息。因此当 etcd 重启时，可根据此信息，重建关联
 
 **优化 Lease 续期性能**
 
-在
+在v3版本中，lease机制进行了优化，首先
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTQ0Njg4MjUsLTI4NzM5MTE5MCwtMT
+eyJoaXN0b3J5IjpbLTEyMTA2MjE1ODgsLTI4NzM5MTE5MCwtMT
 Y4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMiwtMTU5Mjg0
 NDIxMSw5MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4ODY1OSwyMD
 cwNzU4OTM2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
