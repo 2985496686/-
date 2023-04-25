@@ -193,9 +193,12 @@ leader会在收到leader节点同步过来的日志时将日志落盘到wal文�
 client 和 etcd server 之间存在一个约定，内容是 etcd server 保证在约定的有效
 期内（TTL），不会删除你关联到此 Lease 上的 key-value。
 
-**leas**
+**leassor模块**
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/RgNqNFj8peon0BYi.png)
+
+etcd的lessor负责管理租约，在启动etcd时会创建一个
+
 
 
 **Lease创建** 
@@ -257,7 +260,7 @@ KeepAlive作为一个高频请求，在etcd v2中使用http1.0 ，这种设计�
 
 etcd3.5在创建lease时，会将租约按照过期时间创建一个最小堆，
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjk2NzAyMTMyLC0xOTQ0NTExMDkxLDE4OD
+eyJoaXN0b3J5IjpbNDA5NTMwNjMwLC0xOTQ0NTExMDkxLDE4OD
 gwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYx
 NTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMT
 I0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OTM2LC0xMzk1MDY2
