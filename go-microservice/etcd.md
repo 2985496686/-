@@ -437,16 +437,19 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
 查询过期lease时间复杂度：``O(1)``
 删除，插入，更新复杂度：``O(logN)``
 
+过期的lease会被
+
+
 **checkpoint 机制**
 
-上述的过程检查 Lease 是否过期、维护最小堆、针对过期的 Lease 发起 revoke 操作都是由leader进行的，并且小根堆的维护是放在内存上的
+上述的过程检查 Lease 是否过期、维护最小堆、针对过期的 Lease 发起 revoke 操作都是由leader进行的，并且小根堆的维护是放在内存上的，一旦
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODU5MDc3NDE5LDEwODM0MDc2MzcsMTQ5MD
-EyNjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUx
-MTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MT
-QsMTkzOTM2MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2
-MzUwOTAyLDEyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNi
-wtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbMTA2NTUxMDI0NCwxMDgzNDA3NjM3LDE0OT
+AxMjY0NDUsLTExMDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1
+MTEwOTEsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNj
+E0LDE5MzkzNjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkz
+NjM1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5Mz
+YsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
 -->
