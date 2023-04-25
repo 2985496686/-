@@ -434,11 +434,14 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
 
 使用小根堆来管理lease的过期十分高效。
 
-查询过期lease
+查询过期lease时间复杂度：``O(1)``
+删除，插入，更新复杂度：``O(logN)``
+
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk4NDI5NDMzLDEwODM0MDc2MzcsMTQ5MD
+eyJoaXN0b3J5IjpbNzQxNjE0NTM3LDEwODM0MDc2MzcsMTQ5MD
 EyNjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUx
 MTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MT
 QsMTkzOTM2MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2
