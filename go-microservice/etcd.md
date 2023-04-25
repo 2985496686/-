@@ -207,10 +207,10 @@ etcdctl lease timetolive 326975935f48f814
 lease 326975935f48f814 granted with TTL(600s)， remaining(590s)
 ```
 
-Lease server 在收到client创建lease请求后，
+Lease server 在收到client创建lease请求后，首先会通过raft模块write log，并同步到其他follower节点，当follower节点
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwODA4ODY1MiwxNDUwMjU0MDIsLTE1OT
-I4NDQyMTEsOTM2MzUwOTAyLDEyNDA3MDY5MjEsNjI4ODg2NTks
-MjA3MDc1ODkzNiwtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbLTE2NDI0NTA3MTksMTQ1MDI1NDAyLC0xNT
+kyODQ0MjExLDkzNjM1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5
+LDIwNzA3NTg5MzYsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
 -->
