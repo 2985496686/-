@@ -430,14 +430,16 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
    return l, false  
 }
 ```
-在检测过期lease时，并不会立即将过期的了
+在检测过期lease时，并不会立即将过期的lease 从堆中pop，而是延长它的过期时间，等待下一轮检测时再将其pop。
+
+使用
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzMzM4MTk1NywxMDgzNDA3NjM3LDE0OT
-AxMjY0NDUsLTExMDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1
-MTEwOTEsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNj
-E0LDE5MzkzNjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkz
-NjM1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5Mz
-YsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbLTEwNjMwMTA1OTUsMTA4MzQwNzYzNywxND
+kwMTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0
+NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMz
+YxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5
+MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OT
+M2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
 -->
