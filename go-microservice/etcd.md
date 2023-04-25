@@ -404,15 +404,15 @@ func (le *lessor) findExpiredLeases(limit int) []*Lease {
 
 //两个返回值，第一个是过期的lease，第二个表示后续是否有可能还有过期的lease
 func (le *lessor) expireExists() (l *Lease, next bool) {  
-   //
+   //堆中已经没有lease
    if le.leaseExpiredNotifier.Len() == 0 {  
       return nil, false  
    }  
-  
+	//获取堆定顶元素
    item := le.leaseExpiredNotifier.Peek()  
    l = le.leaseMap[item.id]  
    if l == nil {  
-      // lease has expired or been revoked  
+      // lease 已经被revoke
       // no need to revoke (nothing is expiry)      le.leaseExpiredNotifier.Unregister() // O(log N)  
       return nil, true  
    }  
@@ -429,7 +429,7 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODM0OTgyMTc1LC0xMTAwMDIyMTExLC0xNj
+eyJoaXN0b3J5IjpbMTgwMjE1MDU3LC0xMTAwMDIyMTExLC0xNj
 MyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5
 MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMi
 wtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4
