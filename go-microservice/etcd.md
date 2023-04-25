@@ -197,11 +197,27 @@ client 和 etcd server 之间存在一个约定，内容是 etcd server 保证�
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/RgNqNFj8peon0BYi.png)
 
-etcd的lessor负责管理租约，在启动etcd时会创建该模块，并启动一个协程，定时的区一个是 RevokeExpiredLease 任务，定时检查是否有过期 Lease，发起撤销过期的
-Lease 操作。一个是 CheckpointScheduledLease，定时触发更新 Lease 的剩余到期时间
-的操作。
+etcd的lessor负责管理租约，在启动etcd时会创建该模块，并启动一个协程，定时的去完成两个任务一个是 RevokeExpiredLease 任务，定时检查是否有过期 Lease，发起撤销过期的Lease 操作。一个是 CheckpointScheduledLease，定时触发更新 Lease 的剩余到期时间的操作。
 
-
+```go
+func (le *lessor) runLoop() {  
+   defer close(le.doneC)  
+  
+   delayTicker := time.NewTicker(500 * time.Millisecond)  
+   defer delayTicker.Stop()  
+  
+   for {  
+      le.revokeExpiredLeases()  
+      le.checkpointScheduledLeases()  
+  
+      select {  
+      case <-delayTicker.C:  
+      case <-le.stopC:  
+         return  
+      }  
+   }  
+}
+```
 
 **Lease创建** 
 ```shell
@@ -219,7 +235,57 @@ Lease server 在收到client创建lease请求后(当前节点如果不是leader�
 首先 Lessor 的 Grant 接口会把 Lease 保存到内存的 ItemMap 数据结构中，然后它需要
 持久化 Lease，将 Lease 数据保存到 boltdb 的 Lease bucket 中，返回一个唯一的
 LeaseID 给 client。
-
+```go
+func (le *lessor) Grant(id LeaseID, ttl int64) (*Lease, error) {  
+   if id == NoLease {  
+      return nil, ErrLeaseNotFound  
+   }  
+  
+   if ttl > MaxLeaseTTL {  
+      return nil, ErrLeaseTTLTooLarge  
+   }  
+  
+   // TODO: when lessor is under high load, it should give out lease  
+   // with longer TTL to reduce renew load.  
+   l := &Lease{  
+      ID:      id,  
+      ttl:     ttl,  
+      itemSet: make(map[LeaseItem]struct{}),  
+      revokec: make(chan struct{}),  
+   }  
+  
+   if l.ttl < le.minLeaseTTL {  
+      l.ttl = le.minLeaseTTL  
+   }  
+  
+   le.mu.Lock()  
+   defer le.mu.Unlock()  
+  
+   if _, ok := le.leaseMap[id]; ok {  
+      return nil, ErrLeaseExists  
+   }  
+  
+   if le.isPrimary() {  
+      l.refresh(0)  
+   } else {  
+      l.forever()  
+   }  
+  
+   le.leaseMap[id] = l  
+   l.persistTo(le.b)  
+  
+   leaseTotalTTLs.Observe(float64(l.ttl))  
+   leaseGranted.Inc()  
+  
+   if le.isPrimary() {  
+      item := &LeaseWithTime{id: l.ID, time: l.expiry}  
+      le.leaseExpiredNotifier.RegisterOrUpdate(item)  
+      le.scheduleCheckpointIfNeeded(l)  
+   }  
+  
+   return l, nil  
+}
+```
 
 
 
@@ -262,9 +328,9 @@ KeepAlive作为一个高频请求，在etcd v2中使用http1.0 ，这种设计�
 
 etcd3.5在创建lease时，会将租约按照过期时间创建一个最小堆，
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzM3OTk4NjM3LC0xOTQ0NTExMDkxLDE4OD
-gwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYx
-NTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMT
-I0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OTM2LC0xMzk1MDY2
-NjEzLC0yNjE4NjA2M119
+eyJoaXN0b3J5IjpbLTk3ODQ0NTI5OSwtMTk0NDUxMTA5MSwxOD
+g4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2
+MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2MzUwOTAyLD
+EyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNiwtMTM5NTA2
+NjYxMywtMjYxODYwNjNdfQ==
 -->
