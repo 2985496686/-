@@ -187,16 +187,19 @@ leader会在收到leader节点同步过来的日志时将日志落盘到wal文�
 
 
 
-# 租约lease
+# 租约Lease
 
 **什么是租约？**
 client 和 etcd server 之间存在一个约定，内容是 etcd server 保证在约定的有效
 期内（TTL），不会删除你关联到此 Lease 上的 key-value。
 
 
+**Lease创建** 
+```go
 
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTI4NDQyMTEsOTM2MzUwOTAyLDEyND
-A3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNiwtMTM5NTA2NjYx
-MywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbMjYxNzMxNzc2LC0xNTkyODQ0MjExLDkzNj
+M1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5MzYs
+LTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
 -->
