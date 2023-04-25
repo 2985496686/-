@@ -213,10 +213,60 @@ Lease server 在收到client创建lease请求后(当前节点如果不是leader�
 持久化 Lease，将 Lease 数据保存到 boltdb 的 Lease bucket 中，返回一个唯一的
 LeaseID 给 client。
 
-
+```go
+func (le *lessor) Grant(id LeaseID, ttl int64) (*Lease, error) {  
+   if id == NoLease {  
+      return nil, ErrLeaseNotFound  
+   }  
+  
+   if ttl > MaxLeaseTTL {  
+      return nil, ErrLeaseTTLTooLarge  
+   }  
+  
+   // TODO: when lessor is under high load, it should give out lease  
+   // with longer TTL to reduce renew load.  
+   l := &Lease{  
+      ID:      id,  
+      ttl:     ttl,  
+      itemSet: make(map[LeaseItem]struct{}),  
+      revokec: make(chan struct{}),  
+   }  
+  
+   if l.ttl < le.minLeaseTTL {  
+      l.ttl = le.minLeaseTTL  
+   }  
+  
+   le.mu.Lock()  
+   defer le.mu.Unlock()  
+  
+   if _, ok := le.leaseMap[id]; ok {  
+      return nil, ErrLeaseExists  
+   }  
+  
+   if le.isPrimary() {  
+      l.refresh(0)  
+   } else {  
+      l.forever()  
+   }  
+  
+   le.leaseMap[id] = l  
+   l.persistTo(le.b)  
+  
+   leaseTotalTTLs.Observe(float64(l.ttl))  
+   leaseGranted.Inc()  
+  
+   if le.isPrimary() {  
+      item := &LeaseWithTime{id: l.ID, time: l.expiry}  
+      le.leaseExpiredNotifier.RegisterOrUpdate(item)  
+      le.scheduleCheckpointIfNeeded(l)  
+   }  
+  
+   return l, nil  
+}
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTQzNzg1MzgsMTQ1MDI1NDAyLC0xNT
-kyODQ0MjExLDkzNjM1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5
-LDIwNzA3NTg5MzYsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbMTkzOTM2MTU0MCwxNDUwMjU0MDIsLTE1OT
+I4NDQyMTEsOTM2MzUwOTAyLDEyNDA3MDY5MjEsNjI4ODg2NTks
+MjA3MDc1ODkzNiwtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
 -->
