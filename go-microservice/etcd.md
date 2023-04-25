@@ -402,8 +402,9 @@ func (le *lessor) findExpiredLeases(limit int) []*Lease {
    return leases  
 }
 
-//两个返回值，第一个是过期的lease，第二个表示
+//两个返回值，第一个是过期的lease，第二个表示后续是否有可能还有过期的lease
 func (le *lessor) expireExists() (l *Lease, next bool) {  
+   //
    if le.leaseExpiredNotifier.Len() == 0 {  
       return nil, false  
    }  
@@ -428,7 +429,7 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTYxMTc4NDQzLC0xMTAwMDIyMTExLC0xNj
+eyJoaXN0b3J5IjpbODM0OTgyMTc1LC0xMTAwMDIyMTExLC0xNj
 MyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5
 MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMi
 wtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4
