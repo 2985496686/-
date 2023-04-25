@@ -348,10 +348,35 @@ KeepAlive作为一个高频请求，在etcd v2中使用http1.0 ，这种设计�
 **优化高效淘汰过期**
 
 etcd3.5在创建lease时，会将租约按照过期时间创建一个最小堆，在前面有说过，lessor会有一个协程来负责定时淘汰过期的租约。
+
+```go
+func (le *lessor) revokeExpiredLeases() {  
+   var ls []*Lease  
+  
+   // rate limit  
+   revokeLimit := leaseRevokeRate / 2  
+  
+   le.mu.RLock()  
+   if le.isPrimary() {  
+      ls = le.findExpiredLeases(revokeLimit)  
+   }  
+   le.mu.RUnlock()  
+  
+   if len(ls) != 0 {  
+      select {  
+      case <-le.stopC:  
+         return  
+      case le.expiredC <- ls:  
+      default:  
+         // the receiver of expiredC is probably busy handling  
+         // other stuff         // let's try this next time after 500ms      }  
+   }  
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxMzU5MTg2LC0xOTQ0NTExMDkxLDE4OD
-gwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYx
-NTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMT
-I0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OTM2LC0xMzk1MDY2
-NjEzLC0yNjE4NjA2M119
+eyJoaXN0b3J5IjpbLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMT
+g4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5Mzkz
+NjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkzNjM1MDkwMi
+wxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5MzYsLTEzOTUw
+NjY2MTMsLTI2MTg2MDYzXX0=
 -->
