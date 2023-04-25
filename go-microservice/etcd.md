@@ -443,14 +443,20 @@ etcd server 收到删除lease任务(通过expiredC)，同样是先write log，�
 
 **checkpoint 机制**
 
-上述的过程检查 Lease 是否过期、维护最小堆、针对过期的 Lease 发起 revoke 操作都是由leader进行的，并且小根堆的维护是放在内存上的。那么当 Leader 因重启、crash、磁盘 IO 等异常不可用时，Follower 节点就会发起Leader 选举，新 Leader 要完成以上职责，必须按照持久化的lease ttl时间重建 Lease 过期最小堆等管理数据结构，这个过程就会将所有lease的过期时间刷新了一遍
+上述的过程检查 Lease 是否过期、维护最小堆、针对过期的 Lease 发起 revoke 操作都是由leader进行的，并且小根堆的维护是放在内存上的。那么当 Leader 因重启、crash、磁盘 IO 等异常不可用时，Follower 节点就会发起Leader 选举，新 Leader 要完成以上职责，必须按照持久化的lease ttl时间重建 Lease 过期最小堆等管理数据结构，这个过程就会将所有lease的过期时间刷新了一遍，若较频繁出现 Leader 切换，切换时间小于 Lease 的 TTL，这会导致 Lease 永远无法
+删除，大量 key 堆积，db 大小超过配额等异常。
+
+
+
+为了解决这个问题，etcd 引入了检查点机制，也就是下面架构图中黑色虚线框所示的
+CheckPointScheduledLeases 的任务。
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwMDgwMDIyNCwxMDgzNDA3NjM3LDE0OT
-AxMjY0NDUsLTExMDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1
-MTEwOTEsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNj
-E0LDE5MzkzNjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkz
-NjM1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5Mz
-YsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbNDk1MTM1NzE1LDEwODM0MDc2MzcsMTQ5MD
+EyNjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUx
+MTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MT
+QsMTkzOTM2MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2
+MzUwOTAyLDEyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNi
+wtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
 -->
