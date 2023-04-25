@@ -249,9 +249,11 @@ LeaseID 等信息。因此当 etcd 重启时，可根据此信息，重建关联
 KeepAlive作为一个高频请求，在etcd v2中使用http1.0 ，这种设计，因不支持连接多路复用、相同 TTL 无法复用导致性能较差，无法支撑较大规模的 Lease 场景。在etcd3.0中，将http1.0改为了grpc，grpc可以使用多路复用减少连接数量，使用长连接减少连接创建和销毁的次数，更加适合于etcd的业务。
 
 
-**月**
+**优化高效淘汰过期**
+
+etcd3.5在创建lease时，会将租约按照过期时间创建一个最小堆，
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDU5MjMxMjYsLTE5NDQ1MTEwOTEsMT
+eyJoaXN0b3J5IjpbLTEyMzg1MzExMDgsLTE5NDQ1MTEwOTEsMT
 g4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5Mzkz
 NjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkzNjM1MDkwMi
 wxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5MzYsLTEzOTUw
