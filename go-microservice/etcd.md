@@ -242,12 +242,13 @@ LeaseID 等信息。因此当 etcd 重启时，可根据此信息，重建关联
 
 
 **优化 Lease 续期性能**
+在正常情况下，你的节点存活时，需要定期发送 KeepAlive 请求给 etcd 续期健康状态的 Lease，否则你的 Lease 和关联的数据就会被删除。
 
-在v2版本中，lease机制进行了优化，
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0ODQyNTE1NTUsMTg4ODAzMjE1OCwtMj
-g3MzkxMTkwLC0xNjg4ODAzNjE0LDE5MzkzNjE1NDAsMTQ1MDI1
-NDAyLC0xNTkyODQ0MjExLDkzNjM1MDkwMiwxMjQwNzA2OTIxLD
-YyODg4NjU5LDIwNzA3NTg5MzYsLTEzOTUwNjY2MTMsLTI2MTg2
-MDYzXX0=
+eyJoaXN0b3J5IjpbMTk1ODY4MzQ3MCwxODg4MDMyMTU4LC0yOD
+czOTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2MTU0MCwxNDUwMjU0
+MDIsLTE1OTI4NDQyMTEsOTM2MzUwOTAyLDEyNDA3MDY5MjEsNj
+I4ODg2NTksMjA3MDc1ODkzNiwtMTM5NTA2NjYxMywtMjYxODYw
+NjNdfQ==
 -->
