@@ -347,11 +347,11 @@ KeepAlive作为一个高频请求，在etcd v2中使用http1.0 ，这种设计�
 
 **优化高效淘汰过期**
 
-etcd3.5在创建lease时，会将租约按照过期时间创建一个最小堆，
+etcd3.5在创建lease时，会将租约按照过期时间创建一个最小堆，在前面有说过，lessor会有一个协程来负责定时淘汰过期的租约。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4MjQ3NzUwNCwtMTk0NDUxMTA5MSwxOD
-g4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2
-MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2MzUwOTAyLD
-EyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNiwtMTM5NTA2
-NjYxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbMTAxMzU5MTg2LC0xOTQ0NTExMDkxLDE4OD
+gwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYx
+NTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMT
+I0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OTM2LC0xMzk1MDY2
+NjEzLC0yNjE4NjA2M119
 -->
