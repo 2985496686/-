@@ -358,6 +358,7 @@ func (le *lessor) revokeExpiredLeases() {
   
    le.mu.RLock()  
    if le.isPrimary() {  
+	  //找到所有过期的lease
       ls = le.findExpiredLeases(revokeLimit)  
    }  
    le.mu.RUnlock()  
@@ -373,10 +374,38 @@ func (le *lessor) revokeExpiredLeases() {
    }  
 }
 ```
+
+下面分析``findExpiredLeases``
+
+
+```go
+func (le *lessor) findExpiredLeases(limit int) []*Lease {  
+   leases := make([]*Lease, 0, 16)  
+   for {  
+      l, next := le.expireExists()  
+      if l == nil && !next {  
+         break  
+      }  
+      if next {  
+         continue  
+      }  
+  
+      if l.expired() {  
+         leases = append(leases, l)  
+  
+         // reach expired limit  
+         if len(leases) == limit {  
+            break  
+         }  
+      }  
+   }  
+   return leases  
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMT
-g4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5Mzkz
-NjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkzNjM1MDkwMi
-wxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5MzYsLTEzOTUw
-NjY2MTMsLTI2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbMTYzODM5NjQyMSwtMTYzMjAzMTUxMywtMT
+k0NDUxMTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4
+MDM2MTQsMTkzOTM2MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMT
+EsOTM2MzUwOTAyLDEyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1
+ODkzNiwtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
 -->
