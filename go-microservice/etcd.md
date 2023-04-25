@@ -184,8 +184,19 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 leader会在收到leader节点同步过来的日志时将日志落盘到wal文件中，落盘成功后，告知leader日志已经在集群达到一致。
 
 理由：采用第一种方式，先将日志追加到未持久化数据缓冲区，然后告知leader日志已经一致，并在此时通知应用层将日志持久化落盘wal文件。在日志持久化成功之前follower宕机，但是，leader已经收到了他的一致性响应，并且此时恰好收到了过半节点的一致性响应(实际情况并没有过半的节点同步该日志)，leader将该日志提交了，此时leader宕机，原先的follower恢复，未同步刚才那条日志的节点可能会成为新leader，并且会覆盖掉其它节点的日志，这就会导致用户提交成功的数据，在集群中不存在。
+
+
+
+# 租约lease
+
+**什么是租约？**
+client 和 etcd server 之间存在一个约定，内容是 etcd server 保证在约定的有效
+期内（TTL），不会删除你关联到此 Lease 上的 key-value。
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTM2MzUwOTAyLDEyNDA3MDY5MjEsNjI4OD
-g2NTksMjA3MDc1ODkzNiwtMTM5NTA2NjYxMywtMjYxODYwNjNd
-fQ==
+eyJoaXN0b3J5IjpbLTE1OTI4NDQyMTEsOTM2MzUwOTAyLDEyND
+A3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNiwtMTM5NTA2NjYx
+MywtMjYxODYwNjNdfQ==
 -->
