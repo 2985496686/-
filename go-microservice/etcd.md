@@ -412,7 +412,7 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
    item := le.leaseExpiredNotifier.Peek()  
    l = le.leaseMap[item.id]  
    if l == nil {  
-      // lease 已经被loesserrevoke
+      // lease 已经被lessor revoke，但是此时还存在与
       le.leaseExpiredNotifier.Unregister()
       return nil, true  
    }  
@@ -430,10 +430,10 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1NDU4MjE3LC0xMTAwMDIyMTExLC0xNj
-MyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5
-MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMi
-wtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4
-ODY1OSwyMDcwNzU4OTM2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M1
-19
+eyJoaXN0b3J5IjpbMTQ5MDEyNjQ0NSwtMTEwMDAyMjExMSwtMT
+YzMjAzMTUxMywtMTk0NDUxMTA5MSwxODg4MDMyMTU4LC0yODcz
+OTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2MTU0MCwxNDUwMjU0MD
+IsLTE1OTI4NDQyMTEsOTM2MzUwOTAyLDEyNDA3MDY5MjEsNjI4
+ODg2NTksMjA3MDc1ODkzNiwtMTM5NTA2NjYxMywtMjYxODYwNj
+NdfQ==
 -->
