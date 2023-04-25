@@ -215,11 +215,27 @@ LeaseID 给 client。
 
 
 **将key绑定Lease**
-
+```shell
+$ etcdctl put node healthy --lease 326975935f48f818
+OK
+$ etcdctl get node -w=json | python -m json.tool
+{
+    "kvs":[
+        {
+            "create_revision":24，
+            "key":"bm9kZQ=="，
+            "Lease":3632563850270275608，
+            "mod_revision":24，
+            "value":"aGVhbHRoeQ=="，
+            "version":1
+        }
+    ]
+}
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODg4MDM2MTQsMTkzOTM2MTU0MCwxND
-UwMjU0MDIsLTE1OTI4NDQyMTEsOTM2MzUwOTAyLDEyNDA3MDY5
-MjEsNjI4ODg2NTksMjA3MDc1ODkzNiwtMTM5NTA2NjYxMywtMj
-YxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbNTE2MTQ0NTMsLTE2ODg4MDM2MTQsMTkzOT
+M2MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2MzUwOTAy
+LDEyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNiwtMTM5NT
+A2NjYxMywtMjYxODYwNjNdfQ==
 -->
