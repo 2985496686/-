@@ -437,7 +437,8 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
 查询过期lease时间复杂度：``O(1)``
 删除，插入，更新复杂度：``O(logN)``
 
-过期的lease会被
+
+etcd server 收到删除lease任务(通过expiredC)，同样是先write log，
 
 
 **checkpoint 机制**
@@ -446,10 +447,10 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2NTUxMDI0NCwxMDgzNDA3NjM3LDE0OT
-AxMjY0NDUsLTExMDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1
-MTEwOTEsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNj
-E0LDE5MzkzNjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkz
-NjM1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5Mz
-YsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbLTIxMjY2NjE4ODMsMTA4MzQwNzYzNywxND
+kwMTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0
+NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMz
+YxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5
+MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OT
+M2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
 -->
