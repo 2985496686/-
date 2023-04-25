@@ -207,10 +207,14 @@ etcdctl lease timetolive 326975935f48f814
 lease 326975935f48f814 granted with TTL(600s)， remaining(590s)
 ```
 
-Lease server 在收到client创建lease请求后(当前节点如果不是leader，会自动转发给leader)，首先会通过raft模块write log，并同步到其他follower节点，leader收到过半节点的同步响应后，将日志应用到自己的状态及其
+Lease server 在收到client创建lease请求后(当前节点如果不是leader，会自动转发给leader)，首先会通过raft模块write log，并同步到其他follower节点，leader收到过半节点的同步响应后，将日志应用到自己的状态机上。
+
+首先 Lessor 的 Grant 接口会把 Lease 保存到内存的 ItemMap 数据结构中，然后它需要
+持久化 Lease，将 Lease 数据保存到 boltdb 的 Lease bucket 中，返回一个唯一的
+LeaseID 给 client。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM5MTgzODA2MiwxNDUwMjU0MDIsLTE1OT
-I4NDQyMTEsOTM2MzUwOTAyLDEyNDA3MDY5MjEsNjI4ODg2NTks
-MjA3MDc1ODkzNiwtMTM5NTA2NjYxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbLTIwMTQwNDkyODYsMTQ1MDI1NDAyLC0xNT
+kyODQ0MjExLDkzNjM1MDkwMiwxMjQwNzA2OTIxLDYyODg4NjU5
+LDIwNzA3NTg5MzYsLTEzOTUwNjY2MTMsLTI2MTg2MDYzXX0=
 -->
