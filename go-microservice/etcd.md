@@ -423,17 +423,18 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
       return nil, false  
    }  
   
-   // 
+   // 调整过期lease的time
    item.time = now.Add(le.expiredLeaseRetryInterval)  
+   //进入RegisterOrUpdate方法后会调用Fix方法，重新调整堆
    le.leaseExpiredNotifier.RegisterOrUpdate(item)  
    return l, false  
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDMzMTE0NzAsMTQ5MDEyNjQ0NSwtMT
-EwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUxMTA5MSwxODg4
-MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2MT
-U0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2MzUwOTAyLDEy
-NDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNiwtMTM5NTA2Nj
-YxMywtMjYxODYwNjNdfQ==
+eyJoaXN0b3J5IjpbMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0xMT
+AwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgw
+MzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYxNT
+QwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMTI0
+MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OTM2LC0xMzk1MDY2Nj
+EzLC0yNjE4NjA2M119
 -->
