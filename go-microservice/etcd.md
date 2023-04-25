@@ -193,7 +193,9 @@ leader会在收到leader节点同步过来的日志时将日志落盘到wal文�
 client 和 etcd server 之间存在一个约定，内容是 etcd server 保证在约定的有效
 期内（TTL），不会删除你关联到此 Lease 上的 key-value。
 
+**leas**
 
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/RgNqNFj8peon0BYi.png)
 
 
 **Lease创建** 
@@ -212,6 +214,8 @@ Lease server 在收到client创建lease请求后(当前节点如果不是leader�
 首先 Lessor 的 Grant 接口会把 Lease 保存到内存的 ItemMap 数据结构中，然后它需要
 持久化 Lease，将 Lease 数据保存到 boltdb 的 Lease bucket 中，返回一个唯一的
 LeaseID 给 client。
+
+
 
 
 **将key绑定Lease**
@@ -253,9 +257,9 @@ KeepAlive作为一个高频请求，在etcd v2中使用http1.0 ，这种设计�
 
 etcd3.5在创建lease时，会将租约按照过期时间创建一个最小堆，
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzg1MzExMDgsLTE5NDQ1MTEwOTEsMT
-g4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5Mzkz
-NjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkzNjM1MDkwMi
-wxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5MzYsLTEzOTUw
-NjY2MTMsLTI2MTg2MDYzXX0=
+eyJoaXN0b3J5IjpbMjk2NzAyMTMyLC0xOTQ0NTExMDkxLDE4OD
+gwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYx
+NTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMT
+I0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OTM2LC0xMzk1MDY2
+NjEzLC0yNjE4NjA2M119
 -->
