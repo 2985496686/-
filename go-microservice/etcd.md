@@ -379,7 +379,6 @@ func (le *lessor) revokeExpiredLeases() {
 
 
 ```go
-//
 func (le *lessor) findExpiredLeases(limit int) []*Lease {  
    leases := make([]*Lease, 0, 16)  
    for {  
@@ -402,12 +401,37 @@ func (le *lessor) findExpiredLeases(limit int) []*Lease {
    }  
    return leases  
 }
+
+//俩
+func (le *lessor) expireExists() (l *Lease, next bool) {  
+   if le.leaseExpiredNotifier.Len() == 0 {  
+      return nil, false  
+   }  
+  
+   item := le.leaseExpiredNotifier.Peek()  
+   l = le.leaseMap[item.id]  
+   if l == nil {  
+      // lease has expired or been revoked  
+      // no need to revoke (nothing is expiry)      le.leaseExpiredNotifier.Unregister() // O(log N)  
+      return nil, true  
+   }  
+   now := time.Now()  
+   if now.Before(item.time) /* item.time: expiration time */ {  
+      // Candidate expirations are caught up, reinsert this item  
+      // and no need to revoke (nothing is expiry)      return nil, false  
+   }  
+  
+   // recheck if revoke is complete after retry interval  
+   item.time = now.Add(le.expiredLeaseRetryInterval)  
+   le.leaseExpiredNotifier.RegisterOrUpdate(item)  
+   return l, false  
+}
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxNDExNzI3LC0xMTAwMDIyMTExLC0xNj
-MyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5
-MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMi
-wtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4
-ODY1OSwyMDcwNzU4OTM2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M1
-19
+eyJoaXN0b3J5IjpbMTY5MjAyMzUzMSwtMTEwMDAyMjExMSwtMT
+YzMjAzMTUxMywtMTk0NDUxMTA5MSwxODg4MDMyMTU4LC0yODcz
+OTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2MTU0MCwxNDUwMjU0MD
+IsLTE1OTI4NDQyMTEsOTM2MzUwOTAyLDEyNDA3MDY5MjEsNjI4
+ODg2NTksMjA3MDc1ODkzNiwtMTM5NTA2NjYxMywtMjYxODYwNj
+NdfQ==
 -->
