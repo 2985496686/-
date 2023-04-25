@@ -232,11 +232,21 @@ $ etcdctl get node -w=json | python -m json.tool
     ]
 }
 ```
-当你通过put 等命令新增一个指定了"--lease"的 key 时，MVCC 模块它会通过 Lessor 模块的
+- 当你通过put 等命令新增一个指定了"--lease"的 key 时，MVCC 模块它会通过 Lessor 模块的
 Attach 方法，将 key 关联到 Lease 的 key 内存集合 ItemSet 中。
+
+- etcd 的 MVCC 模块在持久化存储 key-value 的时候，保存到 boltdb 的 value 是
+个结构体（mvccpb.KeyValue）， 它不仅包含你的 key-value 数据，还包含了关联的
+LeaseID 等信息。因此当 etcd 重启时，可根据此信息，重建关联各个 Lease 的 key 集合
+列表。
+
+
+**优化 Lease 续期性能**
+
+在
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOT
-M5MzYxNTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5MzYzNTA5
-MDIsMTI0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OTM2LC0xMz
-k1MDY2NjEzLC0yNjE4NjA2M119
+eyJoaXN0b3J5IjpbLTIwOTQ0Njg4MjUsLTI4NzM5MTE5MCwtMT
+Y4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMiwtMTU5Mjg0
+NDIxMSw5MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4ODY1OSwyMD
+cwNzU4OTM2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
 -->
