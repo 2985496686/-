@@ -246,11 +246,11 @@ LeaseID 等信息。因此当 etcd 重启时，可根据此信息，重建关联
 
 在正常情况下，你的节点存活时，需要定期发送 KeepAlive 请求给 etcd 续期健康状态的 Lease，否则你的 Lease 和关联的数据就会被删除。
 
-KeepAlive作为一个高频请求，在etcd v2中使用http1.0 ，导致
+KeepAlive作为一个高频请求，在etcd v2中使用http1.0 ，这种设计，因不支持连接多路复用、相同 TTL 无法复用导致性能较差，无法支撑较大规模的 Lease 场景。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjIxOTM3Njg1LDE4ODgwMzIxNTgsLTI4Nz
-M5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQw
-MiwtMTU5Mjg0NDIxMSw5MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mj
-g4ODY1OSwyMDcwNzU4OTM2LC0xMzk1MDY2NjEzLC0yNjE4NjA2
-M119
+eyJoaXN0b3J5IjpbLTE5NDQ1MTEwOTEsMTg4ODAzMjE1OCwtMj
+g3MzkxMTkwLC0xNjg4ODAzNjE0LDE5MzkzNjE1NDAsMTQ1MDI1
+NDAyLC0xNTkyODQ0MjExLDkzNjM1MDkwMiwxMjQwNzA2OTIxLD
+YyODg4NjU5LDIwNzA3NTg5MzYsLTEzOTUwNjY2MTMsLTI2MTg2
+MDYzXX0=
 -->
