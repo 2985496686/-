@@ -1,4 +1,4 @@
-# etcd的出现
+http://localhost:2379# etcd的出现
 
 **CoreOS公司**在构建自己产品时遇到一个痛点，在管理多节点项目时，节点变更会导致用户服务的宕机。因此他们需要一个协调服务来存储服务的配置信息，提供分布式锁。
 
@@ -463,10 +463,11 @@ Lease 剩余 TTL 一致性。
 
 chekpoint机制虽然解决了问题，但是很明显了带来了性能的下降(每一次同步都设计磁盘IO)，所以该功能在etcd3.6以下都是默认关闭的。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDg2Mzk5MzksMTA4MzQwNzYzNywxND
-kwMTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0
-NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMz
-YxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMiwtMTU5Mjg0NDIxMSw5
-MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4ODY1OSwyMDcwNzU4OT
-M2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
+eyJoaXN0b3J5IjpbLTE5MDczNDE5NTUsLTE3MDg2Mzk5MzksMT
+A4MzQwNzYzNywxNDkwMTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMy
+MDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MT
+E5MCwtMTY4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMiwt
+MTU5Mjg0NDIxMSw5MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4OD
+Y1OSwyMDcwNzU4OTM2LC0xMzk1MDY2NjEzLC0yNjE4NjA2M119
+
 -->
