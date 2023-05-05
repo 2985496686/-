@@ -104,14 +104,14 @@ ipConfig 需要实现三个目标：
 
 
 
-## 2.2 ipConfig 实现服务发现与监听
+## 2.2 ipConfig 服务发现与监听
 
-etcd服务发现
+etcd的服务发现可能会被多个服务需要，所以这里将第三
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYzODYxMzkxMyw3NzM1NTIyNjUsLTIxMz
+eyJoaXN0b3J5IjpbLTk5ODU4Nzk2Niw3NzM1NTIyNjUsLTIxMz
 UwMTg4NjRdfQ==
 -->
