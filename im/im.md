@@ -100,9 +100,9 @@ ipConfig 需要实现三个目标：
 
 这里自下向上的分析Config服务：
 1. data 模块通过访问discovery 服务，进行服务服务发现与监听，并将服务的变更封装成事件通知domain模块。
-2. domain主要负责服务的调度与负载均衡。
+2. domain主要负责服务的调度(负载均衡)，收到来自data的事件后变革报
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjIzNzUyNjQ2LDc3MzU1MjI2NSwtMjEzNT
+eyJoaXN0b3J5IjpbNjg5NTc5MjI1LDc3MzU1MjI2NSwtMjEzNT
 AxODg2NF19
 -->
