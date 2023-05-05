@@ -87,7 +87,9 @@ connectNums
 
 
 ipConfig 需要实现三个目标：
-1. 
+1. 服务发现，及时地发现长连接网关服务的变更。
+2. 负载均衡，根据长连接网关的负载，为ip列表排序。
+3. 对外
 
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/SrgIHg9pcswv0WHf.png)
@@ -95,5 +97,5 @@ ipConfig 需要实现三个目标：
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyOTU1OTUxMiwtMjEzNTAxODg2NF19
+eyJoaXN0b3J5IjpbLTE5MzIxMDQxMCwtMjEzNTAxODg2NF19
 -->
