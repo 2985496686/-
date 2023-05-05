@@ -83,19 +83,24 @@ tcp只能保证运输层消息的可靠性，当消息成功到达用户进程�
 connectNums
 
 
+
+
 ## IpConfig 实现
 
 
 ipConfig 需要实现三个目标：
 1. 服务发现，及时地发现长连接网关服务的变更。
 2. 负载均衡，根据长连接网关的负载，为ip列表排序。
-3. 对外
+3. 对外暴露获取ip列表的http接口。
 
+
+下面是ipConfig 设计图：
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/SrgIHg9pcswv0WHf.png)
 
-
+这里自下向上的分析Config服务：
+1. conf
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzIxMDQxMCwtMjEzNTAxODg2NF19
+eyJoaXN0b3J5IjpbNTE1MzQ4NDM3LC0yMTM1MDE4ODY0XX0=
 -->
