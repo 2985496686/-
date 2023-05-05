@@ -85,8 +85,7 @@ connectNums
 
 
 
-## IpConfig 实现
-
+# 2. IpConfig 实现
 
 ipConfig 需要实现三个目标：
 1. 服务发现，及时地发现长连接网关服务的变更。
@@ -96,12 +95,13 @@ ipConfig 需要实现三个目标：
 
 下面是ipConfig 设计图：
 
-![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/SrgIHg9pcswv0WHf.png)
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/S2l4mWHS8VtLMUys.png)
 
 这里自下向上的分析Config服务：
 1. conf模块通过viper框架读取配置文件。
 2. 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzczNTUyMjY1LC0yMTM1MDE4ODY0XX0=
+eyJoaXN0b3J5IjpbMzUyMzMwNTUzLDc3MzU1MjI2NSwtMjEzNT
+AxODg2NF19
 -->
