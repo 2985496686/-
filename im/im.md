@@ -108,12 +108,12 @@ ipConfig 需要实现三个目标：
 
 etcd的服务发现可能会被多个服务需要，所以将它抽离成discovery服务，这里会一并讲解。
 
-
+ipConfig的服务发现借助了 ``etcd 的watch机制`` ，
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDU5NTA2NDkzLDc3MzU1MjI2NSwtMjEzNT
-AxODg2NF19
+eyJoaXN0b3J5IjpbLTIxNDU2NzgyMjgsNzczNTUyMjY1LC0yMT
+M1MDE4ODY0XX0=
 -->
