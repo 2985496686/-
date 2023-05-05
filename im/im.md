@@ -81,6 +81,19 @@ tcp只能保证运输层消息的可靠性，当消息成功到达用户进程�
 
 
 connectNums
+
+
+## IpConfig 实现
+
+
+ipConfig 需要实现三个目标：
+1. 
+
+
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/SrgIHg9pcswv0WHf.png)
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzUwMTg4NjRdfQ==
+eyJoaXN0b3J5IjpbMjEyOTU1OTUxMiwtMjEzNTAxODg2NF19
 -->
