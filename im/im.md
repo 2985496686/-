@@ -106,12 +106,14 @@ ipConfig 需要实现三个目标：
 
 ## 2.2 ipConfig 服务发现与监听
 
-etcd的服务发现可能会被多个服务需要，所以这里将第三
+etcd的服务发现可能会被多个服务需要，所以将它抽离成discovery服务，这里会一并讲解。
+
+
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5ODU4Nzk2Niw3NzM1NTIyNjUsLTIxMz
-UwMTg4NjRdfQ==
+eyJoaXN0b3J5IjpbNDU5NTA2NDkzLDc3MzU1MjI2NSwtMjEzNT
+AxODg2NF19
 -->
