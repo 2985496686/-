@@ -108,12 +108,12 @@ ipConfig 需要实现三个目标：
 
 etcd的服务发现可能会被多个服务需要，所以将它抽离成discovery服务，这里会一并讲解。
 
-ipConfig的服务发现借助了 ``etcd 的watch机制`` ，以满足服务发现的极时性需求。当ipConfig服务启动后会开启一个服务发现的协程，该协程首先会调用etcd client的get方法，发现已有的服务。然后将发现的服务数据封装成添加服务事件，通知serviceManage。初始化完毕后，协程通过watch机制监听etcd
+ipConfig的服务发现借助了 ``etcd 的watch机制`` ，以满足服务发现的极时性需求。当ipConfig服务启动后会开启一个服务发现的协程，该协程首先会初始化服务，调用etcd client的get方法，发现已有的服务。然后将发现的服务数据封装成添加服务事件，通知serviceManage。初始化完毕后，协程通过watch机制监听etcd服务的变更，也将
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1MTQ5MDc5OCw3NzM1NTIyNjUsLTIxMz
+eyJoaXN0b3J5IjpbMTY1MDA2NzE1OSw3NzM1NTIyNjUsLTIxMz
 UwMTg4NjRdfQ==
 -->
