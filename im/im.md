@@ -99,11 +99,11 @@ ipConfig 需要实现三个目标：
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/S2l4mWHS8VtLMUys.png)
 
 这里自下向上的分析Config服务：
-1. data 模块通过访问discovery 服务，进行服务服务发现与监听，并将服务的变更封装成事件通知domain模块。
+1. data 模块通过访问discovery 服务，进行服务服务发现与监听，并将服务的变更封装成事件通知serviceManage模块。
 2. domain收到来自data的事件后变更自己的服务，并提供服务调度的方法(负载均衡)。
 3. gin web 对外暴露获取ip列表的接口，client访问时，调用domain模块，获取负载均衡排序后的ip列表。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTAxMDA5MjMsNzczNTUyMjY1LC0yMT
+eyJoaXN0b3J5IjpbLTExMDQxNjY0NzEsNzczNTUyMjY1LC0yMT
 M1MDE4ODY0XX0=
 -->
