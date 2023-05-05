@@ -99,8 +99,9 @@ ipConfig 需要实现三个目标：
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/SrgIHg9pcswv0WHf.png)
 
 这里自下向上的分析Config服务：
-1. conf
+1. conf模块通过viper框架读取配置文件。
+2. 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTE1MzQ4NDM3LC0yMTM1MDE4ODY0XX0=
+eyJoaXN0b3J5IjpbNzczNTUyMjY1LC0yMTM1MDE4ODY0XX0=
 -->
