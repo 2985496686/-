@@ -99,9 +99,10 @@ ipConfig 需要实现三个目标：
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/S2l4mWHS8VtLMUys.png)
 
 这里自下向上的分析Config服务：
-1. data 模块通过访问discovery 服务，进行服务扶持安
+1. data 模块通过访问discovery 服务，进行服务服务发现。
+2. domain 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0MzgwMTA1OSw3NzM1NTIyNjUsLTIxMz
+eyJoaXN0b3J5IjpbMTUyNTYyNTc2OCw3NzM1NTIyNjUsLTIxMz
 UwMTg4NjRdfQ==
 -->
