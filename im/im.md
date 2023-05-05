@@ -102,7 +102,16 @@ ipConfig 需要实现三个目标：
 2. serviceManage收到来自data的事件后变更自己的服务，并提供服务调度的方法(负载均衡)。
 3. gin web 对外暴露获取ip列表的接口，client访问时，调用serviceManage模块，获取负载均衡排序后的ip列表。
 
+
+
+## 2.2 ipConfig 实现服务发现与监听
+
+etcd服务发现
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyMTMxNTQyMSw3NzM1NTIyNjUsLTIxMz
+eyJoaXN0b3J5IjpbLTYzODYxMzkxMyw3NzM1NTIyNjUsLTIxMz
 UwMTg4NjRdfQ==
 -->
