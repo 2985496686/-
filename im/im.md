@@ -113,14 +113,14 @@ ipConfig的服务发现借助了 ``etcd 的watch机制`` ，以满足服务发�
 
 
 
-## 2.3 ipConfig 负载均衡长
+## 2.3 ipConfig 对长连接网关服务的负载均衡
 
-负载均衡常用的方式有轮询，随机，一致性哈希等，但这些都不适用于对于长连接网关服务的负载均衡。
+负载均衡常用的方式有轮询，随机，一致性哈希等，但这些都不适用于对于长连接网关服务的负载均衡，主要有以下我
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3NTkyMTc2Myw3NzM1NTIyNjUsLTIxMz
-UwMTg4NjRdfQ==
+eyJoaXN0b3J5IjpbNjg5NjQwNTQzLDc3MzU1MjI2NSwtMjEzNT
+AxODg2NF19
 -->
