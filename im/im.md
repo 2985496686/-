@@ -93,15 +93,15 @@ ipConfig 需要实现三个目标：
 3. 对外暴露获取ip列表的http接口。
 
 
-下面是ipConfig 设计图：
+
+## 2.1 IpConfig 核心流程
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/S2l4mWHS8VtLMUys.png)
 
 这里自下向上的分析Config服务：
-1. conf模块通过viper框架读取配置文件。
-2. 
+1. data 模块通过访问discovery 服务，进行服务扶持安
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzUyMzMwNTUzLDc3MzU1MjI2NSwtMjEzNT
-AxODg2NF19
+eyJoaXN0b3J5IjpbMTE0MzgwMTA1OSw3NzM1NTIyNjUsLTIxMz
+UwMTg4NjRdfQ==
 -->
