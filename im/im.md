@@ -128,9 +128,12 @@ ipConfig的服务发现借助了 ``etcd 的watch机制`` ，以满足服务发�
 
 ipConfig在派发任务时会统计长连接网关的负载情况，这里实现为了简单，只统计连接数量和单位时间内传输的数据量，然后根据这两个值得到两个分值：静态分和动态分，以这两个分值为依据进行负载均衡。
 
-这样实现还有一个问题，忽略了上面的第三点。为了得到一个稳定的负载数据，我们可以维护一个窗口，假如这里窗口大小为4，那么窗口就保存的是最近四次状态，并且会每秒更新一次。同时也要考虑，越靠近当前时间的负载数据可信度越高
+这样实现还有一个问题，忽略了上面的第三点。为了得到一个稳定的负载数据，我们可以维护一个窗口，假如这里窗口大小为4，那么窗口就保存的是最近四次状态，并且会每秒更新一次。同时也要考虑，越靠近当前时间的负载数据可信度越高，在计算负载分值时可根据可信度加权求和。
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTgyMzY5MjYsLTE3NzE5NjQ2NDMsLT
-c0MDMxMDc2MSwyNjc5OTUzMTYsMjEzNjY0MTEwLDc3MzU1MjI2
-NSwtMjEzNTAxODg2NF19
+eyJoaXN0b3J5IjpbLTk1MDgxMTc1MywtMTc3MTk2NDY0MywtNz
+QwMzEwNzYxLDI2Nzk5NTMxNiwyMTM2NjQxMTAsNzczNTUyMjY1
+LC0yMTM1MDE4ODY0XX0=
 -->
