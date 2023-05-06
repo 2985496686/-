@@ -121,12 +121,15 @@ ipConfig的服务发现借助了 ``etcd 的watch机制`` ，以满足服务发�
 2. 对于每一条连接所消耗的资源是不确定的，有活跃连接和非活跃连接。
 3. 节点负载状况具有很强时效性，不稳定。
 
-在短链接的场景下，请求任务很多，但是任务大小相差不大，只要保证任务能够平均分配到每一台机器上，就能实现负载均衡。但在长连接的情况下，就需要考虑每台服务器的平均负载情况
+在短链接的场景下，请求任务很多，但是任务大小相差不大，只要保证任务能够平均分配到每一台机器上，就能实现负载均衡。但在长连接的情况下，就需要考虑每台服务器的平均负载情况，我们可以采用以下方案。
 
 
+**平均负载**
+
+在用户请求
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0NDc2NTIxNywyNjc5OTUzMTYsMjEzNj
-Y0MTEwLDc3MzU1MjI2NSwtMjEzNTAxODg2NF19
+eyJoaXN0b3J5IjpbOTEzNDA0MjU2LDI2Nzk5NTMxNiwyMTM2Nj
+QxMTAsNzczNTUyMjY1LC0yMTM1MDE4ODY0XX0=
 -->
