@@ -131,9 +131,12 @@ ipConfig在派发任务时会统计长连接网关的负载情况，这里实现
 这样实现还有一个问题，忽略了上面的第三点。为了得到一个稳定的负载数据，我们可以维护一个窗口，假如这里窗口大小为4，那么窗口就保存的是最近四次状态，并且会每秒更新一次。同时也要考虑，越靠近当前时间的负载数据可信度越高，在计算负载分值时可根据可信度加权求和。
 
 
+参考文章： [长连接的负载均衡](https://lushunjian.github.io/blog/2018/07/28/%E9%95%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/)
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk1MDgxMTc1MywtMTc3MTk2NDY0MywtNz
-QwMzEwNzYxLDI2Nzk5NTMxNiwyMTM2NjQxMTAsNzczNTUyMjY1
-LC0yMTM1MDE4ODY0XX0=
+eyJoaXN0b3J5IjpbMjI4NTU5MDUwLC0xNzcxOTY0NjQzLC03ND
+AzMTA3NjEsMjY3OTk1MzE2LDIxMzY2NDExMCw3NzM1NTIyNjUs
+LTIxMzUwMTg4NjRdfQ==
 -->
