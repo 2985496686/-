@@ -126,10 +126,8 @@ ipConfig的服务发现借助了 ``etcd 的watch机制`` ，以满足服务发�
 
 **平均负载**
 
-
-
-
+ipConfig在派发任务时会统计长连接网关的负载情况，这里实现为了简单，只统计连接数量和单位时间内发送的
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxMTU0NjM3OCwyNjc5OTUzMTYsMjEzNj
+eyJoaXN0b3J5IjpbMTc3MDE0MTkyNSwyNjc5OTUzMTYsMjEzNj
 Y0MTEwLDc3MzU1MjI2NSwtMjEzNTAxODg2NF19
 -->
