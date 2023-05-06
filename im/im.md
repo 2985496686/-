@@ -119,12 +119,12 @@ ipConfig的服务发现借助了 ``etcd 的watch机制`` ，以满足服务发�
 
 1. 长连接是持续的资源消耗。
 2. 对于每一条连接所消耗的资源是不确定的。
-3. 
+3. 获取节点负载状况
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjY3OTk1MzE2LDIxMzY2NDExMCw3NzM1NT
-IyNjUsLTIxMzUwMTg4NjRdfQ==
+eyJoaXN0b3J5IjpbMTU5NjMxMjY3MywyNjc5OTUzMTYsMjEzNj
+Y0MTEwLDc3MzU1MjI2NSwtMjEzNTAxODg2NF19
 -->
