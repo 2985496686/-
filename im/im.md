@@ -126,10 +126,10 @@ ipConfig的服务发现借助了 ``etcd 的watch机制`` ，以满足服务发�
 
 **平均负载**
 
-在用户请求
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTEzNDA0MjU2LDI2Nzk5NTMxNiwyMTM2Nj
-QxMTAsNzczNTUyMjY1LC0yMTM1MDE4ODY0XX0=
+eyJoaXN0b3J5IjpbMTkxMTU0NjM3OCwyNjc5OTUzMTYsMjEzNj
+Y0MTEwLDc3MzU1MjI2NSwtMjEzNTAxODg2NF19
 -->
