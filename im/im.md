@@ -117,12 +117,14 @@ ipConfig的服务发现借助了 ``etcd 的watch机制`` ，以满足服务发�
 
 负载均衡常用的方式有轮询，随机，一致性哈希等，但这些都不适用于对于长连接网关服务的负载均衡，主要有以下原因：
 
-1. 
+1. 长连接是持续的资源消耗。
+2. 对于每一条连接所消耗的资源是不确定的。
+3. 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzNjY0MTEwLDc3MzU1MjI2NSwtMjEzNT
-AxODg2NF19
+eyJoaXN0b3J5IjpbMjY3OTk1MzE2LDIxMzY2NDExMCw3NzM1NT
+IyNjUsLTIxMzUwMTg4NjRdfQ==
 -->
