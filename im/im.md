@@ -134,9 +134,11 @@ ipConfig在派发任务时会统计长连接网关的负载情况，这里实现
 参考文章： [长连接的负载均衡](https://lushunjian.github.io/blog/2018/07/28/%E9%95%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/)
 
 
+# 可靠性传输协议的实现
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI4NTU5MDUwLC0xNzcxOTY0NjQzLC03ND
-AzMTA3NjEsMjY3OTk1MzE2LDIxMzY2NDExMCw3NzM1NTIyNjUs
-LTIxMzUwMTg4NjRdfQ==
+eyJoaXN0b3J5IjpbMTcyNjk5NDA0MywyMjg1NTkwNTAsLTE3Nz
+E5NjQ2NDMsLTc0MDMxMDc2MSwyNjc5OTUzMTYsMjEzNjY0MTEw
+LDc3MzU1MjI2NSwtMjEzNTAxODg2NF19
 -->
