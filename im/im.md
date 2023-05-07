@@ -136,9 +136,9 @@ ipConfig在派发任务时会统计长连接网关的负载情况，这里实现
 
 # 可靠性传输协议的实现
 
-
+## 为什么不直接使用webSocket
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyNjk5NDA0MywyMjg1NTkwNTAsLTE3Nz
-E5NjQ2NDMsLTc0MDMxMDc2MSwyNjc5OTUzMTYsMjEzNjY0MTEw
-LDc3MzU1MjI2NSwtMjEzNTAxODg2NF19
+eyJoaXN0b3J5IjpbLTE5MTgyMDQ1NTEsMTcyNjk5NDA0MywyMj
+g1NTkwNTAsLTE3NzE5NjQ2NDMsLTc0MDMxMDc2MSwyNjc5OTUz
+MTYsMjEzNjY0MTEwLDc3MzU1MjI2NSwtMjEzNTAxODg2NF19
 -->
