@@ -118,7 +118,11 @@ ipConfig的服务发现借助了 ``etcd 的watch机制`` ，以满足服务发�
 负载均衡常用的方式有轮询，随机，一致性哈希等，但这些都不适用于对于长连接网关服务的负载均衡，主要有以下原因：
 
 1. 长连接是持续的资源消耗。
-2. 对于每一条连接所消耗的资源是不确定的，有活跃连接和非活跃连接。
+2. 对于每一条连接所消耗的资源是不确定的，有活跃连接和非活跃连接。ype Connection struct {
+	codec codec.GobCodec
+	
+}
+
 3. 节点负载状况具有很强时效性，不稳定。
 
 在短链接的场景下，请求任务很多，但是任务大小相差不大，只要保证任务能够平均分配到每一台机器上，就能实现负载均衡。但在长连接的情况下，就需要考虑每台服务器的平均负载情况，我们可以采用以下方案。
@@ -138,7 +142,8 @@ ipConfig在派发任务时会统计长连接网关的负载情况，这里实现
 
 ## 为什么不直接使用webSocket
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTgyMDQ1NTEsMTcyNjk5NDA0MywyMj
-g1NTkwNTAsLTE3NzE5NjQ2NDMsLTc0MDMxMDc2MSwyNjc5OTUz
-MTYsMjEzNjY0MTEwLDc3MzU1MjI2NSwtMjEzNTAxODg2NF19
+eyJoaXN0b3J5IjpbNDgyNDg3MDQ0LC0xOTE4MjA0NTUxLDE3Mj
+Y5OTQwNDMsMjI4NTU5MDUwLC0xNzcxOTY0NjQzLC03NDAzMTA3
+NjEsMjY3OTk1MzE2LDIxMzY2NDExMCw3NzM1NTIyNjUsLTIxMz
+UwMTg4NjRdfQ==
 -->
