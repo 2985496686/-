@@ -1,9 +1,24 @@
-<mxfile host="app.diagrams.net" modified="2023-05-08T17:05:47.781Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" version="21.2.9" etag="mnWhZgSx7b-P5PhhLmj1" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-09T01:52:43.108Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="whjsHjjlwHpqjKdnab1z" version="21.2.9" type="github">
   <diagram name="第 1 页" id="10eyCtxdeIWCuCTg8uJU">
-    <mxGraphModel>
+    <mxGraphModel dx="1647" dy="946" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="40000" pageHeight="40000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="_qzI2F9F2cDRrZGghITM-1" value="ipconfig" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="680" y="5690" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_qzI2F9F2cDRrZGghITM-2" value="getway" style="rounded=0;whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="690" y="5850" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_qzI2F9F2cDRrZGghITM-3" value="持有长连接，负责上下行消息的转发，判断连接是否存活，&lt;br&gt;提供连接，断开连接，消息发送三个接口" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Architects Daughter;" vertex="1" parent="1">
+          <mxGeometry x="830" y="5860" width="540" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_qzI2F9F2cDRrZGghITM-4" value="router" style="whiteSpace=wrap;html=1;sketch=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="690" y="6010" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="_qzI2F9F2cDRrZGghITM-5" value="负责消息路由，以及简单消息的处理" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=20;fontFamily=Architects Daughter;" vertex="1" parent="1">
+          <mxGeometry x="830" y="6020" width="340" height="40" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
