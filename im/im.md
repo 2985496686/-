@@ -170,7 +170,8 @@ docker rm 1mclient_0 1mclient_1 1mclient_2 1mclient_3 1mclient_4 1mclient_5 1mcl
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/zfjgrX3HS13tS1t2.png)
 
 
-
+**22万长连接**
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/XleFj244DxGmXjXz.png)
 
 
 ## goroutinue-pre-connection
@@ -197,10 +198,11 @@ docker rm 1mclient_0 1mclient_1 1mclient_2 1mclient_3 1mclient_4 1mclient_5 1mcl
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExODE5NTQzOSwzNjE4NjU3MDYsLTkyMj
-YwMTM1MCwtMTE1Njc3NTEwLC00MTM2NDI2ODQsLTYyMDM4ODAy
-LC0zNDUzNDQ0NTAsNDcwOTQ5Nzg3LC04NzExNDY0OTcsNDgyND
-g3MDQ0LC0xOTE4MjA0NTUxLDE3MjY5OTQwNDMsMjI4NTU5MDUw
-LC0xNzcxOTY0NjQzLC03NDAzMTA3NjEsMjY3OTk1MzE2LDIxMz
-Y2NDExMCw3NzM1NTIyNjUsLTIxMzUwMTg4NjRdfQ==
+eyJoaXN0b3J5IjpbMTcwOTA4OTY2NCwtMTE4MTk1NDM5LDM2MT
+g2NTcwNiwtOTIyNjAxMzUwLC0xMTU2Nzc1MTAsLTQxMzY0MjY4
+NCwtNjIwMzg4MDIsLTM0NTM0NDQ1MCw0NzA5NDk3ODcsLTg3MT
+E0NjQ5Nyw0ODI0ODcwNDQsLTE5MTgyMDQ1NTEsMTcyNjk5NDA0
+MywyMjg1NTkwNTAsLTE3NzE5NjQ2NDMsLTc0MDMxMDc2MSwyNj
+c5OTUzMTYsMjEzNjY0MTEwLDc3MzU1MjI2NSwtMjEzNTAxODg2
+NF19
 -->
