@@ -153,6 +153,9 @@ sysctl -w fs.nr_open=2000500
 docker rm 1mclient_0 1mclient_1 1mclient_2 1mclient_3 1mclient_4 1mclient_5 1mclient_6 1mclient_7 1mclient_8 1mclient_9 
 
 
+
+## epoll
+
 **连接前**
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/982YfEDsnRTvH9wH.png)
@@ -161,9 +164,16 @@ docker rm 1mclient_0 1mclient_1 1mclient_2 1mclient_3 1mclient_4 1mclient_5 1mcl
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/EIdbPhBIAIrQDuYI.png)
 
 
+
+[图片上传失败...(image-Umqo5lgvta1LZB9L)]
+
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/zfjgrX3HS13tS1t2.png)
 
 
+
+
+
+## goroutinue-pre-connection
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/TkV7rcE1lDa2TS9g.png)
 
@@ -187,10 +197,10 @@ docker rm 1mclient_0 1mclient_1 1mclient_2 1mclient_3 1mclient_4 1mclient_5 1mcl
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzYxODY1NzA2LC05MjI2MDEzNTAsLTExNT
-Y3NzUxMCwtNDEzNjQyNjg0LC02MjAzODgwMiwtMzQ1MzQ0NDUw
-LDQ3MDk0OTc4NywtODcxMTQ2NDk3LDQ4MjQ4NzA0NCwtMTkxOD
-IwNDU1MSwxNzI2OTk0MDQzLDIyODU1OTA1MCwtMTc3MTk2NDY0
-MywtNzQwMzEwNzYxLDI2Nzk5NTMxNiwyMTM2NjQxMTAsNzczNT
-UyMjY1LC0yMTM1MDE4ODY0XX0=
+eyJoaXN0b3J5IjpbLTExODE5NTQzOSwzNjE4NjU3MDYsLTkyMj
+YwMTM1MCwtMTE1Njc3NTEwLC00MTM2NDI2ODQsLTYyMDM4ODAy
+LC0zNDUzNDQ0NTAsNDcwOTQ5Nzg3LC04NzExNDY0OTcsNDgyND
+g3MDQ0LC0xOTE4MjA0NTUxLDE3MjY5OTQwNDMsMjI4NTU5MDUw
+LC0xNzcxOTY0NjQzLC03NDAzMTA3NjEsMjY3OTk1MzE2LDIxMz
+Y2NDExMCw3NzM1NTIyNjUsLTIxMzUwMTg4NjRdfQ==
 -->
