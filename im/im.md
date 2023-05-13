@@ -152,10 +152,11 @@ sysctl -w fs.nr_open=2000500
 ```
 
 
+**连接前**
 
-![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/APB682jLj2zjesRX.png)
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/982YfEDsnRTvH9wH.png)了
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0MjM2OTgzNSw0NzA5NDk3ODcsLTg3MT
+eyJoaXN0b3J5IjpbLTM0NTM0NDQ1MCw0NzA5NDk3ODcsLTg3MT
 E0NjQ5Nyw0ODI0ODcwNDQsLTE5MTgyMDQ1NTEsMTcyNjk5NDA0
 MywyMjg1NTkwNTAsLTE3NzE5NjQ2NDMsLTc0MDMxMDc2MSwyNj
 c5OTUzMTYsMjEzNjY0MTEwLDc3MzU1MjI2NSwtMjEzNTAxODg2
