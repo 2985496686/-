@@ -141,9 +141,18 @@ ipConfig在派发任务时会统计长连接网关的负载情况，这里实现
 # 可靠性传输协议的实现
 
 ## 为什么不直接使用webSocket
+
+
+
+```shell
+# 设置系统中允许同时打开的文件描述符的最大数量
+sudo sysctl -w fs.file-max=2000500
+```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDgyNDg3MDQ0LC0xOTE4MjA0NTUxLDE3Mj
-Y5OTQwNDMsMjI4NTU5MDUwLC0xNzcxOTY0NjQzLC03NDAzMTA3
-NjEsMjY3OTk1MzE2LDIxMzY2NDExMCw3NzM1NTIyNjUsLTIxMz
-UwMTg4NjRdfQ==
+eyJoaXN0b3J5IjpbLTg3MTE0NjQ5Nyw0ODI0ODcwNDQsLTE5MT
+gyMDQ1NTEsMTcyNjk5NDA0MywyMjg1NTkwNTAsLTE3NzE5NjQ2
+NDMsLTc0MDMxMDc2MSwyNjc5OTUzMTYsMjEzNjY0MTEwLDc3Mz
+U1MjI2NSwtMjEzNTAxODg2NF19
 -->
