@@ -158,10 +158,13 @@ sysctl -w fs.nr_open=2000500
 
 **20万连接**
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/EIdbPhBIAIrQDuYI.png)
+
+
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/zfjgrX3HS13tS1t2.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyMDM4ODAyLC0zNDUzNDQ0NTAsNDcwOT
-Q5Nzg3LC04NzExNDY0OTcsNDgyNDg3MDQ0LC0xOTE4MjA0NTUx
-LDE3MjY5OTQwNDMsMjI4NTU5MDUwLC0xNzcxOTY0NjQzLC03ND
-AzMTA3NjEsMjY3OTk1MzE2LDIxMzY2NDExMCw3NzM1NTIyNjUs
-LTIxMzUwMTg4NjRdfQ==
+eyJoaXN0b3J5IjpbMTg5NTI1NTc2MiwtNjIwMzg4MDIsLTM0NT
+M0NDQ1MCw0NzA5NDk3ODcsLTg3MTE0NjQ5Nyw0ODI0ODcwNDQs
+LTE5MTgyMDQ1NTEsMTcyNjk5NDA0MywyMjg1NTkwNTAsLTE3Nz
+E5NjQ2NDMsLTc0MDMxMDc2MSwyNjc5OTUzMTYsMjEzNjY0MTEw
+LDc3MzU1MjI2NSwtMjEzNTAxODg2NF19
 -->
