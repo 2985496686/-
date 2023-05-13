@@ -147,14 +147,17 @@ ipConfig在派发任务时会统计长连接网关的负载情况，这里实现
 ```shell
 # 设置系统中允许同时打开的文件描述符的最大数量
 sudo sysctl -w fs.file-max=2000500
+
+sysctl -w fs.nr_open=2000500
 ```
 
 
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/APB682jLj2zjesRX.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDcwOTQ5Nzg3LC04NzExNDY0OTcsNDgyND
-g3MDQ0LC0xOTE4MjA0NTUxLDE3MjY5OTQwNDMsMjI4NTU5MDUw
-LC0xNzcxOTY0NjQzLC03NDAzMTA3NjEsMjY3OTk1MzE2LDIxMz
-Y2NDExMCw3NzM1NTIyNjUsLTIxMzUwMTg4NjRdfQ==
+eyJoaXN0b3J5IjpbLTg0MjM2OTgzNSw0NzA5NDk3ODcsLTg3MT
+E0NjQ5Nyw0ODI0ODcwNDQsLTE5MTgyMDQ1NTEsMTcyNjk5NDA0
+MywyMjg1NTkwNTAsLTE3NzE5NjQ2NDMsLTc0MDMxMDc2MSwyNj
+c5OTUzMTYsMjEzNjY0MTEwLDc3MzU1MjI2NSwtMjEzNTAxODg2
+NF19
 -->
