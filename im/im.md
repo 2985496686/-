@@ -150,6 +150,7 @@ sudo sysctl -w fs.file-max=2000500
 
 sysctl -w fs.nr_open=2000500
 ```
+docker rm 1mclient_0 1mclient_1 1mclient_2 1mclient_3 1mclient_4 1mclient_5 1mclient_6 1mclient_7 1mclient_8 1mclient_9 
 
 
 **连接前**
@@ -162,7 +163,7 @@ sysctl -w fs.nr_open=2000500
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/zfjgrX3HS13tS1t2.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5NTI1NTc2MiwtNjIwMzg4MDIsLTM0NT
+eyJoaXN0b3J5IjpbLTQxMzY0MjY4NCwtNjIwMzg4MDIsLTM0NT
 M0NDQ1MCw0NzA5NDk3ODcsLTg3MTE0NjQ5Nyw0ODI0ODcwNDQs
 LTE5MTgyMDQ1NTEsMTcyNjk5NDA0MywyMjg1NTkwNTAsLTE3Nz
 E5NjQ2NDMsLTc0MDMxMDc2MSwyNjc5OTUzMTYsMjEzNjY0MTEw
