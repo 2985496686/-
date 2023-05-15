@@ -552,6 +552,7 @@ func NewLock() sync.Locker {
 
 
 ### 源码解析
+**删除**
 ```go
 type Mutex struct {  
    s *Session  //会话 
@@ -691,12 +692,14 @@ func waitDelete(ctx context.Context, client *v3.Client, key string, rev int64) e
    return fmt.Errorf("lost watcher waiting for delete")  
 }
 ```
+
+#
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1NDAyNzQzNCwtMTI0NDY3MzI3NCw0Mj
-M1NzU3ODUsLTE5MjMzMDEyMCwtNDkyMDY2OTU1LDExNTc3OTM5
-NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0ODIyMi
-wxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NSwtMTcw
-ODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTExMDAwMj
-IxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4ODAzMjE1
-OCwtMjg3MzkxMTkwXX0=
+eyJoaXN0b3J5IjpbMTY4NDE5MzgxLC0xMjQ0NjczMjc0LDQyMz
+U3NTc4NSwtMTkyMzMwMTIwLC00OTIwNjY5NTUsMTE1Nzc5Mzk0
+OSwtMTI4NjA1MTE4MCwyMDE3NjYxNDYzLC0xODQ1NDQ4MjIyLD
+E2MDI2NDM1OTYsMjA1MDAwOTk1LC0xOTA3MzQxOTU1LC0xNzA4
+NjM5OTM5LDEwODM0MDc2MzcsMTQ5MDEyNjQ0NSwtMTEwMDAyMj
+ExMSwtMTYzMjAzMTUxMywtMTk0NDUxMTA5MSwxODg4MDMyMTU4
+LC0yODczOTExOTBdfQ==
 -->
