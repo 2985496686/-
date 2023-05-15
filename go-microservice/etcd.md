@@ -587,8 +587,9 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
    put := v3.OpPut(m.myKey, "", v3.WithLease(s.Lease()))  
    // 获取当前key的版本号操作  
    get := v3.OpGet(m.myKey)  
-   // 获取以一个创建该前缀key的版本号(不包括)  
+   // 获取第一个创建该前缀key的版本号(不会获取到已经删除的key的版本号)  
    getOwner := v3.OpGet(m.pfx, v3.WithFirstCreate()...)  
+   //通过一个事务执行操作
    resp, err := client.Txn(ctx).If(cmp).Then(put, getOwner).Else(get, getOwner).Commit()  
    if err != nil {  
       return nil, err  
@@ -601,11 +602,11 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjMzMDEyMCwtNDkyMDY2OTU1LDExNT
-c3OTM5NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0
-ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NS
-wtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTEx
-MDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4OD
-AzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5MzkzNjE1
-NDAsMTQ1MDI1NDAyXX0=
+eyJoaXN0b3J5IjpbLTQ2NjE0OTA2NSwtMTkyMzMwMTIwLC00OT
+IwNjY5NTUsMTE1Nzc5Mzk0OSwtMTI4NjA1MTE4MCwyMDE3NjYx
+NDYzLC0xODQ1NDQ4MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC
+0xOTA3MzQxOTU1LC0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5
+MDEyNjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0ND
+UxMTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2
+MTQsMTkzOTM2MTU0MF19
 -->
