@@ -488,13 +488,18 @@ redis的解决方案：
 2. **单点实例安全性问题**
 为了保证分布式锁的高可用，需要部署redis的主从节点，在数据同步之前发生主从切换，可能就会丢失原先master上的锁信息，导致同一时间两个客户端同时持有锁。
 redis的解决方案：
+参考官方文档[redlock](https://redis.io/docs/manual/patterns/distributed-locks/#the-redlock-algorithm)
 
+
+## ETCD实现分布式锁的思路
+
+### 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDU0NDgyMjIsMTYwMjY0MzU5NiwyMD
-UwMDA5OTUsLTE5MDczNDE5NTUsLTE3MDg2Mzk5MzksMTA4MzQw
-NzYzNywxNDkwMTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMDMxNT
-EzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5MCwt
-MTY4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQwMiwtMTU5Mj
-g0NDIxMSw5MzYzNTA5MDIsMTI0MDcwNjkyMSw2Mjg4ODY1OSwy
-MDcwNzU4OTM2XX0=
+eyJoaXN0b3J5IjpbMjAxNzY2MTQ2MywtMTg0NTQ0ODIyMiwxNj
+AyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NSwtMTcwODYz
+OTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTExMDAwMjIxMT
+EsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4ODAzMjE1OCwt
+Mjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5MzkzNjE1NDAsMTQ1MD
+I1NDAyLC0xNTkyODQ0MjExLDkzNjM1MDkwMiwxMjQwNzA2OTIx
+LDYyODg4NjU5XX0=
 -->
