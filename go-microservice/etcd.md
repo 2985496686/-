@@ -518,9 +518,13 @@ etcd实现分布式锁的方案有很多种，可以通过判断是否存在一�
 etcd是基于raft实现的，对外提供的是强一致性的kv存储，不会存在类似于redis主从切换导致的不一致问题。
 
 
-## 额头
+## etcd客户端concurrency包提供的分布式锁
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3OTM1ODA5OCwxMTU3NzkzOTQ5LC0xMj
+eyJoaXN0b3J5IjpbLTQ5MjA2Njk1NSwxMTU3NzkzOTQ5LC0xMj
 g2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0NDgyMjIsMTYwMjY0
 MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NTUsLTE3MDg2Mzk5Mz
 ksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0xMTAwMDIyMTExLC0x
