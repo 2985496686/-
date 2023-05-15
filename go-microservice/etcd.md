@@ -467,15 +467,23 @@ chekpoint机制虽然解决了问题，但是很明显了带来了性能的下�
 # ETCD实现分布式锁
 
 
-## 分布式锁要
+## 分布式锁具备特点
+
+-   互斥性：在同一时刻，只有一个客户端能持有锁
+
+-   安全性：避免死锁，如果某个客户端获得锁之后处理时间超过最大约定时间，或者持锁期间发生了故障导致无法主动释放锁，其持有的锁也能够被其他机制正确释放，并保证后续其它客户端也能加锁，整个处理流程继续正常执行
+-   可用性：也被称作容错性，分布式锁需要有高可用能力，避免单点故障，当提供锁的服务节点故障（宕机）时不影响服务运行，这里有两种模式：一种是分布式锁服务自身具备集群模式，遇到故障能自动切换恢复工作；另一种是客户端向多个独立的锁服务发起请求，当某个锁服务故障时仍然可以从其他锁服务读取到锁信息(Redlock)
+-   可重入性：对同一个锁，加锁和解锁必须是同一个线程，即不能把其他线程持有的锁给释放了
+-   高效灵活：加锁、解锁的速度要快；支持阻塞和非阻塞；支持公平锁和非公平锁
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTUwMjE1NTUsMjA1MDAwOTk1LC0xOT
-A3MzQxOTU1LC0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5MDEy
-NjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUxMT
-A5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MTQs
-MTkzOTM2MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQyMTEsOTM2Mz
-UwOTAyLDEyNDA3MDY5MjEsNjI4ODg2NTksMjA3MDc1ODkzNiwt
-MTM5NTA2NjYxM119
+eyJoaXN0b3J5IjpbLTU3MjcyMjE5LDIwNTAwMDk5NSwtMTkwNz
+M0MTk1NSwtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0
+NDUsLTExMDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOT
+EsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5
+MzkzNjE1NDAsMTQ1MDI1NDAyLC0xNTkyODQ0MjExLDkzNjM1MD
+kwMiwxMjQwNzA2OTIxLDYyODg4NjU5LDIwNzA3NTg5MzYsLTEz
+OTUwNjY2MTNdfQ==
 -->
