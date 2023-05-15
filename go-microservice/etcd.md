@@ -590,12 +590,13 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
    // 获取第一个创建该前缀key的版本号(不会获取到已经删除的key的版本号)，这个key就是当前持有锁的key  
    getOwner := v3.OpGet(m.pfx, v3.WithFirstCreate()...)  
    //通过一个事务执行操作
-   //若当前key不存在，创建key，并获取持有锁的key
-   //如
+   //若当前key不存在，创建key，并获取持有锁的key的版本号
+   //若当前key存在，获取key的版本号，并获取持有锁的key的版本号
    resp, err := client.Txn(ctx).If(cmp).Then(put, getOwner).Else(get, getOwner).Commit()  
    if err != nil {  
       return nil, err  
    }  
+   //将当前key的把
    m.myRev = resp.Header.Revision  
    if !resp.Succeeded {  
       m.myRev = resp.Responses[0].GetResponseRange().Kvs[0].CreateRevision  
@@ -604,7 +605,7 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgzNjU5ODYyMywtMTkyMzMwMTIwLC00OT
+eyJoaXN0b3J5IjpbLTY0NTEwNjkzMCwtMTkyMzMwMTIwLC00OT
 IwNjY5NTUsMTE1Nzc5Mzk0OSwtMTI4NjA1MTE4MCwyMDE3NjYx
 NDYzLC0xODQ1NDQ4MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC
 0xOTA3MzQxOTU1LC0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5
