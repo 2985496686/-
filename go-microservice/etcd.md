@@ -591,7 +591,7 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
    getOwner := v3.OpGet(m.pfx, v3.WithFirstCreate()...)  
    //通过一个事务执行操作
    //若当前key不存在，创建key，并获取持有锁的key的版本号
-   //若当前key存在，获取key的版本号，并获取持有锁的key的版本号
+   //若当前key存在，获取key的版本号，并获取持有锁的key
    resp, err := client.Txn(ctx).If(cmp).Then(put, getOwner).Else(get, getOwner).Commit()  
    if err != nil {  
       return nil, err  
@@ -611,7 +611,7 @@ func (m *Mutex) Lock(ctx context.Context) error {
    if err != nil {  
       return err  
    }  
-   // 将持有锁的key的版本号赋值
+   // 将持有锁的key赋值给
    ownerKey := resp.Responses[1].GetResponseRange().Kvs  
    if len(ownerKey) == 0 || ownerKey[0].CreateRevision == m.myRev {  
       m.hdr = resp.Header  
@@ -642,11 +642,11 @@ func (m *Mutex) Lock(ctx context.Context) error {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDY5NTk4NywtMTkyMzMwMTIwLC00OT
-IwNjY5NTUsMTE1Nzc5Mzk0OSwtMTI4NjA1MTE4MCwyMDE3NjYx
-NDYzLC0xODQ1NDQ4MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC
-0xOTA3MzQxOTU1LC0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5
-MDEyNjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0ND
-UxMTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2
-MTQsMTkzOTM2MTU0MF19
+eyJoaXN0b3J5IjpbNDkyMTc5NDk0LC0xOTIzMzAxMjAsLTQ5Mj
+A2Njk1NSwxMTU3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0
+NjMsLTE4NDU0NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLT
+E5MDczNDE5NTUsLTE3MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkw
+MTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NT
+ExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYx
+NCwxOTM5MzYxNTQwXX0=
 -->
