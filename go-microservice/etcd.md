@@ -536,7 +536,7 @@ func NewLock() sync.Locker {
       log.Fatal(err)  
    }  
    //创建会话
-   //会话会长
+   //会话会创建一个租约，并在客户端生存期内保证租约的活性
    session, err := concurrency.NewSession(cli, concurrency.WithLease(resp.ID))  
    if err != nil {  
       log.Fatal(err)  
@@ -545,13 +545,13 @@ func NewLock() sync.Locker {
    return concurrency.NewLocker(session, "/myLock/")  
 }
 ```
-
+通过以上方式就可以创建一个分布式锁
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzMzNzY5NzA1LC00OTIwNjY5NTUsMTE1Nz
-c5Mzk0OSwtMTI4NjA1MTE4MCwyMDE3NjYxNDYzLC0xODQ1NDQ4
-MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC0xOTA3MzQxOTU1LC
-0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5MDEyNjQ0NSwtMTEw
-MDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUxMTA5MSwxODg4MD
-MyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2MTU0
-MCwxNDUwMjU0MDJdfQ==
+eyJoaXN0b3J5IjpbLTIxNDE5NzM2MzksLTQ5MjA2Njk1NSwxMT
+U3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0
+NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NT
+UsLTE3MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0x
+MTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4OD
+gwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYx
+NTQwLDE0NTAyNTQwMl19
 -->
