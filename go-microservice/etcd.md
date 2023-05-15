@@ -513,6 +513,8 @@ etcd实现分布式锁的方案有很多种，可以通过判断是否存在一�
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/xK458iHxdTijC6yN.png)
 
+具体的实现方式会在源码解析时将
+
 ### etcd的强一致性
 
 etcd是基于raft实现的，对外提供的是强一致性的kv存储，不会存在类似于redis主从切换导致的不一致问题。
@@ -545,13 +547,19 @@ func NewLock() sync.Locker {
    return concurrency.NewLocker(session, "/myLock/")  
 }
 ```
-通过以上方式就可以创建一个分布式锁
+通过以上方式就可以创建一个分布式锁，通过锁的Lock()和UnLock()方法加锁解锁。
+
+
+
+### 源码解析
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDE5NzM2MzksLTQ5MjA2Njk1NSwxMT
-U3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0
-NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NT
-UsLTE3MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0x
-MTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4OD
-gwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYx
-NTQwLDE0NTAyNTQwMl19
+eyJoaXN0b3J5IjpbLTQwOTI3NDk3NCwtNDkyMDY2OTU1LDExNT
+c3OTM5NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0
+ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NS
+wtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTEx
+MDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4OD
+AzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5MzkzNjE1
+NDAsMTQ1MDI1NDAyXX0=
 -->
