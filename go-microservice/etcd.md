@@ -485,9 +485,10 @@ redis的解决方案：
 -- 延长锁的过期时间。
 -- java redission 提供了看门狗机制，在业务处理完之前不断给锁续期。
 
-2. 
+2. **单点实例安全性问题**
+为了保证分布式锁的高可用，需要部署redis的主从节点
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTMyMjc1NzksMTYwMjY0MzU5NiwyMD
+eyJoaXN0b3J5IjpbLTIwMzQ5NDYzNDIsMTYwMjY0MzU5NiwyMD
 UwMDA5OTUsLTE5MDczNDE5NTUsLTE3MDg2Mzk5MzksMTA4MzQw
 NzYzNywxNDkwMTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMDMxNT
 EzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5MCwt
