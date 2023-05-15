@@ -515,11 +515,9 @@ etcd实现分布式锁的方案有很多种，可以通过判断是否存在一�
 
 ### etcd的强一致性
 
-
-
-etcd是个
+etcd是基于raft实现的，对外提供的是
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3ODEwODQ0MSwxMTU3NzkzOTQ5LC0xMj
+eyJoaXN0b3J5IjpbMTcxNzU5NDYwNywxMTU3NzkzOTQ5LC0xMj
 g2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0NDgyMjIsMTYwMjY0
 MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NTUsLTE3MDg2Mzk5Mz
 ksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0xMTAwMDIyMTExLC0x
