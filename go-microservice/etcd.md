@@ -583,11 +583,11 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
    m.myKey = fmt.Sprintf("%s%x", m.pfx, s.Lease())  
    // 比较操作，判断当前key的创建版本号是否为0,版本号为0表示key还未创建
    cmp := v3.Compare(v3.CreateRevision(m.myKey), "=", 0)  
-   // 创建key操作(将当前key纯属)
+   // 创建key操作(将当前key存储到etcd)
    put := v3.OpPut(m.myKey, "", v3.WithLease(s.Lease()))  
-   // reuse key in case this session already holds the lock  
+   // 获取当前key的版本号操作  
    get := v3.OpGet(m.myKey)  
-   // fetch current holder to complete uncontended path with only one RPC  
+   // 获取以一个创建该前缀key的版本号(不包括)  
    getOwner := v3.OpGet(m.pfx, v3.WithFirstCreate()...)  
    resp, err := client.Txn(ctx).If(cmp).Then(put, getOwner).Else(get, getOwner).Commit()  
    if err != nil {  
@@ -601,11 +601,11 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDA0NTg0MDMsLTQ5MjA2Njk1NSwxMT
-U3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0
-NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NT
-UsLTE3MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0x
-MTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4OD
-gwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYx
-NTQwLDE0NTAyNTQwMl19
+eyJoaXN0b3J5IjpbLTE5MjMzMDEyMCwtNDkyMDY2OTU1LDExNT
+c3OTM5NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0
+ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NS
+wtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTEx
+MDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4OD
+AzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5MzkzNjE1
+NDAsMTQ1MDI1NDAyXX0=
 -->
