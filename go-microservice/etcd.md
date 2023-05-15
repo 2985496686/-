@@ -513,7 +513,7 @@ etcd实现分布式锁的方案有很多种，可以通过判断是否存在一�
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/xK458iHxdTijC6yN.png)
 
-具体的实现方式会在源码解析时将
+具体的实现方式会在源码解析时讲解。
 
 ### etcd的强一致性
 
@@ -552,14 +552,22 @@ func NewLock() sync.Locker {
 
 
 ### 源码解析
-
-
+```go
+func (m *Mutex) Lock(ctx context.Context) error {  
+   //长
+   resp, err := m.tryAcquire(ctx)  
+   if err != nil {  
+      return err  
+   }
+   ......
+ }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwOTI3NDk3NCwtNDkyMDY2OTU1LDExNT
-c3OTM5NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0
-ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NS
-wtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTEx
-MDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4OD
-AzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5MzkzNjE1
-NDAsMTQ1MDI1NDAyXX0=
+eyJoaXN0b3J5IjpbNTI0NjgxNDMwLC00OTIwNjY5NTUsMTE1Nz
+c5Mzk0OSwtMTI4NjA1MTE4MCwyMDE3NjYxNDYzLC0xODQ1NDQ4
+MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC0xOTA3MzQxOTU1LC
+0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5MDEyNjQ0NSwtMTEw
+MDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUxMTA5MSwxODg4MD
+MyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2MTU0
+MCwxNDUwMjU0MDJdfQ==
 -->
