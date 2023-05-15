@@ -509,13 +509,21 @@ redis采用忙轮询的方式来获取锁，etcd可以使用watch机制监听锁
 
 etcd实现分布式锁的方案有很多种，可以通过判断是否存在一个固定的key来实现分布式锁，但是这种实现策略有很大的问题。当多客户端同时获取锁时，只有一个成功获得，其余多个客户端监听key的删除事件，一旦锁被释放，多个客户端同时收到锁删除事件(无论尝试加锁的顺序)进行加锁，这就是 **“惊群问题”** ，所以etcd官网提供了另外一种实现策略。
 
-不再将一个固定的key当作锁资源，而是将一个前缀当作锁资源，每一个客户端尝试加锁的时候都会以该前缀创建一个key，并且监听前一个创建该前缀key的版本号
+不再将一个固定的key当作锁资源，而是将一个前缀当作锁资源，每一个客户端尝试加锁的时候都会以该前缀创建一个key，并且监听前一个创建该前缀key的版本号。
+
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/xK458iHxdTijC6yN.png)
+
+### etcd的强一致性
+
+
+
+etcd是个
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1Nzc5Mzk0OSwtMTI4NjA1MTE4MCwyMD
-E3NjYxNDYzLC0xODQ1NDQ4MjIyLDE2MDI2NDM1OTYsMjA1MDAw
-OTk1LC0xOTA3MzQxOTU1LC0xNzA4NjM5OTM5LDEwODM0MDc2Mz
-csMTQ5MDEyNjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywt
-MTk0NDUxMTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2OD
-g4MDM2MTQsMTkzOTM2MTU0MCwxNDUwMjU0MDIsLTE1OTI4NDQy
-MTEsOTM2MzUwOTAyXX0=
+eyJoaXN0b3J5IjpbMTY3ODEwODQ0MSwxMTU3NzkzOTQ5LC0xMj
+g2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0NDgyMjIsMTYwMjY0
+MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NTUsLTE3MDg2Mzk5Mz
+ksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0xMTAwMDIyMTExLC0x
+NjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4Nz
+M5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQw
+MiwtMTU5Mjg0NDIxMV19
 -->
