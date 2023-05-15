@@ -525,28 +525,32 @@ etcd是基于raft实现的，对外提供的是强一致性的kv存储，不会�
 
 ```go
 func NewLock() sync.Locker {  
-   cli, err := clientv3.New(clientv3.Config{Endpoints: ip1,ip2.})  
+	//创建客户端
+   cli, err := clientv3.New(clientv3.Config{Endpoints: ip1,ip2...})  
    if err != nil {  
       log.Fatal(err)  
    }  
+   //授权租约
    resp, err := cli.Grant(context.TODO(), 5)  
    if err != nil {  
       log.Fatal(err)  
    }  
+   //创建会话
    session, err := concurrency.NewSession(cli, concurrency.WithLease(resp.ID))  
    if err != nil {  
       log.Fatal(err)  
    }  
+   //利用会话，指定一个前缀创建
    return concurrency.NewLocker(session, "/myLock/")  
 }
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzUxMzI0MDIsLTQ5MjA2Njk1NSwxMT
-U3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0
-NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NT
-UsLTE3MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0x
-MTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4OD
-gwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYx
-NTQwLDE0NTAyNTQwMl19
+eyJoaXN0b3J5IjpbMTQwNTYwNTcyMiwtNDkyMDY2OTU1LDExNT
+c3OTM5NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0
+ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NS
+wtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTEx
+MDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4OD
+AzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5MzkzNjE1
+NDAsMTQ1MDI1NDAyXX0=
 -->
