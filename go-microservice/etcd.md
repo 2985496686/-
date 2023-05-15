@@ -500,9 +500,12 @@ etcd支持前缀查找，所以可以用一个前缀表示锁资源，前缀 + �
 
 ### lease机制
 
-租约机制可以保证锁的活性，持有锁的客户端宕机，key自动过期，避免宕机。
+租约机制可以保证锁的活性，持有锁的客户端宕机，key自动过期，避免宕机。etcd客户端提供的lease续租机制解决客户端长时间阻塞导致锁失效问题。
+
+### watch机制
+redis采用满轮询的方式
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwOTE1MDE0NywyMDE3NjYxNDYzLC0xOD
+eyJoaXN0b3J5IjpbLTE2Mzc0MzMyMywyMDE3NjYxNDYzLC0xOD
 Q1NDQ4MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC0xOTA3MzQx
 OTU1LC0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5MDEyNjQ0NS
 wtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUxMTA5MSwx
