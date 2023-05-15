@@ -667,6 +667,7 @@ func waitDeletes(ctx context.Context, client *v3.Client, pfx string, maxCreateRe
 ```
 
 ```go
+//通过watch机制监听指定version 的key的删除。
 func waitDeletes(ctx context.Context, client *v3.Client, pfx string, maxCreateRev int64) (*pb.ResponseHeader, error) {  
    getOpts := append(v3.WithLastCreate(), v3.WithMaxCreateRev(maxCreateRev))  
    for {  
@@ -685,11 +686,11 @@ func waitDeletes(ctx context.Context, client *v3.Client, pfx string, maxCreateRe
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyMzk2MDAzMiwtMTI0NDY3MzI3NCw0Mj
-M1NzU3ODUsLTE5MjMzMDEyMCwtNDkyMDY2OTU1LDExNTc3OTM5
-NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0ODIyMi
-wxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NSwtMTcw
-ODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTExMDAwMj
-IxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4ODAzMjE1
-OCwtMjg3MzkxMTkwXX0=
+eyJoaXN0b3J5IjpbLTEzNzczODc4OTEsLTEyNDQ2NzMyNzQsND
+IzNTc1Nzg1LC0xOTIzMzAxMjAsLTQ5MjA2Njk1NSwxMTU3Nzkz
+OTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0NDgyMj
+IsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NTUsLTE3
+MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0xMTAwMD
+IyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIx
+NTgsLTI4NzM5MTE5MF19
 -->
