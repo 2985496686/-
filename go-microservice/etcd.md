@@ -596,7 +596,7 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
    if err != nil {  
       return nil, err  
    }  
-   //将当前key的把
+   //将当前key的把版本号赋值给myRev字段
    m.myRev = resp.Header.Revision  
    if !resp.Succeeded {  
       m.myRev = resp.Responses[0].GetResponseRange().Kvs[0].CreateRevision  
@@ -604,12 +604,14 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
    return resp, nil  
 }
 ```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0NTEwNjkzMCwtMTkyMzMwMTIwLC00OT
-IwNjY5NTUsMTE1Nzc5Mzk0OSwtMTI4NjA1MTE4MCwyMDE3NjYx
-NDYzLC0xODQ1NDQ4MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC
-0xOTA3MzQxOTU1LC0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5
-MDEyNjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0ND
-UxMTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2
-MTQsMTkzOTM2MTU0MF19
+eyJoaXN0b3J5IjpbLTE5ODc2ODEwNjgsLTE5MjMzMDEyMCwtND
+kyMDY2OTU1LDExNTc3OTM5NDksLTEyODYwNTExODAsMjAxNzY2
+MTQ2MywtMTg0NTQ0ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NS
+wtMTkwNzM0MTk1NSwtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0
+OTAxMjY0NDUsLTExMDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5ND
+Q1MTEwOTEsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAz
+NjE0LDE5MzkzNjE1NDBdfQ==
 -->
