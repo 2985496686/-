@@ -556,9 +556,9 @@ func NewLock() sync.Locker {
 type Mutex struct {  
    s *Session  //会话 
  
-   pfx   string  //前缀，表示锁资源
+   pfx   string  //锁名称，key的前缀
    myKey string  
-   myRev int64  
+   myRev int64  //创建key的版本号
    hdr   *pb.ResponseHeader  
 }
 ```
@@ -579,6 +579,7 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
    s := m.s  
    client := m.s.Client()  
   
+   //拼接完整的可
    m.myKey = fmt.Sprintf("%s%x", m.pfx, s.Lease())  
    cmp := v3.Compare(v3.CreateRevision(m.myKey), "=", 0)  
    // put self in lock waiters via myKey; oldest waiter holds lock  
@@ -599,7 +600,7 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA3NTQxNzQ0NywtNDkyMDY2OTU1LDExNT
+eyJoaXN0b3J5IjpbLTMxMDYwODAzMCwtNDkyMDY2OTU1LDExNT
 c3OTM5NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0
 ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NS
 wtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTEx
