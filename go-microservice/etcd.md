@@ -646,7 +646,7 @@ func (m *Mutex) Lock(ctx context.Context) error {
 ```go
 //等待锁的释放
 func waitDeletes(ctx context.Context, client *v3.Client, pfx string, maxCreateRev int64) (*pb.ResponseHeader, error) {  
-   //获取上一次创建该前缀的key的操作，WithMaxCreateRev(maxCreateRev)对返回值进行了限制，返回值版本号必须是小于等于maxCreateRev的
+   //获取最新的该前缀的key的操作，WithMaxCreateRev(maxCreateRev)对返回值进行了限制，返回值版本号必须是小于等于maxCreateRev的，通过这个操作就可以获
    getOpts := append(v3.WithLastCreate(), v3.WithMaxCreateRev(maxCreateRev))  
    for {  
       resp, err := client.Get(ctx, pfx, getOpts...)  
@@ -658,6 +658,7 @@ func waitDeletes(ctx context.Context, client *v3.Client, pfx string, maxCreateRe
          return resp.Header, nil  
       }  
       lastKey := string(resp.Kvs[0].Key)  
+      //等待
       if err = waitDelete(ctx, client, lastKey, resp.Header.Revision); err != nil {  
          return nil, err  
       }  
@@ -665,11 +666,11 @@ func waitDeletes(ctx context.Context, client *v3.Client, pfx string, maxCreateRe
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc1ODQ4NDU0LC0xMjQ0NjczMjc0LDQyMz
-U3NTc4NSwtMTkyMzMwMTIwLC00OTIwNjY5NTUsMTE1Nzc5Mzk0
-OSwtMTI4NjA1MTE4MCwyMDE3NjYxNDYzLC0xODQ1NDQ4MjIyLD
-E2MDI2NDM1OTYsMjA1MDAwOTk1LC0xOTA3MzQxOTU1LC0xNzA4
-NjM5OTM5LDEwODM0MDc2MzcsMTQ5MDEyNjQ0NSwtMTEwMDAyMj
-ExMSwtMTYzMjAzMTUxMywtMTk0NDUxMTA5MSwxODg4MDMyMTU4
-LC0yODczOTExOTBdfQ==
+eyJoaXN0b3J5IjpbMTg3MDgyODU1MSwtMTI0NDY3MzI3NCw0Mj
+M1NzU3ODUsLTE5MjMzMDEyMCwtNDkyMDY2OTU1LDExNTc3OTM5
+NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0ODIyMi
+wxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NSwtMTcw
+ODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTExMDAwMj
+IxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4ODAzMjE1
+OCwtMjg3MzkxMTkwXX0=
 -->
