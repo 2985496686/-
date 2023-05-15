@@ -553,8 +553,19 @@ func NewLock() sync.Locker {
 
 ### 源码解析
 ```go
+type Mutex struct {  
+   s *Session  //会话 
+ 
+   pfx   string  //前缀，表示锁资源
+   myKey string  
+   myRev int64  
+   hdr   *pb.ResponseHeader  
+}
+```
+
+```go
 func (m *Mutex) Lock(ctx context.Context) error {  
-   //长
+   //尝试获取锁
    resp, err := m.tryAcquire(ctx)  
    if err != nil {  
       return err  
@@ -562,12 +573,37 @@ func (m *Mutex) Lock(ctx context.Context) error {
    ......
  }
 ```
+
+```go
+func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {  
+   s := m.s  
+   client := m.s.Client()  
+  
+   m.myKey = fmt.Sprintf("%s%x", m.pfx, s.Lease())  
+   cmp := v3.Compare(v3.CreateRevision(m.myKey), "=", 0)  
+   // put self in lock waiters via myKey; oldest waiter holds lock  
+   put := v3.OpPut(m.myKey, "", v3.WithLease(s.Lease()))  
+   // reuse key in case this session already holds the lock  
+   get := v3.OpGet(m.myKey)  
+   // fetch current holder to complete uncontended path with only one RPC  
+   getOwner := v3.OpGet(m.pfx, v3.WithFirstCreate()...)  
+   resp, err := client.Txn(ctx).If(cmp).Then(put, getOwner).Else(get, getOwner).Commit()  
+   if err != nil {  
+      return nil, err  
+   }  
+   m.myRev = resp.Header.Revision  
+   if !resp.Succeeded {  
+      m.myRev = resp.Responses[0].GetResponseRange().Kvs[0].CreateRevision  
+   }  
+   return resp, nil  
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTI0NjgxNDMwLC00OTIwNjY5NTUsMTE1Nz
-c5Mzk0OSwtMTI4NjA1MTE4MCwyMDE3NjYxNDYzLC0xODQ1NDQ4
-MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC0xOTA3MzQxOTU1LC
-0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5MDEyNjQ0NSwtMTEw
-MDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUxMTA5MSwxODg4MD
-MyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2MTU0
-MCwxNDUwMjU0MDJdfQ==
+eyJoaXN0b3J5IjpbMTA3NTQxNzQ0NywtNDkyMDY2OTU1LDExNT
+c3OTM5NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0
+ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NS
+wtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTEx
+MDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4OD
+AzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5MzkzNjE1
+NDAsMTQ1MDI1NDAyXX0=
 -->
