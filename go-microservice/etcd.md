@@ -668,29 +668,35 @@ func waitDeletes(ctx context.Context, client *v3.Client, pfx string, maxCreateRe
 
 ```go
 //通过watch机制监听指定version 的key的删除。
-func waitDeletes(ctx context.Context, client *v3.Client, pfx string, maxCreateRev int64) (*pb.ResponseHeader, error) {  
-   getOpts := append(v3.WithLastCreate(), v3.WithMaxCreateRev(maxCreateRev))  
-   for {  
-      resp, err := client.Get(ctx, pfx, getOpts...)  
-      if err != nil {  
-         return nil, err  
-      }  
-      if len(resp.Kvs) == 0 {  
-         return resp.Header, nil  
-      }  
-      lastKey := string(resp.Kvs[0].Key)  
-      if err = waitDelete(ctx, client, lastKey, resp.Header.Revision); err != nil {  
-         return nil, err  
+func waitDelete(ctx context.Context, client *v3.Client, key string, rev int64) error {  
+   cctx, cancel := context.WithCancel(ctx)  
+   defer cancel()  
+  
+   var wr v3.WatchResponse  
+   wch := client.Watch(cctx, key, v3.WithRev(rev))  
+   for wr = range wch {  
+      for _, ev := range wr.Events {  
+	     //监听Delete事件
+         if ev.Type == mvccpb.DELETE {  
+            return nil  
+         }  
       }  
    }  
+   if err := wr.Err(); err != nil {  
+      return err  
+   }  
+   if err := ctx.Err(); err != nil {  
+      return err  
+   }  
+   return fmt.Errorf("lost watcher waiting for delete")  
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNzczODc4OTEsLTEyNDQ2NzMyNzQsND
-IzNTc1Nzg1LC0xOTIzMzAxMjAsLTQ5MjA2Njk1NSwxMTU3Nzkz
-OTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0NDgyMj
-IsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NTUsLTE3
-MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0xMTAwMD
-IyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIx
-NTgsLTI4NzM5MTE5MF19
+eyJoaXN0b3J5IjpbMTU1NDAyNzQzNCwtMTI0NDY3MzI3NCw0Mj
+M1NzU3ODUsLTE5MjMzMDEyMCwtNDkyMDY2OTU1LDExNTc3OTM5
+NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0ODIyMi
+wxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NSwtMTcw
+ODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTExMDAwMj
+IxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4ODAzMjE1
+OCwtMjg3MzkxMTkwXX0=
 -->
