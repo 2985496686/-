@@ -552,7 +552,7 @@ func NewLock() sync.Locker {
 
 
 ### 源码解析
-**删除**
+
 ```go
 type Mutex struct {  
    s *Session  //会话 
@@ -564,6 +564,8 @@ type Mutex struct {
 }
 ```
 
+
+**加锁**
 ```go
 func (m *Mutex) Lock(ctx context.Context) error {  
    //尝试获取锁
@@ -585,7 +587,7 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
    // 比较操作，判断当前key的创建版本号是否为0,版本号为0表示key还未创建
    cmp := v3.Compare(v3.CreateRevision(m.myKey), "=", 0)  
    // 创建key操作(将当前key存储到etcd)
-   put := v3.OpPut(m.myKey, "", v3.WithLease(s.Lease()))  
+   p**加锁**ut := v3.OpPut(m.myKey, "", v3.WithLease(s.Lease()))  
    // 获取当前key的版本号操作  
    get := v3.OpGet(m.myKey)  
    // 获取第一个创建该前缀key的版本号(不会获取到已经删除的key的版本号)，这个key就是当前持有锁的key  
@@ -693,13 +695,16 @@ func waitDelete(ctx context.Context, client *v3.Client, key string, rev int64) e
 }
 ```
 
-#
+**释放锁**
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4NDE5MzgxLC0xMjQ0NjczMjc0LDQyMz
-U3NTc4NSwtMTkyMzMwMTIwLC00OTIwNjY5NTUsMTE1Nzc5Mzk0
-OSwtMTI4NjA1MTE4MCwyMDE3NjYxNDYzLC0xODQ1NDQ4MjIyLD
-E2MDI2NDM1OTYsMjA1MDAwOTk1LC0xOTA3MzQxOTU1LC0xNzA4
-NjM5OTM5LDEwODM0MDc2MzcsMTQ5MDEyNjQ0NSwtMTEwMDAyMj
-ExMSwtMTYzMjAzMTUxMywtMTk0NDUxMTA5MSwxODg4MDMyMTU4
-LC0yODczOTExOTBdfQ==
+eyJoaXN0b3J5IjpbLTEyNTYwMDAwNDMsLTEyNDQ2NzMyNzQsND
+IzNTc1Nzg1LC0xOTIzMzAxMjAsLTQ5MjA2Njk1NSwxMTU3Nzkz
+OTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0NDgyMj
+IsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NTUsLTE3
+MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0xMTAwMD
+IyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIx
+NTgsLTI4NzM5MTE5MF19
 -->
