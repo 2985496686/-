@@ -644,8 +644,9 @@ func (m *Mutex) Lock(ctx context.Context) error {
 ```
 
 ```go
-//
+//等待锁的释放
 func waitDeletes(ctx context.Context, client *v3.Client, pfx string, maxCreateRev int64) (*pb.ResponseHeader, error) {  
+   //获取上一次创建该前缀的key和
    getOpts := append(v3.WithLastCreate(), v3.WithMaxCreateRev(maxCreateRev))  
    for {  
       resp, err := client.Get(ctx, pfx, getOpts...)  
@@ -663,11 +664,11 @@ func waitDeletes(ctx context.Context, client *v3.Client, pfx string, maxCreateRe
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA3MTQ0NjY5LDQyMzU3NTc4NSwtMTkyMz
-MwMTIwLC00OTIwNjY5NTUsMTE1Nzc5Mzk0OSwtMTI4NjA1MTE4
-MCwyMDE3NjYxNDYzLC0xODQ1NDQ4MjIyLDE2MDI2NDM1OTYsMj
-A1MDAwOTk1LC0xOTA3MzQxOTU1LC0xNzA4NjM5OTM5LDEwODM0
-MDc2MzcsMTQ5MDEyNjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMT
-UxMywtMTk0NDUxMTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAs
-LTE2ODg4MDM2MTRdfQ==
+eyJoaXN0b3J5IjpbLTEyNDQ2NzMyNzQsNDIzNTc1Nzg1LC0xOT
+IzMzAxMjAsLTQ5MjA2Njk1NSwxMTU3NzkzOTQ5LC0xMjg2MDUx
+MTgwLDIwMTc2NjE0NjMsLTE4NDU0NDgyMjIsMTYwMjY0MzU5Ni
+wyMDUwMDA5OTUsLTE5MDczNDE5NTUsLTE3MDg2Mzk5MzksMTA4
+MzQwNzYzNywxNDkwMTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMD
+MxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5
+MCwtMTY4ODgwMzYxNF19
 -->
