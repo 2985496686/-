@@ -536,21 +536,22 @@ func NewLock() sync.Locker {
       log.Fatal(err)  
    }  
    //创建会话
+   //会话会长
    session, err := concurrency.NewSession(cli, concurrency.WithLease(resp.ID))  
    if err != nil {  
       log.Fatal(err)  
    }  
-   //利用会话，指定一个前缀创建
+   //利用会话，指定一个前缀创建锁
    return concurrency.NewLocker(session, "/myLock/")  
 }
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwNTYwNTcyMiwtNDkyMDY2OTU1LDExNT
-c3OTM5NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0
-ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NS
-wtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTEx
-MDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4OD
-AzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5MzkzNjE1
-NDAsMTQ1MDI1NDAyXX0=
+eyJoaXN0b3J5IjpbMzMzNzY5NzA1LC00OTIwNjY5NTUsMTE1Nz
+c5Mzk0OSwtMTI4NjA1MTE4MCwyMDE3NjYxNDYzLC0xODQ1NDQ4
+MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC0xOTA3MzQxOTU1LC
+0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5MDEyNjQ0NSwtMTEw
+MDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUxMTA5MSwxODg4MD
+MyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2MTQsMTkzOTM2MTU0
+MCwxNDUwMjU0MDJdfQ==
 -->
