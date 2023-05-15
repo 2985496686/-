@@ -581,7 +581,7 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
   
    //拼接完整的key，prefix + leaseId
    m.myKey = fmt.Sprintf("%s%x", m.pfx, s.Lease())  
-   //
+   // 比较操作，判断当前key的
    cmp := v3.Compare(v3.CreateRevision(m.myKey), "=", 0)  
    // put self in lock waiters via myKey; oldest waiter holds lock  
    put := v3.OpPut(m.myKey, "", v3.WithLease(s.Lease()))  
@@ -601,7 +601,7 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODk2NzUxNSwtNDkyMDY2OTU1LDExNT
+eyJoaXN0b3J5IjpbMTM5MDQyNTk2NywtNDkyMDY2OTU1LDExNT
 c3OTM5NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0
 ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NS
 wtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTEx
