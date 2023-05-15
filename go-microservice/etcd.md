@@ -581,9 +581,9 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
   
    //拼接完整的key，prefix + leaseId
    m.myKey = fmt.Sprintf("%s%x", m.pfx, s.Lease())  
-   // 比较操作，判断当前key的
+   // 比较操作，判断当前key的创建版本号是否为0,版本号为0表示key还未创建
    cmp := v3.Compare(v3.CreateRevision(m.myKey), "=", 0)  
-   // put self in lock waiters via myKey; oldest waiter holds lock  
+   // 创建key操作(将当前key纯属)
    put := v3.OpPut(m.myKey, "", v3.WithLease(s.Lease()))  
    // reuse key in case this session already holds the lock  
    get := v3.OpGet(m.myKey)  
@@ -601,11 +601,11 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5MDQyNTk2NywtNDkyMDY2OTU1LDExNT
-c3OTM5NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMTg0NTQ0
-ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0MTk1NS
-wtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0NDUsLTEx
-MDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOTEsMTg4OD
-AzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5MzkzNjE1
-NDAsMTQ1MDI1NDAyXX0=
+eyJoaXN0b3J5IjpbLTE4NDA0NTg0MDMsLTQ5MjA2Njk1NSwxMT
+U3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0
+NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NT
+UsLTE3MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0x
+MTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4OD
+gwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYx
+NTQwLDE0NTAyNTQwMl19
 -->
