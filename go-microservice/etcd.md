@@ -619,8 +619,8 @@ func (m *Mutex) Lock(ctx context.Context) error {
       return nil  
    }  
    client := m.s.Client()  
-   // wait for deletion revisions prior to myKey  
-   // TODO: early termination if the session key is deleted before other session keys with smaller revisions.   _, werr := waitDeletes(ctx, client, m.pfx, m.myRev-1)  
+   //等待锁的释放
+   _, werr := waitDeletes(ctx, client, m.pfx, m.myRev-1)  
    // release lock key if wait failed  
    if werr != nil {  
       m.Unlock(client.Ctx())  
@@ -642,12 +642,32 @@ func (m *Mutex) Lock(ctx context.Context) error {
    return nil  
 }
 ```
+
+```go
+//
+func waitDeletes(ctx context.Context, client *v3.Client, pfx string, maxCreateRev int64) (*pb.ResponseHeader, error) {  
+   getOpts := append(v3.WithLastCreate(), v3.WithMaxCreateRev(maxCreateRev))  
+   for {  
+      resp, err := client.Get(ctx, pfx, getOpts...)  
+      if err != nil {  
+         return nil, err  
+      }  
+      if len(resp.Kvs) == 0 {  
+         return resp.Header, nil  
+      }  
+      lastKey := string(resp.Kvs[0].Key)  
+      if err = waitDelete(ctx, client, lastKey, resp.Header.Revision); err != nil {  
+         return nil, err  
+      }  
+   }  
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDIzNTc1Nzg1LC0xOTIzMzAxMjAsLTQ5Mj
-A2Njk1NSwxMTU3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0
-NjMsLTE4NDU0NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLT
-E5MDczNDE5NTUsLTE3MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkw
-MTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NT
-ExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYx
-NCwxOTM5MzYxNTQwXX0=
+eyJoaXN0b3J5IjpbNzA3MTQ0NjY5LDQyMzU3NTc4NSwtMTkyMz
+MwMTIwLC00OTIwNjY5NTUsMTE1Nzc5Mzk0OSwtMTI4NjA1MTE4
+MCwyMDE3NjYxNDYzLC0xODQ1NDQ4MjIyLDE2MDI2NDM1OTYsMj
+A1MDAwOTk1LC0xOTA3MzQxOTU1LC0xNzA4NjM5OTM5LDEwODM0
+MDc2MzcsMTQ5MDEyNjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMT
+UxMywtMTk0NDUxMTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAs
+LTE2ODg4MDM2MTRdfQ==
 -->
