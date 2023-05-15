@@ -495,9 +495,14 @@ redis的解决方案：
 
 ### prefix
 
-etcd支持前缀查找，所以可以用一个前缀表，
+etcd支持前缀查找，所以可以用一个前缀表示锁资源，前缀 + 唯一id的方式表示锁资源的持有者。
+
+
+### lease机制
+
+租约机制可以保证锁的火星
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0MDc5NjY1NywyMDE3NjYxNDYzLC0xOD
+eyJoaXN0b3J5IjpbLTc2MTIxMTg1NywyMDE3NjYxNDYzLC0xOD
 Q1NDQ4MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC0xOTA3MzQx
 OTU1LC0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5MDEyNjQ0NS
 wtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0NDUxMTA5MSwx
