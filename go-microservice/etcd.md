@@ -521,14 +521,32 @@ etcd是基于raft实现的，对外提供的是强一致性的kv存储，不会�
 ## etcd客户端concurrency包提供的分布式锁
 
 
+### 锁的使用
 
+```go
+func NewLock() sync.Locker {  
+   cli, err := clientv3.New(clientv3.Config{Endpoints: ip1,ip2.})  
+   if err != nil {  
+      log.Fatal(err)  
+   }  
+   resp, err := cli.Grant(context.TODO(), 5)  
+   if err != nil {  
+      log.Fatal(err)  
+   }  
+   session, err := concurrency.NewSession(cli, concurrency.WithLease(resp.ID))  
+   if err != nil {  
+      log.Fatal(err)  
+   }  
+   return concurrency.NewLocker(session, "/myLock/")  
+}
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ5MjA2Njk1NSwxMTU3NzkzOTQ5LC0xMj
-g2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0NDgyMjIsMTYwMjY0
-MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NTUsLTE3MDg2Mzk5Mz
-ksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0xMTAwMDIyMTExLC0x
-NjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4Nz
-M5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYxNTQwLDE0NTAyNTQw
-MiwtMTU5Mjg0NDIxMV19
+eyJoaXN0b3J5IjpbLTE5MzUxMzI0MDIsLTQ5MjA2Njk1NSwxMT
+U3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0
+NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NT
+UsLTE3MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkwMTI2NDQ1LC0x
+MTAwMDIyMTExLC0xNjMyMDMxNTEzLC0xOTQ0NTExMDkxLDE4OD
+gwMzIxNTgsLTI4NzM5MTE5MCwtMTY4ODgwMzYxNCwxOTM5MzYx
+NTQwLDE0NTAyNTQwMl19
 -->
