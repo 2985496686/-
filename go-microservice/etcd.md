@@ -605,13 +605,48 @@ func (m *Mutex) tryAcquire(ctx context.Context) (*v3.TxnResponse, error) {
 }
 ```
 
-
+```go
+func (m *Mutex) Lock(ctx context.Context) error {  
+   resp, err := m.tryAcquire(ctx)  
+   if err != nil {  
+      return err  
+   }  
+   // 将持有锁的key的版本号赋值
+   ownerKey := resp.Responses[1].GetResponseRange().Kvs  
+   if len(ownerKey) == 0 || ownerKey[0].CreateRevision == m.myRev {  
+      m.hdr = resp.Header  
+      return nil  
+   }  
+   client := m.s.Client()  
+   // wait for deletion revisions prior to myKey  
+   // TODO: early termination if the session key is deleted before other session keys with smaller revisions.   _, werr := waitDeletes(ctx, client, m.pfx, m.myRev-1)  
+   // release lock key if wait failed  
+   if werr != nil {  
+      m.Unlock(client.Ctx())  
+      return werr  
+   }  
+  
+   // make sure the session is not expired, and the owner key still exists.  
+   gresp, werr := client.Get(ctx, m.myKey)  
+   if werr != nil {  
+      m.Unlock(client.Ctx())  
+      return werr  
+   }  
+  
+   if len(gresp.Kvs) == 0 { // is the session key lost?  
+      return ErrSessionExpired  
+   }  
+   m.hdr = gresp.Header  
+  
+   return nil  
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODc2ODEwNjgsLTE5MjMzMDEyMCwtND
-kyMDY2OTU1LDExNTc3OTM5NDksLTEyODYwNTExODAsMjAxNzY2
-MTQ2MywtMTg0NTQ0ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NS
-wtMTkwNzM0MTk1NSwtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0
-OTAxMjY0NDUsLTExMDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5ND
-Q1MTEwOTEsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAz
-NjE0LDE5MzkzNjE1NDBdfQ==
+eyJoaXN0b3J5IjpbLTIwNDY5NTk4NywtMTkyMzMwMTIwLC00OT
+IwNjY5NTUsMTE1Nzc5Mzk0OSwtMTI4NjA1MTE4MCwyMDE3NjYx
+NDYzLC0xODQ1NDQ4MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC
+0xOTA3MzQxOTU1LC0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5
+MDEyNjQ0NSwtMTEwMDAyMjExMSwtMTYzMjAzMTUxMywtMTk0ND
+UxMTA5MSwxODg4MDMyMTU4LC0yODczOTExOTAsLTE2ODg4MDM2
+MTQsMTkzOTM2MTU0MF19
 -->
