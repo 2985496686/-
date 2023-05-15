@@ -697,10 +697,21 @@ func waitDelete(ctx context.Context, client *v3.Client, key string, rev int64) e
 
 **释放锁**
 
-
+```go
+func (m *Mutex) Unlock(ctx context.Context) error {  
+   client := m.s.Client()  
+   //直接删除key
+   if _, err := client.Delete(ctx, m.myKey); err != nil {  
+      return err  
+   }  
+   m.myKey = "\x00"  
+   m.myRev = -1  
+   return nil  
+}
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTYwMDAwNDMsLTEyNDQ2NzMyNzQsND
+eyJoaXN0b3J5IjpbLTE4ODgxNzcyNTEsLTEyNDQ2NzMyNzQsND
 IzNTc1Nzg1LC0xOTIzMzAxMjAsLTQ5MjA2Njk1NSwxMTU3Nzkz
 OTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0NDgyMj
 IsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NTUsLTE3
