@@ -611,8 +611,9 @@ func (m *Mutex) Lock(ctx context.Context) error {
    if err != nil {  
       return err  
    }  
-   // 将持有锁的key赋值给
-   ownerKey := resp.Responses[1].GetResponseRange().Kvs  
+   // 将当前持有锁的key赋值给ownerKey
+   ownerKey := resp.Responses[1].GetResponseRange().Kvs
+   //ownerKey不存在，或者版本号等于自己创建key的版本号  
    if len(ownerKey) == 0 || ownerKey[0].CreateRevision == m.myRev {  
       m.hdr = resp.Header  
       return nil  
@@ -642,7 +643,7 @@ func (m *Mutex) Lock(ctx context.Context) error {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDkyMTc5NDk0LC0xOTIzMzAxMjAsLTQ5Mj
+eyJoaXN0b3J5IjpbNTU5OTk0ODMwLC0xOTIzMzAxMjAsLTQ5Mj
 A2Njk1NSwxMTU3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0
 NjMsLTE4NDU0NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLT
 E5MDczNDE5NTUsLTE3MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkw
