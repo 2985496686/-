@@ -477,9 +477,12 @@ chekpoint机制虽然解决了问题，但是很明显了带来了性能的下�
 -   高效灵活：加锁、解锁的速度要快；支持阻塞和非阻塞；支持公平锁和非公平锁
 
 
+## Redis实现分布式锁的缺点
+
+1. 客户端长时间阻塞导致锁是西
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3MjcyMjE5LDIwNTAwMDk5NSwtMTkwNz
+eyJoaXN0b3J5IjpbMTQ4OTc5NTg2LDIwNTAwMDk5NSwtMTkwNz
 M0MTk1NSwtMTcwODYzOTkzOSwxMDgzNDA3NjM3LDE0OTAxMjY0
 NDUsLTExMDAwMjIxMTEsLTE2MzIwMzE1MTMsLTE5NDQ1MTEwOT
 EsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0xNjg4ODAzNjE0LDE5
