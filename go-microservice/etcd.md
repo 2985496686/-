@@ -486,9 +486,11 @@ redis的解决方案：
 -- java redission 提供了看门狗机制，在业务处理完之前不断给锁续期。
 
 2. **单点实例安全性问题**
-为了保证分布式锁的高可用，需要部署redis的主从节点，在发生主从切换时，可能就会丢失
+为了保证分布式锁的高可用，需要部署redis的主从节点，在数据同步之前发生主从切换，可能就会丢失原先master上的锁信息，导致同一时间两个客户端同时持有锁。
+redis的解决方案：
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODg2MDM3NzAsMTYwMjY0MzU5NiwyMD
+eyJoaXN0b3J5IjpbLTE4NDU0NDgyMjIsMTYwMjY0MzU5NiwyMD
 UwMDA5OTUsLTE5MDczNDE5NTUsLTE3MDg2Mzk5MzksMTA4MzQw
 NzYzNywxNDkwMTI2NDQ1LC0xMTAwMDIyMTExLC0xNjMyMDMxNT
 EzLC0xOTQ0NTExMDkxLDE4ODgwMzIxNTgsLTI4NzM5MTE5MCwt
