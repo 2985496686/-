@@ -480,10 +480,11 @@ chekpoint机制虽然解决了问题，但是很明显了带来了性能的下�
 ## Redis实现分布式锁的缺点
 
 1. **客户端长时间阻塞导致锁失效问题**
-客户端A获取锁后在处理业务时长时间阻塞，导致锁过期释放。当阻塞恢复时，就会i
-
+客户端A获取锁后在处理业务时长时间阻塞，导致锁过期释放。当阻塞恢复时，就会出现多客户端同时持有锁的情况。
+redis的解决方案：
+-- 延长锁的过期事件
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2MTQ4NjI3NywxNjAyNjQzNTk2LDIwNT
+eyJoaXN0b3J5IjpbMTI0Nzk4ODQ3NiwxNjAyNjQzNTk2LDIwNT
 AwMDk5NSwtMTkwNzM0MTk1NSwtMTcwODYzOTkzOSwxMDgzNDA3
 NjM3LDE0OTAxMjY0NDUsLTExMDAwMjIxMTEsLTE2MzIwMzE1MT
 MsLTE5NDQ1MTEwOTEsMTg4ODAzMjE1OCwtMjg3MzkxMTkwLC0x
