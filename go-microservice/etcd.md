@@ -815,6 +815,10 @@ type STM interface {
    reset()  
 }
 ```
+STM有两个实现类
+
+
+
 创建STM事务
 ```go
 func mkSTM(c *v3.Client, opts *stmOptions) STM {  
@@ -851,7 +855,7 @@ func mkSTM(c *v3.Client, opts *stmOptions) STM {
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4NjAwOTE3NiwyNDIzNDcyMjYsNzgwMT
+eyJoaXN0b3J5IjpbLTM5NzMyMjYwMCwyNDIzNDcyMjYsNzgwMT
 I0OTkxLC0xMjA1MzMzNTc3LDExMTgyMDQzNDcsLTQyMTI0Nzkz
 OSwtMjEzNTUxNDE1OSwtNDUxMjg5MTkxLDExODEyMTc0MTIsOT
 I2NTg1MzY5LDExMTU4NDEzMjcsNDE0Mzc3NTA2LDgyMzcyODM5
