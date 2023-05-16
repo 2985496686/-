@@ -724,20 +724,24 @@ func (m *Mutex) Unlock(ctx context.Context) error {
 
 
 
-## ETCD 的事务机制
+# ETCD 的事务机制
 
-### 事务的隔离级别
+## 事务的隔离级别
 -   **未提交读（Read Uncommitted）**：能够读取到其他事务中还未提交的数据，这可能会导致脏读的问题。
 -  ** 读已提交（Read Committed）**：只能读取到已经提交的数据，即别的事务一提交，当前事务就能读取到被修改的数据，这可能导致不可重复读的问题。
 -   **可重复读（Repeated Read）**：一个事务中，同一个读操作在事务的任意时刻都能得到同样的结果，其他事务的提交操作对本事务不会产生影响。
--   **串行化（Serializable）：串行化的执行可能冲突的事务，即一个事务会阻塞其他事务。它通过牺牲并发能力来换取数据的安全，属于最高的隔离级别。
+-   **串行化（Serializable）：** 串行化的执行可能冲突的事务，即一个事务会阻塞其他事务。它通过牺牲并发能力来换取数据的安全，属于最高的隔离级别。
+
+
+## etcd中的微事务
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1NTQ5ODg2LDgyMzcyODM5LC0xMDI3Nj
-M5ODE1LC05NTQ5MTE1MTUsNzU4MDY4NDkwLDExNjQwNTQzNDks
-LTEyNDQ2NzMyNzQsNDIzNTc1Nzg1LC0xOTIzMzAxMjAsLTQ5Mj
-A2Njk1NSwxMTU3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0
-NjMsLTE4NDU0NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLT
-E5MDczNDE5NTUsLTE3MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkw
-MTI2NDQ1XX0=
+eyJoaXN0b3J5IjpbLTY3MzI2OTIxNyw4MjM3MjgzOSwtMTAyNz
+YzOTgxNSwtOTU0OTExNTE1LDc1ODA2ODQ5MCwxMTY0MDU0MzQ5
+LC0xMjQ0NjczMjc0LDQyMzU3NTc4NSwtMTkyMzMwMTIwLC00OT
+IwNjY5NTUsMTE1Nzc5Mzk0OSwtMTI4NjA1MTE4MCwyMDE3NjYx
+NDYzLC0xODQ1NDQ4MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC
+0xOTA3MzQxOTU1LC0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5
+MDEyNjQ0NV19
 -->
