@@ -854,11 +854,11 @@ func mkSTM(c *v3.Client, opts *stmOptions) STM {
 }
 ```
 
-STM框架提供了四种隔离级别
+STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2NTA1NDM4MCwtMTEyMjM1MTczMiwyND
+eyJoaXN0b3J5IjpbMTAwMTE5MTg5MiwtMTEyMjM1MTczMiwyND
 IzNDcyMjYsNzgwMTI0OTkxLC0xMjA1MzMzNTc3LDExMTgyMDQz
 NDcsLTQyMTI0NzkzOSwtMjEzNTUxNDE1OSwtNDUxMjg5MTkxLD
 ExODEyMTc0MTIsOTI2NTg1MzY5LDExMTU4NDEzMjcsNDE0Mzc3
