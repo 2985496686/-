@@ -734,14 +734,23 @@ func (m *Mutex) Unlock(ctx context.Context) error {
 
 
 ## etcd中的微事务
+etcd v3 中引入了一个微事务的概念（mini-transaction），允许用户在一次修改中批量执行多个操作，这意味着这一组操作被绑定成一个原子操作，并共享同一个修订号。它的写法有点类似一个 CAS
 
-etcd v3中引入了微事务机制，有点类似于CAS操作
+```
+1
+```
+
+```go
+Txn().If(cond1, cond2, …).Then(op1, op2, …).Else(op1’, op2’, …).commit()
+```
+
+如果`If`语句中的条件全部为真，则整个事务的返回值为`true`，并且`Then`中的操作会被执行，否则返回`false`并执行`Else`中的操作。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzg1NjkzMDA2LDgyMzcyODM5LC0xMDI3Nj
-M5ODE1LC05NTQ5MTE1MTUsNzU4MDY4NDkwLDExNjQwNTQzNDks
-LTEyNDQ2NzMyNzQsNDIzNTc1Nzg1LC0xOTIzMzAxMjAsLTQ5Mj
-A2Njk1NSwxMTU3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0
-NjMsLTE4NDU0NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLT
-E5MDczNDE5NTUsLTE3MDg2Mzk5MzksMTA4MzQwNzYzNywxNDkw
-MTI2NDQ1XX0=
+eyJoaXN0b3J5IjpbLTUzNTQ2NDM3NCw4MjM3MjgzOSwtMTAyNz
+YzOTgxNSwtOTU0OTExNTE1LDc1ODA2ODQ5MCwxMTY0MDU0MzQ5
+LC0xMjQ0NjczMjc0LDQyMzU3NTc4NSwtMTkyMzMwMTIwLC00OT
+IwNjY5NTUsMTE1Nzc5Mzk0OSwtMTI4NjA1MTE4MCwyMDE3NjYx
+NDYzLC0xODQ1NDQ4MjIyLDE2MDI2NDM1OTYsMjA1MDAwOTk1LC
+0xOTA3MzQxOTU1LC0xNzA4NjM5OTM5LDEwODM0MDc2MzcsMTQ5
+MDEyNjQ0NV19
 -->
