@@ -815,12 +815,47 @@ type STM interface {
    reset()  
 }
 ```
+创建STM事务
+```go
+func mkSTM(c *v3.Client, opts *stmOptions) STM {  
+   switch opts.iso {  
+   case SerializableSnapshot:  
+      s := &stmSerializable{  
+         stm:      stm{client: c, ctx: opts.ctx},  
+         prefetch: make(map[string]*v3.GetResponse),  
+      }  
+      s.conflicts = func() []v3.Cmp {  
+         return append(s.rset.cmps(), s.wset.cmps(s.rset.first()+1)...)  
+      }  
+      return s  
+   case Serializable:  
+      s := &stmSerializable{  
+         stm:      stm{client: c, ctx: opts.ctx},  
+         prefetch: make(map[string]*v3.GetResponse),  
+      }  
+      s.conflicts = func() []v3.Cmp { return s.rset.cmps() }  
+      return s  
+   case RepeatableReads:  
+      s := &stm{client: c, ctx: opts.ctx, getOpts: []v3.OpOption{v3.WithSerializable()}}  
+      s.conflicts = func() []v3.Cmp { return s.rset.cmps() }  
+      return s  
+   case ReadCommitted:  
+      s := &stm{client: c, ctx: opts.ctx, getOpts: []v3.OpOption{v3.WithSerializable()}}  
+      s.conflicts = func() []v3.Cmp { return nil }  
+      return s  
+   default:  
+      panic("unsupported stm")  
+   }  
+}
+```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc4MjAzNjYxLDI0MjM0NzIyNiw3ODAxMj
-Q5OTEsLTEyMDUzMzM1NzcsMTExODIwNDM0NywtNDIxMjQ3OTM5
-LC0yMTM1NTE0MTU5LC00NTEyODkxOTEsMTE4MTIxNzQxMiw5Mj
-Y1ODUzNjksMTExNTg0MTMyNyw0MTQzNzc1MDYsODIzNzI4Mzks
-LTEwMjc2Mzk4MTUsLTk1NDkxMTUxNSw3NTgwNjg0OTAsMTE2ND
-A1NDM0OSwtMTI0NDY3MzI3NCw0MjM1NzU3ODUsLTE5MjMzMDEy
-MF19
+eyJoaXN0b3J5IjpbLTk4NjAwOTE3NiwyNDIzNDcyMjYsNzgwMT
+I0OTkxLC0xMjA1MzMzNTc3LDExMTgyMDQzNDcsLTQyMTI0Nzkz
+OSwtMjEzNTUxNDE1OSwtNDUxMjg5MTkxLDExODEyMTc0MTIsOT
+I2NTg1MzY5LDExMTU4NDEzMjcsNDE0Mzc3NTA2LDgyMzcyODM5
+LC0xMDI3NjM5ODE1LC05NTQ5MTE1MTUsNzU4MDY4NDkwLDExNj
+QwNTQzNDksLTEyNDQ2NzMyNzQsNDIzNTc1Nzg1LC0xOTIzMzAx
+MjBdfQ==
 -->
