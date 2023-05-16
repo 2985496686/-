@@ -744,14 +744,19 @@ Txn().If(cond1, cond2, …).Then(op1, op2, …).Else(op1’, op2’, …).commit
 
 ## 从ACID角度分析微事务
 
+### 读写事务
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/cAFVRZ1PenyJ9RGp.png)
+[图片上传中...(image-V6eBU7iffujILuCQ)]
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/8s4nLBjWTOAWRpr3.png)
+
 ### 持久化(Durability)
 etcd在事务提交时，就会将blotdb
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTI2NTg1MzY5LDExMTU4NDEzMjcsNDE0Mz
-c3NTA2LDgyMzcyODM5LC0xMDI3NjM5ODE1LC05NTQ5MTE1MTUs
-NzU4MDY4NDkwLDExNjQwNTQzNDksLTEyNDQ2NzMyNzQsNDIzNT
-c1Nzg1LC0xOTIzMzAxMjAsLTQ5MjA2Njk1NSwxMTU3NzkzOTQ5
-LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4NDU0NDgyMjIsMT
-YwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5NTUsLTE3MDg2
-Mzk5MzldfQ==
+eyJoaXN0b3J5IjpbNjEyNjQ3MjEsOTI2NTg1MzY5LDExMTU4ND
+EzMjcsNDE0Mzc3NTA2LDgyMzcyODM5LC0xMDI3NjM5ODE1LC05
+NTQ5MTE1MTUsNzU4MDY4NDkwLDExNjQwNTQzNDksLTEyNDQ2Nz
+MyNzQsNDIzNTc1Nzg1LC0xOTIzMzAxMjAsLTQ5MjA2Njk1NSwx
+MTU3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4ND
+U0NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5
+NTVdfQ==
 -->
