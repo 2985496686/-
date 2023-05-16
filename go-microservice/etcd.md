@@ -799,13 +799,24 @@ func TransferMoney(cli *clientv3.Client, from string, to string ,account int){
 
 ### 源码解析
 
-
+```go
+// STM is an interface for software transactional memory.type STM interface {  
+   // Get returns the value for a key and inserts the key in the txn's read set.   // If Get fails, it aborts the transaction with an error, never returning.   
+   Get(key ...string) string  
+   // Put adds a value for a key to the write set.   Put(key, val string, opts ...v3.OpOption)  
+   // Rev returns the revision of a key in the read set.   Rev(key string) int64  
+   // Del deletes a key.   Del(key string)  
+  
+   // commit attempts to apply the txn's changes to the server.   commit() *v3.TxnResponse  
+   reset()  
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzgwMTI0OTkxLC0xMjA1MzMzNTc3LDExMT
-gyMDQzNDcsLTQyMTI0NzkzOSwtMjEzNTUxNDE1OSwtNDUxMjg5
-MTkxLDExODEyMTc0MTIsOTI2NTg1MzY5LDExMTU4NDEzMjcsND
-E0Mzc3NTA2LDgyMzcyODM5LC0xMDI3NjM5ODE1LC05NTQ5MTE1
-MTUsNzU4MDY4NDkwLDExNjQwNTQzNDksLTEyNDQ2NzMyNzQsND
-IzNTc1Nzg1LC0xOTIzMzAxMjAsLTQ5MjA2Njk1NSwxMTU3Nzkz
-OTQ5XX0=
+eyJoaXN0b3J5IjpbMjQyMzQ3MjI2LDc4MDEyNDk5MSwtMTIwNT
+MzMzU3NywxMTE4MjA0MzQ3LC00MjEyNDc5MzksLTIxMzU1MTQx
+NTksLTQ1MTI4OTE5MSwxMTgxMjE3NDEyLDkyNjU4NTM2OSwxMT
+E1ODQxMzI3LDQxNDM3NzUwNiw4MjM3MjgzOSwtMTAyNzYzOTgx
+NSwtOTU0OTExNTE1LDc1ODA2ODQ5MCwxMTY0MDU0MzQ5LC0xMj
+Q0NjczMjc0LDQyMzU3NTc4NSwtMTkyMzMwMTIwLC00OTIwNjY5
+NTVdfQ==
 -->
