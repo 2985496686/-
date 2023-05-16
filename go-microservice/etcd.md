@@ -744,9 +744,9 @@ Txn().If(cond1, cond2, …).Then(op1, op2, …).Else(op1’, op2’, …).commit
 
 **微事务是如何在etcd中执行的？**
 
-1. 从
+1. 在
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkxMTYxODIzMSw0MTQzNzc1MDYsODIzNz
+eyJoaXN0b3J5IjpbMTExNTg0MTMyNyw0MTQzNzc1MDYsODIzNz
 I4MzksLTEwMjc2Mzk4MTUsLTk1NDkxMTUxNSw3NTgwNjg0OTAs
 MTE2NDA1NDM0OSwtMTI0NDY3MzI3NCw0MjM1NzU3ODUsLTE5Mj
 MzMDEyMCwtNDkyMDY2OTU1LDExNTc3OTM5NDksLTEyODYwNTEx
