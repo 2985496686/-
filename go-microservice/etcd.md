@@ -752,13 +752,13 @@ Txn().If(cond1, cond2, …).Then(op1, op2, …).Else(op1’, op2’, …).commit
 
 写事务会先将数据写入buffer和boltdb，持久化机制会定时将数据刷到磁盘中去，这种异步提交的方式很大的提高了写事务的效率。
 这里可能会有一个疑问，持久化机制并不是及时的，如何保证数据不会丢失？
-etcd是基于raft实现的，这里防止数据丢失依靠了raft模块的wal日志。raft提交日志后，commitIndex会加一，kvServer服务会维护一个consistentIndex，用来跟进提交的日志
+etcd是基于raft实现的，这里防止数据丢失依靠了raft模块的wal日志。raft提交日志后，commitIndex会加一，kvServer服务会维护一个consistentIndex，用来执行跟进commitndex，并且consistentIndex在数据持久化时也会持久化到db中
 
 
 ### 持久化(Durability)
 etcd在事务提交时，就会将blotdb
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwMTQ1NTI1NSwxMTgxMjE3NDEyLDkyNj
+eyJoaXN0b3J5IjpbLTg2OTg2MzM5NCwxMTgxMjE3NDEyLDkyNj
 U4NTM2OSwxMTE1ODQxMzI3LDQxNDM3NzUwNiw4MjM3MjgzOSwt
 MTAyNzYzOTgxNSwtOTU0OTExNTE1LDc1ODA2ODQ5MCwxMTY0MD
 U0MzQ5LC0xMjQ0NjczMjc0LDQyMzU3NTc4NSwtMTkyMzMwMTIw
