@@ -768,9 +768,9 @@ etcd在事务提交时，就会将blotdb(内存中的)数据刷新到磁盘中�
 
 ## 事务框架STM
 
-虽然etcd提供了微事务，当它并不算是真正事务，它只是通过原子性的compare-and-swap（CAS）操作，可以在一个事务中执行多个读写操作。
+虽然etcd提供了微事务，当它并不算是真正事务，它只是通过原子性的compare-and-swap（CAS）操作，可以在一个事务中执行多个读写操作，所有操作都放在了数据库执行
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzMjk3NjA2MiwtMjEzNTUxNDE1OSwtND
+eyJoaXN0b3J5IjpbLTQyMTI0NzkzOSwtMjEzNTUxNDE1OSwtND
 UxMjg5MTkxLDExODEyMTc0MTIsOTI2NTg1MzY5LDExMTU4NDEz
 MjcsNDE0Mzc3NTA2LDgyMzcyODM5LC0xMDI3NjM5ODE1LC05NT
 Q5MTE1MTUsNzU4MDY4NDkwLDExNjQwNTQzNDksLTEyNDQ2NzMy
