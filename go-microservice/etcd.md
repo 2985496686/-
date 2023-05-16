@@ -768,7 +768,9 @@ etcd在事务提交时，就会将blotdb(内存中的)数据刷新到磁盘中�
 
 ## 事务框架STM
 
-虽然etcd提供了微事务，当它并不算是真正事务，它只是通过原子性的compare-and-swap（CAS）操作，可以在一个事务中执行多个读写操作，所有操作都放在了数据库执行，需要提前将，这会导致微事务有很大的局限性。etcd Clientv3 提供了STM事务框架，并提供4种隔离级别。STM的实现也是基于微事务的。
+
+
+虽然etcd提供了微事务，当它并不算是真正事务，它只是通过原子性的compare-and-swap（CAS）操作，可以在一个事务中执行多个读写操作，所有操作都放在了数据库执行，这会导致微事务有很大的局限性。etcd Clientv3 提供了STM事务框架，并提供4种隔离级别。STM的实现也是基于微事务的。
 
 
 下面是使用STM框架的事务实现的转账函数：
@@ -792,12 +794,16 @@ func TransferMoney(cli *clientv3.Client, from string, to string ,account int){
    fmt.Println(resp.Succeeded)  
 }
 ```
+以上这个操作仅仅通过简单的微事务是无法完成的。
+
+
+## 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4NTgzNjg3OCwtMTIwNTMzMzU3NywxMT
-E4MjA0MzQ3LC00MjEyNDc5MzksLTIxMzU1MTQxNTksLTQ1MTI4
-OTE5MSwxMTgxMjE3NDEyLDkyNjU4NTM2OSwxMTE1ODQxMzI3LD
-QxNDM3NzUwNiw4MjM3MjgzOSwtMTAyNzYzOTgxNSwtOTU0OTEx
-NTE1LDc1ODA2ODQ5MCwxMTY0MDU0MzQ5LC0xMjQ0NjczMjc0LD
-QyMzU3NTc4NSwtMTkyMzMwMTIwLC00OTIwNjY5NTUsMTE1Nzc5
-Mzk0OV19
+eyJoaXN0b3J5IjpbNDUzNjc4MjI5LC0xMjA1MzMzNTc3LDExMT
+gyMDQzNDcsLTQyMTI0NzkzOSwtMjEzNTUxNDE1OSwtNDUxMjg5
+MTkxLDExODEyMTc0MTIsOTI2NTg1MzY5LDExMTU4NDEzMjcsND
+E0Mzc3NTA2LDgyMzcyODM5LC0xMDI3NjM5ODE1LC05NTQ5MTE1
+MTUsNzU4MDY4NDkwLDExNjQwNTQzNDksLTEyNDQ2NzMyNzQsND
+IzNTc1Nzg1LC0xOTIzMzAxMjAsLTQ5MjA2Njk1NSwxMTU3Nzkz
+OTQ5XX0=
 -->
