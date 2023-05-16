@@ -756,9 +756,11 @@ etcd是基于raft实现的，这里防止数据丢失依靠了raft模块的wal�
 
 
 ### 持久化(Durability)
-etcd在事务提交时，就会将blotdb(内存中的)数据刷新到磁盘中。虽然事务提交是异步不及时的
+etcd在事务提交时，就会将blotdb(内存中的)数据刷新到磁盘中。虽然事务提交是异步不及时的，但是上面讲述的机制又保证了数据不会丢失。
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4ODcyNzM4MSwxMTgxMjE3NDEyLDkyNj
+eyJoaXN0b3J5IjpbMTc1MjkwNjE3OCwxMTgxMjE3NDEyLDkyNj
 U4NTM2OSwxMTE1ODQxMzI3LDQxNDM3NzUwNiw4MjM3MjgzOSwt
 MTAyNzYzOTgxNSwtOTU0OTExNTE1LDc1ODA2ODQ5MCwxMTY0MD
 U0MzQ5LC0xMjQ0NjczMjc0LDQyMzU3NTc4NSwtMTkyMzMwMTIw
