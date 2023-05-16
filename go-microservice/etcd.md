@@ -744,9 +744,10 @@ Txn().If(cond1, cond2, …).Then(op1, op2, …).Else(op1’, op2’, …).commit
 
 ## 从ACID角度分析微事务
 
-### 持久化
+### 持久化(Durability)
+etcd在事务提交时，就会将blotdb
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ4NTMwMzU3LDExMTU4NDEzMjcsNDE0Mz
+eyJoaXN0b3J5IjpbOTI2NTg1MzY5LDExMTU4NDEzMjcsNDE0Mz
 c3NTA2LDgyMzcyODM5LC0xMDI3NjM5ODE1LC05NTQ5MTE1MTUs
 NzU4MDY4NDkwLDExNjQwNTQzNDksLTEyNDQ2NzMyNzQsNDIzNT
 c1Nzg1LC0xOTIzMzAxMjAsLTQ5MjA2Njk1NSwxMTU3NzkzOTQ5
