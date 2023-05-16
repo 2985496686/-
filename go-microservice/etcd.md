@@ -856,9 +856,15 @@ func mkSTM(c *v3.Client, opts *stmOptions) STM {
 
 STM框架提供了四种隔离级别，
 
-## 
+
+直接参考：
+[ 跟 etcd 学习数据库中事务隔离的实现](https://blog.betacat.io/post/2019/08/learn-transaction-isolation-levels-from-etcd/)
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzODI2MzYxNiwxMDAxMTkxODkyLC0xMT
+eyJoaXN0b3J5IjpbMjA3NjYyMTE2NSwxMDAxMTkxODkyLC0xMT
 IyMzUxNzMyLDI0MjM0NzIyNiw3ODAxMjQ5OTEsLTEyMDUzMzM1
 NzcsMTExODIwNDM0NywtNDIxMjQ3OTM5LC0yMTM1NTE0MTU5LC
 00NTEyODkxOTEsMTE4MTIxNzQxMiw5MjY1ODUzNjksMTExNTg0
