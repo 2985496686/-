@@ -746,17 +746,19 @@ Txn().If(cond1, cond2, …).Then(op1, op2, …).Else(op1’, op2’, …).commit
 
 ### 读写事务
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/cAFVRZ1PenyJ9RGp.png)
-[图片上传中...(image-V6eBU7iffujILuCQ)]
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/8s4nLBjWTOAWRpr3.png)
+
+从两张图可以看到，读事务和写事务
+
 
 ### 持久化(Durability)
 etcd在事务提交时，就会将blotdb
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjEyNjQ3MjEsOTI2NTg1MzY5LDExMTU4ND
-EzMjcsNDE0Mzc3NTA2LDgyMzcyODM5LC0xMDI3NjM5ODE1LC05
-NTQ5MTE1MTUsNzU4MDY4NDkwLDExNjQwNTQzNDksLTEyNDQ2Nz
-MyNzQsNDIzNTc1Nzg1LC0xOTIzMzAxMjAsLTQ5MjA2Njk1NSwx
-MTU3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMTc2NjE0NjMsLTE4ND
-U0NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5OTUsLTE5MDczNDE5
-NTVdfQ==
+eyJoaXN0b3J5IjpbMTE4MTIxNzQxMiw5MjY1ODUzNjksMTExNT
+g0MTMyNyw0MTQzNzc1MDYsODIzNzI4MzksLTEwMjc2Mzk4MTUs
+LTk1NDkxMTUxNSw3NTgwNjg0OTAsMTE2NDA1NDM0OSwtMTI0ND
+Y3MzI3NCw0MjM1NzU3ODUsLTE5MjMzMDEyMCwtNDkyMDY2OTU1
+LDExNTc3OTM5NDksLTEyODYwNTExODAsMjAxNzY2MTQ2MywtMT
+g0NTQ0ODIyMiwxNjAyNjQzNTk2LDIwNTAwMDk5NSwtMTkwNzM0
+MTk1NV19
 -->
