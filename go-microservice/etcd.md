@@ -750,17 +750,19 @@ Txn().If(cond1, cond2, …).Then(op1, op2, …).Else(op1’, op2’, …).commit
 
 读事务首先会在buffer访问，若buffer中没有才会到boltdb中访问，这里访问boltdb并不会访问磁盘，etcd在启动时就会将磁盘中的内容映射到内存中。
 
-写事务会先将数据写入buffer和boltdb，持久化机制会定时将数据刷到磁盘中去，这种异步提交的方式很大的提高了写书
+写事务会先将数据写入buffer和boltdb，持久化机制会定时将数据刷到磁盘中去，这种异步提交的方式很大的提高了写事务的效率。
+这里可能会有一个疑问，持久化机制并不是及时的，如何保证数据不会丢失？
+
 
 
 ### 持久化(Durability)
 etcd在事务提交时，就会将blotdb
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2MjYzNTk1MiwxMTgxMjE3NDEyLDkyNj
-U4NTM2OSwxMTE1ODQxMzI3LDQxNDM3NzUwNiw4MjM3MjgzOSwt
-MTAyNzYzOTgxNSwtOTU0OTExNTE1LDc1ODA2ODQ5MCwxMTY0MD
-U0MzQ5LC0xMjQ0NjczMjc0LDQyMzU3NTc4NSwtMTkyMzMwMTIw
-LC00OTIwNjY5NTUsMTE1Nzc5Mzk0OSwtMTI4NjA1MTE4MCwyMD
-E3NjYxNDYzLC0xODQ1NDQ4MjIyLDE2MDI2NDM1OTYsMjA1MDAw
-OTk1XX0=
+eyJoaXN0b3J5IjpbNjg4NDI3ODgwLDExODEyMTc0MTIsOTI2NT
+g1MzY5LDExMTU4NDEzMjcsNDE0Mzc3NTA2LDgyMzcyODM5LC0x
+MDI3NjM5ODE1LC05NTQ5MTE1MTUsNzU4MDY4NDkwLDExNjQwNT
+QzNDksLTEyNDQ2NzMyNzQsNDIzNTc1Nzg1LC0xOTIzMzAxMjAs
+LTQ5MjA2Njk1NSwxMTU3NzkzOTQ5LC0xMjg2MDUxMTgwLDIwMT
+c2NjE0NjMsLTE4NDU0NDgyMjIsMTYwMjY0MzU5NiwyMDUwMDA5
+OTVdfQ==
 -->
