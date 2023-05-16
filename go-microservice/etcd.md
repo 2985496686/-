@@ -748,13 +748,15 @@ Txn().If(cond1, cond2, …).Then(op1, op2, …).Else(op1’, op2’, …).commit
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/cAFVRZ1PenyJ9RGp.png)
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/8s4nLBjWTOAWRpr3.png)
 
-从两张图可以看到
+读事务首先会在buffer访问，若buffer中没有才会到boltdb中访问，这里访问boltdb并不会访问磁盘，etcd在启动时就会将磁盘中的内容映射到内存中。
+
+写事务会先将数据写入buffer和
 
 
 ### 持久化(Durability)
 etcd在事务提交时，就会将blotdb
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0Njc5OTEzMiwxMTgxMjE3NDEyLDkyNj
+eyJoaXN0b3J5IjpbLTk3NzM1MTg5OCwxMTgxMjE3NDEyLDkyNj
 U4NTM2OSwxMTE1ODQxMzI3LDQxNDM3NzUwNiw4MjM3MjgzOSwt
 MTAyNzYzOTgxNSwtOTU0OTExNTE1LDc1ODA2ODQ5MCwxMTY0MD
 U0MzQ5LC0xMjQ0NjczMjc0LDQyMzU3NTc4NSwtMTkyMzMwMTIw
