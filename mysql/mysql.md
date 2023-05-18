@@ -119,7 +119,13 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 - 每一个索引在InnoDB中都对应一个B+树。
 - 如果没有主键，默认将rowId作为主键索引。
 
-由
+有如下建表语句：
+```sql
+create table T( 
+	id int primary key, 
+	k int not null, 
+	name varchar(16), index (k))engine=InnoDB;
+```
 
 
 
@@ -127,7 +133,7 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzM4MTkzNzU0LC0xMzg1ODY2ODc4LC0yMD
+eyJoaXN0b3J5IjpbNDA1MjM2MTUxLC0xMzg1ODY2ODc4LC0yMD
 UxNTc4OTA3LC0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAw
 MTcsMzEyNTM4NzkwLC03OTI2MDA4Myw4NDcwMTkxNzIsLTY4OD
 MyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
