@@ -88,8 +88,9 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 ## 两阶段提交的必要性
 
 假设redo log没有prepare阶段，写入redo log后就可以直接更新到磁盘。
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI2MTQxODE2LC03OTI2MDA4Myw4NDcwMT
+eyJoaXN0b3J5IjpbMzEyNTM4NzkwLC03OTI2MDA4Myw4NDcwMT
 kxNzIsLTY4ODMyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
 
 -->
