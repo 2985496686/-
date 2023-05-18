@@ -184,10 +184,9 @@ select id from T where k between 3 and 5
 ```
 
 搜索k在3到5之间所有用户的id，常规思路：
-
-在k索引树上找出全部
+在k索引树上找出全部符合条件的数据，然后依次回表查询对应数据。但是此处只查询
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0MDY2MjAyNCw5NjEyMTg1NDgsNzUxNT
+eyJoaXN0b3J5IjpbMTExOTkxOTk2OSw5NjEyMTg1NDgsNzUxNT
 cwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC0xNjg5NzI2
 MDgwLDI2MTIwODQwNiw4NDUwMDAwMTcsMzEyNTM4NzkwLC03OT
 I2MDA4Myw4NDcwMTkxNzIsLTY4ODMyOTA1LDEyNDg3ODM4OTks
