@@ -172,10 +172,11 @@ alter table T drop primary key;
 alter table T add primary key(id);
 ```
 
-答案： 单独的重建索引k没有问题，但是重建主键 id会导致非主键索引失效
+答案： 单独的重建索引k没有问题，但是重建主键 id会导致非主键索引也会被修改
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzUxNTcwNjU0LC0xMzg1ODY2ODc4LC0yMD
-UxNTc4OTA3LC0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAw
-MTcsMzEyNTM4NzkwLC03OTI2MDA4Myw4NDcwMTkxNzIsLTY4OD
-MyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
+eyJoaXN0b3J5IjpbMTM2MTA4MDE2NCw3NTE1NzA2NTQsLTEzOD
+U4NjY4NzgsLTIwNTE1Nzg5MDcsLTE2ODk3MjYwODAsMjYxMjA4
+NDA2LDg0NTAwMDAxNywzMTI1Mzg3OTAsLTc5MjYwMDgzLDg0Nz
+AxOTE3MiwtNjg4MzI5MDUsMTI0ODc4Mzg5OSwtNzQ3Mjc1MTYw
+XX0=
 -->
