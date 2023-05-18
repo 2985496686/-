@@ -81,8 +81,12 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 3. commit
 
 - 在1之后crash，重启后日志回滚。
-- 在2之后crash，重启后redolog自动提交，然后
+- 在2之后crash，重启后redolog自动提交，然后正常写磁盘。
+- 在3之后crash，重启后正常写磁盘。
+
+
+## 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzNjAzMTA5OCw4NDcwMTkxNzIsLTY4OD
-MyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
+eyJoaXN0b3J5IjpbLTE4NDg3NTExNjQsODQ3MDE5MTcyLC02OD
+gzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBdfQ==
 -->
