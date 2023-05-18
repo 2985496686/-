@@ -117,7 +117,7 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 - InnoDB使用B+树索引模型，所有数据都是存储在B+树上的。
 - 每一个索引在InnoDB中都对应一个B+树。
-- 如果没有主键，默认将rowId作为逐渐索引。
+- 如果没有主键，默认将rowId作为主键索引。
 
 
 
@@ -125,8 +125,8 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzODU4NjY4NzgsLTIwNTE1Nzg5MDcsLT
-E2ODk3MjYwODAsMjYxMjA4NDA2LDg0NTAwMDAxNywzMTI1Mzg3
-OTAsLTc5MjYwMDgzLDg0NzAxOTE3MiwtNjg4MzI5MDUsMTI0OD
-c4Mzg5OSwtNzQ3Mjc1MTYwXX0=
+eyJoaXN0b3J5IjpbLTE3MzE3MTY1MjMsLTEzODU4NjY4NzgsLT
+IwNTE1Nzg5MDcsLTE2ODk3MjYwODAsMjYxMjA4NDA2LDg0NTAw
+MDAxNywzMTI1Mzg3OTAsLTc5MjYwMDgzLDg0NzAxOTE3MiwtNj
+g4MzI5MDUsMTI0ODc4Mzg5OSwtNzQ3Mjc1MTYwXX0=
 -->
