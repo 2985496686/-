@@ -149,10 +149,10 @@ create table T(
 为了维护索引的有序性，每添加一个节点就需要进行维护，插入数据有两种：
 
 1. 递增的数据，这时只需要顺序的在节点末尾插入数据。
-2. 
+2. 插入非递增的数据，可能会造成页分裂，影响性能，同时降低了空间利用率。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTAxNjAyNjE5LC0xMzg1ODY2ODc4LC0yMD
-UxNTc4OTA3LC0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAw
-MTcsMzEyNTM4NzkwLC03OTI2MDA4Myw4NDcwMTkxNzIsLTY4OD
-MyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
+eyJoaXN0b3J5IjpbLTk0MjI1MTE1MiwtMTM4NTg2Njg3OCwtMj
+A1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYsODQ1MDAw
+MDE3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MDE5MTcyLC02OD
+gzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBdfQ==
 -->
