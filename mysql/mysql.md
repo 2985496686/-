@@ -184,11 +184,15 @@ select id from T where k between 3 and 5
 ```
 
 搜索k在3到5之间所有用户的id，常规思路：
-在k索引树上找出全部符合条件的数据，然后依次回表查询对应数据。但是此处只查询
+在k索引树上找出全部符合条件的数据，然后依次回表查询对应数据。但是此处只查询id，id已经在k、索引树上包含，所以没必要回表。
+
+**结论：由于覆盖索引可以减少树的搜索次数，显著提升查询性能，所以使用覆盖索引是一个常用的性能优化手段。**
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTExOTkxOTk2OSw5NjEyMTg1NDgsNzUxNT
-cwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC0xNjg5NzI2
-MDgwLDI2MTIwODQwNiw4NDUwMDAwMTcsMzEyNTM4NzkwLC03OT
-I2MDA4Myw4NDcwMTkxNzIsLTY4ODMyOTA1LDEyNDg3ODM4OTks
-LTc0NzI3NTE2MF19
+eyJoaXN0b3J5IjpbLTIwMTczMDY5NDYsOTYxMjE4NTQ4LDc1MT
+U3MDY1NCwtMTM4NTg2Njg3OCwtMjA1MTU3ODkwNywtMTY4OTcy
+NjA4MCwyNjEyMDg0MDYsODQ1MDAwMDE3LDMxMjUzODc5MCwtNz
+kyNjAwODMsODQ3MDE5MTcyLC02ODgzMjkwNSwxMjQ4NzgzODk5
+LC03NDcyNzUxNjBdfQ==
 -->
