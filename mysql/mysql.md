@@ -85,8 +85,10 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 - 在3之后crash，重启后正常写磁盘。
 
 
-## 
+## 两阶段提交的必要性
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDg3NTExNjQsODQ3MDE5MTcyLC02OD
-gzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBdfQ==
+eyJoaXN0b3J5IjpbMTMzOTM3NzAwNiw4NDcwMTkxNzIsLTY4OD
+MyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
 -->
