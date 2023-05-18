@@ -95,10 +95,10 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 定期全量备份的周期“取决于系统重要性，有的是一天一备，有的是一周一备”。那么在什么场景下，一天一备会比一周一备更有优势呢？或者说，它影响了这个数据库系统的哪个指标？
 
-答案：首先要说明备份数据和binlog的关系
+答案
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTI3MjY1MzgsMzEyNTM4NzkwLC03OT
-I2MDA4Myw4NDcwMTkxNzIsLTY4ODMyOTA1LDEyNDg3ODM4OTks
-LTc0NzI3NTE2MF19
+eyJoaXN0b3J5IjpbMjAwMzE4MjQ2MCwzMTI1Mzg3OTAsLTc5Mj
+YwMDgzLDg0NzAxOTE3MiwtNjg4MzI5MDUsMTI0ODc4Mzg5OSwt
+NzQ3Mjc1MTYwXX0=
 -->
