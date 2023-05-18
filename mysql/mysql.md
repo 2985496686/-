@@ -128,15 +128,15 @@ create table T(
 	index (k)
 )engine=InnoDB;
 ```
-[图片上传中...(image-YBME3xu5l8SDmFku)]
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/xpKlBDZMlPPoXmwV.png)
 
-
-
+主键对应的B+树叶子结点直接存储的是完整的数据信息。
+其余的
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExMTY0OTI4NCwtMTM4NTg2Njg3OCwtMj
+eyJoaXN0b3J5IjpbLTY0Mjg2MjU0MiwtMTM4NTg2Njg3OCwtMj
 A1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYsODQ1MDAw
 MDE3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MDE5MTcyLC02OD
 gzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBdfQ==
