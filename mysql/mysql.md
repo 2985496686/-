@@ -98,10 +98,10 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 答案：采用哪种备份方式取决于系统对数据恢复时间长短的容忍程度。
 通过binlog恢复数据是将执行的操作重放一遍，如果积攒了大量的binlog，恢复时间也就会相应的变长。所以只依靠binlog来恢复数据肯定是不行的，还需要定期的将数据备份。如果是一周一备的话，在数据恢复时就需要依靠上次备份的数据 + 上次备份到现在积攒的binlog。如果是一天一备，最多积攒一天的binlog，数据恢复就很快。
 这里可能会有一个疑问，如果实时备份数据是不是就不需要binlog了？
-确实如此，但是这是很难实现的，数据备份
+确实如此，但是这是很难实现的，数据备份是一个成本很高的过程，无法做到实时备份，而binlog只需要顺序写磁盘，
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNjA0NTk5MDcsMzEyNTM4NzkwLC03OT
+eyJoaXN0b3J5IjpbLTE4ODU4MDg1MTIsMzEyNTM4NzkwLC03OT
 I2MDA4Myw4NDcwMTkxNzIsLTY4ODMyOTA1LDEyNDg3ODM4OTks
 LTc0NzI3NTE2MF19
 -->
