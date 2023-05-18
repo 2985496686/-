@@ -205,12 +205,17 @@ key(`id_card`,`name`)
 
 所以在建立联合索引的时候就需要考虑下面两个原则：
 1. 第一原则是，如果通过调整顺序，可以少维护一个索引，那么这个顺序往往就是需要优先考虑采用的。比如：除了需要频繁根据身份证号查询名字，还需要根据身份证号查询个人的全部信息，那我们就不需要单独为身份证号建立索引。
-2. 第二原则就要考虑空间了。如果没有根据身份证号查询个人的全部信息的需求，但是有通过name查询符合条件居民的需求
+2. 第二原则就要考虑空间了。如果不仅有根据身份证号查询个人的全部信息的需求，还需要通过name查询符合条件居民的需求，应该如何建立索引？
+有两种方法，如下：
+```sql
+key(`id_card`,`name`)
+key()
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzk4MDUwMjg3LC0yMDg2NzI4MDcyLC0xOT
-I4MjA4MjExLC03MzI2ODU2NDgsNjE4MzQ5ODI2LDk2MTIxODU0
-OCw3NTE1NzA2NTQsLTEzODU4NjY4NzgsLTIwNTE1Nzg5MDcsLT
-E2ODk3MjYwODAsMjYxMjA4NDA2LDg0NTAwMDAxNywzMTI1Mzg3
-OTAsLTc5MjYwMDgzLDg0NzAxOTE3MiwtNjg4MzI5MDUsMTI0OD
-c4Mzg5OSwtNzQ3Mjc1MTYwXX0=
+eyJoaXN0b3J5IjpbMTcxMjgyMDk4OCwtMjA4NjcyODA3MiwtMT
+kyODIwODIxMSwtNzMyNjg1NjQ4LDYxODM0OTgyNiw5NjEyMTg1
+NDgsNzUxNTcwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC
+0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAwMTcsMzEyNTM4
+NzkwLC03OTI2MDA4Myw4NDcwMTkxNzIsLTY4ODMyOTA1LDEyND
+g3ODM4OTksLTc0NzI3NTE2MF19
 -->
