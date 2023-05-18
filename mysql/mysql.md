@@ -183,11 +183,13 @@ alter table T add primary key(id);
 select id from T where k between 3 and 5
 ```
 
-搜索k在3到5之间所有用户的id，常规
+搜索k在3到5之间所有用户的id，常规思路：
+
+在k索引树上找出全部符合
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc0MTk3MDQ1LDk2MTIxODU0OCw3NTE1Nz
-A2NTQsLTEzODU4NjY4NzgsLTIwNTE1Nzg5MDcsLTE2ODk3MjYw
-ODAsMjYxMjA4NDA2LDg0NTAwMDAxNywzMTI1Mzg3OTAsLTc5Mj
-YwMDgzLDg0NzAxOTE3MiwtNjg4MzI5MDUsMTI0ODc4Mzg5OSwt
-NzQ3Mjc1MTYwXX0=
+eyJoaXN0b3J5IjpbLTE0NjcxMDM0NTAsOTYxMjE4NTQ4LDc1MT
+U3MDY1NCwtMTM4NTg2Njg3OCwtMjA1MTU3ODkwNywtMTY4OTcy
+NjA4MCwyNjEyMDg0MDYsODQ1MDAwMDE3LDMxMjUzODc5MCwtNz
+kyNjAwODMsODQ3MDE5MTcyLC02ODgzMjkwNSwxMjQ4NzgzODk5
+LC03NDcyNzUxNjBdfQ==
 -->
