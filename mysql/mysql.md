@@ -47,7 +47,7 @@ binlog不具备崩溃后数据恢复的作用。存储引擎更新一条记录�
 
 ## redolog
 
-redolog是InnoDB引擎独有的日志。前面说过在磁盘中修改一个数据成本很高，所以可以借助一个"记账本"，将数据修改请求先记录到"记账本"中，在数据库闲下来的时候在更新磁盘。redo log就充当了这个记账本，记录的是物理日志(age字段修改为20)。当mysql crash掉了，只要记账本还在，才重启mysql时就可以保证数据不会丢失。所以redolog拥有``crash-safe``的能力。
+redolog是InnoDB引擎独有的日志。前面说过在磁盘中修改一个数据成本很高，所以可以借助一个"记账本"，将数据修改请求先记录到"记账本"中，在数据库闲下来的时候在更新磁盘。redo log就充当了这个记账本，记录的是物理日志(age字段修改为20)。当mysql crash掉了，只要记账本还在，重启mysql时就可以保证数据不会丢失。所以redolog拥有``crash-safe``的能力。
 
 InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，每个文件的大小是1GB，那么这块“记账本”总共就可以记录4GB的操作。从头开始写，写到末尾就又回到开头循环写，如下面这个图所示。
 
@@ -89,8 +89,9 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 假设redo log没有prepare阶段，写入redo log后就可以直接更新到磁盘。
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMzEyNTM4NzkwLC03OTI2MDA4Myw4NDcwMT
-kxNzIsLTY4ODMyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEwODA4NjA0ODEsMzEyNTM4NzkwLC03OT
+I2MDA4Myw4NDcwMTkxNzIsLTY4ODMyOTA1LDEyNDg3ODM4OTks
+LTc0NzI3NTE2MF19
 -->
