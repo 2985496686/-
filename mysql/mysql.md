@@ -73,14 +73,16 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/UrngmsjWntP0Jphl.png)
 
+
+## mysql崩溃恢复
 可以简单的将过程进行如下简化：
 1. 写redo log
 2. 写binlog
 3. commit
 
-
-
+- 在1之后crash，重启后日志回滚。
+- 在2之后crash，重启后redolog自动提交，然后
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5NzgwOTgyMiw4NDcwMTkxNzIsLTY4OD
+eyJoaXN0b3J5IjpbMTMzNjAzMTA5OCw4NDcwMTkxNzIsLTY4OD
 MyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
 -->
