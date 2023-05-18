@@ -71,10 +71,12 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
     
 5.  执行器调用引擎的提交事务接口，引擎把刚刚写入的redo log改成提交（commit）状态，更新完成。
 
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/UrngmsjWntP0Jphl.png)
 
+当数据库
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4ODMyOTA1LDEyNDg3ODM4OTksLTc0Nz
-I3NTE2MF19
+eyJoaXN0b3J5IjpbLTEyMzE5MDExMzUsLTY4ODMyOTA1LDEyND
+g3ODM4OTksLTc0NzI3NTE2MF19
 -->
