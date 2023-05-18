@@ -224,11 +224,13 @@ key(`id_card`)
 
 ## 全局锁
 
-对整个数据库加锁，``Flush tables with read lock``，让整个数据库处于只读状态，直到客户端断开连接或者执行``unlock tables``。
+1. 对整个数据库加锁，``Flush tables with read lock``，让整个数据库处于只读状态，直到客户端断开连接或者执行``unlock tables``。
 
-全局锁使用场景：作全局备份时，防止备份完表一，在备份表二
+2. 全局锁使用场景：作全局备份时，防止在备份两个表的时候出现逻辑时间不一致的情况。
+
+3. 在InnoDB出现后，支持可重复读
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDYxODE3NDYsLTEwMzY0NTE0OTksLT
+eyJoaXN0b3J5IjpbLTIxMTkwOTY4MzgsLTEwMzY0NTE0OTksLT
 Q1NDY4OTk2OSwtMTEzMTc3NzYwMywtMjA4NjcyODA3MiwtMTky
 ODIwODIxMSwtNzMyNjg1NjQ4LDYxODM0OTgyNiw5NjEyMTg1ND
 gsNzUxNTcwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC0x
