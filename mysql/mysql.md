@@ -113,13 +113,17 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 **B+树：**  B+树是多叉平衡搜索树，扇出高，只需要3层左右就能存放2kw左右的数据，同样情况下跳表则需要24层左右，假设层高对应磁盘IO，那么B+树的读性能会比跳表要好，因此mysql的InnoDB选了B+树做索引。
 
 
-## 
+## InnoDB的索引模型
+
+
+
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1NTEwMjk3LC0xNjg5NzI2MDgwLDI2MT
-IwODQwNiw4NDUwMDAwMTcsMzEyNTM4NzkwLC03OTI2MDA4Myw4
-NDcwMTkxNzIsLTY4ODMyOTA1LDEyNDg3ODM4OTksLTc0NzI3NT
-E2MF19
+eyJoaXN0b3J5IjpbLTE4Mjg1ODU0MTIsLTE2ODk3MjYwODAsMj
+YxMjA4NDA2LDg0NTAwMDAxNywzMTI1Mzg3OTAsLTc5MjYwMDgz
+LDg0NzAxOTE3MiwtNjg4MzI5MDUsMTI0ODc4Mzg5OSwtNzQ3Mj
+c1MTYwXX0=
 -->
