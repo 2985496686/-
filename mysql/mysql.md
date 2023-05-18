@@ -201,12 +201,12 @@ key(`id_card`,`name`)
 
 ## 最左匹配原则
 
-联合索引不只用于上面两种情况，还可用于左边字段的查询，比如：(id_card，name)的联合索引，它可以通过i
+联合索引不只用于上面两种情况，还可用于左边字段的查询，比如：(id_card，name)的联合索引，它可以``代替id_card索引``（不能代替name)，
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwNzI0MjM3NSwtMjA4NjcyODA3MiwtMT
-kyODIwODIxMSwtNzMyNjg1NjQ4LDYxODM0OTgyNiw5NjEyMTg1
-NDgsNzUxNTcwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC
-0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAwMTcsMzEyNTM4
-NzkwLC03OTI2MDA4Myw4NDcwMTkxNzIsLTY4ODMyOTA1LDEyND
-g3ODM4OTksLTc0NzI3NTE2MF19
+eyJoaXN0b3J5IjpbLTE1NDMzNDc3NTAsLTIwODY3MjgwNzIsLT
+E5MjgyMDgyMTEsLTczMjY4NTY0OCw2MTgzNDk4MjYsOTYxMjE4
+NTQ4LDc1MTU3MDY1NCwtMTM4NTg2Njg3OCwtMjA1MTU3ODkwNy
+wtMTY4OTcyNjA4MCwyNjEyMDg0MDYsODQ1MDAwMDE3LDMxMjUz
+ODc5MCwtNzkyNjAwODMsODQ3MDE5MTcyLC02ODgzMjkwNSwxMj
+Q4NzgzODk5LC03NDcyNzUxNjBdfQ==
 -->
