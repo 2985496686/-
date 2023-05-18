@@ -35,7 +35,7 @@
 
 ## binlog
 
-在InnoDB引擎出现之前并没有redo log，server层会用通过binlog记录逻辑日志(name字段加1)，记录完日志后就会由存储引擎去完成更新任务。
+在InnoDB引擎出现之前并没有redo log，server层会用通过binlog记录逻辑日志(age字段加1)，记录完日志后就会由存储引擎去完成更新任务。
 
 **binlog的作用**
 binlog主要用来数据的归档，主从表的复制。当某个表被误删，就可以通过binlog 的恢复数据。
@@ -47,7 +47,7 @@ binlog不具备崩溃后数据恢复的作用。存储引擎更新一条记录�
 
 ## redolog
 
-redolog是InnoDB引擎独有的日志。前面说过在磁盘中修改一个数据成本很高，所以可以借助一个"记账本"，将数据修改请求先记录到"记账本"中，在数据库闲下来的时候在更新磁盘。redo log就充当了这个记账本，记录的是五。当mysql crash掉了，只要记账本还在，才重启mysql时就可以保证数据不会丢失。所以redolog拥有``crash-safe``的能力。
+redolog是InnoDB引擎独有的日志。前面说过在磁盘中修改一个数据成本很高，所以可以借助一个"记账本"，将数据修改请求先记录到"记账本"中，在数据库闲下来的时候在更新磁盘。redo log就充当了这个记账本，记录的是物理日志(age字段修改为20)。当mysql crash掉了，只要记账本还在，才重启mysql时就可以保证数据不会丢失。所以redolog拥有``crash-safe``的能力。
 
 InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，每个文件的大小是1GB，那么这块“记账本”总共就可以记录4GB的操作。从头开始写，写到末尾就又回到开头循环写，如下面这个图所示。
 
@@ -62,6 +62,8 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 说明了binlog和redolog分别是干什么的，下面讲述两个是如何配合工作的：
 
 
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkxNjg1OTQ1NCwtNzQ3Mjc1MTYwXX0=
+eyJoaXN0b3J5IjpbLTIxNDk1NjcxNiwtNzQ3Mjc1MTYwXX0=
 -->
