@@ -130,14 +130,14 @@ create table T(
 ```
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/xpKlBDZMlPPoXmwV.png)
 
-主键对应的B+树叶子结点直接存储的是完整的数据信息。
-非主建索引对应的B+叶子节点
+主键对应的B+树叶子结点直接存储的是完整的数据信息，主键索引又被称为聚簇索引。
+非主建索引对应的B+树叶子节点为主键值，非主键索引被称为
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NzM0OTk4NzAsLTEzODU4NjY4NzgsLT
-IwNTE1Nzg5MDcsLTE2ODk3MjYwODAsMjYxMjA4NDA2LDg0NTAw
-MDAxNywzMTI1Mzg3OTAsLTc5MjYwMDgzLDg0NzAxOTE3MiwtNj
-g4MzI5MDUsMTI0ODc4Mzg5OSwtNzQ3Mjc1MTYwXX0=
+eyJoaXN0b3J5IjpbODk3NTQxOTgwLC0xMzg1ODY2ODc4LC0yMD
+UxNTc4OTA3LC0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAw
+MTcsMzEyNTM4NzkwLC03OTI2MDA4Myw4NDcwMTkxNzIsLTY4OD
+MyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
 -->
