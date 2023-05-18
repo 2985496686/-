@@ -224,10 +224,10 @@ key(`id_card`)
 
 ## 全局锁
 
-对整个数据库加锁，``Flush tables with read lock``，
+对整个数据库加锁，``Flush tables with read lock``，让整个数据库处于只读状态，
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NDU4NjM4NjgsLTEwMzY0NTE0OTksLT
+eyJoaXN0b3J5IjpbLTEzODg2MjQ3NDAsLTEwMzY0NTE0OTksLT
 Q1NDY4OTk2OSwtMTEzMTc3NzYwMywtMjA4NjcyODA3MiwtMTky
 ODIwODIxMSwtNzMyNjg1NjQ4LDYxODM0OTgyNiw5NjEyMTg1ND
 gsNzUxNTcwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC0x
