@@ -146,10 +146,12 @@ create table T(
 
 ## 索引维护
 
-为了维护索引的有序性，每添加一个节点就需要进行维护。
+为了维护索引的有序性，每添加一个节点就需要进行维护，插入数据有两种：
+
+1. 递增的数据，这时只需要顺序的在节点末尾插入数据
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0Njk4ODMzNjUsLTEzODU4NjY4NzgsLT
-IwNTE1Nzg5MDcsLTE2ODk3MjYwODAsMjYxMjA4NDA2LDg0NTAw
-MDAxNywzMTI1Mzg3OTAsLTc5MjYwMDgzLDg0NzAxOTE3MiwtNj
-g4MzI5MDUsMTI0ODc4Mzg5OSwtNzQ3Mjc1MTYwXX0=
+eyJoaXN0b3J5IjpbLTI4NDQ1MzQyOSwtMTM4NTg2Njg3OCwtMj
+A1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYsODQ1MDAw
+MDE3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MDE5MTcyLC02OD
+gzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBdfQ==
 -->
