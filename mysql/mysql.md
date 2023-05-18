@@ -124,8 +124,11 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 create table T( 
 	id int primary key, 
 	k int not null, 
-	name varchar(16), index (k))engine=InnoDB;
+	name varchar(16), 
+	index (k)
+)engine=InnoDB;
 ```
+[图片上传中...(image-YBME3xu5l8SDmFku)]
 
 
 
@@ -133,8 +136,8 @@ create table T(
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDA1MjM2MTUxLC0xMzg1ODY2ODc4LC0yMD
-UxNTc4OTA3LC0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAw
-MTcsMzEyNTM4NzkwLC03OTI2MDA4Myw4NDcwMTkxNzIsLTY4OD
-MyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
+eyJoaXN0b3J5IjpbMjExMTY0OTI4NCwtMTM4NTg2Njg3OCwtMj
+A1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYsODQ1MDAw
+MDE3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MDE5MTcyLC02OD
+gzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBdfQ==
 -->
