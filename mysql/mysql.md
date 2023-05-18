@@ -192,13 +192,14 @@ select id from T where k between 3 and 5
 **联合索引**
 有这样的情况：在一个居民信息表上，需要频繁的根据身份证号查询姓名(二者均不是主键)，此时就可以建立联合索引：
 ```sql
-key(`id_card`,)
+key(`id_card`,`name`)
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjgyMDgyMTEsLTczMjY4NTY0OCw2MT
-gzNDk4MjYsOTYxMjE4NTQ4LDc1MTU3MDY1NCwtMTM4NTg2Njg3
-OCwtMjA1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYsOD
-Q1MDAwMDE3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MDE5MTcy
-LC02ODgzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBdfQ==
+eyJoaXN0b3J5IjpbLTIwODY3MjgwNzIsLTE5MjgyMDgyMTEsLT
+czMjY4NTY0OCw2MTgzNDk4MjYsOTYxMjE4NTQ4LDc1MTU3MDY1
+NCwtMTM4NTg2Njg3OCwtMjA1MTU3ODkwNywtMTY4OTcyNjA4MC
+wyNjEyMDg0MDYsODQ1MDAwMDE3LDMxMjUzODc5MCwtNzkyNjAw
+ODMsODQ3MDE5MTcyLC02ODgzMjkwNSwxMjQ4NzgzODk5LC03ND
+cyNzUxNjBdfQ==
 -->
