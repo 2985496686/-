@@ -75,10 +75,10 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 当数据库crash后，会有以下三种情况：
 1. redolog中commit阶段的日志：正常更新磁盘。
-2. redolog中prepare阶段日志，但是binlog中不存在
+	2. redolog中prepare阶段日志，但是binlog中不存在
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjg2NzYzOTgwLC02ODgzMjkwNSwxMjQ4Nz
+eyJoaXN0b3J5IjpbODQ3MDE5MTcyLC02ODgzMjkwNSwxMjQ4Nz
 gzODk5LC03NDcyNzUxNjBdfQ==
 -->
