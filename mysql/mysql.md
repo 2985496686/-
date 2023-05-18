@@ -189,12 +189,14 @@ select id from T where k between 3 and 5
 **结论：由于覆盖索引可以减少树的搜索次数，显著提升查询性能，所以使用覆盖索引是一个常用的性能优化手段。**
 
 除了通过某一索引查询主键外，还有什么情况会出现索引覆盖？
+**联合索引**
 
-**连接**
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0NjY2NTQ3OCw5NjEyMTg1NDgsNzUxNT
-cwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC0xNjg5NzI2
-MDgwLDI2MTIwODQwNiw4NDUwMDAwMTcsMzEyNTM4NzkwLC03OT
-I2MDA4Myw4NDcwMTkxNzIsLTY4ODMyOTA1LDEyNDg3ODM4OTks
-LTc0NzI3NTE2MF19
+eyJoaXN0b3J5IjpbNjE4MzQ5ODI2LDk2MTIxODU0OCw3NTE1Nz
+A2NTQsLTEzODU4NjY4NzgsLTIwNTE1Nzg5MDcsLTE2ODk3MjYw
+ODAsMjYxMjA4NDA2LDg0NTAwMDAxNywzMTI1Mzg3OTAsLTc5Mj
+YwMDgzLDg0NzAxOTE3MiwtNjg4MzI5MDUsMTI0ODc4Mzg5OSwt
+NzQ3Mjc1MTYwXX0=
 -->
