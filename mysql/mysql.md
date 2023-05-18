@@ -204,12 +204,13 @@ key(`id_card`,`name`)
 联合索引不只用于上面两种情况，还可用于左边字段的查询，比如：(id_card，name)的联合索引，它可以``代替id_card索引``（不能代替name)。
 
 所以在建立联合索引的时候就需要考虑下面两个原则：
-1. 第一原则是，如果通过调整顺序，可以少维护一个索引，那么这个顺序往往就是需要优先考虑采用的。比如：除了需要频繁根据
+1. 第一原则是，如果通过调整顺序，可以少维护一个索引，那么这个顺序往往就是需要优先考虑采用的。比如：除了需要频繁根据身份证号查询名字，还需要根据身份证号查询个人的全部信息，那我们就不需要单独为身份证号建立索引。
+2. 第二原则就要
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDY4NzkxNTE3LC0yMDg2NzI4MDcyLC0xOT
-I4MjA4MjExLC03MzI2ODU2NDgsNjE4MzQ5ODI2LDk2MTIxODU0
-OCw3NTE1NzA2NTQsLTEzODU4NjY4NzgsLTIwNTE1Nzg5MDcsLT
-E2ODk3MjYwODAsMjYxMjA4NDA2LDg0NTAwMDAxNywzMTI1Mzg3
-OTAsLTc5MjYwMDgzLDg0NzAxOTE3MiwtNjg4MzI5MDUsMTI0OD
-c4Mzg5OSwtNzQ3Mjc1MTYwXX0=
+eyJoaXN0b3J5IjpbLTExNzAyMDE3NDUsLTIwODY3MjgwNzIsLT
+E5MjgyMDgyMTEsLTczMjY4NTY0OCw2MTgzNDk4MjYsOTYxMjE4
+NTQ4LDc1MTU3MDY1NCwtMTM4NTg2Njg3OCwtMjA1MTU3ODkwNy
+wtMTY4OTcyNjA4MCwyNjEyMDg0MDYsODQ1MDAwMDE3LDMxMjUz
+ODc5MCwtNzkyNjAwODMsODQ3MDE5MTcyLC02ODgzMjkwNSwxMj
+Q4NzgzODk5LC03NDcyNzUxNjBdfQ==
 -->
