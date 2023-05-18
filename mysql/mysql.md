@@ -188,18 +188,17 @@ select id from T where k between 3 and 5
 
 **结论：由于覆盖索引可以减少树的搜索次数，显著提升查询性能，所以使用覆盖索引是一个常用的性能优化手段。**
 
-除了通过某一索引查询主键外，还有什么情况会出现索引覆盖？
-**联合索引**
+## 联合索引
 有这样的情况：在一个居民信息表上，需要频繁的根据身份证号查询姓名(二者均不是主键)，此时就可以建立联合索引：
 ```sql
 key(`id_card`,`name`)
 ```
-
+这样也可以达到索引覆盖的效果
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODY3MjgwNzIsLTE5MjgyMDgyMTEsLT
-czMjY4NTY0OCw2MTgzNDk4MjYsOTYxMjE4NTQ4LDc1MTU3MDY1
-NCwtMTM4NTg2Njg3OCwtMjA1MTU3ODkwNywtMTY4OTcyNjA4MC
-wyNjEyMDg0MDYsODQ1MDAwMDE3LDMxMjUzODc5MCwtNzkyNjAw
-ODMsODQ3MDE5MTcyLC02ODgzMjkwNSwxMjQ4NzgzODk5LC03ND
-cyNzUxNjBdfQ==
+eyJoaXN0b3J5IjpbLTczMzk2NDU3MywtMjA4NjcyODA3MiwtMT
+kyODIwODIxMSwtNzMyNjg1NjQ4LDYxODM0OTgyNiw5NjEyMTg1
+NDgsNzUxNTcwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC
+0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAwMTcsMzEyNTM4
+NzkwLC03OTI2MDA4Myw4NDcwMTkxNzIsLTY4ODMyOTA1LDEyND
+g3ODM4OTksLTc0NzI3NTE2MF19
 -->
