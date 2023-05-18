@@ -158,12 +158,23 @@ create table T(
 
 
  
- ## 课后问题
+ ## 课后问题一
+
+重建索引是否正确？
+
+```sql
+# 
+alter table T drop index k; 
+alter table T add index(k);
+
+alter table T drop primary key; 
+alter table T add primary key(id);
+```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4MzY2MjM5NywtMTM4NTg2Njg3OCwtMj
-A1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYsODQ1MDAw
-MDE3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MDE5MTcyLC02OD
-gzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBdfQ==
+eyJoaXN0b3J5IjpbNjY2MDMwNzMyLC0xMzg1ODY2ODc4LC0yMD
+UxNTc4OTA3LC0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAw
+MTcsMzEyNTM4NzkwLC03OTI2MDA4Myw4NDcwMTkxNzIsLTY4OD
+MyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
 -->
