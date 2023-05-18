@@ -51,7 +51,7 @@ redolog是InnoDB引擎独有的日志。前面说过在磁盘中修改一个数�
 
 InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，每个文件的大小是1GB，那么这块“粉板”总共就可以记录4GB的操作。从头开始写，写到末尾就又回到开头循环写，如下面这个图所示。
 
-[图片上传失败...(image-jeak3oIfBwglkwD0)]
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0NzI3NTE2MF19
+eyJoaXN0b3J5IjpbMzQ0NjA4MTEwLC03NDcyNzUxNjBdfQ==
 -->
