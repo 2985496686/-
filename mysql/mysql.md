@@ -190,10 +190,10 @@ select id from T where k between 3 and 5
 
 除了通过某一索引查询主键外，还有什么情况会出现索引覆盖？
 **联合索引**
-有这样的情况：在一个居民信息表上，平方的
+有这样的情况：在一个居民信息表上，需要频繁的根据身份证号查询姓名(二者均不是主键)
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDM3OTg2NTUsLTczMjY4NTY0OCw2MT
+eyJoaXN0b3J5IjpbLTIwNTU5NTExOTAsLTczMjY4NTY0OCw2MT
 gzNDk4MjYsOTYxMjE4NTQ4LDc1MTU3MDY1NCwtMTM4NTg2Njg3
 OCwtMjA1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYsOD
 Q1MDAwMDE3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MDE5MTcy
