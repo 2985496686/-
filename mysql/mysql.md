@@ -201,9 +201,9 @@ key(`id_card`,`name`)
 
 ## 最左匹配原则
 
-联合索引不只用于沙
+联合索引不只用于上面两种情况，还可用于左边字段的查询，比如：(id_card，name)的联合索引，它可以通过i
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxOTAzNDQ1OCwtMjA4NjcyODA3MiwtMT
+eyJoaXN0b3J5IjpbMTkwNzI0MjM3NSwtMjA4NjcyODA3MiwtMT
 kyODIwODIxMSwtNzMyNjg1NjQ4LDYxODM0OTgyNiw5NjEyMTg1
 NDgsNzUxNTcwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC
 0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAwMTcsMzEyNTM4
