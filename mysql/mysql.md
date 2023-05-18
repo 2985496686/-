@@ -216,9 +216,9 @@ key(`name`)
 key(`name`,`id_card`)
 key(`id_card`)
 ```
-两种方案的哦iuen
+两种方案虽然都能达到我们预期的效果，但是方案一更加省内存(前提id_card比name)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4NTI3ODI2MiwtMjA4NjcyODA3MiwtMT
+eyJoaXN0b3J5IjpbMTI4OTkzOTE2MSwtMjA4NjcyODA3MiwtMT
 kyODIwODIxMSwtNzMyNjg1NjQ4LDYxODM0OTgyNiw5NjEyMTg1
 NDgsNzUxNTcwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC
 0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAwMTcsMzEyNTM4
