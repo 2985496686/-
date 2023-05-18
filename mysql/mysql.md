@@ -88,10 +88,15 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 ## 两阶段提交的必要性
 
 假设redo log没有prepare阶段，写入redo log后就可以直接更新到磁盘，会出现以下情况：
-1. 先写binlog，在写redo log。如果在写redolog之前，mysql crash掉了，重启mysql数据丢失。如果使用
+1. 先写binlog，在写redo log。如果在写redolog之前，mysql crash掉了，重启mysql数据丢失。如果使用binlog进行数据恢复，数据出现不一致的情况。
+2.  先写redo log再写bin log。如果在写完bin log之前crash，重启后会拿redolog进行数据恢复，从而导致数据不一致。
+
+## 课后问题
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ0NDg0MzU5OCwzMTI1Mzg3OTAsLTc5Mj
+eyJoaXN0b3J5IjpbLTE5NTU0MjE5NywzMTI1Mzg3OTAsLTc5Mj
 YwMDgzLDg0NzAxOTE3MiwtNjg4MzI5MDUsMTI0ODc4Mzg5OSwt
 NzQ3Mjc1MTYwXX0=
 -->
