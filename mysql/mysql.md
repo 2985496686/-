@@ -199,9 +199,11 @@ key(`id_card`,`name`)
 
 
 
-## 最左平
+## 最左匹配原则
+
+联合索引不只用于沙
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0Mzc3MjkyNCwtMjA4NjcyODA3MiwtMT
+eyJoaXN0b3J5IjpbMTkxOTAzNDQ1OCwtMjA4NjcyODA3MiwtMT
 kyODIwODIxMSwtNzMyNjg1NjQ4LDYxODM0OTgyNiw5NjEyMTg1
 NDgsNzUxNTcwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC
 0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAwMTcsMzEyNTM4
