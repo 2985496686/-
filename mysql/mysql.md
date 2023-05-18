@@ -172,11 +172,15 @@ alter table T drop primary key;
 alter table T add primary key(id);
 ```
 
-答案： 单独的删除重建索引k没有问题，但是对主键的操作有问题，不论是删除主键还是创建主键，都会将整个表重建，严重
+答案： 单独的删除重建索引k没有问题，但是对主键的操作有问题，不论是删除主键还是创建主键，都会将整个表重建，严重影响性能，可以使用``alter table T engine=InnoDB`` 代替这两步。
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTU1NzIzMzQsNzUxNTcwNjU0LC0xMz
-g1ODY2ODc4LC0yMDUxNTc4OTA3LC0xNjg5NzI2MDgwLDI2MTIw
-ODQwNiw4NDUwMDAwMTcsMzEyNTM4NzkwLC03OTI2MDA4Myw4ND
-cwMTkxNzIsLTY4ODMyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2
-MF19
+eyJoaXN0b3J5IjpbOTYxMjE4NTQ4LDc1MTU3MDY1NCwtMTM4NT
+g2Njg3OCwtMjA1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0
+MDYsODQ1MDAwMDE3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MD
+E5MTcyLC02ODgzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBd
+fQ==
 -->
