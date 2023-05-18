@@ -115,14 +115,14 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 ## InnoDB的索引模型
 
-InnoDB是
+InnoDB使用B+树索引模型，所有数据都是存储在B+树上的
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDc1MTcwOTUsLTE2ODk3MjYwODAsMj
+eyJoaXN0b3J5IjpbLTIwNTE1Nzg5MDcsLTE2ODk3MjYwODAsMj
 YxMjA4NDA2LDg0NTAwMDAxNywzMTI1Mzg3OTAsLTc5MjYwMDgz
 LDg0NzAxOTE3MiwtNjg4MzI5MDUsMTI0ODc4Mzg5OSwtNzQ3Mj
 c1MTYwXX0=
