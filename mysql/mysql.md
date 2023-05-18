@@ -131,13 +131,13 @@ create table T(
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/xpKlBDZMlPPoXmwV.png)
 
 主键对应的B+树叶子结点直接存储的是完整的数据信息。
-其余的
+非主建索引对应的B+叶子节点
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0Mjg2MjU0MiwtMTM4NTg2Njg3OCwtMj
-A1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYsODQ1MDAw
-MDE3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MDE5MTcyLC02OD
-gzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBdfQ==
+eyJoaXN0b3J5IjpbLTE1NzM0OTk4NzAsLTEzODU4NjY4NzgsLT
+IwNTE1Nzg5MDcsLTE2ODk3MjYwODAsMjYxMjA4NDA2LDg0NTAw
+MDAxNywzMTI1Mzg3OTAsLTc5MjYwMDgzLDg0NzAxOTE3MiwtNj
+g4MzI5MDUsMTI0ODc4Mzg5OSwtNzQ3Mjc1MTYwXX0=
 -->
