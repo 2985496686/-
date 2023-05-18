@@ -163,17 +163,18 @@ create table T(
 重建索引是否正确？
 
 ```sql
-# 
+# 非主键
 alter table T drop index k; 
 alter table T add index(k);
 
+# 主键
 alter table T drop primary key; 
 alter table T add primary key(id);
 ```
 
-
+答案： 单独的重建索引k没有问题，但是重建主键 id会导致非主键索引失效
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjY2MDMwNzMyLC0xMzg1ODY2ODc4LC0yMD
+eyJoaXN0b3J5IjpbNzUxNTcwNjU0LC0xMzg1ODY2ODc4LC0yMD
 UxNTc4OTA3LC0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAw
 MTcsMzEyNTM4NzkwLC03OTI2MDA4Myw4NDcwMTkxNzIsLTY4OD
 MyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
