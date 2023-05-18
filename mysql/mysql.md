@@ -102,10 +102,8 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 
 
-
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzk3ODg0MTQsMzEyNTM4NzkwLC03OT
-I2MDA4Myw4NDcwMTkxNzIsLTY4ODMyOTA1LDEyNDg3ODM4OTks
-LTc0NzI3NTE2MF19
+eyJoaXN0b3J5IjpbLTI1NTczNzIyLDMxMjUzODc5MCwtNzkyNj
+AwODMsODQ3MDE5MTcyLC02ODgzMjkwNSwxMjQ4NzgzODk5LC03
+NDcyNzUxNjBdfQ==
 -->
