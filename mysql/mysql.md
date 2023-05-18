@@ -53,7 +53,7 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/vceBqF0eijccwFNu.png)
 
-这里有两个指针，``write pos`` 
+这里有两个指针，``write pos`` 和``checkpoint`` 。write pos 表示
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDg1MzkzNDYsLTc0NzI3NTE2MF19
+eyJoaXN0b3J5IjpbMTgwMjg0NDMwNSwtNzQ3Mjc1MTYwXX0=
 -->
