@@ -195,9 +195,13 @@ key(`id_card`,`name`)
 ```
 这样也可以达到索引覆盖的效果，减少回表次数。
 
-联合索引还用于多条件查询，如果频繁的需要根据
+联合索引还用于``多条件查询``，如果频繁的需要根据地区和年龄查询查询符合条件的居民，就可以建立地区和年龄的联合索引。
+
+
+
+## 最左平
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc1ODQxODYxMywtMjA4NjcyODA3MiwtMT
+eyJoaXN0b3J5IjpbLTk0Mzc3MjkyNCwtMjA4NjcyODA3MiwtMT
 kyODIwODIxMSwtNzMyNjg1NjQ4LDYxODM0OTgyNiw5NjEyMTg1
 NDgsNzUxNTcwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC
 0xNjg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAwMTcsMzEyNTM4
