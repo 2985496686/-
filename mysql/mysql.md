@@ -179,13 +179,13 @@ alter table T add primary key(id);
 ## 索引覆盖
 
 还是以上表为例：
-```
+```sql
 select id from T where k between 3 and 5
 ```
 
-
+搜索k在3到5之间所有用户的id，常规
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzg3ODQ2NTMwLDk2MTIxODU0OCw3NTE1Nz
+eyJoaXN0b3J5IjpbOTc0MTk3MDQ1LDk2MTIxODU0OCw3NTE1Nz
 A2NTQsLTEzODU4NjY4NzgsLTIwNTE1Nzg5MDcsLTE2ODk3MjYw
 ODAsMjYxMjA4NDA2LDg0NTAwMDAxNywzMTI1Mzg3OTAsLTc5Mj
 YwMDgzLDg0NzAxOTE3MiwtNjg4MzI5MDUsMTI0ODc4Mzg5OSwt
