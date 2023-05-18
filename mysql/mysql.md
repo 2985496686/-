@@ -150,8 +150,12 @@ create table T(
 
 1. 递增的数据，这时只需要顺序的在节点末尾插入数据。
 2. 插入非递增的数据，可能会造成页分裂，影响性能，同时降低了空间利用率。
+
+
+主键使用的注意点：
+1. 尽量保证主键单调递增
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0MjI1MTE1MiwtMTM4NTg2Njg3OCwtMj
+eyJoaXN0b3J5IjpbMTg1ODAyMDYzMCwtMTM4NTg2Njg3OCwtMj
 A1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYsODQ1MDAw
 MDE3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MDE5MTcyLC02OD
 gzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBdfQ==
