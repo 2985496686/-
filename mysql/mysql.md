@@ -153,9 +153,10 @@ create table T(
 
 
 主键使用的注意点：
-1. 尽量保证主键单调递增
+1. 尽量保证主键单调递增，减少不必要的页分裂次数，提高性能。
+2. 主键经历i 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1ODAyMDYzMCwtMTM4NTg2Njg3OCwtMj
+eyJoaXN0b3J5IjpbMjEwMDU2NTg1MCwtMTM4NTg2Njg3OCwtMj
 A1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYsODQ1MDAw
 MDE3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MDE5MTcyLC02OD
 gzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBdfQ==
