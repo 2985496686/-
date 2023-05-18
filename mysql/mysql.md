@@ -87,8 +87,8 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 ## 两阶段提交的必要性
 
-
+假设redo log没有
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzOTM3NzAwNiw4NDcwMTkxNzIsLTY4OD
-MyOTA1LDEyNDg3ODM4OTksLTc0NzI3NTE2MF19
+eyJoaXN0b3J5IjpbLTc5MjYwMDgzLDg0NzAxOTE3MiwtNjg4Mz
+I5MDUsMTI0ODc4Mzg5OSwtNzQ3Mjc1MTYwXX0=
 -->
