@@ -49,9 +49,11 @@ binlog不具备崩溃后数据恢复的作用。存储引擎更新一条记录�
 
 redolog是InnoDB引擎独有的日志。前面说过在磁盘中修改一个数据成本很高，所以可以借助一个"记账本"，将数据修改请求先记录到"记账本"中，在数据库闲下来的时候在更新磁盘。redo log就充当了这个记账本。当mysql crash掉了，只要记账本还在，才重启mysql时就可以保证数据不会丢失。所以redolog拥有``crash-safe``的能力。
 
-InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，每个文件的大小是1GB，那么这块“粉板”总共就可以记录4GB的操作。从头开始写，写到末尾就又回到开头循环写，如下面这个图所示。
+InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，每个文件的大小是1GB，那么这块“记账本”总共就可以记录4GB的操作。从头开始写，写到末尾就又回到开头循环写，如下面这个图所示。
 
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/vceBqF0eijccwFNu.png)
 
+这里有两个指针，``write pos`` 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzQ0NjA4MTEwLC03NDcyNzUxNjBdfQ==
+eyJoaXN0b3J5IjpbLTEwMDg1MzkzNDYsLTc0NzI3NTE2MF19
 -->
