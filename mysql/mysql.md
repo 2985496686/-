@@ -107,9 +107,10 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 ## 常见的索引模型
 
-**哈希表：** 
+**哈希表：**  删除节点，添加节点，搜索节点效率都很高，但是不支持范围查询。
+**数序数组**
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjYxMjA4NDA2LDg0NTAwMDAxNywzMTI1Mz
-g3OTAsLTc5MjYwMDgzLDg0NzAxOTE3MiwtNjg4MzI5MDUsMTI0
-ODc4Mzg5OSwtNzQ3Mjc1MTYwXX0=
+eyJoaXN0b3J5IjpbMjA0NDAyOTE4NSwyNjEyMDg0MDYsODQ1MD
+AwMDE3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MDE5MTcyLC02
+ODgzMjkwNSwxMjQ4NzgzODk5LC03NDcyNzUxNjBdfQ==
 -->
