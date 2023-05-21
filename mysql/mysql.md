@@ -256,11 +256,12 @@ key(`id_card`)
 ## 行锁
 1. 行锁是随InnoDB引擎出现的一个细粒度锁，取代了表锁。
 2. 行锁并不是一个读写锁，它只会写写互斥，在mvcc机制的保证下，读事务只会读取以提交的内容，并不需要加锁。
-3. 行锁和mdl一样，在需要时获取，在事务结束时时
+3. 行锁和mdl一样，在需要时获取，在事务结束时释放。
+4. 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4OTg3NDc2NCwxNTQ3NzYxNDA3LDUxMz
+eyJoaXN0b3J5IjpbLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMz
 k5NzY4MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMx
 LC0xMDU3NDM5NDUsNjY0OTQ1MjI4LC0yMTE5MDk2ODM4LC0xMD
 M2NDUxNDk5LC00NTQ2ODk5NjksLTExMzE3Nzc2MDMsLTIwODY3
