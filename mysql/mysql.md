@@ -268,16 +268,18 @@ key(`id_card`)
 - 方案一：采用设置超时时间策略。通过设置``innodb_lock_wait_timeout``参数，默认值是50s，这也是mysql默认的方案。
 - 方案二：死锁检测，在获取锁时，遍历所有线程持有锁的情况，保证自己不会产生死锁，通过参数``innodb_deadlock_detect``来进行设置。这种方案在并发度高的情况下，会严重影响性能，如果同时有1000个同时更新同一行数据，就需要死锁检测1000000次。
 
-**如何优化死锁检测的第**
+**如何优化死锁检测的低效问题？**
+
+1. 通过中间键限制并发数量。
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzY2MjMwMDE5LDQ3NjY1MjAwOCwtNTE4Nz
-I5ODYzLC04NTY0MDIyNzYsMTU0Nzc2MTQwNyw1MTM5OTc2ODAs
-NjM1NzcyMzYsMTAzODYwMTczNiwtMTQxODc4MjQzMSwtMTA1Nz
-QzOTQ1LDY2NDk0NTIyOCwtMjExOTA5NjgzOCwtMTAzNjQ1MTQ5
-OSwtNDU0Njg5OTY5LC0xMTMxNzc3NjAzLC0yMDg2NzI4MDcyLC
-0xOTI4MjA4MjExLC03MzI2ODU2NDgsNjE4MzQ5ODI2LDk2MTIx
-ODU0OF19
+eyJoaXN0b3J5IjpbLTE2NTY3NjkzNjMsNDc2NjUyMDA4LC01MT
+g3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4
+MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMxLC0xMD
+U3NDM5NDUsNjY0OTQ1MjI4LC0yMTE5MDk2ODM4LC0xMDM2NDUx
+NDk5LC00NTQ2ODk5NjksLTExMzE3Nzc2MDMsLTIwODY3MjgwNz
+IsLTE5MjgyMDgyMTEsLTczMjY4NTY0OCw2MTgzNDk4MjYsOTYx
+MjE4NTQ4XX0=
 -->
