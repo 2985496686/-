@@ -266,11 +266,11 @@ key(`id_card`)
 
 **解决方案**
 - 方案一：采用设置超时时间策略。通过设置``innodb_lock_wait_timeout``参数，默认值是50s，这也是mysql默认的方案。
-- 方案二：死锁检测
+- 方案二：死锁检测，在获取锁时，遍历所有线程持有锁的情况，保证自己不会被锁汉族
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzNTYxMTEwMywtNTE4NzI5ODYzLC04NT
+eyJoaXN0b3J5IjpbMTgzMzM0NzE0MCwtNTE4NzI5ODYzLC04NT
 Y0MDIyNzYsMTU0Nzc2MTQwNyw1MTM5OTc2ODAsNjM1NzcyMzYs
 MTAzODYwMTczNiwtMTQxODc4MjQzMSwtMTA1NzQzOTQ1LDY2ND
 k0NTIyOCwtMjExOTA5NjgzOCwtMTAzNjQ1MTQ5OSwtNDU0Njg5
