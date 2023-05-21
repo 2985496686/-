@@ -265,11 +265,11 @@ key(`id_card`)
 如上情况，就会造成死锁。
 
 **解决方案**
-
+- 方案一：采用设置超时时间策略。通过设置``innodb_lock_wait_timeout``参数，默认值是50s，这也是mysql
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTU2ODc1MDU5LC01MTg3Mjk4NjMsLTg1Nj
+eyJoaXN0b3J5IjpbOTU2MTE1ODIxLC01MTg3Mjk4NjMsLTg1Nj
 QwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4MCw2MzU3NzIzNiwx
 MDM4NjAxNzM2LC0xNDE4NzgyNDMxLC0xMDU3NDM5NDUsNjY0OT
 Q1MjI4LC0yMTE5MDk2ODM4LC0xMDM2NDUxNDk5LC00NTQ2ODk5
