@@ -254,11 +254,12 @@ key(`id_card`)
 
 
 ## 行锁
-1. 行锁是随InnoDB引擎出现的一个细粒度锁
+1. 行锁是随InnoDB引擎出现的一个细粒度锁，取代了表锁。
+2. 行锁并不是一个读写锁，它只会写写互斥，在mvcc机制的保证下，读事务
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI5MzMzMzA0LDUxMzk5NzY4MCw2MzU3Nz
+eyJoaXN0b3J5IjpbOTE1NDc4MDU3LDUxMzk5NzY4MCw2MzU3Nz
 IzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMxLC0xMDU3NDM5NDUs
 NjY0OTQ1MjI4LC0yMTE5MDk2ODM4LC0xMDM2NDUxNDk5LC00NT
 Q2ODk5NjksLTExMzE3Nzc2MDMsLTIwODY3MjgwNzIsLTE5Mjgy
