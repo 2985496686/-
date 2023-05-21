@@ -239,15 +239,15 @@ key(`id_card`)
 表级锁有两种，表锁和元数据锁。表锁保证两个线程不会同时操作同一个表，保证并发安全性，但是粒度太粗，InnoDB引擎出现后被行锁代替，这里不再讲解表所，重点对元数据锁进行说明。
 
 ### 元数据锁(MDL)
-元数据锁，metadata lock，是对一个表的元数据
+元数据锁，metadata lock，是对一个表的元数据信息加锁。MDL是一个读写锁，DML操作(对表数据的增删改查是)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzEyNjYxMzk5LDEwMzg2MDE3MzYsLTE0MT
-g3ODI0MzEsLTEwNTc0Mzk0NSw2NjQ5NDUyMjgsLTIxMTkwOTY4
-MzgsLTEwMzY0NTE0OTksLTQ1NDY4OTk2OSwtMTEzMTc3NzYwMy
-wtMjA4NjcyODA3MiwtMTkyODIwODIxMSwtNzMyNjg1NjQ4LDYx
-ODM0OTgyNiw5NjEyMTg1NDgsNzUxNTcwNjU0LC0xMzg1ODY2OD
-c4LC0yMDUxNTc4OTA3LC0xNjg5NzI2MDgwLDI2MTIwODQwNiw4
-NDUwMDAwMTddfQ==
+eyJoaXN0b3J5IjpbMTA3NTI4NTE2NiwxMDM4NjAxNzM2LC0xND
+E4NzgyNDMxLC0xMDU3NDM5NDUsNjY0OTQ1MjI4LC0yMTE5MDk2
+ODM4LC0xMDM2NDUxNDk5LC00NTQ2ODk5NjksLTExMzE3Nzc2MD
+MsLTIwODY3MjgwNzIsLTE5MjgyMDgyMTEsLTczMjY4NTY0OCw2
+MTgzNDk4MjYsOTYxMjE4NTQ4LDc1MTU3MDY1NCwtMTM4NTg2Nj
+g3OCwtMjA1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYs
+ODQ1MDAwMDE3XX0=
 -->
