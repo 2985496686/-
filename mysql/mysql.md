@@ -242,14 +242,14 @@ key(`id_card`)
 - 元数据锁，metadata lock，是对一个表的元数据信息加锁。
 - MDL是一个读写锁，DML操作(对表数据的增删改查)是读操作，DDL(对表结构的修改)是写操作。
 - MDL不需要手动加锁，在操作时会自动加读锁或写锁。
-- MDL是在执行操作的时候获取的，但是锁的释放是在事务结束之后
-- mysql的InnoDB引擎虽然保证了事务隔离性，但是也不是绝对的，事务和事务之间也会收到
+- MDL是在执行操作的时候获取的，但是锁的释放是在事务结束之后。
+- mysql的InnoDB引擎虽然保证了事务隔离性，但是也不是绝对的，事务和事务之间也会受到MDL锁的影响。一个事务执行DDL操作，获取写
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1NzI0OTcyMiwxMDM4NjAxNzM2LC0xND
-E4NzgyNDMxLC0xMDU3NDM5NDUsNjY0OTQ1MjI4LC0yMTE5MDk2
-ODM4LC0xMDM2NDUxNDk5LC00NTQ2ODk5NjksLTExMzE3Nzc2MD
-MsLTIwODY3MjgwNzIsLTE5MjgyMDgyMTEsLTczMjY4NTY0OCw2
-MTgzNDk4MjYsOTYxMjE4NTQ4LDc1MTU3MDY1NCwtMTM4NTg2Nj
-g3OCwtMjA1MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYs
-ODQ1MDAwMDE3XX0=
+eyJoaXN0b3J5IjpbOTU5NzU4MDcxLDEwMzg2MDE3MzYsLTE0MT
+g3ODI0MzEsLTEwNTc0Mzk0NSw2NjQ5NDUyMjgsLTIxMTkwOTY4
+MzgsLTEwMzY0NTE0OTksLTQ1NDY4OTk2OSwtMTEzMTc3NzYwMy
+wtMjA4NjcyODA3MiwtMTkyODIwODIxMSwtNzMyNjg1NjQ4LDYx
+ODM0OTgyNiw5NjEyMTg1NDgsNzUxNTcwNjU0LC0xMzg1ODY2OD
+c4LC0yMDUxNTc4OTA3LC0xNjg5NzI2MDgwLDI2MTIwODQwNiw4
+NDUwMDAwMTddfQ==
 -->
