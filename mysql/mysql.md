@@ -284,12 +284,15 @@ key(`id_card`)
 -   第三种，在20个连接中同时执行delete from T limit 500。
 
 
- 答案： 选择方案二，方案一会导致长时间持有锁，并且长事务
+ 答案： 选择方案二。方案一会导致长时间持有锁，并且长事务会导致主从复制的延迟；方案三会导致锁并发冲突。
+
+
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjM0NDExODM0LDQ3NjY1MjAwOCwtNTE4Nz
+eyJoaXN0b3J5IjpbLTY1MTMwMTQxLDQ3NjY1MjAwOCwtNTE4Nz
 I5ODYzLC04NTY0MDIyNzYsMTU0Nzc2MTQwNyw1MTM5OTc2ODAs
 NjM1NzcyMzYsMTAzODYwMTczNiwtMTQxODc4MjQzMSwtMTA1Nz
 QzOTQ1LDY2NDk0NTIyOCwtMjExOTA5NjgzOCwtMTAzNjQ1MTQ5
