@@ -233,14 +233,14 @@ key(`id_card`)
 4. ``set global readonly=true`` 虽然也能做到全局只读，当它并不能代替全局锁或者可重复读的事务隔离级别，原因如下：
  -- 在有些系统中，readonly的值会被用来做其他逻辑，比如用来判断一个库是主库还是备库。因此，修改global变量的方式影响面更大，不建议你使用。
  -- 客户端将库设置为readonly后，如何断开连接，设置不会自动恢复。
- 5. 
+ 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzODYwMTczNiwtMTQxODc4MjQzMSwtMT
-A1NzQzOTQ1LDY2NDk0NTIyOCwtMjExOTA5NjgzOCwtMTAzNjQ1
-MTQ5OSwtNDU0Njg5OTY5LC0xMTMxNzc3NjAzLC0yMDg2NzI4MD
-cyLC0xOTI4MjA4MjExLC03MzI2ODU2NDgsNjE4MzQ5ODI2LDk2
-MTIxODU0OCw3NTE1NzA2NTQsLTEzODU4NjY4NzgsLTIwNTE1Nz
-g5MDcsLTE2ODk3MjYwODAsMjYxMjA4NDA2LDg0NTAwMDAxNywz
-MTI1Mzg3OTBdfQ==
+eyJoaXN0b3J5IjpbLTE5NjQ2NTg3NTEsMTAzODYwMTczNiwtMT
+QxODc4MjQzMSwtMTA1NzQzOTQ1LDY2NDk0NTIyOCwtMjExOTA5
+NjgzOCwtMTAzNjQ1MTQ5OSwtNDU0Njg5OTY5LC0xMTMxNzc3Nj
+AzLC0yMDg2NzI4MDcyLC0xOTI4MjA4MjExLC03MzI2ODU2NDgs
+NjE4MzQ5ODI2LDk2MTIxODU0OCw3NTE1NzA2NTQsLTEzODU4Nj
+Y4NzgsLTIwNTE1Nzg5MDcsLTE2ODk3MjYwODAsMjYxMjA4NDA2
+LDg0NTAwMDAxN119
 -->
