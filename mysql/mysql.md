@@ -236,11 +236,14 @@ key(`id_card`)
 
 
 ## 表级锁
-表级锁有两种，表锁和元数据锁。表锁保证两个线程不会同时操作同一个表，保证并发安全性，但是粒度太粗，InnoDB引擎出现后被行锁代替，这里不再讲解表所，重点对月
+表级锁有两种，表锁和元数据锁。表锁保证两个线程不会同时操作同一个表，保证并发安全性，但是粒度太粗，InnoDB引擎出现后被行锁代替，这里不再讲解表所，重点对元数据锁进行说明。
+
+### 元数据锁(MDL)
+元数据锁，metadata lock，是对一个表的元数据
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwMjQxMDU4LDEwMzg2MDE3MzYsLTE0MT
+eyJoaXN0b3J5IjpbMzEyNjYxMzk5LDEwMzg2MDE3MzYsLTE0MT
 g3ODI0MzEsLTEwNTc0Mzk0NSw2NjQ5NDUyMjgsLTIxMTkwOTY4
 MzgsLTEwMzY0NTE0OTksLTQ1NDY4OTk2OSwtMTEzMTc3NzYwMy
 wtMjA4NjcyODA3MiwtMTkyODIwODIxMSwtNzMyNjg1NjQ4LDYx
