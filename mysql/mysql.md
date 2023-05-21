@@ -41,7 +41,7 @@
 binlog主要用来数据的归档，主从表的复制。当某个表被误删，就可以通过binlog 的恢复数据。
 
 **binlog的缺点**
-binlog不具备崩溃后数据恢复的作用。存储引擎更新一条记录是很慢的，每一次的更新操作都需要写进磁盘，然后磁盘也要找到对应的那条记录，然后再更新，整个过程IO成本、查找成本都很高。如果大量更新请求到来，写完binlog后，存储引擎内部会积攒大量更新任务，此时服务器crash了，重启后数据就丢失了，如果再使用binlog去恢复表，会发现恢复后数据产生了不一致。
+binlog不具备崩溃后数据恢复的作用。存储引擎更新一条记录是很慢的，每一次的更新操作都需要写进磁盘，然后磁盘也要找到对应的那条记录，然后再更新，整个过程IO成本、查找成本都很高。如果大量更新请求到来，写完binlog后，存储引擎内部会积攒大量更新任务，此时服务器crash了，重启后数据就丢失了，如果此时再使用binlog去恢复表，会发现恢复后数据产生了不一致。
 
 
 
@@ -230,11 +230,11 @@ key(`id_card`)
 
 3. 在InnoDB出现后，支持可重复读
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTkwOTY4MzgsLTEwMzY0NTE0OTksLT
-Q1NDY4OTk2OSwtMTEzMTc3NzYwMywtMjA4NjcyODA3MiwtMTky
-ODIwODIxMSwtNzMyNjg1NjQ4LDYxODM0OTgyNiw5NjEyMTg1ND
-gsNzUxNTcwNjU0LC0xMzg1ODY2ODc4LC0yMDUxNTc4OTA3LC0x
-Njg5NzI2MDgwLDI2MTIwODQwNiw4NDUwMDAwMTcsMzEyNTM4Nz
-kwLC03OTI2MDA4Myw4NDcwMTkxNzIsLTY4ODMyOTA1LDEyNDg3
-ODM4OTldfQ==
+eyJoaXN0b3J5IjpbNjY0OTQ1MjI4LC0yMTE5MDk2ODM4LC0xMD
+M2NDUxNDk5LC00NTQ2ODk5NjksLTExMzE3Nzc2MDMsLTIwODY3
+MjgwNzIsLTE5MjgyMDgyMTEsLTczMjY4NTY0OCw2MTgzNDk4Mj
+YsOTYxMjE4NTQ4LDc1MTU3MDY1NCwtMTM4NTg2Njg3OCwtMjA1
+MTU3ODkwNywtMTY4OTcyNjA4MCwyNjEyMDg0MDYsODQ1MDAwMD
+E3LDMxMjUzODc5MCwtNzkyNjAwODMsODQ3MDE5MTcyLC02ODgz
+MjkwNV19
 -->
