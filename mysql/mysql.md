@@ -246,9 +246,13 @@ key(`id_card`)
 - mysql的InnoDB引擎虽然保证了事务隔离性，但是也不是绝对的，事务和事务之间也会受到MDL锁的影响。一个事务执行DDL操作，获取写锁，此时另一个事务执行DML操作时就会阻塞，直到第一个事务提交。
 
 **元数据锁存在的死锁隐患**
-当一个长事务获取了MDL读锁，但是并没有及时提交事务，此时另一个事务尝试获取MDL写锁被阻塞，这导致后续事务的
+当一个长事务获取了MDL读锁，但是并没有及时提交事务，此时另一个事务尝试获取MDL写锁被阻塞，这导致后续事务无法再获取读锁，造成整个mysql业务的阻塞。
+
+为了解决这个问题，比较理想的机制是，在alter table语句里面设定等待时间，如果在这个指定的等待时间里面能够拿到MDL写锁最好，拿不到也不要阻塞后面的业务语句，先放弃。之后开发人员或者DBA再通过重试命令重复这个过程。
+
+同时为了
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODUzNTQxMTQzLDEwMzg2MDE3MzYsLTE0MT
+eyJoaXN0b3J5IjpbNzk0MjA3NzAxLDEwMzg2MDE3MzYsLTE0MT
 g3ODI0MzEsLTEwNTc0Mzk0NSw2NjQ5NDUyMjgsLTIxMTkwOTY4
 MzgsLTEwMzY0NTE0OTksLTQ1NDY4OTk2OSwtMTEzMTc3NzYwMy
 wtMjA4NjcyODA3MiwtMTkyODIwODIxMSwtNzMyNjg1NjQ4LDYx
