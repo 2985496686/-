@@ -245,8 +245,9 @@ key(`id_card`)
 - MDL是在执行操作的时候获取的，但是锁的释放是在事务结束之后。
 - mysql的InnoDB引擎虽然保证了事务隔离性，但是也不是绝对的，事务和事务之间也会受到MDL锁的影响。一个事务执行DDL操作，获取写锁，此时另一个事务执行DML操作时就会阻塞，直到第一个事务提交。
 
+**元数据锁存在的时**
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5MDAxNjI5NSwxMDM4NjAxNzM2LC0xND
+eyJoaXN0b3J5IjpbMTk2NjczMDc4OSwxMDM4NjAxNzM2LC0xND
 E4NzgyNDMxLC0xMDU3NDM5NDUsNjY0OTQ1MjI4LC0yMTE5MDk2
 ODM4LC0xMDM2NDUxNDk5LC00NTQ2ODk5NjksLTExMzE3Nzc2MD
 MsLTIwODY3MjgwNzIsLTE5MjgyMDgyMTEsLTczMjY4NTY0OCw2
