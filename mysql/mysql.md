@@ -83,9 +83,13 @@ redo的写操作也是是很密集的，为了减少磁盘I/O次数，mysql会�
 4. 每次事务提交时都将缓存在 redo log buffer 里的 redo log 直接持久化到磁盘(这个策略可由 innodb_flush_log_at_trx_commit 参数控制)。
 
 **innodb_flush_log_at_trx_commit参数**
-1. 当设置该**参数为 0 时**，表示每次事务提交时 ，还是**将 redo log 留在 redo log buffer 中** ，该模式下在事务提交时不会主动触发写入磁盘的操作
-2. 当设置该**参数为 1 时**，表示每次事务提交时，都**将缓存在 redo log buffer 里的 redo log 直接持久化到磁盘**，这样可以保证 MySQL 异常重启之后数据不会丢失。
-3. 当设置该**参数为 2 时**，表示每次事务提交时，都只是缓存在 redo log buffer 里的 redo log **写到 redo log 文件，注意写入到「 redo log 文件」并不意味着写入到了磁盘**，因为操作系统的文件系统中有个 Page Cache（Page Cache 是专门用来缓存文件数据的，所以写入「 redo log文件」意味着写入到了操作系统的文件缓存
+5. 当设置该**参数为 0 时**，表示每次事务提交时 ，还是**将 redo log 留在 redo log buffer 中** ，该模式下在事务提交时不会主动触发写入磁盘的操作
+6. 当设置该**参数为 1 时**，表示每次事务提交时，都**将缓存在 redo log buffer 里的 redo log 直接持久化到磁盘**，这样可以保证 MySQL 异常重启之后数据不会丢失。
+7. 当设置该**参数为 2 时**，表示每次事务提交时，都只是缓存在 redo log buffer 里的 redo log **写到 redo log 文件，注意写入到「 redo log 文件」并不意味着写入到了磁盘**，因为操作系统的文件系统中有个 Page Cache（Page Cache 是专门用来缓存文件数据的，所以写入「 redo log文件」意味着写入到了操作系统的文件缓存）。
+
+## redo log删除时机
+
+
 ## mysql崩溃恢复
 可以简单的将过程进行如下简化：
 1. 写redo log
@@ -304,7 +308,7 @@ key(`id_card`)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxMDUzNTk3OCwtMTMwODQwMTQ0NywtNj
+eyJoaXN0b3J5IjpbLTIzOTQ5MzAxMywtMTMwODQwMTQ0NywtNj
 UxMzAxNDEsNDc2NjUyMDA4LC01MTg3Mjk4NjMsLTg1NjQwMjI3
 NiwxNTQ3NzYxNDA3LDUxMzk5NzY4MCw2MzU3NzIzNiwxMDM4Nj
 AxNzM2LC0xNDE4NzgyNDMxLC0xMDU3NDM5NDUsNjY0OTQ1MjI4
