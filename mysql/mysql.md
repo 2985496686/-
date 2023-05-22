@@ -91,7 +91,10 @@ redo的写操作也是是很密集的，为了减少磁盘I/O次数，mysql会�
 
 ## redo log删除时机
 当``buffer pool`` 将脏数据刷新到磁盘后，就会将没有用的redo log删除，redo log的删除时机就是buffer pool刷新脏数据的时机，如下：
-
+-   当 redo log 日志满了的情况下，会主动触发脏页刷新到磁盘；
+-   Buffer Pool 空间不足时，需要将一部分数据页淘汰掉，如果淘汰的是脏页，需要先将脏页同步到磁盘；
+-   MySQL 认为空闲时，后台线程会定期将适量的脏页刷入到磁盘；
+-   MySQL 正常关闭之前，会把所有的脏页刷入到磁盘；
 
 
 ## mysql崩溃恢复
@@ -312,11 +315,11 @@ key(`id_card`)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDQyMzYwMDksLTIzOTQ5MzAxMywtMT
-MwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MTg3Mjk4
-NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4MCw2Mz
-U3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMxLC0xMDU3NDM5
-NDUsNjY0OTQ1MjI4LC0yMTE5MDk2ODM4LC0xMDM2NDUxNDk5LC
-00NTQ2ODk5NjksLTExMzE3Nzc2MDMsLTIwODY3MjgwNzIsLTE5
-MjgyMDgyMTFdfQ==
+eyJoaXN0b3J5IjpbMTczMjE0NDMxLC0yMzk0OTMwMTMsLTEzMD
+g0MDE0NDcsLTY1MTMwMTQxLDQ3NjY1MjAwOCwtNTE4NzI5ODYz
+LC04NTY0MDIyNzYsMTU0Nzc2MTQwNyw1MTM5OTc2ODAsNjM1Nz
+cyMzYsMTAzODYwMTczNiwtMTQxODc4MjQzMSwtMTA1NzQzOTQ1
+LDY2NDk0NTIyOCwtMjExOTA5NjgzOCwtMTAzNjQ1MTQ5OSwtND
+U0Njg5OTY5LC0xMTMxNzc3NjAzLC0yMDg2NzI4MDcyLC0xOTI4
+MjA4MjExXX0=
 -->
