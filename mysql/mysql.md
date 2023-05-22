@@ -90,7 +90,7 @@ redo的写操作也是是很密集的，为了减少磁盘I/O次数，mysql会�
 3. 当设置该**参数为 2 时**，表示每次事务提交时，都只是缓存在 redo log buffer 里的 redo log **写到 redo log 文件，注意写入到「 redo log 文件」并不意味着写入到了磁盘**，因为操作系统的文件系统中有个 Page Cache（Page Cache 是专门用来缓存文件数据的，所以写入「 redo log文件」意味着写入到了操作系统的文件缓存）。
 
 ## redo log删除时机
-当``buffer pool`` 将脏数据刷新到磁盘时会将日志
+当``buffer pool`` 将脏数据刷新到磁盘时会将
 
 
 ## mysql崩溃恢复
@@ -311,11 +311,11 @@ key(`id_card`)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzNDI3MTQ5MywtMjM5NDkzMDEzLC0xMz
-A4NDAxNDQ3LC02NTEzMDE0MSw0NzY2NTIwMDgsLTUxODcyOTg2
-MywtODU2NDAyMjc2LDE1NDc3NjE0MDcsNTEzOTk3NjgwLDYzNT
-c3MjM2LDEwMzg2MDE3MzYsLTE0MTg3ODI0MzEsLTEwNTc0Mzk0
-NSw2NjQ5NDUyMjgsLTIxMTkwOTY4MzgsLTEwMzY0NTE0OTksLT
-Q1NDY4OTk2OSwtMTEzMTc3NzYwMywtMjA4NjcyODA3MiwtMTky
-ODIwODIxMV19
+eyJoaXN0b3J5IjpbMTcyOTk0MDA3LC0yMzk0OTMwMTMsLTEzMD
+g0MDE0NDcsLTY1MTMwMTQxLDQ3NjY1MjAwOCwtNTE4NzI5ODYz
+LC04NTY0MDIyNzYsMTU0Nzc2MTQwNyw1MTM5OTc2ODAsNjM1Nz
+cyMzYsMTAzODYwMTczNiwtMTQxODc4MjQzMSwtMTA1NzQzOTQ1
+LDY2NDk0NTIyOCwtMjExOTA5NjgzOCwtMTAzNjQ1MTQ5OSwtND
+U0Njg5OTY5LC0xMTMxNzc3NjAzLC0yMDg2NzI4MDcyLC0xOTI4
+MjA4MjExXX0=
 -->
