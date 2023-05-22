@@ -74,6 +74,8 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/UrngmsjWntP0Jphl.png)
 
 
+## redo log持久化时极
+
 ## mysql崩溃恢复
 可以简单的将过程进行如下简化：
 1. 写redo log
@@ -292,11 +294,11 @@ key(`id_card`)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1MTMwMTQxLDQ3NjY1MjAwOCwtNTE4Nz
-I5ODYzLC04NTY0MDIyNzYsMTU0Nzc2MTQwNyw1MTM5OTc2ODAs
-NjM1NzcyMzYsMTAzODYwMTczNiwtMTQxODc4MjQzMSwtMTA1Nz
-QzOTQ1LDY2NDk0NTIyOCwtMjExOTA5NjgzOCwtMTAzNjQ1MTQ5
-OSwtNDU0Njg5OTY5LC0xMTMxNzc3NjAzLC0yMDg2NzI4MDcyLC
-0xOTI4MjA4MjExLC03MzI2ODU2NDgsNjE4MzQ5ODI2LDk2MTIx
-ODU0OF19
+eyJoaXN0b3J5IjpbLTIyMjI2OTMwOCwtNjUxMzAxNDEsNDc2Nj
+UyMDA4LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3
+LDUxMzk5NzY4MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4Nz
+gyNDMxLC0xMDU3NDM5NDUsNjY0OTQ1MjI4LC0yMTE5MDk2ODM4
+LC0xMDM2NDUxNDk5LC00NTQ2ODk5NjksLTExMzE3Nzc2MDMsLT
+IwODY3MjgwNzIsLTE5MjgyMDgyMTEsLTczMjY4NTY0OCw2MTgz
+NDk4MjZdfQ==
 -->
