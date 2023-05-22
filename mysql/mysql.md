@@ -75,6 +75,8 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 
 ## redo log持久化时机
+
+redo的写操作也是是很密集的，为了减少磁盘I/O次数
 1. mysql正常关闭时。
 2. 当 redo log buffer 中记录的写入量大于 redo log buffer 内存空间的一半时，会触发落盘；
 3.   InnoDB 的后台线程每隔 1 秒，将 redo log buffer 持久化到磁盘。
@@ -297,11 +299,11 @@ key(`id_card`)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODY0MTEyNDgsLTEzMDg0MDE0NDcsLT
-Y1MTMwMTQxLDQ3NjY1MjAwOCwtNTE4NzI5ODYzLC04NTY0MDIy
-NzYsMTU0Nzc2MTQwNyw1MTM5OTc2ODAsNjM1NzcyMzYsMTAzOD
-YwMTczNiwtMTQxODc4MjQzMSwtMTA1NzQzOTQ1LDY2NDk0NTIy
-OCwtMjExOTA5NjgzOCwtMTAzNjQ1MTQ5OSwtNDU0Njg5OTY5LC
-0xMTMxNzc3NjAzLC0yMDg2NzI4MDcyLC0xOTI4MjA4MjExLC03
-MzI2ODU2NDhdfQ==
+eyJoaXN0b3J5IjpbNTgwNDYxOTY0LC0xMzA4NDAxNDQ3LC02NT
+EzMDE0MSw0NzY2NTIwMDgsLTUxODcyOTg2MywtODU2NDAyMjc2
+LDE1NDc3NjE0MDcsNTEzOTk3NjgwLDYzNTc3MjM2LDEwMzg2MD
+E3MzYsLTE0MTg3ODI0MzEsLTEwNTc0Mzk0NSw2NjQ5NDUyMjgs
+LTIxMTkwOTY4MzgsLTEwMzY0NTE0OTksLTQ1NDY4OTk2OSwtMT
+EzMTc3NzYwMywtMjA4NjcyODA3MiwtMTkyODIwODIxMSwtNzMy
+Njg1NjQ4XX0=
 -->
