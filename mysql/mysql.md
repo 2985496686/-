@@ -76,11 +76,16 @@ InnoDB的redo log是固定大小的，比如可以配置为一组4个文件，�
 
 ## redo log持久化时机
 
-redo的写操作也是是很密集的，为了减少磁盘I/O次数，mysql会先将日志写入redo log buffer，并在固定时机
+redo的写操作也是是很密集的，为了减少磁盘I/O次数，mysql会先将日志写入redo log buffer，并在固定时机将日志刷到磁盘，时机如下：
 1. mysql正常关闭时。
 2. 当 redo log buffer 中记录的写入量大于 redo log buffer 内存空间的一半时，会触发落盘；
 3.   InnoDB 的后台线程每隔 1 秒，将 redo log buffer 持久化到磁盘。
-4. 每次事务提交时都将缓存在 redo log buffer 里的 redo log 直接持久化到磁盘
+4. 每次事务提交时都将缓存在 redo log buffer 里的 redo log 直接持久化到磁盘(这个策略可由 innodb_flush_log_at_trx_commit 参数控制)。
+
+**innodb_flush_log_at_trx_commit参数**
+1. 当设置该**参数为 0 时**，表示每次事务提交时 ，还是**将 redo log 留在 redo log buffer 中** ，该模式下在事务提交时不会主动触发写入磁盘的操作
+
+
 ## mysql崩溃恢复
 可以简单的将过程进行如下简化：
 1. 写redo log
@@ -299,7 +304,7 @@ key(`id_card`)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODc5MDc3MjAsLTEzMDg0MDE0NDcsLT
+eyJoaXN0b3J5IjpbLTEyMDU0MjI3MDQsLTEzMDg0MDE0NDcsLT
 Y1MTMwMTQxLDQ3NjY1MjAwOCwtNTE4NzI5ODYzLC04NTY0MDIy
 NzYsMTU0Nzc2MTQwNyw1MTM5OTc2ODAsNjM1NzcyMzYsMTAzOD
 YwMTczNiwtMTQxODc4MjQzMSwtMTA1NzQzOTQ1LDY2NDk0NTIy
