@@ -325,16 +325,21 @@ select *from user where FLOOR(score) > 60 # FLOOR()向下取整函数
 #语句二
 select *from user where score - 1 > 60 
 ```
-以上两条语句mysql都会放弃使用索引，虽然score上有索引，但是函数操作后的结果可能已经破坏了
+以上两条语句mysql都会放弃使用索引，虽然score上有索引，但是函数操作后的结果可能已经破坏了搜索树的平衡，mysql选择放弃使用索引。
+
+
+## 字段隐式类型转换
+
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTczNTQ1MTE1MCwxNzMyMTQ0MzEsLTIzOT
-Q5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4
-LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMz
-k5NzY4MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMx
-LC0xMDU3NDM5NDUsNjY0OTQ1MjI4LC0yMTE5MDk2ODM4LC0xMD
-M2NDUxNDk5LC00NTQ2ODk5NjksLTExMzE3Nzc2MDMsLTIwODY3
-MjgwNzJdfQ==
+eyJoaXN0b3J5IjpbLTEwMzI5MzY5NTUsMTczMjE0NDMxLC0yMz
+k0OTMwMTMsLTEzMDg0MDE0NDcsLTY1MTMwMTQxLDQ3NjY1MjAw
+OCwtNTE4NzI5ODYzLC04NTY0MDIyNzYsMTU0Nzc2MTQwNyw1MT
+M5OTc2ODAsNjM1NzcyMzYsMTAzODYwMTczNiwtMTQxODc4MjQz
+MSwtMTA1NzQzOTQ1LDY2NDk0NTIyOCwtMjExOTA5NjgzOCwtMT
+AzNjQ1MTQ5OSwtNDU0Njg5OTY5LC0xMTMxNzc3NjAzLC0yMDg2
+NzI4MDcyXX0=
 -->
