@@ -358,12 +358,12 @@ select '10' > 9
 语句二对条件字段存在类型转换，mysql认为可能会破坏树的平衡，不使用索引。
 
 如果将score字段设置为int类型，语句一是否会走索引？
-会走索引，mysql默认的是将是在
+会走索引，mysql默认的是将字符串转数字，条件字段是数字，而条件是字符串，所以在是
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3MTM5MDU2NiwxNzMyMTQ0MzEsLTIzOT
+eyJoaXN0b3J5IjpbLTk0NjYwMjYyMywxNzMyMTQ0MzEsLTIzOT
 Q5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4
 LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMz
 k5NzY4MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMx
