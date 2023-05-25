@@ -344,11 +344,12 @@ select *from user where score > 60
 
 以上两条语句，第一句会使用索引，第二句不会使用。
 
-很明显是由于隐形类型转换产生的
+很明显是由于隐式类型转换产生的，那mysql是类型转换规则是怎样的？
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM2NjExOTA4NCwxNzMyMTQ0MzEsLTIzOT
+eyJoaXN0b3J5IjpbLTM5ODkxOTY2NywxNzMyMTQ0MzEsLTIzOT
 Q5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4
 LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMz
 k5NzY4MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMx
