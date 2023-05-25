@@ -325,12 +325,12 @@ select *from user where FLOOR(score) > 60 # FLOOR()向下取整函数
 #语句二
 select *from user where score - 1 > 60 
 ```
-以上两条语句mysql都会放弃使用索引，虽然是层哦热
+以上两条语句mysql都会放弃使用索引，虽然score上有索引，但是函数操作后的结果可能已经破坏了
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0OTE4NTI5OCwxNzMyMTQ0MzEsLTIzOT
+eyJoaXN0b3J5IjpbLTczNTQ1MTE1MCwxNzMyMTQ0MzEsLTIzOT
 Q5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4
 LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMz
 k5NzY4MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMx
