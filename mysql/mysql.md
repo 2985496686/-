@@ -317,14 +317,14 @@ key(`id_card`)
 
 如下SQL：
 ```sql
-select * from user where 
+select * from user where FLOOR(score) > 60 # FLOOR()向下取整函数
 ```
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjcyMDA3ODA2LDE3MzIxNDQzMSwtMjM5ND
+eyJoaXN0b3J5IjpbLTQ2ODQzODI2LDE3MzIxNDQzMSwtMjM5ND
 kzMDEzLC0xMzA4NDAxNDQ3LC02NTEzMDE0MSw0NzY2NTIwMDgs
 LTUxODcyOTg2MywtODU2NDAyMjc2LDE1NDc3NjE0MDcsNTEzOT
 k3NjgwLDYzNTc3MjM2LDEwMzg2MDE3MzYsLTE0MTg3ODI0MzEs
