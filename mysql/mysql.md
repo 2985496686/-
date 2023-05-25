@@ -364,8 +364,10 @@ select '10' > 9
 
 在多表联查的时候，如果两个表的编码格式不同，可能就会产生因为编码转换导致索引失效的问题。
 
+编码转换规则： 会
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjUzOTgzMjAsMTczMjE0NDMxLC0yMz
+eyJoaXN0b3J5IjpbLTE5MjgwMjc4NjYsMTczMjE0NDMxLC0yMz
 k0OTMwMTMsLTEzMDg0MDE0NDcsLTY1MTMwMTQxLDQ3NjY1MjAw
 OCwtNTE4NzI5ODYzLC04NTY0MDIyNzYsMTU0Nzc2MTQwNyw1MT
 M5OTc2ODAsNjM1NzcyMzYsMTAzODYwMTczNiwtMTQxODc4MjQz
