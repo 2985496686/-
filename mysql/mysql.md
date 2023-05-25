@@ -355,11 +355,11 @@ select '10' > 9
 **说明mysql中数字与字符串比较时，会自动将字符串转为数字进行比较**
 
 语句一不会存在类型转换，所以会走索引。
-
+语句二对条件字段存在类型转换，mysql任务
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5NzkyNDk2MCwxNzMyMTQ0MzEsLTIzOT
+eyJoaXN0b3J5IjpbMTE2OTE3ODM5MCwxNzMyMTQ0MzEsLTIzOT
 Q5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4
 LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMz
 k5NzY4MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMx
