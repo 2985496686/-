@@ -352,10 +352,14 @@ select '10' > 9
 执行结果如下：
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/9PUvZ2e6VIlcDuoG.png)
 
-**说明mysql中数字与字符串比较**
+**说明mysql中数字与字符串比较时，会自动将字符串转为数字进行比较**
+
+语句一不会存在类型转换，所以会走索引。
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0NDMzNTg3MSwxNzMyMTQ0MzEsLTIzOT
+eyJoaXN0b3J5IjpbMTU5NzkyNDk2MCwxNzMyMTQ0MzEsLTIzOT
 Q5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4
 LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMz
 k5NzY4MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMx
