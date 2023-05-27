@@ -462,7 +462,7 @@ d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁
 ## binlog的写入机制
 - 事务在执行过程中，会将log写入binlog cache 中，在日志提交的时候再把binlog cache写到binlog文件中。
 - 为了保证一个事务的binlog被一次性的，完整的，连续的写入binlog文件，系统对于每一个事务线程都会分配一片内存，参数 ``binlog_cache_size``用于控制单个线程内binlog cache所占内存的大小。如果超过了这个参数规定的大小，就要暂存到磁盘。
-- 每个线程都会被分配一个binlog。
+- 每个线程都会被分配一个binlog
 
 
 
@@ -470,11 +470,11 @@ d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwNTkyNTM3NywxMzcxNTIxNjY5LC0xMj
-A3ODc1MTg5LC0xNDU2NjE5Njc2LC0xODg1NTM3NjU2LC0xMDg5
-Mzc5NDI0LDYwOTA2OTYzNCwtMTE4NjMzNjc3NiwxNzMzMTMzMD
-k5LDE3MzIxNDQzMSwtMjM5NDkzMDEzLC0xMzA4NDAxNDQ3LC02
-NTEzMDE0MSw0NzY2NTIwMDgsLTUxODcyOTg2MywtODU2NDAyMj
-c2LDE1NDc3NjE0MDcsNTEzOTk3NjgwLDYzNTc3MjM2LDEwMzg2
-MDE3MzZdfQ==
+eyJoaXN0b3J5IjpbNTE3NzUwNjE3LDE3MDU5MjUzNzcsMTM3MT
+UyMTY2OSwtMTIwNzg3NTE4OSwtMTQ1NjYxOTY3NiwtMTg4NTUz
+NzY1NiwtMTA4OTM3OTQyNCw2MDkwNjk2MzQsLTExODYzMzY3Nz
+YsMTczMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAxMywtMTMw
+ODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MTg3Mjk4Nj
+MsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4MCw2MzU3
+NzIzNl19
 -->
