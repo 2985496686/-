@@ -415,12 +415,14 @@ CREATE TABLE `t` (
 第二次结果：(5,5,5) (0,5,5)
 第三次结果：(5,5,5) (0,5,5) (1,5,5)
 
-多出来的两个结果就是幻读产生的。(严格的来说读出新增的数据才是幻读，也就是数据1,5)
+多出来的两个结果就是幻读产生的。(严格的来说读出新增的数据才是幻读，也就是数据1,1,5 ，但是这里0,5,5数据的出现与幻读造成的结果基本一致，所以也当成幻读)。
+
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDU3NTczMTcsNjA5MDY5NjM0LC0xMT
+eyJoaXN0b3J5IjpbLTEwODkzNzk0MjQsNjA5MDY5NjM0LC0xMT
 g2MzM2Nzc2LDE3MzMxMzMwOTksMTczMjE0NDMxLC0yMzk0OTMw
 MTMsLTEzMDg0MDE0NDcsLTY1MTMwMTQxLDQ3NjY1MjAwOCwtNT
 E4NzI5ODYzLC04NTY0MDIyNzYsMTU0Nzc2MTQwNyw1MTM5OTc2
