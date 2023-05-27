@@ -460,16 +460,16 @@ d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁
 # binlog和redolog持久化机制
 
 ## binlog的写入机制
-事务在执行过程中，会将log写入binlog cache 中，在日志提交的时候再把binlog cache写到binlog文件中
+事务在执行过程中，会将log写入binlog cache 中，在日志提交的时候再把binlog cache写到binlog文件中。为了保证一个事务的
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDcwODAzNTcsMTM3MTUyMTY2OSwtMT
-IwNzg3NTE4OSwtMTQ1NjYxOTY3NiwtMTg4NTUzNzY1NiwtMTA4
-OTM3OTQyNCw2MDkwNjk2MzQsLTExODYzMzY3NzYsMTczMzEzMz
-A5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAxMywtMTMwODQwMTQ0Nywt
-NjUxMzAxNDEsNDc2NjUyMDA4LC01MTg3Mjk4NjMsLTg1NjQwMj
-I3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4MCw2MzU3NzIzNiwxMDM4
-NjAxNzM2XX0=
+eyJoaXN0b3J5IjpbLTU2MjEzOTQ0NywxMzcxNTIxNjY5LC0xMj
+A3ODc1MTg5LC0xNDU2NjE5Njc2LC0xODg1NTM3NjU2LC0xMDg5
+Mzc5NDI0LDYwOTA2OTYzNCwtMTE4NjMzNjc3NiwxNzMzMTMzMD
+k5LDE3MzIxNDQzMSwtMjM5NDkzMDEzLC0xMzA4NDAxNDQ3LC02
+NTEzMDE0MSw0NzY2NTIwMDgsLTUxODcyOTg2MywtODU2NDAyMj
+c2LDE1NDc3NjE0MDcsNTEzOTk3NjgwLDYzNTc3MjM2LDEwMzg2
+MDE3MzZdfQ==
 -->
