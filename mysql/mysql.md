@@ -389,7 +389,7 @@ InnoDB的可重复读模式下，通过MVCC机制解决了不可重复读现象�
 ## 当前读解决幻读的方案
 
 
-**select  * from t where d = 5 for update** 语句表示当前读，表示接下来要对d = 5的这行数据进行updatte操作
+**select  fields from t where d = 5 for update** 语句表示当前读，表示接下来要对d = 5的这行数据进行updatte操作，提前加锁，该语句加的锁与语句  **select fields from t where** 加的锁一致
 
 
 
@@ -412,7 +412,7 @@ CREATE TABLE `t` (
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1MjAzOTM0MCw2MDkwNjk2MzQsLTExOD
+eyJoaXN0b3J5IjpbMTIxNDE2ODY3MCw2MDkwNjk2MzQsLTExOD
 YzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAx
 MywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MT
 g3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4
