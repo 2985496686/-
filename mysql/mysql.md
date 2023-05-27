@@ -450,14 +450,15 @@ d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁
 ``next-key lock``通过锁住一部分行，解决了因为幻读带来的数据不一致的情况，但毕竟不是锁全部数据，幻读现象仍然存在。还是以上面的表为例。
 
 - T1时刻session A 执行select *from t  where d = 11;
-- T2时刻session B 执行
+- T2时刻session B 执行insert  into t values（11,11,11); commit; 
+- T3时刻session A执行insert  into t values（11,11,11); 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODI1MTgzODAsLTEyMDc4NzUxODksLT
-E0NTY2MTk2NzYsLTE4ODU1Mzc2NTYsLTEwODkzNzk0MjQsNjA5
-MDY5NjM0LC0xMTg2MzM2Nzc2LDE3MzMxMzMwOTksMTczMjE0ND
-MxLC0yMzk0OTMwMTMsLTEzMDg0MDE0NDcsLTY1MTMwMTQxLDQ3
-NjY1MjAwOCwtNTE4NzI5ODYzLC04NTY0MDIyNzYsMTU0Nzc2MT
-QwNyw1MTM5OTc2ODAsNjM1NzcyMzYsMTAzODYwMTczNiwtMTQx
-ODc4MjQzMV19
+eyJoaXN0b3J5IjpbMTkwMjY0ODc2NSwtMTIwNzg3NTE4OSwtMT
+Q1NjYxOTY3NiwtMTg4NTUzNzY1NiwtMTA4OTM3OTQyNCw2MDkw
+Njk2MzQsLTExODYzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0Mz
+EsLTIzOTQ5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2
+NjUyMDA4LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxND
+A3LDUxMzk5NzY4MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4
+NzgyNDMxXX0=
 -->
