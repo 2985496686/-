@@ -461,12 +461,12 @@ d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁
 
 ## binlog的写入机制
 - 事务在执行过程中，会将log写入binlog cache 中，在日志提交的时候再把binlog cache写到binlog文件中。
-- 为了保证一个事务的binlog被一次性的，完整的，连续的写入binlog文件，对
+- 为了保证一个事务的binlog被一次性的，完整的，连续的写入binlog文件，系统对于每一个事务线程都会分配一片内存，
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0NjUyNzI2MSwxMzcxNTIxNjY5LC0xMj
+eyJoaXN0b3J5IjpbMTkyNTY5Njk5MiwxMzcxNTIxNjY5LC0xMj
 A3ODc1MTg5LC0xNDU2NjE5Njc2LC0xODg1NTM3NjU2LC0xMDg5
 Mzc5NDI0LDYwOTA2OTYzNCwtMTE4NjMzNjc3NiwxNzMzMTMzMD
 k5LDE3MzIxNDQzMSwtMjM5NDkzMDEzLC0xMzA4NDAxNDQ3LC02
