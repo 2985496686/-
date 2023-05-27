@@ -423,11 +423,15 @@ CREATE TABLE `t` (
 binlog的写入时机是在事务提交的时候，三个事务执行完之后，binlog是以如下顺序写入的：
 
 ```sql
-update t set d=5 where id=0; /*(0,0,5)*/ update t set c=5 where id=0; /*(0,5,5)*/ insert into t values(1,1,5); /*(1,1,5)*/ update t set c=5 where id=1; /*(1,5,5)*/ update t set d=100 where d=5;/*所有d=5的行，d改成100*/
-``
-
+update t set d=5 where id=0; /*(0,0,5)*/ 
+update t set c=5 where id=0; /*(0,5,5)*/ 
+insert into t values(1,1,5); /*(1,1,5)*/ 
+update t set c=5 where id=1; /*(1,5,5)*/ 
+update t set d=100 where d=5;/*所有d=5的行，d改成100*/
+```
+这个语句序列，不论是拿到备库去执行，还是以后用binlog来克隆一个库，这三行的结果，都变成了 (0,5,100)、(1,5,100)和(5,5,100)，造成了数据不一致文艺
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTUzNTU0NTYsLTEwODkzNzk0MjQsNj
+eyJoaXN0b3J5IjpbLTE2MjExOTc0MDAsLTEwODkzNzk0MjQsNj
 A5MDY5NjM0LC0xMTg2MzM2Nzc2LDE3MzMxMzMwOTksMTczMjE0
 NDMxLC0yMzk0OTMwMTMsLTEzMDg0MDE0NDcsLTY1MTMwMTQxLD
 Q3NjY1MjAwOCwtNTE4NzI5ODYzLC04NTY0MDIyNzYsMTU0Nzc2
