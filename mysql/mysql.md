@@ -383,7 +383,15 @@ InnoDB的可重复读模式下，通过MVCC机制解决了不可重复读现象�
 
 ## 快照读解决幻读的方案
 
-在MVCC机制下，保证一个事务中执行两个相同的select快照读语句，不会出现幻读情况。但是仅仅是通过
+在MVCC机制下，保证一个事务中执行两个相同的select快照读语句，不会出现幻读情况。
+
+
+## 当前读解决幻读的方案
+
+有如下一个表：
+
+```sql
+```
  
 
 
@@ -392,11 +400,11 @@ InnoDB的可重复读模式下，通过MVCC机制解决了不可重复读现象�
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMwNzY1MDk1NSw2MDkwNjk2MzQsLTExOD
-YzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAx
-MywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MT
-g3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4
-MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMxLC0xMD
-U3NDM5NDUsNjY0OTQ1MjI4LC0yMTE5MDk2ODM4LC0xMDM2NDUx
-NDk5XX0=
+eyJoaXN0b3J5IjpbLTIxMDA2MDY3NTIsNjA5MDY5NjM0LC0xMT
+g2MzM2Nzc2LDE3MzMxMzMwOTksMTczMjE0NDMxLC0yMzk0OTMw
+MTMsLTEzMDg0MDE0NDcsLTY1MTMwMTQxLDQ3NjY1MjAwOCwtNT
+E4NzI5ODYzLC04NTY0MDIyNzYsMTU0Nzc2MTQwNyw1MTM5OTc2
+ODAsNjM1NzcyMzYsMTAzODYwMTczNiwtMTQxODc4MjQzMSwtMT
+A1NzQzOTQ1LDY2NDk0NTIyOCwtMjExOTA5NjgzOCwtMTAzNjQ1
+MTQ5OV19
 -->
