@@ -449,16 +449,17 @@ d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁
 
 ``next-key lock``通过锁住一部分行，解决了因为幻读带来的数据不一致的情况，但毕竟不是锁全部数据，幻读现象仍然存在。还是以上面的表为例。
 
-- T1时刻session A 执行select *from t  where d = 11;
-- T2时刻session B 执行insert  into t values（11,11,11); commit; 
-- T3时刻session A执行insert  into t values（11,11,11); 就会报错
+- T1时刻session A 执行``select *from t  where d = 11;``
+- T2时刻session B 执行``insert  into t values（11,11,11); commit; ``
+- T3时刻session A执行``insert  into t values（11,11,11);`` 就会报``ERROR 1062 (23000): Duplicate entry '11' for key 't.PRIMARY'
+``
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNzkzNjY0LC0xMjA3ODc1MTg5LC0xND
-U2NjE5Njc2LC0xODg1NTM3NjU2LC0xMDg5Mzc5NDI0LDYwOTA2
-OTYzNCwtMTE4NjMzNjc3NiwxNzMzMTMzMDk5LDE3MzIxNDQzMS
-wtMjM5NDkzMDEzLC0xMzA4NDAxNDQ3LC02NTEzMDE0MSw0NzY2
-NTIwMDgsLTUxODcyOTg2MywtODU2NDAyMjc2LDE1NDc3NjE0MD
-csNTEzOTk3NjgwLDYzNTc3MjM2LDEwMzg2MDE3MzYsLTE0MTg3
-ODI0MzFdfQ==
+eyJoaXN0b3J5IjpbLTUyOTM4MTE1OSwtMTIwNzg3NTE4OSwtMT
+Q1NjYxOTY3NiwtMTg4NTUzNzY1NiwtMTA4OTM3OTQyNCw2MDkw
+Njk2MzQsLTExODYzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0Mz
+EsLTIzOTQ5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2
+NjUyMDA4LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxND
+A3LDUxMzk5NzY4MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4
+NzgyNDMxXX0=
 -->
