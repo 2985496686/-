@@ -389,7 +389,7 @@ InnoDB的可重复读模式下，通过MVCC机制解决了不可重复读现象�
 ## 当前读解决幻读的方案
 
 
-**select  fields from t where d = 5 for update** 语句表示当前读，表示接下来要对d = 5的这行数据进行updatte操作，提前加锁，该语句加的锁与语句  **select fields from t where** 加的锁一致
+**select  fields from t where d = 5 for update** 语句表示当前读，表示接下来要对d = 5的这行数据进行update操作，提前加锁，该语句加的锁与语句  **select fields from t where** 加的锁一致，只是提前加锁了。下面分析当前读对幻读的解决。
 
 
 
@@ -412,11 +412,11 @@ CREATE TABLE `t` (
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxNDE2ODY3MCw2MDkwNjk2MzQsLTExOD
-YzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAx
-MywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MT
-g3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4
-MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMxLC0xMD
-U3NDM5NDUsNjY0OTQ1MjI4LC0yMTE5MDk2ODM4LC0xMDM2NDUx
-NDk5XX0=
+eyJoaXN0b3J5IjpbLTE4NzIxMTM2NTQsNjA5MDY5NjM0LC0xMT
+g2MzM2Nzc2LDE3MzMxMzMwOTksMTczMjE0NDMxLC0yMzk0OTMw
+MTMsLTEzMDg0MDE0NDcsLTY1MTMwMTQxLDQ3NjY1MjAwOCwtNT
+E4NzI5ODYzLC04NTY0MDIyNzYsMTU0Nzc2MTQwNyw1MTM5OTc2
+ODAsNjM1NzcyMzYsMTAzODYwMTczNiwtMTQxODc4MjQzMSwtMT
+A1NzQzOTQ1LDY2NDk0NTIyOCwtMjExOTA5NjgzOCwtMTAzNjQ1
+MTQ5OV19
 -->
