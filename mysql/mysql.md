@@ -378,7 +378,10 @@ select '10' > 9
 
 ## 幻读现象
 
-InnoDB的可重复读模式下，通过MVCC机制解决了不可重复读现象，但是还存在幻读现象。**幻读指的是在一个事务中第二次读取同一个数据时，发现多出来一条数据。** 中
+InnoDB的可重复读模式下，通过MVCC机制解决了不可重复读现象，但是还存在幻读现象。**幻读指的是在一个事务中第二次读取同一个数据时，发现多出来一条数据。** 这里的读取，不仅仅是指像``select *from t`` 这样的快照读，还包括``update t set c = 100 where id = 1``这样的当前读。
+
+
+## 
  
 
 
@@ -387,7 +390,7 @@ InnoDB的可重复读模式下，通过MVCC机制解决了不可重复读现象�
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTU4Mzg3NTg2LC0xMTg2MzM2Nzc2LDE3Mz
+eyJoaXN0b3J5IjpbNjA5MDY5NjM0LC0xMTg2MzM2Nzc2LDE3Mz
 MxMzMwOTksMTczMjE0NDMxLC0yMzk0OTMwMTMsLTEzMDg0MDE0
 NDcsLTY1MTMwMTQxLDQ3NjY1MjAwOCwtNTE4NzI5ODYzLC04NT
 Y0MDIyNzYsMTU0Nzc2MTQwNyw1MTM5OTc2ODAsNjM1NzcyMzYs
