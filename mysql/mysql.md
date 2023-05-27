@@ -442,14 +442,17 @@ mysql是绝对无法容忍这种数据不一致的情况发生的。上面的这
 | d字段 | 0 | 5|10|
 
 d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁住这两个空隙，保证不会在这两个空隙中插入新的数据，并且不允许修改或插入d为5的数据，合起来锁的范围就是(0,10)。
-**gap log + record lock 加起来就保证不会因为幻读产生数据不一致的情况**
+**gap lock + record lock 加起来就保证不会因为幻读产生数据不一致的情况，合起来的锁又被称为next-key  lock。**
+
+
+## RR
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQyMDI5MDAzLC0xNDU2NjE5Njc2LC0xOD
-g1NTM3NjU2LC0xMDg5Mzc5NDI0LDYwOTA2OTYzNCwtMTE4NjMz
-Njc3NiwxNzMzMTMzMDk5LDE3MzIxNDQzMSwtMjM5NDkzMDEzLC
-0xMzA4NDAxNDQ3LC02NTEzMDE0MSw0NzY2NTIwMDgsLTUxODcy
-OTg2MywtODU2NDAyMjc2LDE1NDc3NjE0MDcsNTEzOTk3NjgwLD
-YzNTc3MjM2LDEwMzg2MDE3MzYsLTE0MTg3ODI0MzEsLTEwNTc0
-Mzk0NV19
+eyJoaXN0b3J5IjpbLTE5NTQ2Nzk5NiwtMTQ1NjYxOTY3NiwtMT
+g4NTUzNzY1NiwtMTA4OTM3OTQyNCw2MDkwNjk2MzQsLTExODYz
+MzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAxMy
+wtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MTg3
+Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4MC
+w2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMxLC0xMDU3
+NDM5NDVdfQ==
 -->
