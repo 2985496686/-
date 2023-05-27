@@ -378,7 +378,7 @@ select '10' > 9
 
 ## 幻读现象
 
-InnoDB的可重复
+InnoDB的可重复读模式下，通过MVCC机制解决了不可重复读现象
 
 
 
@@ -387,7 +387,7 @@ InnoDB的可重复
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzI3NjY4MTksLTExODYzMzY3NzYsMT
+eyJoaXN0b3J5IjpbLTEwNDU5MTE0NzcsLTExODYzMzY3NzYsMT
 czMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAxMywtMTMwODQw
 MTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MTg3Mjk4NjMsLT
 g1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4MCw2MzU3NzIz
