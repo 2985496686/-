@@ -431,13 +431,13 @@ update t set d=100 where d=5;/*所有d=5的行，d改成100*/
 ```
 这个语句序列，不论是拿到备库去执行，还是以后用binlog来克隆一个库，这三行的结果，都变成了 (0,5,100)、(1,5,100)和(5,5,100)，**造成了数据不一致问题**。
 
-mysql是绝对无法容忍这种数据不一致的情况发生的。上面的这些情况都是假设当前读操作只有行锁，如果按照上面的事务顺序执行sql
+mysql是绝对无法容忍这种数据不一致的情况发生的。上面的这些情况都是假设当前读操作只有行锁，如果按照上面的事务顺序执行sql，就会发现session B和session C在session A提交之前会发生阻塞，
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5MjkxNTMyNywtMTA4OTM3OTQyNCw2MD
-kwNjk2MzQsLTExODYzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0
-MzEsLTIzOTQ5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsND
-c2NjUyMDA4LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYx
-NDA3LDUxMzk5NzY4MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xND
-E4NzgyNDMxLC0xMDU3NDM5NDUsNjY0OTQ1MjI4LC0yMTE5MDk2
-ODM4XX0=
+eyJoaXN0b3J5IjpbLTIxMjI5MzY1OTgsLTEwODkzNzk0MjQsNj
+A5MDY5NjM0LC0xMTg2MzM2Nzc2LDE3MzMxMzMwOTksMTczMjE0
+NDMxLC0yMzk0OTMwMTMsLTEzMDg0MDE0NDcsLTY1MTMwMTQxLD
+Q3NjY1MjAwOCwtNTE4NzI5ODYzLC04NTY0MDIyNzYsMTU0Nzc2
+MTQwNyw1MTM5OTc2ODAsNjM1NzcyMzYsMTAzODYwMTczNiwtMT
+QxODc4MjQzMSwtMTA1NzQzOTQ1LDY2NDk0NTIyOCwtMjExOTA5
+NjgzOF19
 -->
