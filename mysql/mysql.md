@@ -441,9 +441,9 @@ mysql是绝对无法容忍这种数据不一致的情况发生的。上面的这
 | c字段 | 0 | 5|10|
 | d字段 | 0 | 5|10|
 
-d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁住这两个空隙，保证不会在这两个空隙中插入新的数据，
+d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁住这两个空隙，保证不会在这两个空隙中插入新的数据，并且不允许修改或插入d为5的数据，合起来锁的范围就是(
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0NzMwMjkyMCwtMTQ1NjYxOTY3NiwtMT
+eyJoaXN0b3J5IjpbLTc0MTkyNDI5MywtMTQ1NjYxOTY3NiwtMT
 g4NTUzNzY1NiwtMTA4OTM3OTQyNCw2MDkwNjk2MzQsLTExODYz
 MzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAxMy
 wtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MTg3
