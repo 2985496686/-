@@ -388,7 +388,10 @@ InnoDB的可重复读模式下，通过MVCC机制解决了不可重复读现象�
 
 ## 当前读解决幻读的方案
 
-有如下一个表：
+
+**select ...... for update**
+
+有如下一个表，并提供一个场景：
 
 ```sql
 CREATE TABLE `t` ( 
@@ -400,18 +403,18 @@ CREATE TABLE `t` (
  insert into t values(0,0,0),(5,5,5), (10,10,10),(15,15,15),(20,20,20),(25,25,25);
 ```
  
- 
+ ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/tg9kGTKjjKwOdYA9.png)
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg1MDk5ODUxLDYwOTA2OTYzNCwtMTE4Nj
-MzNjc3NiwxNzMzMTMzMDk5LDE3MzIxNDQzMSwtMjM5NDkzMDEz
-LC0xMzA4NDAxNDQ3LC02NTEzMDE0MSw0NzY2NTIwMDgsLTUxOD
-cyOTg2MywtODU2NDAyMjc2LDE1NDc3NjE0MDcsNTEzOTk3Njgw
-LDYzNTc3MjM2LDEwMzg2MDE3MzYsLTE0MTg3ODI0MzEsLTEwNT
-c0Mzk0NSw2NjQ5NDUyMjgsLTIxMTkwOTY4MzgsLTEwMzY0NTE0
-OTldfQ==
+eyJoaXN0b3J5IjpbLTcyNjI0NTYzNyw2MDkwNjk2MzQsLTExOD
+YzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAx
+MywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MT
+g3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4
+MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMxLC0xMD
+U3NDM5NDUsNjY0OTQ1MjI4LC0yMTE5MDk2ODM4LC0xMDM2NDUx
+NDk5XX0=
 -->
