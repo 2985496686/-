@@ -429,9 +429,11 @@ insert into t values(1,1,5); /*(1,1,5)*/
 update t set c=5 where id=1; /*(1,5,5)*/ 
 update t set d=100 where d=5;/*所有d=5的行，d改成100*/
 ```
-这个语句序列，不论是拿到备库去执行，还是以后用binlog来克隆一个库，这三行的结果，都变成了 (0,5,100)、(1,5,100)和(5,5,100)，造成了数据不一致文艺
+这个语句序列，不论是拿到备库去执行，还是以后用binlog来克隆一个库，这三行的结果，都变成了 (0,5,100)、(1,5,100)和(5,5,100)，**造成了数据不一致问题**。
+
+mysql是绝对无法容忍这种数据不一致的情况发生的。上面的这些情况
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjExOTc0MDAsLTEwODkzNzk0MjQsNj
+eyJoaXN0b3J5IjpbLTEyNzU4MTAwODQsLTEwODkzNzk0MjQsNj
 A5MDY5NjM0LC0xMTg2MzM2Nzc2LDE3MzMxMzMwOTksMTczMjE0
 NDMxLC0yMzk0OTMwMTMsLTEzMDg0MDE0NDcsLTY1MTMwMTQxLD
 Q3NjY1MjAwOCwtNTE4NzI5ODYzLC04NTY0MDIyNzYsMTU0Nzc2
