@@ -420,17 +420,18 @@ CREATE TABLE `t` (
 
 因为在这里session A的T3和T5时刻只是进行了简单的当前读操作，看似并没有造成太大影响，但其实不然。
 
-binlog的写入时机是在事务提交的时候，下面分析上面三个事务执行完之后，binlog是以如下顺序写入的：
+binlog的写入时机是在事务提交的时候，三个事务执行完之后，binlog是以如下顺序写入的：
 
-
-
+```sql
+update t set d=5 where id=0; /*(0,0,5)*/ update t set c=5 where id=0; /*(0,5,5)*/ insert into t values(1,1,5); /*(1,1,5)*/ update t set c=5 where id=1; /*(1,5,5)*/ update t set d=100 where d=5;/*所有d=5的行，d改成100*/
+``
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2MzU3NTQ5NiwtMTA4OTM3OTQyNCw2MD
-kwNjk2MzQsLTExODYzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0
-MzEsLTIzOTQ5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsND
-c2NjUyMDA4LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYx
-NDA3LDUxMzk5NzY4MCw2MzU3NzIzNiwxMDM4NjAxNzM2LC0xND
-E4NzgyNDMxLC0xMDU3NDM5NDUsNjY0OTQ1MjI4LC0yMTE5MDk2
-ODM4XX0=
+eyJoaXN0b3J5IjpbLTIxMTUzNTU0NTYsLTEwODkzNzk0MjQsNj
+A5MDY5NjM0LC0xMTg2MzM2Nzc2LDE3MzMxMzMwOTksMTczMjE0
+NDMxLC0yMzk0OTMwMTMsLTEzMDg0MDE0NDcsLTY1MTMwMTQxLD
+Q3NjY1MjAwOCwtNTE4NzI5ODYzLC04NTY0MDIyNzYsMTU0Nzc2
+MTQwNyw1MTM5OTc2ODAsNjM1NzcyMzYsMTAzODYwMTczNiwtMT
+QxODc4MjQzMSwtMTA1NzQzOTQ1LDY2NDk0NTIyOCwtMjExOTA5
+NjgzOF19
 -->
