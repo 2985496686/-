@@ -432,8 +432,10 @@ update t set d=100 where d=5;/*所有d=5的行，d改成100*/
 这个语句序列，不论是拿到备库去执行，还是以后用binlog来克隆一个库，这三行的结果，都变成了 (0,5,100)、(1,5,100)和(5,5,100)，**造成了数据不一致问题**。
 
 mysql是绝对无法容忍这种数据不一致的情况发生的。上面的这些情况都是假设当前读操作只有行锁，如果按照上面的事务顺序执行sql，就会发现session B和session C在session A提交之前会发生阻塞，因为innoDB引擎下，当前读操作还会存在**间隙锁**。
+
+## 间隙锁
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2Nzk3MTI3MCwtMTA4OTM3OTQyNCw2MD
+eyJoaXN0b3J5IjpbLTI2Nzc2NTAzMCwtMTA4OTM3OTQyNCw2MD
 kwNjk2MzQsLTExODYzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0
 MzEsLTIzOTQ5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsND
 c2NjUyMDA4LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYx
