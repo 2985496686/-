@@ -407,12 +407,15 @@ CREATE TABLE `t` (
  
  ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/tg9kGTKjjKwOdYA9.png)
 
-按照之前的认知，update操作会将对应数据加上行锁，这里暂且认为update语句只加行锁，并且for update 当前读操作与此一致
+按照之前的认知，update操作会将对应数据加上行锁，这里暂且认为update语句只加行锁，并且for update 当前读操作与此一致，分析会出现什么后果。
+
+
+事务A中当前
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDkyMDg3NCw2MDkwNjk2MzQsLTExOD
+eyJoaXN0b3J5IjpbMTk0NTEyNDE3NCw2MDkwNjk2MzQsLTExOD
 YzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAx
 MywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MT
 g3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4
