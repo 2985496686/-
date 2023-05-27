@@ -454,8 +454,12 @@ d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁
 - T3时刻session A执行``insert  into t values（11,11,11);`` 就会报``ERROR 1062 (23000): Duplicate entry '11' for key 't.PRIMARY'
 ``
 
+虽然仍然存在幻读现象，但是如果合理的使用 ``next-key lock`` 在RR模式下也能规避幻读现象。
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyOTM4MTE1OSwtMTIwNzg3NTE4OSwtMT
+eyJoaXN0b3J5IjpbMTM3MTUyMTY2OSwtMTIwNzg3NTE4OSwtMT
 Q1NjYxOTY3NiwtMTg4NTUzNzY1NiwtMTA4OTM3OTQyNCw2MDkw
 Njk2MzQsLTExODYzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0Mz
 EsLTIzOTQ5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2
