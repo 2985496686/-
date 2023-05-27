@@ -429,7 +429,7 @@ insert into t values(1,1,5); /*(1,1,5)*/
 update t set c=5 where id=1; /*(1,5,5)*/ 
 update t set d=100 where d=5;/*所有d=5的行，d改成100*/
 ```
-这个语句序列，不论是拿到备库去执行，还是以后用binlog来克隆一个库，这三行的结果，都变成了 (0,5,100)、(1,5,100)和(5,5,100)，**造成了数据不一致问题**。
+这个语句序列，不论是拿到备库去执行，还是以后用binlog来克隆一个库，这三行的结果，都变成了 (0,5,100)、(1,5,100)和(5,5,100)，**造成了数据不一致问题**。上述事例中，session A 的
 
 mysql是绝对无法容忍这种数据不一致的情况发生的。上面的这些情况都是假设当前读操作只有行锁，如果按照上面的事务顺序执行sql，就会发现session B和session C在session A提交之前会发生阻塞，因为innoDB引擎下，当前读操作还会存在**间隙锁**。
 
@@ -447,14 +447,14 @@ d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁
 
 ## RR模式仍然存在的幻读现象
 
-``next-key lock``的产生保证了不会因为幻读产生数据不一致的情况，但只是锁住了一部分行，并没有锁住泉标
+``next-key lock``的产生保证了不会因为幻读产生数据不一致的情况，但只是锁住了一部分行，并没有锁住全表，仍然存在数据不一致的情况。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzMzMzc1MTg1LC0xNDU2NjE5Njc2LC0xOD
-g1NTM3NjU2LC0xMDg5Mzc5NDI0LDYwOTA2OTYzNCwtMTE4NjMz
-Njc3NiwxNzMzMTMzMDk5LDE3MzIxNDQzMSwtMjM5NDkzMDEzLC
-0xMzA4NDAxNDQ3LC02NTEzMDE0MSw0NzY2NTIwMDgsLTUxODcy
-OTg2MywtODU2NDAyMjc2LDE1NDc3NjE0MDcsNTEzOTk3NjgwLD
-YzNTc3MjM2LDEwMzg2MDE3MzYsLTE0MTg3ODI0MzEsLTEwNTc0
-Mzk0NV19
+eyJoaXN0b3J5IjpbMTAyMTkxNTIwNywtMTQ1NjYxOTY3NiwtMT
+g4NTUzNzY1NiwtMTA4OTM3OTQyNCw2MDkwNjk2MzQsLTExODYz
+MzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAxMy
+wtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MTg3
+Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4MC
+w2MzU3NzIzNiwxMDM4NjAxNzM2LC0xNDE4NzgyNDMxLC0xMDU3
+NDM5NDVdfQ==
 -->
