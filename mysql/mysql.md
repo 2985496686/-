@@ -436,14 +436,14 @@ mysql是绝对无法容忍这种数据不一致的情况发生的。上面的这
 ## 间隙锁
 
 在执行语句 ``select  fields from t where d = 5 for update``时，不仅会在d = 5这一行加上行锁，还会加上``间隙锁``。
-|id字段|  |
-|--|--|
-| c字段 |  |
-|--|--|
-| c字段 |  |
+|id字段| 0 | 5| 10|
+|--|--|--|--|
+| c字段 | 0 | 5|10|
+| d字段 | 0 | 5|10|
 
+id未
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwNDU0MzgwOCwtMTQ1NjYxOTY3NiwtMT
+eyJoaXN0b3J5IjpbMTI1MTU4NDQwNiwtMTQ1NjYxOTY3NiwtMT
 g4NTUzNzY1NiwtMTA4OTM3OTQyNCw2MDkwNjk2MzQsLTExODYz
 MzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAxMy
 wtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MTg3
