@@ -378,8 +378,8 @@ select '10' > 9
 
 ## 幻读现象
 
-InnoDB的可重复读模式下，通过MVCC机制解决了不可重复读现象
-
+InnoDB的可重复读模式下，通过MVCC机制解决了不可重复读现象，但是还存在幻读现象。幻读指的是在
+ 
 
 
 
@@ -387,7 +387,7 @@ InnoDB的可重复读模式下，通过MVCC机制解决了不可重复读现象
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDU5MTE0NzcsLTExODYzMzY3NzYsMT
+eyJoaXN0b3J5IjpbLTE1Nzc3Njc3NDEsLTExODYzMzY3NzYsMT
 czMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAxMywtMTMwODQw
 MTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MTg3Mjk4NjMsLT
 g1NjQwMjI3NiwxNTQ3NzYxNDA3LDUxMzk5NzY4MCw2MzU3NzIz
