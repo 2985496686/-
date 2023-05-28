@@ -462,19 +462,36 @@ d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁
 ## binlog的写入机制
 - 事务在执行过程中，会将log写入binlog cache 中，在日志提交的时候再把binlog cache写到binlog文件中。
 - 为了保证一个事务的binlog被一次性的，完整的，连续的写入binlog文件，系统对于每一个事务线程都会分配一片内存，参数 ``binlog_cache_size``用于控制单个线程内binlog cache所占内存的大小。如果超过了这个参数规定的大小，就要暂存到磁盘。
-- 每个线程都会被分配一个binlog，
+- binlog写入流程如下图：
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/8OFV3V0ZVqkhXChf.png)
+
+可以看到，每个线程有自己binlog cache，但是共用同一份binlog文件。
+
+-   图中的write，指的就是指把日志写入到文件系统的page cache，并没有把数据持久化到磁盘，所以速度比较快。
+-   图中的fsync，才是将数据持久化到磁盘的操作。一般情况下，我们认为fsync才占磁盘的IOPS。
+
+write 和fsync的时机，是由参数sync_binlog控制的：
+
+1.  sync_binlog=0的时候，表示每次提交事务都只write，不fsync；
+    
+2.  sync_binlog=1的时候，表示每次提交事务都会执行fsync；
+    
+3.  sync_binlog=N(N>1)的时候，表示每次提交事务都write，但累积N个事务后才fsync。
+    
+
+因此，在出现IO瓶颈的场景里，将sync_binlog设置成一个比较大的值，可以提升性能。在实际的业务场景中，考虑到丢失日志量的可控性，一般不建议将这个参数设成0，比较常见的是将其设置为100~1000中的某个数值。
+
+但是，将sync_binlog设置为N，对应的风险是：如果主机发生异常重启，会丢失最近N个事务的binlog日志。
 
 
-
-
-
+## redolog的写入机制
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyMTcyNTQ5NSwxNzA1OTI1Mzc3LDEzNz
-E1MjE2NjksLTEyMDc4NzUxODksLTE0NTY2MTk2NzYsLTE4ODU1
-Mzc2NTYsLTEwODkzNzk0MjQsNjA5MDY5NjM0LC0xMTg2MzM2Nz
-c2LDE3MzMxMzMwOTksMTczMjE0NDMxLC0yMzk0OTMwMTMsLTEz
-MDg0MDE0NDcsLTY1MTMwMTQxLDQ3NjY1MjAwOCwtNTE4NzI5OD
-YzLC04NTY0MDIyNzYsMTU0Nzc2MTQwNyw1MTM5OTc2ODAsNjM1
-NzcyMzZdfQ==
+eyJoaXN0b3J5IjpbMTg1NzY2MTgzMSwyMDIxNzI1NDk1LDE3MD
+U5MjUzNzcsMTM3MTUyMTY2OSwtMTIwNzg3NTE4OSwtMTQ1NjYx
+OTY3NiwtMTg4NTUzNzY1NiwtMTA4OTM3OTQyNCw2MDkwNjk2Mz
+QsLTExODYzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0MzEsLTIz
+OTQ5MzAxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMD
+A4LC01MTg3Mjk4NjMsLTg1NjQwMjI3NiwxNTQ3NzYxNDA3LDUx
+Mzk5NzY4MF19
 -->
