@@ -485,13 +485,55 @@ write 和fsync的时机，是由参数sync_binlog控制的：
 
 
 ## redolog的写入机制
+
+redolog 会存在三种状态：
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/lUkypH25TG0ogH2d.png)
+
+
+这三种状态分别是：
+
+1.  存在redo log buffer中，物理上是在MySQL进程内存中，就是图中的红色部分；
+    
+2.  写到磁盘(write)，但是没有持久化（fsync)，物理上是在文件系统的page cache里面，也就是图中的黄色部分；
+    
+3.  持久化到磁盘，对应的是hard disk，也就是图中的绿色部分。
+    
+
+日志写到redo log buffer是很快的，wirte到page cache也差不多，但是持久化到磁盘的速度就慢多了。
+
+为了控制redo log的写入策略，InnoDB提供了innodb_flush_log_at_trx_commit参数，它有三种可能取值：
+
+1.  设置为0的时候，表示每次事务提交时都只是把redo log留在redo log buffer中;
+    
+2.  设置为1的时候，表示每次事务提交时都将redo log直接持久化到磁盘；
+    
+3.  设置为2的时候，表示每次事务提交时都只是把redo log写到page cache。
+    
+
+InnoDB有一个后台线程，每隔1秒，就会把redo log buffer中的日志，调用write写到文件系统的page cache，然后调用fsync持久化到磁盘。
+
+注意，事务执行中间过程的redo log也是直接写在redo log buffer中的，这些redo log也会被后台线程一起持久化到磁盘。也就是说，一个没有提交的事务的redo log，也是可能已经持久化到磁盘的。
+
+实际上，除了后台线程每秒一次的轮询操作外，还有两种场景会让一个没有提交的事务的redo log写入到磁盘中。
+
+1.  **一种是，redo log buffer占用的空间即将达到 innodb_log_buffer_size一半的时候，后台线程会主动写盘。**注意，由于这个事务并没有提交，所以这个写盘动作只是write，而没有调用fsync，也就是只留在了文件系统的page cache。
+    
+2.  **另一种是，并行的事务提交的时候，顺带将这个事务的redo log buffer持久化到磁盘。**假设一个事务A执行到一半，已经写了一些redo log到buffer中，这时候有另外一个线程的事务B提交，如果innodb_flush_log_at_trx_commit设置的是1，那么按照这个参数的逻辑，事务B要把redo log buffer里的日志全部持久化到磁盘。这时候，就会带上事务A在redo log buffer里的日志一起持久化到磁盘。
+    
+
+这里需要说明的是，我们介绍两阶段提交的时候说过，时序上redo log先prepare， 再写binlog，最后再把redo log commit。
+
+如果把innodb_flush_log_at_trx_commit设置成1，那么redo log在prepare阶段就要持久化一次，因为有一个崩溃恢复逻辑是要依赖于prepare 的redo log，再加上binlog来恢复的。（如果你印象有点儿模糊了，可以再回顾下[第15篇文章](https://time.geekbang.org/column/article/73161)中的相关内容）。
+
+每秒一次后台轮询刷盘，再加上崩溃恢复这个逻辑，InnoDB就认为redo log在commit的时候就不需要fsync了，只会write到文件系统的page cache中就够了。
+
+通常我们说MySQL的“双1”配置，指的就是sync_binlog和innodb_flush_log_at_trx_commit都设置成 1。也就是说，一个事务完整提交前，需要等待两次刷盘，一次是redo log（prepare 阶段），一次是binlog。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzNzAzMzIzNSwxODU3NjYxODMxLDIwMj
-E3MjU0OTUsMTcwNTkyNTM3NywxMzcxNTIxNjY5LC0xMjA3ODc1
-MTg5LC0xNDU2NjE5Njc2LC0xODg1NTM3NjU2LC0xMDg5Mzc5ND
-I0LDYwOTA2OTYzNCwtMTE4NjMzNjc3NiwxNzMzMTMzMDk5LDE3
-MzIxNDQzMSwtMjM5NDkzMDEzLC0xMzA4NDAxNDQ3LC02NTEzMD
-E0MSw0NzY2NTIwMDgsLTUxODcyOTg2MywtODU2NDAyMjc2LDE1
-NDc3NjE0MDddfQ==
+eyJoaXN0b3J5IjpbNjU4MTk5MzE1LC01MzcwMzMyMzUsMTg1Nz
+Y2MTgzMSwyMDIxNzI1NDk1LDE3MDU5MjUzNzcsMTM3MTUyMTY2
+OSwtMTIwNzg3NTE4OSwtMTQ1NjYxOTY3NiwtMTg4NTUzNzY1Ni
+wtMTA4OTM3OTQyNCw2MDkwNjk2MzQsLTExODYzMzY3NzYsMTcz
+MzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5MzAxMywtMTMwODQwMT
+Q0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01MTg3Mjk4NjMsLTg1
+NjQwMjI3Nl19
 -->
