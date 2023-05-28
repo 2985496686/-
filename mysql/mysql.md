@@ -537,9 +537,9 @@ InnoDB有一个后台线程，每隔1秒，就会把redo log buffer中的日志�
 
 ## 组提交机制
 
-为了减少
+为了减少磁盘IO，每次在调用fsync写磁盘时，会将
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzIzMzMwNjk2LC01OTIyNTQ0NzIsLTUzNz
+eyJoaXN0b3J5IjpbMTE5ODA1MDk5LC01OTIyNTQ0NzIsLTUzNz
 AzMzIzNSwxODU3NjYxODMxLDIwMjE3MjU0OTUsMTcwNTkyNTM3
 NywxMzcxNTIxNjY5LC0xMjA3ODc1MTg5LC0xNDU2NjE5Njc2LC
 0xODg1NTM3NjU2LC0xMDg5Mzc5NDI0LDYwOTA2OTYzNCwtMTE4
