@@ -531,14 +531,14 @@ InnoDB有一个后台线程，每隔1秒，就会把redo log buffer中的日志�
 
 
 注意
-1. 在事务提交后，首先会将redolog日志设置为preapre，在
+1. 在“双1” 配置下，在事务提交后，首先会将redolog日志设置为preapre，，在将binlog持久化到磁盘，
 2. 通常我们说MySQL的“双1”配置，指的就是sync_binlog和innodb_flush_log_at_trx_commit都设置成 1。也就是说，一个事务完整提交前，需要等待两次刷盘，一次是redo log（prepare 阶段），一次是binlog。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5MjI1NDQ3MiwtNTM3MDMzMjM1LDE4NT
-c2NjE4MzEsMjAyMTcyNTQ5NSwxNzA1OTI1Mzc3LDEzNzE1MjE2
-NjksLTEyMDc4NzUxODksLTE0NTY2MTk2NzYsLTE4ODU1Mzc2NT
-YsLTEwODkzNzk0MjQsNjA5MDY5NjM0LC0xMTg2MzM2Nzc2LDE3
-MzMxMzMwOTksMTczMjE0NDMxLC0yMzk0OTMwMTMsLTEzMDg0MD
-E0NDcsLTY1MTMwMTQxLDQ3NjY1MjAwOCwtNTE4NzI5ODYzLC04
-NTY0MDIyNzZdfQ==
+eyJoaXN0b3J5IjpbLTkyMjUyOTAwNiwtNTkyMjU0NDcyLC01Mz
+cwMzMyMzUsMTg1NzY2MTgzMSwyMDIxNzI1NDk1LDE3MDU5MjUz
+NzcsMTM3MTUyMTY2OSwtMTIwNzg3NTE4OSwtMTQ1NjYxOTY3Ni
+wtMTg4NTUzNzY1NiwtMTA4OTM3OTQyNCw2MDkwNjk2MzQsLTEx
+ODYzMzY3NzYsMTczMzEzMzA5OSwxNzMyMTQ0MzEsLTIzOTQ5Mz
+AxMywtMTMwODQwMTQ0NywtNjUxMzAxNDEsNDc2NjUyMDA4LC01
+MTg3Mjk4NjNdfQ==
 -->
