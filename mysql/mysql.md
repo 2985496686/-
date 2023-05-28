@@ -485,9 +485,9 @@ write 和fsync的时机，是由参数sync_binlog控制的：
 
 
 ## redolog的写入机制
-[图片上传中...(image-9EjirlwejVFKqOmQ)]
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/lUkypH25TG0ogH2d.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxNTUxODQ3OCwxODU3NjYxODMxLDIwMj
+eyJoaXN0b3J5IjpbLTUzNzAzMzIzNSwxODU3NjYxODMxLDIwMj
 E3MjU0OTUsMTcwNTkyNTM3NywxMzcxNTIxNjY5LC0xMjA3ODc1
 MTg5LC0xNDU2NjE5Njc2LC0xODg1NTM3NjU2LC0xMDg5Mzc5ND
 I0LDYwOTA2OTYzNCwtMTE4NjMzNjc3NiwxNzMzMTMzMDk5LDE3
