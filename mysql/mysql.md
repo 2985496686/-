@@ -531,10 +531,11 @@ InnoDB有一个后台线程，每隔1秒，就会把redo log buffer中的日志�
 
 
 注意
-1. 在“双1” 配置下，在事务提交后，首先会将redolog日志设置为preapre，并持久化到磁盘，再将binlog持久化到磁盘，最后将redolog设置为commit，write 到page cache。上面锁
-2. 通常我们说MySQL的“双1”配置，指的就是sync_binlog和innodb_flush_log_at_trx_commit都设置成 1。也就是说，一个事务完整提交前，需要等待两次刷盘，一次是redo log（prepare 阶段），一次是binlog。
+1. 在“双1” 配置下，在事务提交后，首先会将redolog日志设置为preapre，并持久化到磁盘，再将binlog持久化到磁盘，最后将redolog设置为commit，write 到page cache。上面说的提交都是指事务的提交，并不是指redo log设置为commit状态。
+2. 两阶段提交
+3. 通常我们说MySQL的“双1”配置，指的就是sync_binlog和innodb_flush_log_at_trx_commit都设置成 1。也就是说，一个事务完整提交前，需要等待两次刷盘，一次是redo log（prepare 阶段），一次是binlog。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxNTE0NzUwMCwtNTkyMjU0NDcyLC01Mz
+eyJoaXN0b3J5IjpbMTIxMDI4NDIzOSwtNTkyMjU0NDcyLC01Mz
 cwMzMyMzUsMTg1NzY2MTgzMSwyMDIxNzI1NDk1LDE3MDU5MjUz
 NzcsMTM3MTUyMTY2OSwtMTIwNzg3NTE4OSwtMTQ1NjYxOTY3Ni
 wtMTg4NTUzNzY1NiwtMTA4OTM3OTQyNCw2MDkwNjk2MzQsLTEx
