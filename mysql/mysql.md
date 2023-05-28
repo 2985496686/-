@@ -523,13 +523,17 @@ InnoDB有一个后台线程，每隔1秒，就会把redo log buffer中的日志�
 
 这里需要说明的是，我们介绍两阶段提交的时候说过，时序上redo log先prepare， 再写binlog，最后再把redo log commit。
 
-如果把innodb_flush_log_at_trx_commit设置成1，那么redo log在prepare阶段就要持久化一次，因为有一个崩溃恢复逻辑是要依赖于prepare 的redo log，再加上binlog来恢复的。（如果你印象有点儿模糊了，可以再回顾下[第15篇文章](https://time.geekbang.org/column/article/73161)中的相关内容）。
+如果把innodb_flush_log_at_trx_commit设置成1，那么redo log在prepare阶段就要持久化一次，因为有一个崩溃恢复逻辑是要依赖于prepare 的redo log，再加上binlog来恢复的。
 
 每秒一次后台轮询刷盘，再加上崩溃恢复这个逻辑，InnoDB就认为redo log在commit的时候就不需要fsync了，只会write到文件系统的page cache中就够了。
 
+注意
+
+
+
 通常我们说MySQL的“双1”配置，指的就是sync_binlog和innodb_flush_log_at_trx_commit都设置成 1。也就是说，一个事务完整提交前，需要等待两次刷盘，一次是redo log（prepare 阶段），一次是binlog。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjU4MTk5MzE1LC01MzcwMzMyMzUsMTg1Nz
+eyJoaXN0b3J5IjpbMTQyODY5NDgyLC01MzcwMzMyMzUsMTg1Nz
 Y2MTgzMSwyMDIxNzI1NDk1LDE3MDU5MjUzNzcsMTM3MTUyMTY2
 OSwtMTIwNzg3NTE4OSwtMTQ1NjYxOTY3NiwtMTg4NTUzNzY1Ni
 wtMTA4OTM3OTQyNCw2MDkwNjk2MzQsLTExODYzMzY3NzYsMTcz
