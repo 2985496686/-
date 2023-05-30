@@ -546,9 +546,11 @@ InnoDB有一个后台线程，每隔1秒，就会把redo log buffer中的日志�
 参考文章：[MYSQL的三种格式](https://cloud.tencent.com/developer/article/1533697)
 
 
-# 
+# mysql 的内存机制
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTM4NzIxOTcsOTIwMzkyOTA2LC0xNj
+eyJoaXN0b3J5IjpbLTEzOTk4ODk3MjgsOTIwMzkyOTA2LC0xNj
 cxNTY5NTg0LC0yMTI3MzM4MzYsLTU5MjI1NDQ3MiwtNTM3MDMz
 MjM1LDE4NTc2NjE4MzEsMjAyMTcyNTQ5NSwxNzA1OTI1Mzc3LD
 EzNzE1MjE2NjksLTEyMDc4NzUxODksLTE0NTY2MTk2NzYsLTE4
