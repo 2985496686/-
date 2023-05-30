@@ -550,8 +550,9 @@ InnoDB有一个后台线程，每隔1秒，就会把redo log buffer中的日志�
 
 ## 全表扫描对server层的影响
 
+对一个200G的InnoDB表精细
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4MDkzMDEyMCwtMTM5OTg4OTcyOCw5Mj
+eyJoaXN0b3J5IjpbMTYwMTI1NzIzMCwtMTM5OTg4OTcyOCw5Mj
 AzOTI5MDYsLTE2NzE1Njk1ODQsLTIxMjczMzgzNiwtNTkyMjU0
 NDcyLC01MzcwMzMyMzUsMTg1NzY2MTgzMSwyMDIxNzI1NDk1LD
 E3MDU5MjUzNzcsMTM3MTUyMTY2OSwtMTIwNzg3NTE4OSwtMTQ1
