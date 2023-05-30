@@ -562,17 +562,17 @@ server层在处理客户端请求时，并不是获取所有结果集后再一�
 
 所以，就算客户端对一个很大的表进行全扫描，服务端也不会使用很大的内存缓存结果集。
 
-## 全表扫描对InnoDB的影响
+## InnoDB的缓存机制
 
 
-InnoDB的Buffer Pool 可以缓存查询过的内容，当下次查询相同内容时
+InnoDB的Buffer Pool 可以缓存查询过的内容，当下次查询相同内容时，就可以不通过磁盘IO，直接从内存中获取。但是缓存大小也不是无止境的，InnoDB
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI5MzIxNTIxLC0xMzk5ODg5NzI4LDkyMD
-M5MjkwNiwtMTY3MTU2OTU4NCwtMjEyNzMzODM2LC01OTIyNTQ0
-NzIsLTUzNzAzMzIzNSwxODU3NjYxODMxLDIwMjE3MjU0OTUsMT
-cwNTkyNTM3NywxMzcxNTIxNjY5LC0xMjA3ODc1MTg5LC0xNDU2
-NjE5Njc2LC0xODg1NTM3NjU2LC0xMDg5Mzc5NDI0LDYwOTA2OT
-YzNCwtMTE4NjMzNjc3NiwxNzMzMTMzMDk5LDE3MzIxNDQzMSwt
-MjM5NDkzMDEzXX0=
+eyJoaXN0b3J5IjpbLTE2MTA2NjE4NjEsLTEzOTk4ODk3MjgsOT
+IwMzkyOTA2LC0xNjcxNTY5NTg0LC0yMTI3MzM4MzYsLTU5MjI1
+NDQ3MiwtNTM3MDMzMjM1LDE4NTc2NjE4MzEsMjAyMTcyNTQ5NS
+wxNzA1OTI1Mzc3LDEzNzE1MjE2NjksLTEyMDc4NzUxODksLTE0
+NTY2MTk2NzYsLTE4ODU1Mzc2NTYsLTEwODkzNzk0MjQsNjA5MD
+Y5NjM0LC0xMTg2MzM2Nzc2LDE3MzMxMzMwOTksMTczMjE0NDMx
+LC0yMzk0OTMwMTNdfQ==
 -->
