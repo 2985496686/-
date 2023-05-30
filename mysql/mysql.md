@@ -569,14 +569,42 @@ InnoDB的Buffer Pool 可以缓存查询过的内容，当下次查询相同内�
 
 InnoDB采用的是LRU算法，淘汰最近最不长使用的数据。InnoDB如果只使用简单的LRU会存在数据缓存污染问题，当对一个很大冷表进行全表扫描时，当前buffer pool中的数据全部被淘汰掉。Buffer Pool的缓存命中率极速下降。
 
-InnoDB对LRU
+InnoDB对LRU算法进行了优化：
+
+
+在InnoDB实现上，按照5:3的比例把整个LRU链表分成了young区域和old区域。图中LRU_old指向的就是old区域的第一个位置，是整个链表的5/8处。也就是说，靠近链表头部的5/8是young区域，靠近链表尾部的3/8是old区域。
+
+改进后的LRU算法执行流程变成了下面这样。
+
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/%E7%AC%94%E8%AE%B0/aM7xjfJO2WWnAqND.png)
+
+
+1.  图中状态1，要访问数据页P3，由于P3在young区域，因此和优化前的LRU算法一样，将其移到链表头部，变成状态2。
+    
+2.  之后要访问一个新的不存在于当前链表的数据页，这时候依然是淘汰掉数据页Pm，但是新插入的数据页Px，是放在LRU_old处。
+    
+3.  处于old区域的数据页，每次被访问的时候都要做下面这个判断：
+    
+    -   若这个数据页在LRU链表中存在的时间超过了1秒，就把它移动到链表头部；
+    -   如果这个数据页在LRU链表中存在的时间短于1秒，位置保持不变。1秒这个时间，是由参数innodb_old_blocks_time控制的。其默认值是1000，单位毫秒。
+
+这个策略，就是为了处理类似全表扫描的操作量身定制的。还是以刚刚的扫描200G的历史数据表为例，我们看看改进后的LRU算法的操作逻辑：
+
+1.  扫描过程中，需要新插入的数据页，都被放到old区域;
+    
+2.  一个数据页里面有多条记录，这个数据页会被多次访问到，但由于是顺序扫描，这个数据页第一次被访问和最后一次被访问的时间间隔不会超过1秒，因此还是会被保留在old区域；
+    
+3.  再继续扫描后续的数据，之前的这个数据页之后也不会再被访问到，于是始终没有机会移到链表头部（也就是young区域），很快就会被淘汰出去。
+    
+
+可以看到，这个策略最大的收益，就是在扫描这个大表的过程中，虽然也用到了Buffer Pool，但是对young区域完全没有影响，从而保证了Buffer Pool响应正常业务的查询命中率。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1Njg2ODY2OSwxMDQ3NDg0MzksLTEzOT
-k4ODk3MjgsOTIwMzkyOTA2LC0xNjcxNTY5NTg0LC0yMTI3MzM4
-MzYsLTU5MjI1NDQ3MiwtNTM3MDMzMjM1LDE4NTc2NjE4MzEsMj
-AyMTcyNTQ5NSwxNzA1OTI1Mzc3LDEzNzE1MjE2NjksLTEyMDc4
-NzUxODksLTE0NTY2MTk2NzYsLTE4ODU1Mzc2NTYsLTEwODkzNz
-k0MjQsNjA5MDY5NjM0LC0xMTg2MzM2Nzc2LDE3MzMxMzMwOTks
-MTczMjE0NDMxXX0=
+eyJoaXN0b3J5IjpbLTE5ODE1NzE3OTksMTA0NzQ4NDM5LC0xMz
+k5ODg5NzI4LDkyMDM5MjkwNiwtMTY3MTU2OTU4NCwtMjEyNzMz
+ODM2LC01OTIyNTQ0NzIsLTUzNzAzMzIzNSwxODU3NjYxODMxLD
+IwMjE3MjU0OTUsMTcwNTkyNTM3NywxMzcxNTIxNjY5LC0xMjA3
+ODc1MTg5LC0xNDU2NjE5Njc2LC0xODg1NTM3NjU2LC0xMDg5Mz
+c5NDI0LDYwOTA2OTYzNCwtMTE4NjMzNjc3NiwxNzMzMTMzMDk5
+LDE3MzIxNDQzMV19
 -->
