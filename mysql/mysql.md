@@ -550,9 +550,21 @@ InnoDB有一个后台线程，每隔1秒，就会把redo log buffer中的日志�
 
 ## 全表扫描对server层的影响
 
-server层在处理客户端请求时，并不是获取所有结果集后再一次发送出去，而是**边读边发** ，流程人
+server层在处理客户端请求时，并不是获取所有结果集后再一次发送出去，而是**边读边发** ，流程如下：
+
+1.  获取一行，写到net_buffer中。这块内存的大小是由参数net_buffer_length定义的，默认是16k。
+    
+2.  重复获取行，直到net_buffer写满，调用网络接口发出去。
+    
+3.  如果发送成功，就清空net_buffer，然后继续取下一行，并写入net_buffer。
+    
+4.  如果发送函数返回EAGAIN或WSAEWOULDBLOCK，就表示本地网络栈（socket send buffer）写满了，进入等待。直到网络栈重新可写，再继续发送。
+
+
+
+## 全表扫描对
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1NzUyNDE0OSwtMTM5OTg4OTcyOCw5Mj
+eyJoaXN0b3J5IjpbMTczMjI0OTk3NCwtMTM5OTg4OTcyOCw5Mj
 AzOTI5MDYsLTE2NzE1Njk1ODQsLTIxMjczMzgzNiwtNTkyMjU0
 NDcyLC01MzcwMzMyMzUsMTg1NzY2MTgzMSwyMDIxNzI1NDk1LD
 E3MDU5MjUzNzcsMTM3MTUyMTY2OSwtMTIwNzg3NTE4OSwtMTQ1
