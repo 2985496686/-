@@ -209,9 +209,10 @@ sysctl -w fs.nr_open=2000500
 
 **有tcp的keepAlive机制为什么还需要心跳？**
 1. TCP的超时探查报文只能检查连接的死活，但是并不能保证连接可用。
-	如果服务器CPU占用率将近100%，已经不能正常处理消息，但是俩
+	如果服务器CPU占用率将近100%，已经不能正常处理消息，但是连接仍然存在。
+2. TCP的探测间隔时间太长，若两个消息
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxNDI5NTQ4OCwtMjA5ODU3NjAxOCwxMz
+eyJoaXN0b3J5IjpbLTkwMjMxNTg4MiwtMjA5ODU3NjAxOCwxMz
 U2MzY3NTYxLC0xMDY4MDQ0MzQsLTIwMjA4MDQxMzIsOTQ1MjU3
 NzI4LDE3MDkwODk2NjQsLTExODE5NTQzOSwzNjE4NjU3MDYsLT
 kyMjYwMTM1MCwtMTE1Njc3NTEwLC00MTM2NDI2ODQsLTYyMDM4
