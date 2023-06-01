@@ -118,10 +118,7 @@ ipConfig的服务发现借助了 ``etcd 的watch机制`` ，以满足服务发�
 负载均衡常用的方式有轮询，随机，一致性哈希等，但这些都不适用于对于长连接网关服务的负载均衡，主要有以下原因：
 
 1. 长连接是持续的资源消耗。
-2. 对于每一条连接所消耗的资源是不确定的，有活跃连接和非活跃连接。ype Connection struct {
-	codec codec.GobCodec
-	
-}
+2. 对于每一条连接所消耗的资源是不确定的，有活跃连接和非活跃连接。
 
 3. 节点负载状况具有很强时效性，不稳定。
 
@@ -150,7 +147,6 @@ sudo sysctl -w fs.file-max=2000500
 
 sysctl -w fs.nr_open=2000500
 ```
-docker rm 1mclient_0 1mclient_1 1mclient_2 1mclient_3 1mclient_4 1mclient_5 1mclient_6 1mclient_7 1mclient_8 1mclient_9 
 
 
 
@@ -201,15 +197,15 @@ docker rm 1mclient_0 1mclient_1 1mclient_2 1mclient_3 1mclient_4 1mclient_5 1mcl
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/im/7eF1HMnQ6khx5eQw.png)
 
 
-
+## 心跳包并
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNjgwNDQzNCwtMjAyMDgwNDEzMiw5ND
-UyNTc3MjgsMTcwOTA4OTY2NCwtMTE4MTk1NDM5LDM2MTg2NTcw
-NiwtOTIyNjAxMzUwLC0xMTU2Nzc1MTAsLTQxMzY0MjY4NCwtNj
-IwMzg4MDIsLTM0NTM0NDQ1MCw0NzA5NDk3ODcsLTg3MTE0NjQ5
-Nyw0ODI0ODcwNDQsLTE5MTgyMDQ1NTEsMTcyNjk5NDA0MywyMj
-g1NTkwNTAsLTE3NzE5NjQ2NDMsLTc0MDMxMDc2MSwyNjc5OTUz
-MTZdfQ==
+eyJoaXN0b3J5IjpbLTMwNzI3NDA2MiwtMTA2ODA0NDM0LC0yMD
+IwODA0MTMyLDk0NTI1NzcyOCwxNzA5MDg5NjY0LC0xMTgxOTU0
+MzksMzYxODY1NzA2LC05MjI2MDEzNTAsLTExNTY3NzUxMCwtND
+EzNjQyNjg0LC02MjAzODgwMiwtMzQ1MzQ0NDUwLDQ3MDk0OTc4
+NywtODcxMTQ2NDk3LDQ4MjQ4NzA0NCwtMTkxODIwNDU1MSwxNz
+I2OTk0MDQzLDIyODU1OTA1MCwtMTc3MTk2NDY0MywtNzQwMzEw
+NzYxXX0=
 -->
