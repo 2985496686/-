@@ -199,11 +199,13 @@ sysctl -w fs.nr_open=2000500
 
 ## 心跳包保活机制
 
-在客户端与服务端建立长连接后，客户端需要定期向服务器发送心跳，告诉服务器连接仍然存活，同时服务器还
+在客户端与服务端建立长连接后，客户端需要定期向服务器发送心跳，告诉服务器连接仍然存活，同时服务器需要回复心跳应答。
+
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwNTYzMzM2NywtMTA2ODA0NDM0LC0yMD
+eyJoaXN0b3J5IjpbMTM1NjM2NzU2MSwtMTA2ODA0NDM0LC0yMD
 IwODA0MTMyLDk0NTI1NzcyOCwxNzA5MDg5NjY0LC0xMTgxOTU0
 MzksMzYxODY1NzA2LC05MjI2MDEzNTAsLTExNTY3NzUxMCwtND
 EzNjQyNjg0LC02MjAzODgwMiwtMzQ1MzQ0NDUwLDQ3MDk0OTc4
