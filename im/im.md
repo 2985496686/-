@@ -209,19 +209,22 @@ sysctl -w fs.nr_open=2000500
 
 **有tcp的keepAlive机制为什么还需要心跳？**
 
-5. TCP的超时探查报文只能检查连接的死活，但是并不能保证连接可用。
+1. TCP的超时探查报文只能检查连接的死活，但是并不能保证连接可用。
 	如果服务器CPU占用率将近100%，已经不能正常处理消息，但是连接仍然存在。
 6. TCP的探测间隔时间太长，若两个小时未通信，才会发送探测报文。
 7. 因为IM系统的长连接是跨网络的，如果在一定时间内未正常通信，中间的网络运营商会断开连接。
 
 
+参考：
+[《TCP/IP 23章》TCP的保活定时器](http://docs.52im.net/extend/docs/book/tcpip/vol1/23/)
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0NTY2MTgxNCwtMjA5ODU3NjAxOCwxMz
-U2MzY3NTYxLC0xMDY4MDQ0MzQsLTIwMjA4MDQxMzIsOTQ1MjU3
-NzI4LDE3MDkwODk2NjQsLTExODE5NTQzOSwzNjE4NjU3MDYsLT
-kyMjYwMTM1MCwtMTE1Njc3NTEwLC00MTM2NDI2ODQsLTYyMDM4
-ODAyLC0zNDUzNDQ0NTAsNDcwOTQ5Nzg3LC04NzExNDY0OTcsND
-gyNDg3MDQ0LC0xOTE4MjA0NTUxLDE3MjY5OTQwNDMsMjI4NTU5
-MDUwXX0=
+eyJoaXN0b3J5IjpbLTE3ODQ3NjY3MjEsLTIwOTg1NzYwMTgsMT
+M1NjM2NzU2MSwtMTA2ODA0NDM0LC0yMDIwODA0MTMyLDk0NTI1
+NzcyOCwxNzA5MDg5NjY0LC0xMTgxOTU0MzksMzYxODY1NzA2LC
+05MjI2MDEzNTAsLTExNTY3NzUxMCwtNDEzNjQyNjg0LC02MjAz
+ODgwMiwtMzQ1MzQ0NDUwLDQ3MDk0OTc4NywtODcxMTQ2NDk3LD
+Q4MjQ4NzA0NCwtMTkxODIwNDU1MSwxNzI2OTk0MDQzLDIyODU1
+OTA1MF19
 -->
