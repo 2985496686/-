@@ -205,16 +205,17 @@ sysctl -w fs.nr_open=2000500
 具体实现方案：
 1. client每隔3分钟发送心跳。
 2. server收到心跳后回送心跳应答，若五分钟未收到心跳，则认为连接断开，释放该连接的资源。
-3. client发送心跳，20s未收到心跳应答，则连续发送5个心跳，均为收到应答则断开连接。
+3. client发送心跳，20s未收到心跳应答，则连续发送5个心跳(间隔20秒)，均为收到应答则断开连接。
 
 **有tcp的keepAlive机制为什么还需要心跳？**
-1. TCP的
+1. TCP的超时探查报文只能检查连接的死活，但是并不能保证连接可用。
+	如果
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTg1NzYwMTgsMTM1NjM2NzU2MSwtMT
-A2ODA0NDM0LC0yMDIwODA0MTMyLDk0NTI1NzcyOCwxNzA5MDg5
-NjY0LC0xMTgxOTU0MzksMzYxODY1NzA2LC05MjI2MDEzNTAsLT
-ExNTY3NzUxMCwtNDEzNjQyNjg0LC02MjAzODgwMiwtMzQ1MzQ0
-NDUwLDQ3MDk0OTc4NywtODcxMTQ2NDk3LDQ4MjQ4NzA0NCwtMT
-kxODIwNDU1MSwxNzI2OTk0MDQzLDIyODU1OTA1MCwtMTc3MTk2
-NDY0M119
+eyJoaXN0b3J5IjpbLTEwNTkyNDcwMzksLTIwOTg1NzYwMTgsMT
+M1NjM2NzU2MSwtMTA2ODA0NDM0LC0yMDIwODA0MTMyLDk0NTI1
+NzcyOCwxNzA5MDg5NjY0LC0xMTgxOTU0MzksMzYxODY1NzA2LC
+05MjI2MDEzNTAsLTExNTY3NzUxMCwtNDEzNjQyNjg0LC02MjAz
+ODgwMiwtMzQ1MzQ0NDUwLDQ3MDk0OTc4NywtODcxMTQ2NDk3LD
+Q4MjQ4NzA0NCwtMTkxODIwNDU1MSwxNzI2OTk0MDQzLDIyODU1
+OTA1MF19
 -->
