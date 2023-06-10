@@ -259,7 +259,7 @@ from(
 	inner join(
 	    select  student_id,sum(score) as total_score  
 	    from score  
-	    group by student_id
+	    group by c.class_id
     )s
 	on s.student_id = c.student_id
 ) cs
@@ -301,7 +301,7 @@ where cs.total_score = max(cs.total_score);
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzc3MTE4MDk4LC0yMTM0MDcyOTg4LDIwNz
+eyJoaXN0b3J5IjpbMzY1OTc3NzMyLC0yMTM0MDcyOTg4LDIwNz
 U0NDUwOTcsMTc5MzU5NDkyOSw1OTY5MzA5NTksLTYxMDU5NTIx
 NCwyMDU0OTAyOTU0LC0xMzgzNzk4ODI5LC02NjE3OTY4MzYsLT
 g2Mjg2MjA0OSwzODgyOTQxNjIsNDU1MTA4NDM3LC0yMDk4NTc2
