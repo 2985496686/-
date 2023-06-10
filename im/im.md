@@ -262,6 +262,7 @@ from(
 	    group by student_id
     )s
 	on s.student_id = c.student_id
+	group by c.class_id;
 ) cs
 group by cs.class_id
 where cs.total_score = max(cs.total_score);
@@ -301,11 +302,11 @@ where cs.total_score = max(cs.total_score);
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzc3MTE4MDk4LDM2NTk3NzczMiwtMjEzND
-A3Mjk4OCwyMDc1NDQ1MDk3LDE3OTM1OTQ5MjksNTk2OTMwOTU5
-LC02MTA1OTUyMTQsMjA1NDkwMjk1NCwtMTM4Mzc5ODgyOSwtNj
-YxNzk2ODM2LC04NjI4NjIwNDksMzg4Mjk0MTYyLDQ1NTEwODQz
-NywtMjA5ODU3NjAxOCwxMzU2MzY3NTYxLC0xMDY4MDQ0MzQsLT
-IwMjA4MDQxMzIsOTQ1MjU3NzI4LDE3MDkwODk2NjQsLTExODE5
-NTQzOV19
+eyJoaXN0b3J5IjpbMzk3NjA1NjM0LDc3NzExODA5OCwzNjU5Nz
+c3MzIsLTIxMzQwNzI5ODgsMjA3NTQ0NTA5NywxNzkzNTk0OTI5
+LDU5NjkzMDk1OSwtNjEwNTk1MjE0LDIwNTQ5MDI5NTQsLTEzOD
+M3OTg4MjksLTY2MTc5NjgzNiwtODYyODYyMDQ5LDM4ODI5NDE2
+Miw0NTUxMDg0MzcsLTIwOTg1NzYwMTgsMTM1NjM2NzU2MSwtMT
+A2ODA0NDM0LC0yMDIwODA0MTMyLDk0NTI1NzcyOCwxNzA5MDg5
+NjY0XX0=
 -->
