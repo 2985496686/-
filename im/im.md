@@ -225,13 +225,12 @@ sysctl -w fs.nr_open=2000500
 ## 消息存储
 
 ```sql
-select s.class_id,s.student_id,s.student_gender,max(c.total_score) 
+select s.class_id,s.student_id,s.student_gender,c.total_score 
 from class s
 inner join(
     select  student_id,sum(score) as total_score  from score  group by student_id
     ) c
-    on s.student_id = c.student_id
-group by s.class_id;
+    on s.student_id = c.student_id;
 
 
 select class_id,student_id,student_gender,max()
@@ -269,11 +268,11 @@ select class_id,student_id,student_gender,max()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1NDkwMjk1NCwtMTM4Mzc5ODgyOSwtNj
-YxNzk2ODM2LC04NjI4NjIwNDksMzg4Mjk0MTYyLDQ1NTEwODQz
-NywtMjA5ODU3NjAxOCwxMzU2MzY3NTYxLC0xMDY4MDQ0MzQsLT
-IwMjA4MDQxMzIsOTQ1MjU3NzI4LDE3MDkwODk2NjQsLTExODE5
-NTQzOSwzNjE4NjU3MDYsLTkyMjYwMTM1MCwtMTE1Njc3NTEwLC
-00MTM2NDI2ODQsLTYyMDM4ODAyLC0zNDUzNDQ0NTAsNDcwOTQ5
-Nzg3XX0=
+eyJoaXN0b3J5IjpbLTM0NjIxMDk2NCwyMDU0OTAyOTU0LC0xMz
+gzNzk4ODI5LC02NjE3OTY4MzYsLTg2Mjg2MjA0OSwzODgyOTQx
+NjIsNDU1MTA4NDM3LC0yMDk4NTc2MDE4LDEzNTYzNjc1NjEsLT
+EwNjgwNDQzNCwtMjAyMDgwNDEzMiw5NDUyNTc3MjgsMTcwOTA4
+OTY2NCwtMTE4MTk1NDM5LDM2MTg2NTcwNiwtOTIyNjAxMzUwLC
+0xMTU2Nzc1MTAsLTQxMzY0MjY4NCwtNjIwMzg4MDIsLTM0NTM0
+NDQ1MF19
 -->
