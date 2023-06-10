@@ -238,7 +238,7 @@ on s.student_id = c.student_id ;
 
 
 select class_id,student_id,student_gender,max(total_score)
-form
+from
 	select c.class_id,c.student_id,c.student_gender,s.total_score 
 	from class c
 	inner join(
@@ -246,8 +246,8 @@ form
 	    from score  
 	    group by student_id
     ) s
-	on s.student_id = c.student_id ;
-group by student_id
+	on s.student_id = c.student_id
+group by class_id;
 
 
 +------------+-------------+
@@ -282,7 +282,7 @@ group by student_id
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxMzk4NjcxOCwyMDU0OTAyOTU0LC0xMz
+eyJoaXN0b3J5IjpbMTYzMDU5MTY3OSwyMDU0OTAyOTU0LC0xMz
 gzNzk4ODI5LC02NjE3OTY4MzYsLTg2Mjg2MjA0OSwzODgyOTQx
 NjIsNDU1MTA4NDM3LC0yMDk4NTc2MDE4LDEzNTYzNjc1NjEsLT
 EwNjgwNDQzNCwtMjAyMDgwNDEzMiw5NDUyNTc3MjgsMTcwOTA4
