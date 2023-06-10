@@ -226,8 +226,8 @@ sysctl -w fs.nr_open=2000500
 
 ```sql
 select s.class_id,s.student_id,s.student_gender,max(c.total_score) 
-    from class s
-    inner join(
+from class s
+inner join(
     select  student_id,sum(score) as total_score  from score  group by student_id
     ) c
     on s.student_id = c.student_id
@@ -239,11 +239,11 @@ from class
 group by class_id;
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjkwODY5NjYzLDM4ODI5NDE2Miw0NTUxMD
-g0MzcsLTIwOTg1NzYwMTgsMTM1NjM2NzU2MSwtMTA2ODA0NDM0
-LC0yMDIwODA0MTMyLDk0NTI1NzcyOCwxNzA5MDg5NjY0LC0xMT
-gxOTU0MzksMzYxODY1NzA2LC05MjI2MDEzNTAsLTExNTY3NzUx
-MCwtNDEzNjQyNjg0LC02MjAzODgwMiwtMzQ1MzQ0NDUwLDQ3MD
-k0OTc4NywtODcxMTQ2NDk3LDQ4MjQ4NzA0NCwtMTkxODIwNDU1
-MV19
+eyJoaXN0b3J5IjpbLTg2Mjg2MjA0OSwzODgyOTQxNjIsNDU1MT
+A4NDM3LC0yMDk4NTc2MDE4LDEzNTYzNjc1NjEsLTEwNjgwNDQz
+NCwtMjAyMDgwNDEzMiw5NDUyNTc3MjgsMTcwOTA4OTY2NCwtMT
+E4MTk1NDM5LDM2MTg2NTcwNiwtOTIyNjAxMzUwLC0xMTU2Nzc1
+MTAsLTQxMzY0MjY4NCwtNjIwMzg4MDIsLTM0NTM0NDQ1MCw0Nz
+A5NDk3ODcsLTg3MTE0NjQ5Nyw0ODI0ODcwNDQsLTE5MTgyMDQ1
+NTFdfQ==
 -->
