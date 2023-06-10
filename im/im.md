@@ -224,13 +224,21 @@ sysctl -w fs.nr_open=2000500
 
 ## 消息存储
 
+```sql
+select s.student_id,s.student_gender,max(c.total_score) 
+    from class s
+    inner join(
+    select  student_id,sum(score) as total_score  from score  group by student_id
+    ) c
+    on s.student_id = c.student_id;
 
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzg4Mjk0MTYyLDQ1NTEwODQzNywtMjA5OD
-U3NjAxOCwxMzU2MzY3NTYxLC0xMDY4MDQ0MzQsLTIwMjA4MDQx
-MzIsOTQ1MjU3NzI4LDE3MDkwODk2NjQsLTExODE5NTQzOSwzNj
-E4NjU3MDYsLTkyMjYwMTM1MCwtMTE1Njc3NTEwLC00MTM2NDI2
-ODQsLTYyMDM4ODAyLC0zNDUzNDQ0NTAsNDcwOTQ5Nzg3LC04Nz
-ExNDY0OTcsNDgyNDg3MDQ0LC0xOTE4MjA0NTUxLDE3MjY5OTQw
-NDNdfQ==
+eyJoaXN0b3J5IjpbLTM0NTYwOTMwLDM4ODI5NDE2Miw0NTUxMD
+g0MzcsLTIwOTg1NzYwMTgsMTM1NjM2NzU2MSwtMTA2ODA0NDM0
+LC0yMDIwODA0MTMyLDk0NTI1NzcyOCwxNzA5MDg5NjY0LC0xMT
+gxOTU0MzksMzYxODY1NzA2LC05MjI2MDEzNTAsLTExNTY3NzUx
+MCwtNDEzNjQyNjg0LC02MjAzODgwMiwtMzQ1MzQ0NDUwLDQ3MD
+k0OTc4NywtODcxMTQ2NDk3LDQ4MjQ4NzA0NCwtMTkxODIwNDU1
+MV19
 -->
