@@ -259,7 +259,7 @@ from(
 	inner join(
 	    select  student_id,sum(score) as total_score  
 	    from score  
-	    group by c.class_id
+	    group by student_id
     )s
 	on s.student_id = c.student_id
 ) cs
@@ -301,11 +301,11 @@ where cs.total_score = max(cs.total_score);
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY1OTc3NzMyLC0yMTM0MDcyOTg4LDIwNz
-U0NDUwOTcsMTc5MzU5NDkyOSw1OTY5MzA5NTksLTYxMDU5NTIx
-NCwyMDU0OTAyOTU0LC0xMzgzNzk4ODI5LC02NjE3OTY4MzYsLT
-g2Mjg2MjA0OSwzODgyOTQxNjIsNDU1MTA4NDM3LC0yMDk4NTc2
-MDE4LDEzNTYzNjc1NjEsLTEwNjgwNDQzNCwtMjAyMDgwNDEzMi
-w5NDUyNTc3MjgsMTcwOTA4OTY2NCwtMTE4MTk1NDM5LDM2MTg2
-NTcwNl19
+eyJoaXN0b3J5IjpbNzc3MTE4MDk4LDM2NTk3NzczMiwtMjEzND
+A3Mjk4OCwyMDc1NDQ1MDk3LDE3OTM1OTQ5MjksNTk2OTMwOTU5
+LC02MTA1OTUyMTQsMjA1NDkwMjk1NCwtMTM4Mzc5ODgyOSwtNj
+YxNzk2ODM2LC04NjI4NjIwNDksMzg4Mjk0MTYyLDQ1NTEwODQz
+NywtMjA5ODU3NjAxOCwxMzU2MzY3NTYxLC0xMDY4MDQ0MzQsLT
+IwMjA4MDQxMzIsOTQ1MjU3NzI4LDE3MDkwODk2NjQsLTExODE5
+NTQzOV19
 -->
