@@ -265,6 +265,10 @@ from(
 ) cs
 group by cs.class_id;
 
+
+
+
+
 +------------+-------------+
 | student_id | total_score |
 +------------+-------------+
@@ -297,7 +301,7 @@ group by cs.class_id;
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5MzEyMjU4Myw1OTY5MzA5NTksLTYxMD
+eyJoaXN0b3J5IjpbMTc5MzU5NDkyOSw1OTY5MzA5NTksLTYxMD
 U5NTIxNCwyMDU0OTAyOTU0LC0xMzgzNzk4ODI5LC02NjE3OTY4
 MzYsLTg2Mjg2MjA0OSwzODgyOTQxNjIsNDU1MTA4NDM3LC0yMD
 k4NTc2MDE4LDEzNTYzNjc1NjEsLTEwNjgwNDQzNCwtMjAyMDgw
