@@ -262,7 +262,6 @@ from(
 	    group by student_id
     )s
 	on s.student_id = c.student_id
-	group by c.class_id;
 ) cs
 group by cs.class_id
 where cs.total_score = max(cs.total_score);
@@ -302,7 +301,7 @@ where cs.total_score = max(cs.total_score);
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk3NjA1NjM0LDc3NzExODA5OCwzNjU5Nz
+eyJoaXN0b3J5IjpbNzc3MTE4MDk4LDc3NzExODA5OCwzNjU5Nz
 c3MzIsLTIxMzQwNzI5ODgsMjA3NTQ0NTA5NywxNzkzNTk0OTI5
 LDU5NjkzMDk1OSwtNjEwNTk1MjE0LDIwNTQ5MDI5NTQsLTEzOD
 M3OTg4MjksLTY2MTc5NjgzNiwtODYyODYyMDQ5LDM4ODI5NDE2
