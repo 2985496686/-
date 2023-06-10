@@ -237,7 +237,7 @@ on s.student_id = c.student_id ;
 
 
 
-select class_id,student_id,cs.student_gender,max(cs.total_score)
+select class_id,student_id,student_gender,max(total_score)
 from(
 	select c.class_id,c.student_id,c.student_gender,s.total_score 
 	from class c
@@ -247,8 +247,8 @@ from(
 	    group by student_id
     )s
 	on s.student_id = c.student_id
-) cs
-group by cs.class_id;
+)
+group by class_id;
 
 
 +------------+-------------+
@@ -283,11 +283,11 @@ group by cs.class_id;
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NzI2NjA4LC02MTA1OTUyMTQsMjA1ND
-kwMjk1NCwtMTM4Mzc5ODgyOSwtNjYxNzk2ODM2LC04NjI4NjIw
-NDksMzg4Mjk0MTYyLDQ1NTEwODQzNywtMjA5ODU3NjAxOCwxMz
-U2MzY3NTYxLC0xMDY4MDQ0MzQsLTIwMjA4MDQxMzIsOTQ1MjU3
-NzI4LDE3MDkwODk2NjQsLTExODE5NTQzOSwzNjE4NjU3MDYsLT
-kyMjYwMTM1MCwtMTE1Njc3NTEwLC00MTM2NDI2ODQsLTYyMDM4
-ODAyXX0=
+eyJoaXN0b3J5IjpbMjEyODE0NDkwOCwtNjEwNTk1MjE0LDIwNT
+Q5MDI5NTQsLTEzODM3OTg4MjksLTY2MTc5NjgzNiwtODYyODYy
+MDQ5LDM4ODI5NDE2Miw0NTUxMDg0MzcsLTIwOTg1NzYwMTgsMT
+M1NjM2NzU2MSwtMTA2ODA0NDM0LC0yMDIwODA0MTMyLDk0NTI1
+NzcyOCwxNzA5MDg5NjY0LC0xMTgxOTU0MzksMzYxODY1NzA2LC
+05MjI2MDEzNTAsLTExNTY3NzUxMCwtNDEzNjQyNjg0LC02MjAz
+ODgwMl19
 -->
