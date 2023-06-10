@@ -225,7 +225,7 @@ sysctl -w fs.nr_open=2000500
 ## 消息存储
 
 ```sql
-select s.class_id,s.student_id,s.student_gender,max(s.total_score) 
+select s.class_id,s.student_id,s.student_gender,max(c.total_score) 
     from class s
     inner join(
     select  student_id,sum(score) as total_score  from score  group by student_id
@@ -239,7 +239,7 @@ from class
 group by class_id;
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTAwMDM2MDE1LDM4ODI5NDE2Miw0NTUxMD
+eyJoaXN0b3J5IjpbNjkwODY5NjYzLDM4ODI5NDE2Miw0NTUxMD
 g0MzcsLTIwOTg1NzYwMTgsMTM1NjM2NzU2MSwtMTA2ODA0NDM0
 LC0yMDIwODA0MTMyLDk0NTI1NzcyOCwxNzA5MDg5NjY0LC0xMT
 gxOTU0MzksMzYxODY1NzA2LC05MjI2MDEzNTAsLTExNTY3NzUx
