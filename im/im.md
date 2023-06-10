@@ -236,13 +236,44 @@ group by s.class_id;
 
 select class_id,student_id,student_gender,max()
 
+
++------------+-------------+
+| student_id | total_score |
++------------+-------------+
+|        101 |         175 |
+|        102 |         180 |
+|        103 |         158 |
+|        201 |         187 |
+|        202 |         178 |
++------------+-------------+
+
+
++----------+------------+----------------+
+| class_id | student_id | student_gender |
++----------+------------+----------------+
+|        1 |        101 | M              |
+|        1 |        102 | F              |
+|        1 |        103 | M              |
+|        2 |        201 | F              |
+|        2 |        202 | M              |
+|        2 |        203 | F              |
+|        3 |        301 | M              |
+|        3 |        302 | F              |
+|        3 |        303 | M              |
+|        3 |        304 | F              |
++----------+------------+----------------+
+
 ```
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzODM3OTg4MjksLTY2MTc5NjgzNiwtOD
-YyODYyMDQ5LDM4ODI5NDE2Miw0NTUxMDg0MzcsLTIwOTg1NzYw
-MTgsMTM1NjM2NzU2MSwtMTA2ODA0NDM0LC0yMDIwODA0MTMyLD
-k0NTI1NzcyOCwxNzA5MDg5NjY0LC0xMTgxOTU0MzksMzYxODY1
-NzA2LC05MjI2MDEzNTAsLTExNTY3NzUxMCwtNDEzNjQyNjg0LC
-02MjAzODgwMiwtMzQ1MzQ0NDUwLDQ3MDk0OTc4NywtODcxMTQ2
-NDk3XX0=
+eyJoaXN0b3J5IjpbMjA1NDkwMjk1NCwtMTM4Mzc5ODgyOSwtNj
+YxNzk2ODM2LC04NjI4NjIwNDksMzg4Mjk0MTYyLDQ1NTEwODQz
+NywtMjA5ODU3NjAxOCwxMzU2MzY3NTYxLC0xMDY4MDQ0MzQsLT
+IwMjA4MDQxMzIsOTQ1MjU3NzI4LDE3MDkwODk2NjQsLTExODE5
+NTQzOSwzNjE4NjU3MDYsLTkyMjYwMTM1MCwtMTE1Njc3NTEwLC
+00MTM2NDI2ODQsLTYyMDM4ODAyLC0zNDUzNDQ0NTAsNDcwOTQ5
+Nzg3XX0=
 -->
