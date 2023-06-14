@@ -108,7 +108,7 @@ Docker的镜像实际上由一层一层的文件系统组成，这种层级的�
   
     即：镜像启动之后的一个小的底层系统，这就是我们之前所说的，容器就是一个小的虚拟机环境，比如Ubuntu，Centos等，这个小的虚拟机环境就相当于rootfs。  
   
-  
+  lying plugin configuration to r
 **`bootfs`和`rootfs`关系如下图：**  
   
 ![输入图片说明](https://raw.githubusercontent.com/2985496686/-/master/imgs/docker/2JnFSEnSqqP6V4YJ.png)
@@ -470,11 +470,11 @@ Docker 将 veth pair 设备的一端放在新创建的容器中，并命名为`e
 ## Container模式
 这个模式指定新创建的容器和已经存在的一个容器共享一个 Network Namespace，而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的 IP，而是和一个指定的容器共享 IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。两个容器的进程可以通过 lo 网卡设备通信。 如果被共享的容器被stop，他就会转为None模式。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODA0NjExNzUsMTY5NzQ2ODU0MywxMT
-A0MzcyNTExLDk4MTY1MzAyMCwxMzkzNzg4NjA4LDkxMjU3NjQ4
-NCwxMzc2ODIzMzgyLDQ5MzAwNjUwOCwtNTU3MDgyMTE0LDE0ND
-UzNDcyODAsMTYzNzIyMjk2LDE0ODAxMDQ1NjAsMTA2MDM3ODk3
-OSwtMzQyNjA4NzIyLDY1MzEyNDAyMSwzOTg4MzA1NzUsLTY1ND
-Y2NDQ3NiwxNzYzNjQyODQ3LC04MDY1NTAzOTksMTQ0NzUzMDQ4
-NV19
+eyJoaXN0b3J5IjpbMTY2NDA5NjA5OCwtMTk4MDQ2MTE3NSwxNj
+k3NDY4NTQzLDExMDQzNzI1MTEsOTgxNjUzMDIwLDEzOTM3ODg2
+MDgsOTEyNTc2NDg0LDEzNzY4MjMzODIsNDkzMDA2NTA4LC01NT
+cwODIxMTQsMTQ0NTM0NzI4MCwxNjM3MjIyOTYsMTQ4MDEwNDU2
+MCwxMDYwMzc4OTc5LC0zNDI2MDg3MjIsNjUzMTI0MDIxLDM5OD
+gzMDU3NSwtNjU0NjY0NDc2LDE3NjM2NDI4NDcsLTgwNjU1MDM5
+OV19
 -->
