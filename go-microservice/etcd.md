@@ -172,7 +172,9 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 **2. Quota模块配额限制**
 etcd默认的db最大大小为2G。在执行写入请求时，会检查db大小是否超过了配额，当超过配额时生成一个告警(Alarm)请求，并通过raft通知其他节点，然后给用户返回错误``etcdserver:mvcc: database space exceeded``。自此整个集群处于只读状态。
 
-遇到这种异常
+遇到这种异常有两种解决方案：
+1. 调整配额大小``quota-backend-bytes``，社区建议不要超过8G。
+2. 
 
 # etcd中的raft
 
@@ -877,7 +879,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDcwNDIzNzEyLDIwNzY2MjExNjUsMTAwMT
+eyJoaXN0b3J5IjpbNzYwNjYzNTk3LDIwNzY2MjExNjUsMTAwMT
 E5MTg5MiwtMTEyMjM1MTczMiwyNDIzNDcyMjYsNzgwMTI0OTkx
 LC0xMjA1MzMzNTc3LDExMTgyMDQzNDcsLTQyMTI0NzkzOSwtMj
 EzNTUxNDE1OSwtNDUxMjg5MTkxLDExODEyMTc0MTIsOTI2NTg1
