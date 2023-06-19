@@ -165,7 +165,11 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/jDNPt9SNJ48W0Qi8.png)
-1. 和读
+**1. 负载均衡和RPC调用**
+
+这和读请求执行流程一致。
+
+**2. **
 
 
 # etcd中的raft
@@ -871,7 +875,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDkwNDg1MDEsMjA3NjYyMTE2NSwxMD
+eyJoaXN0b3J5IjpbLTEyMzkzNjI0NTQsMjA3NjYyMTE2NSwxMD
 AxMTkxODkyLC0xMTIyMzUxNzMyLDI0MjM0NzIyNiw3ODAxMjQ5
 OTEsLTEyMDUzMzM1NzcsMTExODIwNDM0NywtNDIxMjQ3OTM5LC
 0yMTM1NTE0MTU5LC00NTEyODkxOTEsMTE4MTIxNzQxMiw5MjY1
