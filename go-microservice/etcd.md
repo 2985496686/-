@@ -170,7 +170,7 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 这和读请求执行流程一致。
 
 **2. Quota模块配额限制**
-etcd默认的db最大大小为2G，当超过配额时生成一个告警(Alarm)请求，并通过raft通知
+etcd默认的db最大大小为2G。在执行写入请求时，会检查db大小是否超过了配额，当超过配额时生成一个告警(Alarm)请求，并通过raft通知其他节点，次
 
 # etcd中的raft
 
@@ -875,7 +875,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjI2MTcyOTAsMjA3NjYyMTE2NSwxMD
+eyJoaXN0b3J5IjpbLTEyNDI5NTc0NTQsMjA3NjYyMTE2NSwxMD
 AxMTkxODkyLC0xMTIyMzUxNzMyLDI0MjM0NzIyNiw3ODAxMjQ5
 OTEsLTEyMDUzMzM1NzcsMTExODIwNDM0NywtNDIxMjQ3OTM5LC
 0yMTM1NTE0MTU5LC00NTEyODkxOTEsMTE4MTIxNzQxMiw5MjY1
