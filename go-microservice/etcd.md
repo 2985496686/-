@@ -211,7 +211,7 @@ etcd引入了一个consistent index 的字段，来存储系统当前已经执�
 
 4. 操作7执行完成之前，etcd crash掉了，数据是如何恢复的？
 
-首先会根据blotdb重建treeIndex，操作7未完成的写入
+首先会根据blotdb重建treeIndex，操作7未完成的写入操作也不会出现在treeIndex中。raft模块
 
 # etcd中的raft
 
@@ -916,7 +916,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2MzQyNTMyMywtODk1NTkxNjMzLDE1NT
+eyJoaXN0b3J5IjpbLTg5MTU3NTQyMCwtODk1NTkxNjMzLDE1NT
 c4NTk5MzMsLTM0MjkwMDA1MSwtMTE1ODMyMDAyNiwxMTM3MTU2
 NzgxLC0xOTk2MTc1MTIwLDIwNzY2MjExNjUsMTAwMTE5MTg5Mi
 wtMTEyMjM1MTczMiwyNDIzNDcyMjYsNzgwMTI0OTkxLC0xMjA1
