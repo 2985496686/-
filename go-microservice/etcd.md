@@ -133,7 +133,9 @@ client通过调用gRPC API 来访问kvserver。此时进入核心的读流程，
 
 **MVCC**
 
-1. 首先通过二分法查询缓存，缓存没有数据时再去查询treeI
+1. 首先通过二分法查询缓存，缓存没有数据时再去查询treeIndex。
+2. 通过treeIndex获取当前key的最新版本号。
+3. 拿着版本号在blotdb中查询。
 
 
 MVCC：多版本并发控制 (Multiversion concurrency control) 模块支持保存 key 的历史版本、支持多 key 事务等。
@@ -149,8 +151,7 @@ MVCC：多版本并发控制 (Multiversion concurrency control) 模块支持保�
 
 
 ## 读请求什么时候会经过磁盘IO？
-- 实际上，etcd 在启动的时候会通过 mmap 机制将 etcd db 文件映射到 etcd 进程地址空
-间，并设置了 mmap 的 MAP_POPULATE flag，它会告诉 Linux 内核预读文件，Linux
+- 实际上，etcd 在启动的时候会通过 mmap 机制将 etcd db 文件映射到 etcd 进程地址空间，并设置了 mmap 的 MAP_POPULATE flag，它会告诉 Linux 内核预读文件，Linux
 内核会将文件内容拷贝到物理内存中，此时会产生磁盘 I/O。节点内存足够的请求下，后
 续处理读请求过程中就不会产生磁盘 I/IO 了。
 
@@ -867,7 +868,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4OTA2NjkxMSwyMDc2NjIxMTY1LDEwMD
+eyJoaXN0b3J5IjpbLTQ3NjUwNjg2OCwyMDc2NjIxMTY1LDEwMD
 ExOTE4OTIsLTExMjIzNTE3MzIsMjQyMzQ3MjI2LDc4MDEyNDk5
 MSwtMTIwNTMzMzU3NywxMTE4MjA0MzQ3LC00MjEyNDc5MzksLT
 IxMzU1MTQxNTksLTQ1MTI4OTE5MSwxMTgxMjE3NDEyLDkyNjU4
