@@ -176,7 +176,12 @@ etcd默认的db最大大小为2G。在执行写入请求时，会检查db大小�
 1. 调整配额大小``quota-backend-bytes``，社区建议不要超过8G。
 2. 开启etcd 的压缩（compact）配置，回收历史版本。这种方法不会释放空间，只会在回收的位置打上free标志，下次写入时可以直接使用。
 
-进行完操作后需要取消告警，执行命令``etcdctl alarm disarm
+进行完操作后需要取消告警，执行命令``etcdctl alarm disarm``
+
+
+**3. KvServer**
+
+kvserver 莫
 
 # etcd中的raft
 
@@ -881,11 +886,11 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjgwODAyMTE1LDIwNzY2MjExNjUsMTAwMT
-E5MTg5MiwtMTEyMjM1MTczMiwyNDIzNDcyMjYsNzgwMTI0OTkx
-LC0xMjA1MzMzNTc3LDExMTgyMDQzNDcsLTQyMTI0NzkzOSwtMj
-EzNTUxNDE1OSwtNDUxMjg5MTkxLDExODEyMTc0MTIsOTI2NTg1
-MzY5LDExMTU4NDEzMjcsNDE0Mzc3NTA2LDgyMzcyODM5LC0xMD
-I3NjM5ODE1LC05NTQ5MTE1MTUsNzU4MDY4NDkwLDExNjQwNTQz
-NDldfQ==
+eyJoaXN0b3J5IjpbLTIxNDY0NTIyMjUsMjA3NjYyMTE2NSwxMD
+AxMTkxODkyLC0xMTIyMzUxNzMyLDI0MjM0NzIyNiw3ODAxMjQ5
+OTEsLTEyMDUzMzM1NzcsMTExODIwNDM0NywtNDIxMjQ3OTM5LC
+0yMTM1NTE0MTU5LC00NTEyODkxOTEsMTE4MTIxNzQxMiw5MjY1
+ODUzNjksMTExNTg0MTMyNyw0MTQzNzc1MDYsODIzNzI4MzksLT
+EwMjc2Mzk4MTUsLTk1NDkxMTUxNSw3NTgwNjg0OTAsMTE2NDA1
+NDM0OV19
 -->
