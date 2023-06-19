@@ -196,7 +196,12 @@ Apply模块负责将请求应用到状态机上。
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/RRZjDfV7Ps247Ipf.png)
 
 1. 基于currentVersion自增生成新的版本号，插入treeIndex。
-2. 写入新的key ,value到boltdb 和buffer
+2. 写入新的key ,value到boltdb 和buffer。
+
+
+问题：
+
+1. buffer
 
 
 # etcd中的raft
@@ -902,11 +907,11 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTgzMjAwMjYsMTEzNzE1Njc4MSwtMT
-k5NjE3NTEyMCwyMDc2NjIxMTY1LDEwMDExOTE4OTIsLTExMjIz
-NTE3MzIsMjQyMzQ3MjI2LDc4MDEyNDk5MSwtMTIwNTMzMzU3Ny
-wxMTE4MjA0MzQ3LC00MjEyNDc5MzksLTIxMzU1MTQxNTksLTQ1
-MTI4OTE5MSwxMTgxMjE3NDEyLDkyNjU4NTM2OSwxMTE1ODQxMz
-I3LDQxNDM3NzUwNiw4MjM3MjgzOSwtMTAyNzYzOTgxNSwtOTU0
-OTExNTE1XX0=
+eyJoaXN0b3J5IjpbLTM0MjkwMDA1MSwtMTE1ODMyMDAyNiwxMT
+M3MTU2NzgxLC0xOTk2MTc1MTIwLDIwNzY2MjExNjUsMTAwMTE5
+MTg5MiwtMTEyMjM1MTczMiwyNDIzNDcyMjYsNzgwMTI0OTkxLC
+0xMjA1MzMzNTc3LDExMTgyMDQzNDcsLTQyMTI0NzkzOSwtMjEz
+NTUxNDE1OSwtNDUxMjg5MTkxLDExODEyMTc0MTIsOTI2NTg1Mz
+Y5LDExMTU4NDEzMjcsNDE0Mzc3NTA2LDgyMzcyODM5LC0xMDI3
+NjM5ODE1XX0=
 -->
