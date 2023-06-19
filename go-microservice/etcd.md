@@ -107,11 +107,11 @@ bitnami/etcd:${ETCD_VERSION}
 docker exec -it etcd-node-2 etcdctl get hello world --endpoints localhost:2379,localhost:2380,localhost:2381
 ```
 
-etcdctl 创建一个client3对象，在指定了多个endpoint时会通过自带的负载均衡算法(Round-robin轮询)选择一个可用的节点进行连接。
+etcdctl 创建一个client3对象，在指定了多个endpoint时会通过自带的负载均衡算法(Round-robin轮询)选择一个连接(长连接)。
 
 **kvserver层**
 
-成功建立连接后，client就可以通过调用gRPC API 来访问kvserver。此时进入核心的读流程，读数据分为两种模式：串行读和线性读。
+client通过调用gRPC API 来访问kvserver。此时进入核心的读流程，读数据分为两种模式：串行读和线性读。
 
 **串行读**
 
@@ -864,11 +864,11 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3NjYyMTE2NSwxMDAxMTkxODkyLC0xMT
-IyMzUxNzMyLDI0MjM0NzIyNiw3ODAxMjQ5OTEsLTEyMDUzMzM1
-NzcsMTExODIwNDM0NywtNDIxMjQ3OTM5LC0yMTM1NTE0MTU5LC
-00NTEyODkxOTEsMTE4MTIxNzQxMiw5MjY1ODUzNjksMTExNTg0
-MTMyNyw0MTQzNzc1MDYsODIzNzI4MzksLTEwMjc2Mzk4MTUsLT
-k1NDkxMTUxNSw3NTgwNjg0OTAsMTE2NDA1NDM0OSwtMTI0NDY3
-MzI3NF19
+eyJoaXN0b3J5IjpbMjEwMDI2OTY2MSwyMDc2NjIxMTY1LDEwMD
+ExOTE4OTIsLTExMjIzNTE3MzIsMjQyMzQ3MjI2LDc4MDEyNDk5
+MSwtMTIwNTMzMzU3NywxMTE4MjA0MzQ3LC00MjEyNDc5MzksLT
+IxMzU1MTQxNTksLTQ1MTI4OTE5MSwxMTgxMjE3NDEyLDkyNjU4
+NTM2OSwxMTE1ODQxMzI3LDQxNDM3NzUwNiw4MjM3MjgzOSwtMT
+AyNzYzOTgxNSwtOTU0OTExNTE1LDc1ODA2ODQ5MCwxMTY0MDU0
+MzQ5XX0=
 -->
