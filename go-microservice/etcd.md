@@ -192,7 +192,7 @@ kvserver 将put请求包装成一个提案，提交给raft模块。
 4. 当过半节点持久化保存该日志后，leader更改该日志的状态为已提交，并通过Channel告知Apply模块。
 
 **5.Apply模块**
-Apply模块负责将请求应用到状态机上
+Apply模块负责将请求应用到状态机上。
 
 
 # etcd中的raft
@@ -898,7 +898,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc1NTE1ODMzNSwtMTk5NjE3NTEyMCwyMD
+eyJoaXN0b3J5IjpbMTEzNzE1Njc4MSwtMTk5NjE3NTEyMCwyMD
 c2NjIxMTY1LDEwMDExOTE4OTIsLTExMjIzNTE3MzIsMjQyMzQ3
 MjI2LDc4MDEyNDk5MSwtMTIwNTMzMzU3NywxMTE4MjA0MzQ3LC
 00MjEyNDc5MzksLTIxMzU1MTQxNTksLTQ1MTI4OTE5MSwxMTgx
