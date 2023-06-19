@@ -189,7 +189,7 @@ kvserver 将put请求包装成一个提案，提交给raft模块。
 比已应用到状态机的日志索引（applied index）超过了 5000，那么它就返回一
 个"etcdserver: too many requests"错误给 client。
 3. leader将请求封装成wal日志持久化后(fsync)，转发给follower节点。
-4. 当过半节点持久化保存该日志后
+4. 当过半节点持久化保存该日志后，leader更改该日志的状态为已提交，并通过Channel告知
 # etcd中的raft
 
 这里只介绍etcd中raft的不同之处。
@@ -893,7 +893,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2ODU3MjE5MywtMTk5NjE3NTEyMCwyMD
+eyJoaXN0b3J5IjpbMTQ1NjM3ODgyNiwtMTk5NjE3NTEyMCwyMD
 c2NjIxMTY1LDEwMDExOTE4OTIsLTExMjIzNTE3MzIsMjQyMzQ3
 MjI2LDc4MDEyNDk5MSwtMTIwNTMzMzU3NywxMTE4MjA0MzQ3LC
 00MjEyNDc5MzksLTIxMzU1MTQxNTksLTQ1MTI4OTE5MSwxMTgx
