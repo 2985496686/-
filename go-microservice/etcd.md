@@ -205,7 +205,7 @@ Apply模块负责将请求应用到状态机上。
 加快查询速度，并且可以通过全量拷贝buffer实现并发读写不冲突。
 
 2. apply如何知道哪些日志已经被应用(apply模块的幂等性)？
-etcd引入了一个consistent index 的字段，来存储系统当前已经执行过的日志条目索引，实现幂等性。在往玻璃
+etcd引入了一个consistent index 的字段，来存储系统当前已经执行过的日志条目索引，实现幂等性。在往boltdb中
 
 
 # etcd中的raft
@@ -911,11 +911,11 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzc4MjA3MzI3LDE1NTc4NTk5MzMsLTM0Mj
-kwMDA1MSwtMTE1ODMyMDAyNiwxMTM3MTU2NzgxLC0xOTk2MTc1
-MTIwLDIwNzY2MjExNjUsMTAwMTE5MTg5MiwtMTEyMjM1MTczMi
-wyNDIzNDcyMjYsNzgwMTI0OTkxLC0xMjA1MzMzNTc3LDExMTgy
-MDQzNDcsLTQyMTI0NzkzOSwtMjEzNTUxNDE1OSwtNDUxMjg5MT
-kxLDExODEyMTc0MTIsOTI2NTg1MzY5LDExMTU4NDEzMjcsNDE0
-Mzc3NTA2XX0=
+eyJoaXN0b3J5IjpbLTg5NTU5MTYzMywxNTU3ODU5OTMzLC0zND
+I5MDAwNTEsLTExNTgzMjAwMjYsMTEzNzE1Njc4MSwtMTk5NjE3
+NTEyMCwyMDc2NjIxMTY1LDEwMDExOTE4OTIsLTExMjIzNTE3Mz
+IsMjQyMzQ3MjI2LDc4MDEyNDk5MSwtMTIwNTMzMzU3NywxMTE4
+MjA0MzQ3LC00MjEyNDc5MzksLTIxMzU1MTQxNTksLTQ1MTI4OT
+E5MSwxMTgxMjE3NDEyLDkyNjU4NTM2OSwxMTE1ODQxMzI3LDQx
+NDM3NzUwNl19
 -->
