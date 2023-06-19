@@ -209,6 +209,9 @@ etcd引入了一个consistent index 的字段，来存储系统当前已经执�
 
 3. 写入boltdb中的数据并不是直接写入磁盘，而是写入被映射的内存中，后台线程会定期将脏页刷到磁盘。
 
+4. 操作7执行完成之前，etcd crash掉了，数据是如何恢复的？
+
+首先会根据blotdb重建treeIndex，操作7未完成的写入
 
 # etcd中的raft
 
@@ -913,7 +916,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxNTIyNDEzMywtODk1NTkxNjMzLDE1NT
+eyJoaXN0b3J5IjpbMjA2MzQyNTMyMywtODk1NTkxNjMzLDE1NT
 c4NTk5MzMsLTM0MjkwMDA1MSwtMTE1ODMyMDAyNiwxMTM3MTU2
 NzgxLC0xOTk2MTc1MTIwLDIwNzY2MjExNjUsMTAwMTE5MTg5Mi
 wtMTEyMjM1MTczMiwyNDIzNDcyMjYsNzgwMTI0OTkxLC0xMjA1
