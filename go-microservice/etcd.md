@@ -184,7 +184,9 @@ etcd默认的db最大大小为2G。在执行写入请求时，会检查db大小�
 kvserver 将put请求包装成一个提案，提交给raft模块。
 
 **4. raft层**
-1. 首先会进行限速
+1. 首先会进行限速判读，如果Raft 模块已提交的日志索引（committed index）
+比已应用到状态机的日志索引（applied index）超过了 5000，那么它就返回一
+个"etcdserver: too many requests"错误给 client。
 2. 
 # etcd中的raft
 
@@ -889,11 +891,11 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwNTQ1NTY4MiwyMDc2NjIxMTY1LDEwMD
-ExOTE4OTIsLTExMjIzNTE3MzIsMjQyMzQ3MjI2LDc4MDEyNDk5
-MSwtMTIwNTMzMzU3NywxMTE4MjA0MzQ3LC00MjEyNDc5MzksLT
-IxMzU1MTQxNTksLTQ1MTI4OTE5MSwxMTgxMjE3NDEyLDkyNjU4
-NTM2OSwxMTE1ODQxMzI3LDQxNDM3NzUwNiw4MjM3MjgzOSwtMT
-AyNzYzOTgxNSwtOTU0OTExNTE1LDc1ODA2ODQ5MCwxMTY0MDU0
-MzQ5XX0=
+eyJoaXN0b3J5IjpbLTE5OTYxNzUxMjAsMjA3NjYyMTE2NSwxMD
+AxMTkxODkyLC0xMTIyMzUxNzMyLDI0MjM0NzIyNiw3ODAxMjQ5
+OTEsLTEyMDUzMzM1NzcsMTExODIwNDM0NywtNDIxMjQ3OTM5LC
+0yMTM1NTE0MTU5LC00NTEyODkxOTEsMTE4MTIxNzQxMiw5MjY1
+ODUzNjksMTExNTg0MTMyNyw0MTQzNzc1MDYsODIzNzI4MzksLT
+EwMjc2Mzk4MTUsLTk1NDkxMTUxNSw3NTgwNjg0OTAsMTE2NDA1
+NDM0OV19
 -->
