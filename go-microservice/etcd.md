@@ -151,7 +151,7 @@ MVCC：多版本并发控制 (Multiversion concurrency control) 模块支持保�
 
 
 ## 读请求什么时候会经过磁盘IO？
-- 实际上，etcd 在启动的时候会通过 mmap 机制将 etcd db 文件映射到 etcd 进程地址空间，并设置了 mmap 的 MAP_POPULATE flag，它会告诉 Linux 内核预读文件，Linux
+- 实际上，etcd 在启动的时候会通过 mmap 机制将 etcd db 文件映射到 etcd 进程虚拟地址空间，并设置了 mmap 的 MAP_POPULATE flag，它会告诉 Linux 内核预读文件，Linux
 内核会将文件内容拷贝到物理内存中，此时会产生磁盘 I/O。节点内存足够的请求下，后
 续处理读请求过程中就不会产生磁盘 I/IO 了。
 
@@ -163,6 +163,9 @@ majflt 字段来判断 etcd 是否产生了主缺页中断。
 
 ## 一条写请求的执行
 
+
+![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/jDNPt9SNJ48W0Qi8.png)
+1. 和读
 
 
 # etcd中的raft
@@ -868,11 +871,11 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ3NjUwNjg2OCwyMDc2NjIxMTY1LDEwMD
-ExOTE4OTIsLTExMjIzNTE3MzIsMjQyMzQ3MjI2LDc4MDEyNDk5
-MSwtMTIwNTMzMzU3NywxMTE4MjA0MzQ3LC00MjEyNDc5MzksLT
-IxMzU1MTQxNTksLTQ1MTI4OTE5MSwxMTgxMjE3NDEyLDkyNjU4
-NTM2OSwxMTE1ODQxMzI3LDQxNDM3NzUwNiw4MjM3MjgzOSwtMT
-AyNzYzOTgxNSwtOTU0OTExNTE1LDc1ODA2ODQ5MCwxMTY0MDU0
-MzQ5XX0=
+eyJoaXN0b3J5IjpbLTE4MDkwNDg1MDEsMjA3NjYyMTE2NSwxMD
+AxMTkxODkyLC0xMTIyMzUxNzMyLDI0MjM0NzIyNiw3ODAxMjQ5
+OTEsLTEyMDUzMzM1NzcsMTExODIwNDM0NywtNDIxMjQ3OTM5LC
+0yMTM1NTE0MTU5LC00NTEyODkxOTEsMTE4MTIxNzQxMiw5MjY1
+ODUzNjksMTExNTg0MTMyNyw0MTQzNzc1MDYsODIzNzI4MzksLT
+EwMjc2Mzk4MTUsLTk1NDkxMTUxNSw3NTgwNjg0OTAsMTE2NDA1
+NDM0OV19
 -->
