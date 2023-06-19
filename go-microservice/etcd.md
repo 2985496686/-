@@ -181,8 +181,11 @@ etcd默认的db最大大小为2G。在执行写入请求时，会检查db大小�
 
 **3. KvServer**
 
-kvserver 将平
+kvserver 将put请求包装成一个提案，提交给raft模块。
 
+**4. raft层**
+1. 首先会进行限速
+2. 
 # etcd中的raft
 
 这里只介绍etcd中raft的不同之处。
@@ -886,7 +889,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4NTE3NjM4NSwyMDc2NjIxMTY1LDEwMD
+eyJoaXN0b3J5IjpbMTcwNTQ1NTY4MiwyMDc2NjIxMTY1LDEwMD
 ExOTE4OTIsLTExMjIzNTE3MzIsMjQyMzQ3MjI2LDc4MDEyNDk5
 MSwtMTIwNTMzMzU3NywxMTE4MjA0MzQ3LC00MjEyNDc5MzksLT
 IxMzU1MTQxNTksLTQ1MTI4OTE5MSwxMTgxMjE3NDEyLDkyNjU4
