@@ -207,7 +207,8 @@ Apply模块负责将请求应用到状态机上。
 2. apply如何知道哪些日志已经被应用(apply模块的幂等性)？
 etcd引入了一个consistent index 的字段，来存储系统当前已经执行过的日志条目索引，实现幂等性。cosistent index存储在blotdb的一个bucket中，写入请求和更新consistent index会被封装成一个原子性事务，保证幂等性。
 
-3.
+3. 写入boltdb中的数据并不是直接写入磁盘，而是写入被映射的内存中，后台线程会定期将脏页刷到磁盘。
+
 
 # etcd中的raft
 
@@ -912,7 +913,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4MjE3MDY1MiwtODk1NTkxNjMzLDE1NT
+eyJoaXN0b3J5IjpbLTMxNTIyNDEzMywtODk1NTkxNjMzLDE1NT
 c4NTk5MzMsLTM0MjkwMDA1MSwtMTE1ODMyMDAyNiwxMTM3MTU2
 NzgxLC0xOTk2MTc1MTIwLDIwNzY2MjExNjUsMTAwMTE5MTg5Mi
 wtMTEyMjM1MTczMiwyNDIzNDcyMjYsNzgwMTI0OTkxLC0xMjA1
