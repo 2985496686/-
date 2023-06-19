@@ -195,6 +195,8 @@ kvserver 将put请求包装成一个提案，提交给raft模块。
 Apply模块负责将请求应用到状态机上。
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/RRZjDfV7Ps247Ipf.png)
 
+1. 基于currentVersion自增生成新的版本号，插入
+
 
 # etcd中的raft
 
@@ -899,11 +901,11 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIwNzQ3MjM4NiwxMTM3MTU2NzgxLC0xOT
-k2MTc1MTIwLDIwNzY2MjExNjUsMTAwMTE5MTg5MiwtMTEyMjM1
-MTczMiwyNDIzNDcyMjYsNzgwMTI0OTkxLC0xMjA1MzMzNTc3LD
-ExMTgyMDQzNDcsLTQyMTI0NzkzOSwtMjEzNTUxNDE1OSwtNDUx
-Mjg5MTkxLDExODEyMTc0MTIsOTI2NTg1MzY5LDExMTU4NDEzMj
-csNDE0Mzc3NTA2LDgyMzcyODM5LC0xMDI3NjM5ODE1LC05NTQ5
-MTE1MTVdfQ==
+eyJoaXN0b3J5IjpbLTEzMTkyMDI4NzksMTEzNzE1Njc4MSwtMT
+k5NjE3NTEyMCwyMDc2NjIxMTY1LDEwMDExOTE4OTIsLTExMjIz
+NTE3MzIsMjQyMzQ3MjI2LDc4MDEyNDk5MSwtMTIwNTMzMzU3Ny
+wxMTE4MjA0MzQ3LC00MjEyNDc5MzksLTIxMzU1MTQxNTksLTQ1
+MTI4OTE5MSwxMTgxMjE3NDEyLDkyNjU4NTM2OSwxMTE1ODQxMz
+I3LDQxNDM3NzUwNiw4MjM3MjgzOSwtMTAyNzYzOTgxNSwtOTU0
+OTExNTE1XX0=
 -->
