@@ -205,7 +205,7 @@ Apply模块负责将请求应用到状态机上。
 加快查询速度，并且可以通过全量拷贝buffer实现并发读写不冲突。
 
 2. apply如何知道哪些日志已经被应用(apply模块的幂等性)？
-etcd引入了一个consistent index 的字段，来存储系统当前已经执行过的日志条目索引，实现幂等性。cosistent index存储在blotdb的一个bucket中
+etcd引入了一个consistent index 的字段，来存储系统当前已经执行过的日志条目索引，实现幂等性。cosistent index存储在blotdb的一个bucket中，写入请求和更新consistent index封装成一个原子性事务
 
 # etcd中的raft
 
@@ -910,7 +910,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1NzM5OTk0OSwtODk1NTkxNjMzLDE1NT
+eyJoaXN0b3J5IjpbMTY2OTg0MDk0MCwtODk1NTkxNjMzLDE1NT
 c4NTk5MzMsLTM0MjkwMDA1MSwtMTE1ODMyMDAyNiwxMTM3MTU2
 NzgxLC0xOTk2MTc1MTIwLDIwNzY2MjExNjUsMTAwMTE5MTg5Mi
 wtMTEyMjM1MTczMiwyNDIzNDcyMjYsNzgwMTI0OTkxLC0xMjA1
