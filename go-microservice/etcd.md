@@ -133,6 +133,9 @@ client通过调用gRPC API 来访问kvserver。此时进入核心的读流程，
 
 **MVCC**
 
+1. 首先通过二分法查询缓存，缓存没有数据时再去查询treeI
+
+
 MVCC：多版本并发控制 (Multiversion concurrency control) 模块支持保存 key 的历史版本、支持多 key 事务等。
 
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/EF0zKI6rJPNV7fqQ.png)
@@ -864,7 +867,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwMDI2OTY2MSwyMDc2NjIxMTY1LDEwMD
+eyJoaXN0b3J5IjpbLTY4OTA2NjkxMSwyMDc2NjIxMTY1LDEwMD
 ExOTE4OTIsLTExMjIzNTE3MzIsMjQyMzQ3MjI2LDc4MDEyNDk5
 MSwtMTIwNTMzMzU3NywxMTE4MjA0MzQ3LC00MjEyNDc5MzksLT
 IxMzU1MTQxNTksLTQ1MTI4OTE5MSwxMTgxMjE3NDEyLDkyNjU4
