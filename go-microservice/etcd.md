@@ -195,7 +195,8 @@ kvserver 将put请求包装成一个提案，提交给raft模块。
 Apply模块负责将请求应用到状态机上。
 ![输入图片说明](https://raw.githubusercontent.com/GTianLuo/-/master/imgs/etcd/RRZjDfV7Ps247Ipf.png)
 
-1. 基于currentVersion自增生成新的版本号，插入
+1. 基于currentVersion自增生成新的版本号，插入treeIndex。
+2. 写入新的key ,value到boltdb 和buffer
 
 
 # etcd中的raft
@@ -901,7 +902,7 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTkyMDI4NzksMTEzNzE1Njc4MSwtMT
+eyJoaXN0b3J5IjpbLTExNTgzMjAwMjYsMTEzNzE1Njc4MSwtMT
 k5NjE3NTEyMCwyMDc2NjIxMTY1LDEwMDExOTE4OTIsLTExMjIz
 NTE3MzIsMjQyMzQ3MjI2LDc4MDEyNDk5MSwtMTIwNTMzMzU3Ny
 wxMTE4MjA0MzQ3LC00MjEyNDc5MzksLTIxMzU1MTQxNTksLTQ1
