@@ -259,9 +259,9 @@ sysctl -w fs.nr_open=2000500
 
 **缓存设计**
 
-在redis中对于每一个用户都有一个手心
+在redis中对于每一个用户都有一个首
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ4NzMyMDE4LDgwNTI3MTQ3OSwxMjI5OD
+eyJoaXN0b3J5IjpbOTI4MTI5NjUyLDgwNTI3MTQ3OSwxMjI5OD
 Y2MDAwLC00Njk2NjA0NzAsNzc3MTE4MDk4LDM2NTk3NzczMiwt
 MjEzNDA3Mjk4OCwyMDc1NDQ1MDk3LDE3OTM1OTQ5MjksNTk2OT
 MwOTU5LC02MTA1OTUyMTQsMjA1NDkwMjk1NCwtMTM4Mzc5ODgy
