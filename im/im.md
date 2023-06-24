@@ -230,6 +230,8 @@ sysctl -w fs.nr_open=2000500
 
 **mysql 表设计**
 
+
+消息发送表
 ``im_message_send（msg_id,msg_from,msg_to,msg_seq,msg_content,send_time,msg_type）``
 
 其中：
@@ -244,6 +246,9 @@ sysctl -w fs.nr_open=2000500
 
 
 
+
+
+离线消息表(接收消息表)
 
 ``im_message_recieve（id,msg_from,msg_to,msg_id,flag）``
 
@@ -272,11 +277,11 @@ sysctl -w fs.nr_open=2000500
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzYwMzI2NDU4LDExMTQ2NjA0MTcsODA1Mj
-cxNDc5LDEyMjk4NjYwMDAsLTQ2OTY2MDQ3MCw3NzcxMTgwOTgs
-MzY1OTc3NzMyLC0yMTM0MDcyOTg4LDIwNzU0NDUwOTcsMTc5Mz
-U5NDkyOSw1OTY5MzA5NTksLTYxMDU5NTIxNCwyMDU0OTAyOTU0
-LC0xMzgzNzk4ODI5LC02NjE3OTY4MzYsLTg2Mjg2MjA0OSwzOD
-gyOTQxNjIsNDU1MTA4NDM3LC0yMDk4NTc2MDE4LDEzNTYzNjc1
-NjFdfQ==
+eyJoaXN0b3J5IjpbLTI4MTEwOTY2OSwzNjAzMjY0NTgsMTExND
+Y2MDQxNyw4MDUyNzE0NzksMTIyOTg2NjAwMCwtNDY5NjYwNDcw
+LDc3NzExODA5OCwzNjU5Nzc3MzIsLTIxMzQwNzI5ODgsMjA3NT
+Q0NTA5NywxNzkzNTk0OTI5LDU5NjkzMDk1OSwtNjEwNTk1MjE0
+LDIwNTQ5MDI5NTQsLTEzODM3OTg4MjksLTY2MTc5NjgzNiwtOD
+YyODYyMDQ5LDM4ODI5NDE2Miw0NTUxMDg0MzcsLTIwOTg1NzYw
+MThdfQ==
 -->
