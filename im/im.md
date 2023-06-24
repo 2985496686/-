@@ -259,9 +259,9 @@ sysctl -w fs.nr_open=2000500
 
 **缓存设计**
 
-在redis中对于每一个用户都有一个收信箱，发送消息时要
+在redis中对于每一个用户都有一个收信箱：有序列表对象，key为msg_to，value为msg_Id的list。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzNDY5NjQxOCw4MDUyNzE0NzksMTIyOT
+eyJoaXN0b3J5IjpbMTYyNjk2NDY4MSw4MDUyNzE0NzksMTIyOT
 g2NjAwMCwtNDY5NjYwNDcwLDc3NzExODA5OCwzNjU5Nzc3MzIs
 LTIxMzQwNzI5ODgsMjA3NTQ0NTA5NywxNzkzNTk0OTI5LDU5Nj
 kzMDk1OSwtNjEwNTk1MjE0LDIwNTQ5MDI5NTQsLTEzODM3OTg4
