@@ -274,11 +274,11 @@ sysctl -w fs.nr_open=2000500
 
 
 - 写操作： 先写入消息发送表和消息接收表，在写入数据库时会获取msgId，然后就可以通过上面的方案进行写缓存。
-- 读操作：先查询缓存获取理想消息id，缓存未命中查询数据库，然后同msg_to确定要查询的表，mg_id确定要查询的消息。如果是群聊消息的也可以先查询缓存获取，为了
+- 读操作：先查询缓存获取理想消息id，缓存未命中查询数据库，然后同msg_to确定要查询的表，mg_id确定要查询的消息。如果是群聊消息的也可以先查询缓存获取，未命中查询数据库。
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMjYzMzc2MzcsLTcyOTYyMjMyMSwtOT
+eyJoaXN0b3J5IjpbLTIxMjYwNjA3NjcsLTcyOTYyMjMyMSwtOT
 M2MDY2MjAwLDM2MDMyNjQ1OCwxMTE0NjYwNDE3LDgwNTI3MTQ3
 OSwxMjI5ODY2MDAwLC00Njk2NjA0NzAsNzc3MTE4MDk4LDM2NT
 k3NzczMiwtMjEzNDA3Mjk4OCwyMDc1NDQ1MDk3LDE3OTM1OTQ5
