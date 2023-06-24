@@ -259,16 +259,16 @@ sysctl -w fs.nr_open=2000500
 
 **缓存设计**
 
-在redis中对于每一个用户都有一个收信箱：有序列表对象，key为msg_to，value为msg_Id的list。
+在redis中对于每一个用户都有一个收信箱：列表对象，key为msg_to，value为msg_Id的list。
 
 
-对于群聊消息，在redis会进行缓存: 
+对于群聊消息，在redis会进行缓存: 哈希表对象，key为 group_id ,field为msg_Id，
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3MjMzODUwLDgwNTI3MTQ3OSwxMjI5OD
-Y2MDAwLC00Njk2NjA0NzAsNzc3MTE4MDk4LDM2NTk3NzczMiwt
-MjEzNDA3Mjk4OCwyMDc1NDQ1MDk3LDE3OTM1OTQ5MjksNTk2OT
-MwOTU5LC02MTA1OTUyMTQsMjA1NDkwMjk1NCwtMTM4Mzc5ODgy
-OSwtNjYxNzk2ODM2LC04NjI4NjIwNDksMzg4Mjk0MTYyLDQ1NT
-EwODQzNywtMjA5ODU3NjAxOCwxMzU2MzY3NTYxLC0xMDY4MDQ0
-MzRdfQ==
+eyJoaXN0b3J5IjpbLTg0MDczODIxNSw4MDUyNzE0NzksMTIyOT
+g2NjAwMCwtNDY5NjYwNDcwLDc3NzExODA5OCwzNjU5Nzc3MzIs
+LTIxMzQwNzI5ODgsMjA3NTQ0NTA5NywxNzkzNTk0OTI5LDU5Nj
+kzMDk1OSwtNjEwNTk1MjE0LDIwNTQ5MDI5NTQsLTEzODM3OTg4
+MjksLTY2MTc5NjgzNiwtODYyODYyMDQ5LDM4ODI5NDE2Miw0NT
+UxMDg0MzcsLTIwOTg1NzYwMTgsMTM1NjM2NzU2MSwtMTA2ODA0
+NDM0XX0=
 -->
