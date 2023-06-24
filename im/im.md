@@ -224,88 +224,17 @@ sysctl -w fs.nr_open=2000500
 
 ## 消息存储
 
-```sql
-select c.class_id,c.student_id,c.student_gender,s.total_score 
-from class c
-inner join(
-    select  student_id,sum(score) as total_score  
-    from score  
-    group by student_id
-    ) s
-on s.student_id = c.student_id ;
 
-
-
-
-select class_id,student_id,student_gender,max(total_score)
-from(
-	select c.class_id,c.student_id,c.student_gender,s.total_score 
-	from class c
-	inner join(
-	    select  student_id,sum(score) as total_score  
-	    from score  
-	    group by student_id
-    )s
-	on s.student_id = c.student_id
-)
-group by class_id;
-
-
-
-select cs.class_id,max(cs.total_score)
-from(
-	select c.class_id,c.student_id,c.student_gender,s.total_score 
-	from class c
-	inner join(
-	    select  student_id,sum(score) as total_score  
-	    from score  
-	    group by student_id
-    )s
-	on s.student_id = c.student_id
-) cs
-group by cs.class_id
-where cs.total_score = max(cs.total_score);
-
-
-
-
-+------------+-------------+
-| student_id | total_score |
-+------------+-------------+
-|        101 |         175 |
-|        102 |         180 |
-|        103 |         158 |
-|        201 |         187 |
-|        202 |         178 |
-+------------+-------------+
-
-
-+----------+------------+----------------+
-| class_id | student_id | student_gender |
-+----------+------------+----------------+
-|        1 |        101 | M              |
-|        1 |        102 | F              |
-|        1 |        103 | M              |
-|        2 |        201 | F              |
-|        2 |        202 | M              |
-|        2 |        203 | F              |
-|        3 |        301 | M              |
-|        3 |        302 | F              |
-|        3 |        303 | M              |
-|        3 |        304 | F              |
-+----------+------------+----------------+
-
-```
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2OTY2MDQ3MCw3NzcxMTgwOTgsMzY1OT
-c3NzMyLC0yMTM0MDcyOTg4LDIwNzU0NDUwOTcsMTc5MzU5NDky
-OSw1OTY5MzA5NTksLTYxMDU5NTIxNCwyMDU0OTAyOTU0LC0xMz
-gzNzk4ODI5LC02NjE3OTY4MzYsLTg2Mjg2MjA0OSwzODgyOTQx
-NjIsNDU1MTA4NDM3LC0yMDk4NTc2MDE4LDEzNTYzNjc1NjEsLT
-EwNjgwNDQzNCwtMjAyMDgwNDEzMiw5NDUyNTc3MjgsMTcwOTA4
-OTY2NF19
+eyJoaXN0b3J5IjpbNTM5NTg4NTU0LC00Njk2NjA0NzAsNzc3MT
+E4MDk4LDM2NTk3NzczMiwtMjEzNDA3Mjk4OCwyMDc1NDQ1MDk3
+LDE3OTM1OTQ5MjksNTk2OTMwOTU5LC02MTA1OTUyMTQsMjA1ND
+kwMjk1NCwtMTM4Mzc5ODgyOSwtNjYxNzk2ODM2LC04NjI4NjIw
+NDksMzg4Mjk0MTYyLDQ1NTEwODQzNywtMjA5ODU3NjAxOCwxMz
+U2MzY3NTYxLC0xMDY4MDQ0MzQsLTIwMjA4MDQxMzIsOTQ1MjU3
+NzI4XX0=
 -->
