@@ -245,18 +245,24 @@ sysctl -w fs.nr_open=2000500
 
 
 
+``im_message_recieve（id,msg_from,msg_to,msg_id,flag）``
 
+其中：
 
-
+-   id：这个表的ID，自增。
+-   msg_from：消息发送者ID。
+-   msg_to：消息接收者ID。
+-   msg_id：消息ID，对应发送消息表中的ID。
+-   flag：标志位，表示该消息是否已读。
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2NTUzMDk0MiwxMjI5ODY2MDAwLC00Nj
-k2NjA0NzAsNzc3MTE4MDk4LDM2NTk3NzczMiwtMjEzNDA3Mjk4
-OCwyMDc1NDQ1MDk3LDE3OTM1OTQ5MjksNTk2OTMwOTU5LC02MT
-A1OTUyMTQsMjA1NDkwMjk1NCwtMTM4Mzc5ODgyOSwtNjYxNzk2
-ODM2LC04NjI4NjIwNDksMzg4Mjk0MTYyLDQ1NTEwODQzNywtMj
-A5ODU3NjAxOCwxMzU2MzY3NTYxLC0xMDY4MDQ0MzQsLTIwMjA4
-MDQxMzJdfQ==
+eyJoaXN0b3J5IjpbODA1MjcxNDc5LDEyMjk4NjYwMDAsLTQ2OT
+Y2MDQ3MCw3NzcxMTgwOTgsMzY1OTc3NzMyLC0yMTM0MDcyOTg4
+LDIwNzU0NDUwOTcsMTc5MzU5NDkyOSw1OTY5MzA5NTksLTYxMD
+U5NTIxNCwyMDU0OTAyOTU0LC0xMzgzNzk4ODI5LC02NjE3OTY4
+MzYsLTg2Mjg2MjA0OSwzODgyOTQxNjIsNDU1MTA4NDM3LC0yMD
+k4NTc2MDE4LDEzNTYzNjc1NjEsLTEwNjgwNDQzNCwtMjAyMDgw
+NDEzMl19
 -->
