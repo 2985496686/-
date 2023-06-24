@@ -228,15 +228,35 @@ sysctl -w fs.nr_open=2000500
 
 
 
+**mysql 表设计**
+
+``im_message_send（msg_id,msg_from,msg_to,msg_seq,msg_content,send_time,msg_type）``
+
+其中：
+
+-   msg_id：消息ID。
+-   msg_from：消息发送者UID。
+-   msg_to：消息接收者。如果是单聊消息那么就是用户UID，如果是群聊消息就是群ID。
+-   msg_seq：客户端发送消息时带上的序列号，主要用于消息排重以及通知客户端消息发送成功之用。
+-   msg_content：消息内容。
+-   send_time：消息发送时间。
+-   msg_type：消息类型，如单聊、群聊消息等。
+
+
+
+
+
+
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIyOTg2NjAwMCwtNDY5NjYwNDcwLDc3Nz
-ExODA5OCwzNjU5Nzc3MzIsLTIxMzQwNzI5ODgsMjA3NTQ0NTA5
-NywxNzkzNTk0OTI5LDU5NjkzMDk1OSwtNjEwNTk1MjE0LDIwNT
-Q5MDI5NTQsLTEzODM3OTg4MjksLTY2MTc5NjgzNiwtODYyODYy
-MDQ5LDM4ODI5NDE2Miw0NTUxMDg0MzcsLTIwOTg1NzYwMTgsMT
-M1NjM2NzU2MSwtMTA2ODA0NDM0LC0yMDIwODA0MTMyLDk0NTI1
-NzcyOF19
+eyJoaXN0b3J5IjpbLTk2NTUzMDk0MiwxMjI5ODY2MDAwLC00Nj
+k2NjA0NzAsNzc3MTE4MDk4LDM2NTk3NzczMiwtMjEzNDA3Mjk4
+OCwyMDc1NDQ1MDk3LDE3OTM1OTQ5MjksNTk2OTMwOTU5LC02MT
+A1OTUyMTQsMjA1NDkwMjk1NCwtMTM4Mzc5ODgyOSwtNjYxNzk2
+ODM2LC04NjI4NjIwNDksMzg4Mjk0MTYyLDQ1NTEwODQzNywtMj
+A5ODU3NjAxOCwxMzU2MzY3NTYxLC0xMDY4MDQ0MzQsLTIwMjA4
+MDQxMzJdfQ==
 -->
