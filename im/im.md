@@ -273,11 +273,11 @@ sysctl -w fs.nr_open=2000500
 **读写操作**
 
 
-- 写操作： 先写入消息发送表和消息接收表，再更新缓存
+- 写操作： 先写入消息发送表和消息接收表，再更新缓存。在消息时
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4MTEwOTY2OSwzNjAzMjY0NTgsMTExND
+eyJoaXN0b3J5IjpbLTkzNjA2NjIwMCwzNjAzMjY0NTgsMTExND
 Y2MDQxNyw4MDUyNzE0NzksMTIyOTg2NjAwMCwtNDY5NjYwNDcw
 LDc3NzExODA5OCwzNjU5Nzc3MzIsLTIxMzQwNzI5ODgsMjA3NT
 Q0NTA5NywxNzkzNTk0OTI5LDU5NjkzMDk1OSwtNjEwNTk1MjE0
