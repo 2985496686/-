@@ -263,11 +263,12 @@ sysctl -w fs.nr_open=2000500
 
 **缓存设计**
 
-对于私聊消息，缓存设计使用写扩散的模式，在redis中对于每一个用户都有一个收信箱：列表对象，key为msg_to，value为msg_Id的list。
+对于私聊消息，缓存设计使用写扩散的模式，在redis中对于每一个用户都有一个收信箱：列表对象，保存用户的离线消息id，key为msg_to，value为msg_Id的list。
 
 
 对于群聊消息，缓存设计使用读扩散的模式，在redis会进行缓存: 字符串对象，key为 group_id  + msg_Id，value为msg_content。
 
+对于群聊消息，缓存设计使用读扩散的模式，在缓存中会保存
 
 
 
@@ -282,11 +283,11 @@ sysctl -w fs.nr_open=2000500
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ0Nzc2ODUxMSwtNjcxNTMwNTEsLTEyOT
-c3NjA2NTIsLTIwNDE0MjY0MDIsLTIxMjkwNDc4MjksLTIxMjYw
-NjA3NjcsLTcyOTYyMjMyMSwtOTM2MDY2MjAwLDM2MDMyNjQ1OC
-wxMTE0NjYwNDE3LDgwNTI3MTQ3OSwxMjI5ODY2MDAwLC00Njk2
-NjA0NzAsNzc3MTE4MDk4LDM2NTk3NzczMiwtMjEzNDA3Mjk4OC
-wyMDc1NDQ1MDk3LDE3OTM1OTQ5MjksNTk2OTMwOTU5LC02MTA1
-OTUyMTRdfQ==
+eyJoaXN0b3J5IjpbLTEyNjgxNTI4OTQsLTY3MTUzMDUxLC0xMj
+k3NzYwNjUyLC0yMDQxNDI2NDAyLC0yMTI5MDQ3ODI5LC0yMTI2
+MDYwNzY3LC03Mjk2MjIzMjEsLTkzNjA2NjIwMCwzNjAzMjY0NT
+gsMTExNDY2MDQxNyw4MDUyNzE0NzksMTIyOTg2NjAwMCwtNDY5
+NjYwNDcwLDc3NzExODA5OCwzNjU5Nzc3MzIsLTIxMzQwNzI5OD
+gsMjA3NTQ0NTA5NywxNzkzNTk0OTI5LDU5NjkzMDk1OSwtNjEw
+NTk1MjE0XX0=
 -->
