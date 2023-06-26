@@ -242,8 +242,8 @@ sysctl -w fs.nr_open=2000500
 -   msg_seq：客户端发送消息时带上的序列号，主要用于消息排重以及通知客户端消息发送成功之用。
 -   msg_content：消息内容。
 -   send_time：消息发送时间。
--   cm_type：消息类型，如单聊、群聊消息等。
-
+-   cmd_type：信令类型，如单聊、群聊消息等。
+- msg_type: 消息类型
 
 
 
@@ -281,7 +281,7 @@ sysctl -w fs.nr_open=2000500
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDg4NTE4NTAsLTIxMjkwNDc4MjksLT
+eyJoaXN0b3J5IjpbLTIwNDE0MjY0MDIsLTIxMjkwNDc4MjksLT
 IxMjYwNjA3NjcsLTcyOTYyMjMyMSwtOTM2MDY2MjAwLDM2MDMy
 NjQ1OCwxMTE0NjYwNDE3LDgwNTI3MTQ3OSwxMjI5ODY2MDAwLC
 00Njk2NjA0NzAsNzc3MTE4MDk4LDM2NTk3NzczMiwtMjEzNDA3
