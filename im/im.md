@@ -269,7 +269,7 @@ sysctl -w fs.nr_open=2000500
 对于群聊消息，缓存设计使用读扩散的模式，在redis会进行缓存: 字符串对象，key为 group_id  + msg_Id，value为msg_content。
 
 对于群聊消息，缓存设计使用读扩散的模式，在缓存中会为每个群聊保存最近的100条消息，key为group_id + msg_Id。
-
+并且会为用户在缓存保存上一次接收到群消息的id。
 
 
 
@@ -284,11 +284,11 @@ sysctl -w fs.nr_open=2000500
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4MDM2OTY3NSwtNjcxNTMwNTEsLTEyOT
-c3NjA2NTIsLTIwNDE0MjY0MDIsLTIxMjkwNDc4MjksLTIxMjYw
-NjA3NjcsLTcyOTYyMjMyMSwtOTM2MDY2MjAwLDM2MDMyNjQ1OC
-wxMTE0NjYwNDE3LDgwNTI3MTQ3OSwxMjI5ODY2MDAwLC00Njk2
-NjA0NzAsNzc3MTE4MDk4LDM2NTk3NzczMiwtMjEzNDA3Mjk4OC
-wyMDc1NDQ1MDk3LDE3OTM1OTQ5MjksNTk2OTMwOTU5LC02MTA1
-OTUyMTRdfQ==
+eyJoaXN0b3J5IjpbODkzNzQ0MDU0LC02NzE1MzA1MSwtMTI5Nz
+c2MDY1MiwtMjA0MTQyNjQwMiwtMjEyOTA0NzgyOSwtMjEyNjA2
+MDc2NywtNzI5NjIyMzIxLC05MzYwNjYyMDAsMzYwMzI2NDU4LD
+ExMTQ2NjA0MTcsODA1MjcxNDc5LDEyMjk4NjYwMDAsLTQ2OTY2
+MDQ3MCw3NzcxMTgwOTgsMzY1OTc3NzMyLC0yMTM0MDcyOTg4LD
+IwNzU0NDUwOTcsMTc5MzU5NDkyOSw1OTY5MzA5NTksLTYxMDU5
+NTIxNF19
 -->
