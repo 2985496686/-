@@ -434,7 +434,7 @@ func (le *lessor) revokeExpiredLeases() {
 func (le *lessor) findExpiredLeases(limit int) []*Lease {  
    leases := make([]*Lease, 0, 16)  
    for {  
-	   //通过expireExists方法获取一个堆定元素
+	   //通过expireExists方法获取一个堆顶元素
       l, next := le.expireExists()  
       if l == nil && !next {  
          break  
@@ -916,11 +916,11 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyODAxNjYwOSwtODk1NTkxNjMzLDE1NT
-c4NTk5MzMsLTM0MjkwMDA1MSwtMTE1ODMyMDAyNiwxMTM3MTU2
-NzgxLC0xOTk2MTc1MTIwLDIwNzY2MjExNjUsMTAwMTE5MTg5Mi
-wtMTEyMjM1MTczMiwyNDIzNDcyMjYsNzgwMTI0OTkxLC0xMjA1
-MzMzNTc3LDExMTgyMDQzNDcsLTQyMTI0NzkzOSwtMjEzNTUxND
-E1OSwtNDUxMjg5MTkxLDExODEyMTc0MTIsOTI2NTg1MzY5LDEx
-MTU4NDEzMjddfQ==
+eyJoaXN0b3J5IjpbLTEzOTgzOTY0MjEsLTYyODAxNjYwOSwtOD
+k1NTkxNjMzLDE1NTc4NTk5MzMsLTM0MjkwMDA1MSwtMTE1ODMy
+MDAyNiwxMTM3MTU2NzgxLC0xOTk2MTc1MTIwLDIwNzY2MjExNj
+UsMTAwMTE5MTg5MiwtMTEyMjM1MTczMiwyNDIzNDcyMjYsNzgw
+MTI0OTkxLC0xMjA1MzMzNTc3LDExMTgyMDQzNDcsLTQyMTI0Nz
+kzOSwtMjEzNTUxNDE1OSwtNDUxMjg5MTkxLDExODEyMTc0MTIs
+OTI2NTg1MzY5XX0=
 -->
