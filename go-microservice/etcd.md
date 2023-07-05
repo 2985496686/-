@@ -471,7 +471,7 @@ func (le *lessor) expireExists() (l *Lease, next bool) {
    }  
    now := time.Now()  
    if now.Before(item.time) /* item.time: expiration time */ {  
-      //还未排序      
+      //还未过期  
       return nil, false  
    }  
   
@@ -916,11 +916,11 @@ STM框架提供了四种隔离级别，
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTgzOTY0MjEsLTYyODAxNjYwOSwtOD
-k1NTkxNjMzLDE1NTc4NTk5MzMsLTM0MjkwMDA1MSwtMTE1ODMy
-MDAyNiwxMTM3MTU2NzgxLC0xOTk2MTc1MTIwLDIwNzY2MjExNj
-UsMTAwMTE5MTg5MiwtMTEyMjM1MTczMiwyNDIzNDcyMjYsNzgw
-MTI0OTkxLC0xMjA1MzMzNTc3LDExMTgyMDQzNDcsLTQyMTI0Nz
-kzOSwtMjEzNTUxNDE1OSwtNDUxMjg5MTkxLDExODEyMTc0MTIs
-OTI2NTg1MzY5XX0=
+eyJoaXN0b3J5IjpbLTg2OTEzNTUyMCwtMTM5ODM5NjQyMSwtNj
+I4MDE2NjA5LC04OTU1OTE2MzMsMTU1Nzg1OTkzMywtMzQyOTAw
+MDUxLC0xMTU4MzIwMDI2LDExMzcxNTY3ODEsLTE5OTYxNzUxMj
+AsMjA3NjYyMTE2NSwxMDAxMTkxODkyLC0xMTIyMzUxNzMyLDI0
+MjM0NzIyNiw3ODAxMjQ5OTEsLTEyMDUzMzM1NzcsMTExODIwND
+M0NywtNDIxMjQ3OTM5LC0yMTM1NTE0MTU5LC00NTEyODkxOTEs
+MTE4MTIxNzQxMl19
 -->
