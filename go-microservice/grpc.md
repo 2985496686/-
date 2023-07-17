@@ -245,7 +245,9 @@ func main() {
    go func() {  
       s := <-ch  
       etcdLogOf(args)  
-      if i, ok := s.(syscall.Signal); ok {  
+      if i, ok := s.(syscall.Si 两种数据类型，可以实现消息队列的这些需求，当然，Redis 还提供了发布、订阅(pub/sub) 模式。
+
+gnal); ok {  
          os.Exit(int(i))  
       } else {  
          os.Exit(1)  
@@ -264,6 +266,6 @@ func main() {
 }
 ```	
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc2NTQ1MDM0LDkzMTg3Nzc5NCwxNjIyOD
-MxOTIwLDE4NzA1NzcyNjldfQ==
+eyJoaXN0b3J5IjpbMTg1MDk5NjE2OCw1NzY1NDUwMzQsOTMxOD
+c3Nzk0LDE2MjI4MzE5MjAsMTg3MDU3NzI2OV19
 -->
