@@ -461,7 +461,7 @@ d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁
 
 ## 插入意向锁
 
-mysql通过next-key lock解决了当前读操作造成的幻读现象，但是同样也带来了很大的性能损耗。上面叙述幻读带来影响只有是在两个事务执行update操作或者一个执行update操作，另一个执行insert操作。但是如果多个事务是在执行insert操作的时候，如果仍然大范围的使用间隙锁，效率就会
+mysql通过next-key lock解决了当前读操作造成的幻读现象，但是同样也带来了很大的性能损耗。上面叙述幻读带来影响只有是在两个事务执行update操作或者一个执行update操作，另一个执行insert操作时才会发生。但是如果多个事务是在执行insert操作的时候，如果仍然大范围的使用间隙锁，效率就会是很低下，于是引入了插入意向锁
 
 
 # binlog和redolog持久化机制
@@ -607,11 +607,11 @@ InnoDB对LRU算法进行了优化：
 可以看到，这个策略最大的收益，就是在扫描这个大表的过程中，虽然也用到了Buffer Pool，但是对young区域完全没有影响，从而保证了Buffer Pool响应正常业务的查询命中率。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyODE1OTA1NiwtMTk4MTU3MTc5OSwxMD
-Q3NDg0MzksLTEzOTk4ODk3MjgsOTIwMzkyOTA2LC0xNjcxNTY5
-NTg0LC0yMTI3MzM4MzYsLTU5MjI1NDQ3MiwtNTM3MDMzMjM1LD
-E4NTc2NjE4MzEsMjAyMTcyNTQ5NSwxNzA1OTI1Mzc3LDEzNzE1
-MjE2NjksLTEyMDc4NzUxODksLTE0NTY2MTk2NzYsLTE4ODU1Mz
-c2NTYsLTEwODkzNzk0MjQsNjA5MDY5NjM0LC0xMTg2MzM2Nzc2
-LDE3MzMxMzMwOTldfQ==
+eyJoaXN0b3J5IjpbLTExMTUxMTk1NTQsLTE5ODE1NzE3OTksMT
+A0NzQ4NDM5LC0xMzk5ODg5NzI4LDkyMDM5MjkwNiwtMTY3MTU2
+OTU4NCwtMjEyNzMzODM2LC01OTIyNTQ0NzIsLTUzNzAzMzIzNS
+wxODU3NjYxODMxLDIwMjE3MjU0OTUsMTcwNTkyNTM3NywxMzcx
+NTIxNjY5LC0xMjA3ODc1MTg5LC0xNDU2NjE5Njc2LC0xODg1NT
+M3NjU2LC0xMDg5Mzc5NDI0LDYwOTA2OTYzNCwtMTE4NjMzNjc3
+NiwxNzMzMTMzMDk5XX0=
 -->
