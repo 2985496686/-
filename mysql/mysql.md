@@ -465,7 +465,7 @@ mysql通过next-key lock解决了当前读操作造成的幻读现象，但是�
 
 插入意向锁是一种特殊的间隙锁，但是只会锁住插入的这个点，以下情况会获取不到锁：
 1. 获取插入意向锁的位置(插入数据的位置)已经被next-key lock锁住。
-2. 获取插入意向锁的位置已经被插入游戏
+2. 获取插入意向锁的位置已经被插入意向锁锁住。
 
 
 # binlog和redolog持久化机制
@@ -611,7 +611,7 @@ InnoDB对LRU算法进行了优化：
 可以看到，这个策略最大的收益，就是在扫描这个大表的过程中，虽然也用到了Buffer Pool，但是对young区域完全没有影响，从而保证了Buffer Pool响应正常业务的查询命中率。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTA4Mzg3NTgsLTE5ODE1NzE3OTksMT
+eyJoaXN0b3J5IjpbLTE2OTc0OTg3MjQsLTE5ODE1NzE3OTksMT
 A0NzQ4NDM5LC0xMzk5ODg5NzI4LDkyMDM5MjkwNiwtMTY3MTU2
 OTU4NCwtMjEyNzMzODM2LC01OTIyNTQ0NzIsLTUzNzAzMzIzNS
 wxODU3NjYxODMxLDIwMjE3MjU0OTUsMTcwNTkyNTM3NywxMzcx
