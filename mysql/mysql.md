@@ -461,7 +461,7 @@ d为5的行两边有两个空隙，(0,5) 和(5,10)，这里的间隙锁就是锁
 
 ## 插入意向锁
 
-
+mysql通过next-key lock解决了当前读操作造成的幻读现象，但是同样也带来了很大的性能损耗。
 
 
 # binlog和redolog持久化机制
@@ -607,11 +607,11 @@ InnoDB对LRU算法进行了优化：
 可以看到，这个策略最大的收益，就是在扫描这个大表的过程中，虽然也用到了Buffer Pool，但是对young区域完全没有影响，从而保证了Buffer Pool响应正常业务的查询命中率。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjQ1MTU1MjEsLTE5ODE1NzE3OTksMT
-A0NzQ4NDM5LC0xMzk5ODg5NzI4LDkyMDM5MjkwNiwtMTY3MTU2
-OTU4NCwtMjEyNzMzODM2LC01OTIyNTQ0NzIsLTUzNzAzMzIzNS
-wxODU3NjYxODMxLDIwMjE3MjU0OTUsMTcwNTkyNTM3NywxMzcx
-NTIxNjY5LC0xMjA3ODc1MTg5LC0xNDU2NjE5Njc2LC0xODg1NT
-M3NjU2LC0xMDg5Mzc5NDI0LDYwOTA2OTYzNCwtMTE4NjMzNjc3
-NiwxNzMzMTMzMDk5XX0=
+eyJoaXN0b3J5IjpbMTgzOTc2Mjg0NCwtMTk4MTU3MTc5OSwxMD
+Q3NDg0MzksLTEzOTk4ODk3MjgsOTIwMzkyOTA2LC0xNjcxNTY5
+NTg0LC0yMTI3MzM4MzYsLTU5MjI1NDQ3MiwtNTM3MDMzMjM1LD
+E4NTc2NjE4MzEsMjAyMTcyNTQ5NSwxNzA1OTI1Mzc3LDEzNzE1
+MjE2NjksLTEyMDc4NzUxODksLTE0NTY2MTk2NzYsLTE4ODU1Mz
+c2NTYsLTEwODkzNzk0MjQsNjA5MDY5NjM0LC0xMTg2MzM2Nzc2
+LDE3MzMxMzMwOTldfQ==
 -->
