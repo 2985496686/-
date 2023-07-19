@@ -625,9 +625,9 @@ mysql同样也有快照文件和WAL日志文件(binlog)，除此之外引入了r
 
 **mysql为什么不能更redis一样借助快照文件和binlog文件进行故障恢复？**
 
-redis
+redis 存储的数据有限，通过rdb文件和aof文件进行全量恢复时速度很快；mysql是磁盘存储，存储数据很大，如
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA1NzI4NTUyLC0xMDEwMTg0OTg1LC03ND
+eyJoaXN0b3J5IjpbNjY1NjYwODA5LC0xMDEwMTg0OTg1LC03ND
 IwODMzNTUsLTE5ODE1NzE3OTksMTA0NzQ4NDM5LC0xMzk5ODg5
 NzI4LDkyMDM5MjkwNiwtMTY3MTU2OTU4NCwtMjEyNzMzODM2LC
 01OTIyNTQ0NzIsLTUzNzAzMzIzNSwxODU3NjYxODMxLDIwMjE3
