@@ -623,15 +623,15 @@ redis数据的持久化是依靠快照(RDB文件)和WAL日志文件(AOF)，当re
 mysql同样也有快照文件和WAL日志文件(binlog)，除此之外引入了redo log。在故障恢复时通过binlog文件和redolog文件进行恢复；进行数据恢复，增加副本时，是通过快照文件和binlog文件。
 
 
-**mysql为什么不能更**
+**mysql为什么不能更redis一样借助快照文件和binlog文件进行故障恢复？**
 
-
+1. redis在进行set操作时
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4NzYzMDY4OCwtNzQyMDgzMzU1LC0xOT
-gxNTcxNzk5LDEwNDc0ODQzOSwtMTM5OTg4OTcyOCw5MjAzOTI5
-MDYsLTE2NzE1Njk1ODQsLTIxMjczMzgzNiwtNTkyMjU0NDcyLC
-01MzcwMzMyMzUsMTg1NzY2MTgzMSwyMDIxNzI1NDk1LDE3MDU5
-MjUzNzcsMTM3MTUyMTY2OSwtMTIwNzg3NTE4OSwtMTQ1NjYxOT
-Y3NiwtMTg4NTUzNzY1NiwtMTA4OTM3OTQyNCw2MDkwNjk2MzQs
-LTExODYzMzY3NzZdfQ==
+eyJoaXN0b3J5IjpbLTIwMTk1NTIzODcsLTc0MjA4MzM1NSwtMT
+k4MTU3MTc5OSwxMDQ3NDg0MzksLTEzOTk4ODk3MjgsOTIwMzky
+OTA2LC0xNjcxNTY5NTg0LC0yMTI3MzM4MzYsLTU5MjI1NDQ3Mi
+wtNTM3MDMzMjM1LDE4NTc2NjE4MzEsMjAyMTcyNTQ5NSwxNzA1
+OTI1Mzc3LDEzNzE1MjE2NjksLTEyMDc4NzUxODksLTE0NTY2MT
+k2NzYsLTE4ODU1Mzc2NTYsLTEwODkzNzk0MjQsNjA5MDY5NjM0
+LC0xMTg2MzM2Nzc2XX0=
 -->
