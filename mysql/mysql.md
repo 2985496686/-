@@ -625,9 +625,9 @@ mysql同样也有快照文件和WAL日志文件(binlog)，除此之外引入了r
 
 **mysql为什么不能更redis一样借助快照文件和binlog文件进行故障恢复？**
 
-1. redis在进行set操作时，只需要修改内存；mysql需要进行数据落盘操作，他不
+1. redis在进行set操作时，只需要修改内存；mysql需要进行数据落盘操作，他不可能将全部数据放到内存
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzY2NDg1NTgsLTc0MjA4MzM1NSwtMT
+eyJoaXN0b3J5IjpbLTEwMTAxODQ5ODUsLTc0MjA4MzM1NSwtMT
 k4MTU3MTc5OSwxMDQ3NDg0MzksLTEzOTk4ODk3MjgsOTIwMzky
 OTA2LC0xNjcxNTY5NTg0LC0yMTI3MzM4MzYsLTU5MjI1NDQ3Mi
 wtNTM3MDMzMjM1LDE4NTc2NjE4MzEsMjAyMTcyNTQ5NSwxNzA1
