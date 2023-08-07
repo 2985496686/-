@@ -460,10 +460,134 @@ func (h *hmap) newoverflow(t *maptype, b *bmap) *bmap {
 2. 判断map是否处于扩容状态，如果是，进行渐进式扩容。
 3. 计算key对应的buckets下标，遍历该下标处的所有桶。
 4. 遇到相等的key，直接更新值。
-5. k-v需要插入，判断插入后是否需要扩容，如果需要，回到第二步，进行渐进式扩容。
+5. k-v需要插入时，判断插入后是否需要扩容，如果需要，回到第二步，进行渐进式扩容。
 6. 插入k-v
    - 桶中有空位，插入第一个出现的空位。
    - 桶中没有空位，获取新的溢出桶，详见``newoverflow``。
 
 
 
+# 删除操作
+
+
+
+```go
+func mapdelete(t *maptype, h *hmap, key unsafe.Pointer) {
+	// map为空或是空map
+    if h == nil || h.count == 0 {
+		return
+	}
+    // 被并发写入
+	if h.flags&hashWriting != 0 {
+		throw("concurrent map writes")
+	}
+    // 计算出key的hash值
+	hash := t.hasher(key, uintptr(h.hash0))
+    // 标记状态为正在写入
+	h.flags ^= hashWriting
+    // 计算出bucket的下标
+	bucket := hash & bucketMask(h.B)
+	if h.growing() {
+        // 辅助渐进式扩容
+		growWork(t, h, bucket)
+	}
+    // 定位bucket的位置
+	b := (*bmap)(add(h.buckets, bucket*uintptr(t.bucketsize)))
+	bOrig := b
+	top := tophash(hash)
+search:
+    // 遍历所有的桶
+	for ; b != nil; b = b.overflow(t) {
+        // 遍历桶中的key-value
+		for i := uintptr(0); i < bucketCnt; i++ {
+			if b.tophash[i] != top {
+                // 后面没有数据了
+				if b.tophash[i] == emptyRest {
+					break search
+				}
+				continue
+			}
+            // tophash相同
+            // 定位到key所在的位置
+			k := add(unsafe.Pointer(b), dataOffset+i*uintptr(t.keysize))
+			k2 := k
+			if t.indirectkey() {
+				k2 = *((*unsafe.Pointer)(k2))
+			}
+            // key不相同，继续查找
+			if !t.key.equal(key, k2) {
+				continue
+			}
+			// Only clear key if there are pointers in it.
+            // 倘若 key 相等，则删除对应的 key-value 对，并且将当前位置的 tophash 置为 emptyOne：
+			if t.indirectkey() {
+				*(*unsafe.Pointer)(k) = nil
+			} else if t.key.ptrdata != 0 {
+				memclrHasPointers(k, t.key.size)
+			}
+			e := add(unsafe.Pointer(b), dataOffset+bucketCnt*uintptr(t.keysize)+i*uintptr(t.elemsize))
+			if t.indirectelem() {
+				*(*unsafe.Pointer)(e) = nil
+			} else if t.elem.ptrdata != 0 {
+				memclrHasPointers(e, t.elem.size)
+			} else {
+				memclrNoHeapPointers(e, t.elem.size)
+			}
+			b.tophash[i] = emptyOne
+            // 若该key-value是桶中的最后一个位置
+			if i == bucketCnt-1 {
+                // 该桶不是最后一个溢出桶，并且下一个溢出桶的状态并不是emptyRest
+                // 不用做过多处理，跳过循环
+				if b.overflow(t) != nil && b.overflow(t).tophash[0] != emptyRest {
+					goto notLast
+				}
+			} else {
+                // 该key-value不是最后一个
+                // 若下一个位置的topkey不为emptyRest，不用做过多处理，跳过循环
+				if b.tophash[i+1] != emptyRest {
+					goto notLast
+				}
+			}
+            
+            // 代码运行到这有以下情况：
+            // 1. 删除的key-value是桶中的最后一个位置，并且后面桶没有元素(tohash[0] == emptyRest)
+            // 2. 删除的key-value不是桶中的最后一个位置，它的下一个tophash == emptyRest
+			for {
+                // 将该单元格标记为emptyRest
+				b.tophash[i] = emptyRest
+				if i == 0 {
+                    // 该单元格是桶中的第一个单元格
+					if b == bOrig {
+                        // 桶是该下标处的第一个桶
+						break 
+					}
+					// 找到该桶的前一个桶
+					c := b
+					for b = bOrig; b.overflow(t) != c; b = b.overflow(t) {
+					}
+					i = bucketCnt - 1
+				} else {
+     				// 找到前一个单元格
+					i--
+				}
+				if b.tophash[i] != emptyOne {
+					break
+				}
+			}
+		notLast:
+			h.count--
+			// map被清零时，采用新的hash种子
+			if h.count == 0 {
+				h.hash0 = fastrand()
+			}
+			break search
+		}
+	}
+    // 写入标记被破坏，说明并发写入
+	if h.flags&hashWriting == 0 {
+		throw("concurrent map writes")
+	}
+    // 清零flag
+	h.flags &^= hashWriting
+}
+```
