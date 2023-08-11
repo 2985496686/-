@@ -191,6 +191,10 @@ Network Namespace（后续简称 netns） 是 Linux 内核提供的用于实现�
 
 下面说明``veth``是如何工作的
 
+![image-20230811105003285](imgs/image-20230811105003285.png)
+
+
+
 ``ns0``中的``veth0 ping ns1`` 中的``veth1``(``veth1`` 和 ``veth2 ``分配的``ip``属于同一个网段)，具体流程如下：
 
 1. ``socket`` 将``ICMP`` 命令发送给``ns0``中的网络协议栈，网络协议栈经过``TCP/IP``四层对数据进行封装。
@@ -200,13 +204,11 @@ Network Namespace（后续简称 netns） 是 Linux 内核提供的用于实现�
 
 4. ``veth1``收到数据后直接将数据交给``ns1的网络协议栈``。
 
-5. 网络协议栈构建``ICMP Reply`` 后查看路由表，将数据发送给``localback``。
-6. ``localback`` 什么也没干，直接将数据转发给网络协议栈。
-7. 协议栈收到``ICMP Reply`` 将数据发送给对应的``socket``。
+5. 网络协议栈构建``ICMP Reply`` 后查看路由表，将数据发送给veth1。
+6. ``veth1``转发给``veth0``。
+7. ``veth0`` 将数据交给网络协议栈，网络协议栈转发给对应的socket。
 
 8. 等待在用户态的ping程序发现socket返回。
-
-![image-20230809174315079](imgs/image-20230809174315079.png)
 
 
 
@@ -254,9 +256,7 @@ sudo ip netns exec ns1 ping 10.1.1.2
 
 ![image-20230809175313556](imgs/image-20230809175313556.png)
 
-
-
-## 4.2 birdge 模式
+### 4.2 birdge 模式
 
 
 
@@ -295,6 +295,122 @@ sudo ip netns exec ns1 ip addr add 10.1.1.2/24 dev veth0
 sudo ip netns exec ns1 ip link set veth0 up
 
 sudo ip netns exec ns2 ip addr add 10.1.1.3/24 dev veth1
-sudo ip netns exec ns2 ip link ser veth1 up
+sudo ip netns exec ns2 ip link set veth1 up
 ```
 
+
+
+
+
+下面是完整的示意图：
+
+![image-20230811085635492](imgs/image-20230811085635492.png)
+
+
+
+1. 连接了``bridge``的网卡与网络协议栈之间变成了单向，网卡收到的数据都会直接转发给``bridge``，类似于网卡变成了``bridge``的导线，``bridge``继承了网卡的``IP``地址和``MAC``地址。
+
+2. 在host中``ping  10.1.1.2`` ，完整流程如下：
+
+   1) socket 封装``ICMP``请求发送给网络协议栈，网络协议栈封装成``ICMP``报文。
+
+   2) 协议栈将数据交给``veth0``。
+
+   3)`` veth0`` 将数据交给``br-veth0``。
+
+   4) ``br-veth0``不会将数据交给网络协议栈，而是直接给bridge。
+
+   5) ``bridge``通过``mac``地址，将数据转发给``br-veth1``。
+
+   6) ``br-veth1``将数据转发给``veth1``。
+
+   7) ``veth1``转发给网络协议栈， 封装``ICMP`` 响应报文。
+
+   8) 网络协议栈再次转发veth1，veth1同样流程转发回去。
+
+## 5. Linux iptables
+
+通过虚拟网卡可以实现同一个主机的不同``namesapce `` 通信，但是还不能实现与外部网络设备的通信。
+
+
+
+建立一个连接netns1和主机netns2的虚拟网卡，当我们在非主机netns尝试ping 外部网络时，结果如下：
+
+![image-20230810105830800](imgs/image-20230810105830800.png)
+
+此时netns1并无法和外部网络建立通信，因为netns1中封装的报文源ip地址是我们自己分配的``10.1.1.3``，外部网络的响应报文并不能找回来。
+
+
+
+### 5.1 
+
+我们可以借助  ``linux iptables 的 MASQUERADE 策略`` ，当我们请求外部网路时，它会将这个ip转换成宿主机的出口网卡IP。
+
+
+
+
+
+```shell
+# 创建两个网络命名空间
+sudo ip netns add ns0
+
+# 创建一对虚拟网卡设备
+sudo ip link add veth0 type veth peer name veth1
+
+
+# sudo sh -c "echo 1 > /proc/sys/net/ipv4/conf/veth1/accept_local"
+# sudo sh -c "echo 1 > /proc/sys/net/ipv4/conf/veth0/accept_local"
+# sudo sh -c "echo 0 > /proc/sys/net/ipv4/conf/all/rp_filter"
+# sudo sh -c "echo 0 > /proc/sys/net/ipv4/conf/veth0/rp_filter"
+# sudo sh -c "echo 0 > /proc/sys/net/ipv4/conf/veth1/rp_filter"
+# 将这对veth分别加入到ns中
+# sudo ip link set veth0 netns ns0
+
+# 为veth分配同网段的ip地址
+sudo ip netns exec ns0 ip addr add 10.1.1.2/24 dev veth0 
+sudo ip addr add 10.1.1.3/24 dev veth1 
+
+# 启用两个网卡
+sudo ip netns exec ns0 ip link set veth0 up
+sudo ip link set veth1 up
+
+
+
+
+# ns1 ping ns0
+sudo ip netns exec ns1 ping 10.1.1.2
+
+# 
+sudo tcpdump -n -i veth1
+
+```
+
+
+
+
+
+
+
+```shell
+sudo sh -c "echo 1 > /proc/sys/net/ipv4/conf/veth1/accept_local"
+sudo sh -c "echo 1 > /proc/sys/net/ipv4/conf/veth0/accept_local"
+sudo sh -c "echo 0 > /proc/sys/net/ipv4/conf/all/rp_filter"
+sudo sh -c "echo 0 > /proc/sys/net/ipv4/conf/veth0/rp_filter"
+sudo sh -c "echo 0 > /proc/sys/net/ipv4/conf/veth1/rp_filter"
+```
+
+
+
+```sh
+gtl@t:~$ sudo tcpdump -n -i veth0
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on veth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+14:42:17.761186 ARP, Request who-has 43.136.243.167 tell 10.1.1.3, length 44
+14:42:18.762278 ARP, Request who-has 43.136.243.167 tell 10.1.1.3, length 44
+14:42:19.763364 ARP, Request who-has 43.136.243.167 tell 10.1.1.3, length 44
+14:42:20.764362 ARP, Request who-has 43.136.243.167 tell 10.1.1.3, length 44
+14:42:21.765945 ARP, Request who-has 43.136.243.167 tell 10.1.1.3, length 44
+14:42:22.767317 ARP, Request who-has 43.136.243.167 tell 10.1.1.3, length 44
+14:42:23.768752 ARP, Request who-has 43.136.243.167 tell 10.1.1.3, length 44
+14:42:24.770167 ARP, Request who-has 43.136.243.167 tell 10.1.1.3, length 44
+```
